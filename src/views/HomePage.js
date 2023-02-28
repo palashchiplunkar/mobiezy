@@ -1,4 +1,5 @@
 import React from 'react'
+import Navbar from '../components/navbar'
 import "../css/HomeStyles.css"
 export default function HomePage() {
   return (
@@ -53,20 +54,7 @@ export default function HomePage() {
           >
             COLLECT BILL
           </button>
-          <div class="navbar">
-            <div class="navitem">
-              <img src={require("../assets/home.png")} class="nav_img"/>
-              <span class="home_nav">Home</span>
-            </div>
-            <div class="navitem">
-              <img src={require("../assets/profile.png")} class="nav_img"/>
-              <span>Customers</span>
-            </div>
-            <div class="navitem">
-              <img src={require("../assets/three_more.png")} class="nav_img"/>
-              <span class="more_nav">More</span>
-            </div>
-          </div>
+          <Navbar/>
     </div>
   )
 }
