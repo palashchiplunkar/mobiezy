@@ -43,7 +43,7 @@ export default function LoginPage() {
 
                     <div className="remember-me-div">
                         <input className="rmcb" type="checkbox" />
-                        <label class="rememberme">Remeber me</label>
+                        <label class="rememberme">Remember me</label>
                     </div>
 
                     <div className="login-btn-div">
