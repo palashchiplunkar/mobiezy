@@ -12,7 +12,7 @@ export default function LoginPage() {
     <div className="App">
       <div >
         <img className='header-img1' src='../assets/d1.png' />
-        <img className='mobicable-logo' src='../assets/MobiCable.jpg' />
+        <img className='mobicable-logo' src='../assets/MobiCable.JPG' />
       </div>
 
       <div className='authForm'>
