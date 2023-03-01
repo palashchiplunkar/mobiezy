@@ -45,11 +45,15 @@ export default function LoginPage() {
                         <input className="rmcb" type="checkbox" />
                         <label class="rememberme">Remeber me</label>
                     </div>
-                    
-                    <button
-                        className="loginBtn"
-                        onClick={() => handleSubmit()}
-                    ></button>
+
+                    <div className="login-btn-div">
+                        <button
+                            className="loginBtn"
+                            onClick={() => handleSubmit()}
+                        >
+                            Login
+                        </button>
+                    </div>
                 </form>
             </div>
         </div>
