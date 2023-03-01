@@ -3,47 +3,59 @@ import { useNavigate } from "react-router-dom";
 import "../css/LoginStyles.css";
 
 export default function LoginPage() {
-  const navigate=useNavigate();
-  const handleSubmit=()=>{
-    navigate('/home');
-  }
-  
-  return (
-    <div className="App">
-      <div >
-        <img className='header-img1' src={require('../assets/d1.png')} />
-        <img className='mobicable-logo' src={require('../assets/MobiCable.jpg')} />
-      </div>
+    const navigate = useNavigate();
+    const handleSubmit = () => {
+        navigate("/home");
+    };
 
-      <div className='authForm'>
-        <form className='login'>
-          <div class="username-group">
-            <input required="true" type="text" autocomplete="off" className='username' />
-            <label className="user-label">User Name</label>
-          </div>
+    return (
+        <div className="App">
+            <img className="bg-img" src={require("../assets/BG.JPG")} />
 
-          <div class="passwd-group">
-            <input required="true" type="password" autocomplete="off" className='passwd' />
-            <label className="passwd-label">Password</label>
-          </div>
+            <div className="authForm">
+                <img
+                    className="header-img1"
+                    src={require("../assets/d1.png")}
+                />
+                <img
+                    className="mobicable-logo"
+                    src={require("../assets/MobiCable.jpg")}
+                />
 
-          <label class="rememberme">
-            <input className='rmcb' type="checkbox" />
-            Remeber me
-          </label>
-  
-          
-          <button className='loginBtn' onClick={() => handleSubmit()}>
-              <span class="circle1"></span>
-              <span class="circle2"></span>
-              <span class="circle3"></span>
-              <span class="circle4"></span>
-              <span class="circle5"></span>
-              <span class="text">Login</span>
-          </button>
+                <form className="login">
+                    <label className="user-label">User Name</label>
+                    <input
+                        required="true"
+                        type="text"
+                        autocomplete="off"
+                        className="username"
+                        placeholder="Enter User Name"
+                    />
 
-        </form>
-      </div>
-    </div>
-  );
+                    <label className="passwd-label">Password</label>
+                    <input
+                        required="true"
+                        type="password"
+                        autocomplete="off"
+                        className="passwd"
+                        placeholder="Enter Password"
+                    />
+
+                    <div className="remember-me-div">
+                        <input className="rmcb" type="checkbox" />
+                        <label class="rememberme">Remeber me</label>
+                    </div>
+
+                    <div className="login-btn-div">
+                        <button
+                            className="loginBtn"
+                            onClick={() => handleSubmit()}
+                        >
+                            Login
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    );
 }
