@@ -1,5 +1,6 @@
 import "../css/HomeStyles.css"
-export default Navbar = () => {
+
+const Navbar = () => {
     return (
         <div class="navbar">
             <div class="navitem">
@@ -17,3 +18,5 @@ export default Navbar = () => {
           </div>
     );
 }
+
+export default Navbar;
