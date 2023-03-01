@@ -1,3 +1,3 @@
-## mobiezy
+# Mobiezy
 
-# Visit : https://mobiezy-internship.vercel.app
+## Visit : https://mobiezy-internship.vercel.app
