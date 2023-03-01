@@ -1,0 +1,24 @@
+.navbar {
+    background-color: #ffff;
+    position: absolute;
+    bottom : 0px;
+    width: 100%;
+    height: 8vh;
+    bottom:-8px;
+}
+
+.navitem {
+    font-family: 'Noto Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 11px;
+    line-height: 18px;
+}
+
+.nav_img {
+    border-radius: 50px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+
+}
