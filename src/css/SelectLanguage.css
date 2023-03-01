@@ -1,0 +1,22 @@
+.HomeHeader{
+    position: fixed;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content:flex-start;
+    margin-left: 1%;
+    margin-right: 1%;
+    background-color:#0090DA ;
+    width:98%;
+    height: 115px;
+}
+.HeaderLabel{
+    position: relative;
+    top: 5%;
+    padding-left: 30px;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px; 
+    letter-spacing: 0.2px;
+    color: #FFFFFF;
+}
