@@ -62,7 +62,7 @@ body {
     background: none;
     padding: 1rem;
     font-size: 1rem;
-    color: #000000;
+    color: black;
     transition: border 150ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -102,7 +102,7 @@ input:valid ~ label {
     background: none;
     padding: 1rem;
     font-size: 1rem;
-    color: #000000;
+    color: black;
     transition: border 150ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
