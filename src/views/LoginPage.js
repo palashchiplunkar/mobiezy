@@ -11,8 +11,8 @@ export default function LoginPage() {
   return (
     <div className="App">
       <div >
-        <img className='header-img1' src='../assets/d1.png' />
-        <img className='mobicable-logo' src='../assets/MobiCable.JPG' />
+        <img className='header-img1' src={require('../assets/d1.png')} />
+        <img className='mobicable-logo' src={require('../assets/MobiCable.jpg')} />
       </div>
 
       <div className='authForm'>
@@ -33,7 +33,7 @@ export default function LoginPage() {
           </label>
   
           
-          <button className='loginBtn'>
+          <button className='loginBtn' onClick={() => handleSubmit()}>
               <span class="circle1"></span>
               <span class="circle2"></span>
               <span class="circle3"></span>
