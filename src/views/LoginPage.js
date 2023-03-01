@@ -55,6 +55,8 @@ export default function LoginPage() {
                         </button>
                     </div>
                 </form>
+
+                <p className="version">Version 2. 0 . 65</p>
             </div>
         </div>
     );

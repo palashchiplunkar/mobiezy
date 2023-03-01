@@ -38,7 +38,7 @@ body {
     display: flex;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 8%;
+    margin-top: 5%;
     width: 315px;
     height: 66px;
     justify-content: center;
@@ -54,7 +54,7 @@ body {
     flex-direction: column;
     justify-content: center;
     object-fit: contain;
-    margin-top: 5%;
+    margin-top: 3%;
     margin-left: auto;
     margin-right: auto;
 }
@@ -65,7 +65,7 @@ body {
     display: flex;
     flex-direction: row;
     justify-content: center;
-    margin-top: 3%;
+    margin-top: 2%;
 }
 
 /* Username */
@@ -216,8 +216,24 @@ body {
     gap: 8px;
     width: 224px;
     height: 48px;
-    background: #0090DA;
+    background: #0090da;
     border-radius: 20px;
     border: none;
-    margin-top: 10%;
+    margin-top: 8%;
+}
+
+/* Version */
+
+.version {
+    font-family: "Noto Sans", sans-serif;
+    color: #333333;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 23px;
+    margin-top: 1%;
+
+    text-align: center;
+    display: flex;
+    justify-content: center;
 }
