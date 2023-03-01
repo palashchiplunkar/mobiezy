@@ -13,7 +13,7 @@ export default function HomePage() {
         </div>
         <p class="Company_name">KOORG BROADBAND SERVICES <br></br>PRIVATE LIMITED</p>
         
-        <img src="../assets/profile.jpg" class="profile_img"/>
+        <img src="../../public/assets/profile.jpg" class="profile_img"/>
         </div>
         <p class="username">Hi, Dinesh</p>
         <div class="amount_due">
