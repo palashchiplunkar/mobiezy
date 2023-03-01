@@ -14,7 +14,7 @@ body {
     width: 100%;
     left: 0;
     top: 0;
-    opacity: 0.5;
+    opacity: 0.4;
 }
 
 /* Top Header Image */
@@ -218,6 +218,6 @@ body {
     height: 48px;
     background: #0090DA;
     border-radius: 20px;
-    margin-top: 5%;
-    /* margin-bottom: 10%; */
+    border: none;
+    margin-top: 10%;
 }
