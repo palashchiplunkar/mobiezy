@@ -2,6 +2,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import LoginPage from "./views/LoginPage";
 import HomePage from "./views/HomePage";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import './css/App.css';
+
 function App() {
   return (
     <BrowserRouter>
