@@ -21,6 +21,7 @@
     display: flex;
     width: 372px;
     height: 228px;
+    margin-top: 2%;
     margin-left: auto;
     margin-right: auto;
     justify-content: center;
@@ -73,7 +74,7 @@
     margin-left: 15%;
     width: 279px;
     height: 16px;
-    font-family: "Noto Sans";
+    font-family: "Noto Sans", sans-serif;
     font-style: Normal;
     font-weight: 400;
     font-size: 12px;
@@ -228,7 +229,7 @@
     font-weight: 400;
     font-size: 14px;
     line-height: 23px;
-    margin-top: 1%;
+    margin-top: 3%;
 
     text-align: center;
     display: flex;
