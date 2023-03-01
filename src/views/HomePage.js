@@ -1,8 +1,9 @@
 import React from "react";
-import HamburgerMenu from "../components/hamburger";
+
 import Navbar from "../components/navbar";
 import "../css/HomeStyles.css";
 import { useState } from "react";
+import MobileNavigation from "../components/hamnavigation";
 export default function HomePage() {
   
   return (
@@ -15,7 +16,7 @@ export default function HomePage() {
           <div class="line"></div>
           <div class="line"></div>
         </div> */}
-        <HamburgerMenu></HamburgerMenu>
+        <MobileNavigation/>
         <p class="Company_name">
           KOORG BROADBAND SERVICES <br></br>PRIVATE LIMITED
         </p>
