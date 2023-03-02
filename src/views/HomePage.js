@@ -13,17 +13,7 @@ export default function HomePage() {
             <img className="home-bg-img" src={require("../assets/BG.JPG")} />
             <div>
                 <div class="headerblue">
-<<<<<<< HEAD
-                    {/* Add three lines for side navbar */}
-                    {/* <div class="hamburger">
-                        <div class="line"></div>
-                        <div class="line"></div>
-                        <div class="line"></div>
-                        </div> */}
-                    
-=======
                     <MobileNavigation/>
->>>>>>> 88cc11e8204166819072714a13881eee29e8e480
                     <p class="Company_name">
                         KOORG BROADBAND SERVICES <br></br>PRIVATE LIMITED
                     </p>
