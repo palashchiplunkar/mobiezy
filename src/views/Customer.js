@@ -5,9 +5,9 @@ import Select from "react-select";
 import "../css/Customer.css";
 
 const actions = [
-    { label: "Add", value: 1 },
-    { label: "Edit", value: 2 },
-    { label: "Delete", value: 3 },
+    { label: "Bangalore", value: "bangalore" },
+    { label: "Mangalore", value: "mangalore" },
+    { label: "Udupi", value: "udupi" }
 ];
 
 export default function Customer() {
@@ -19,7 +19,7 @@ export default function Customer() {
                 <div className="header-blue">
                     <div className="area-div">
                         <p className="area-p">Area</p>
-                        <Select options={actions} />
+                        <Select className="area-dropdown" options={actions} placeholder="All Areas" />
                     </div>
                 </div>
             </div>
