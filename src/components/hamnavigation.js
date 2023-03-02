@@ -2,6 +2,7 @@ import NavLinks from "./navLinks";
 import { useState } from "react";
 import { BiMenu } from "react-icons/bi";
 import {AiOutlineClose} from "react-icons/ai"
+import "../css/HamNav.css";
 const MobileNavigation = () => {
   const [open, setOpen] = useState(true);
   const toggleNavbar = () => setOpen(!open);
@@ -13,7 +14,7 @@ const MobileNavigation = () => {
       />
       {open && (
         <div className="ham-drawer">
-            <AiOutlineClose onClick={toggleNavbar}/>
+            <AiOutlineClose onClick={toggleNavbar} style={{}}/>
           <div className="ham-drawer__header">
             <div className="ham-drawer__space"></div>
             <div className="ham-drawer_user_details">
