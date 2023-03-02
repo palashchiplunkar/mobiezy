@@ -8,14 +8,9 @@ import MobileNavigation from "../components/hamnavigation";
 export default function HomePage() {
     return (
         <div class="container">
+            <img className="home-bg-img" src={require("../assets/BG.JPG")} />
             <div>
                 <div class="headerblue">
-                    {/* Add three lines for side navbar */}
-                    {/* <div class="hamburger">
-                        <div class="line"></div>
-                        <div class="line"></div>
-                        <div class="line"></div>
-                        </div> */}
                     <MobileNavigation />
                     <p class="Company_name">
                         KOORG BROADBAND SERVICES <br></br>PRIVATE LIMITED
@@ -53,26 +48,12 @@ export default function HomePage() {
                     <label className="Amt_Due">Number of Open Complaints</label>
                     <label className="Amt_Due">12</label>
                 </div>
-                <button
-                    type="submit"
-                    style={{
-                        color: "white",
-                        borderRadius: "30px",
-                        border: "none",
-                        backgroundColor: "#2297fd",
-                        height: "7vh",
-                        width: "224px",
-                        fontWeight: "bold",
-                        margin: "48px",
-                        marginLeft: "20%",
-                        display: "flex",
-                        flexDirection: "row",
-                        justifyContent: "center",
-                        alignItems: "center",
-                    }}
-                >
-                    COLLECT BILL
-                </button>
+
+                <div className="collect-btn-div">
+                    <button className="collectBtn" type="submit">
+                        COLLECT BILL
+                    </button>
+                </div>
             </div>
             <Navbar />
         </div>

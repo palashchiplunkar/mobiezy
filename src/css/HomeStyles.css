@@ -1,23 +1,27 @@
-.container {
-    background-image: url("../assets/BG.JPG");
-    height: 100vh;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: top center;
-    /* margin-bottom: 10vh; */
-    /* overflow-y: scroll; */
+.home-bg-img {
+    position: fixed;
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    top: 0;
+    opacity: 0.4;
+    z-index: -1;
 }
 
-.headerblue{
+.container {
+    height: 100%;
+}
+
+.headerblue {
     height: 20vh;
     padding: 10px;
-    
-    background-color: #0090DA;
+    background-color: #0090da;
     position: relative;
     top: 10px;
-
 }
-.profile_img{
+
+.profile_img {
     width: 84px;
     height: 88px;
     border-radius: 50px;
@@ -25,29 +29,29 @@
     margin-left: auto;
     margin-right: auto;
     position: absolute;
-    top:12vh;
+    top: 12vh;
     left: 35%;
-  
 }
-.user_name{
+
+.user_name {
     position: absolute;
-height: 31px;
-left: 0%;
-right: 63.8%;
-top: 25%;
+    height: 31px;
+    left: 0%;
+    right: 63.8%;
+    top: 25%;
 
-font-family: 'Noto Sans';
-font-style: normal;
-font-weight: 700;
-font-size: 16px;
-line-height: 23px;
-/* or 144% */
+    font-family: "Noto Sans";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 23px;
+    /* or 144% */
+    text-align: center;
 
-text-align: center;
-
-color: #333333;
+    color: #333333;
 }
-.amount_due{
+
+.amount_due {
     background: rgba(220, 21, 21, 0.82);
     border-radius: 15px;
     display: flex;
@@ -58,19 +62,19 @@ color: #333333;
     gap: 10px;
     margin-top: 30%;
 }
-.Amt_Due{
-    font-family: 'Noto Sans';
+
+.Amt_Due {
+    font-family: "Noto Sans";
     font-style: normal;
     font-weight: 700;
     font-size: 20px;
     line-height: 21px;
     /* or 105% */
-    
     text-align: center;
-    
-    color: #FFFFFF;
+    color: #ffffff;
 }
-.amount_collected_month{
+
+.amount_collected_month {
     background: rgba(160, 195, 52, 0.92);
     border-radius: 15px;
     display: flex;
@@ -81,8 +85,9 @@ color: #333333;
     gap: 10px;
     margin-top: 20px;
 }
-.amount_collected_today{
-    background: #CF4DCE;
+
+.amount_collected_today {
+    background: #cf4dce;
     border-radius: 15px;
     display: flex;
     flex-direction: column;
@@ -92,8 +97,9 @@ color: #333333;
     gap: 10px;
     margin-top: 20px;
 }
-.complaints{
-    background: #CEBB00;
+
+.complaints {
+    background: #cebb00;
     border-radius: 15px;
     display: flex;
     flex-direction: column;
@@ -103,54 +109,64 @@ color: #333333;
     gap: 10px;
     margin-top: 20px;
 }
-button{
-        color: "white";
-        border-Radius: "20px";
-        border: "none";
-        background-Color: "#2297fd";
-        height: "5vh";
-        width: "20vh";
-        font-Weight: "bold";
-        margin: "5vh";
+
+.Company_name {
+    font-family: "Noto Sans";
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 19px;
+    /* or 127% */
+
+    text-align: center;
+    text-transform: uppercase;
+
+    color: #ffffff;
 }
 
-.Company_name{
-    font-family: 'Noto Sans';
-font-style: normal;
-font-weight: 600;
-font-size: 14px;
-line-height: 19px;
-/* or 127% */
-
-text-align: center;
-text-transform: uppercase;
-
-color: #FFFFFF;
+.hamburger {
+    display: block;
+    position: absolute;
+    top: 0px;
+    left: 13%;
+    transform: translate(-100%, 60%);
+    font-size: 1.8rem;
+    cursor: pointer;
 }
 
-
-.hamburger{
-        display: block;
-        position: absolute;
-        top: 0px;
-        left: 13%;
-        transform: translate(-100%, 60%);
-        font-size: 1.8rem;
-        cursor: pointer;
-}
-.hamburger .line{
+.hamburger .line {
     width: 20px;
     height: 2px;
     background: #ffff;
     /* display: block; */
-    
+
     transition: all 0.3s ease-in-out;
     /* add it to left */
 
     margin: 3px;
-
-
 }
 
+.collect-btn-div {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+}
 
-  
+.collectBtn {
+    margin-top: 20%;
+    margin-bottom: 5%;
+    align-items: center;
+    color: #ffffff;
+    font-family: "Noto Sans", sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    border: none;
+    text-align: center;
+    text-transform: uppercase;
+    background: #0090da;
+    border-radius: 20px;
+    width: 224px;
+    height: 48px;
+    gap: 8px;
+}
