@@ -11,7 +11,7 @@ export default function HomePage() {
             <img className="home-bg-img" src={require("../assets/BG.JPG")} />
             <div>
                 <div class="headerblue">
-                    <MobileNavigation />
+                    <MobileNavigation/>
                     <p class="Company_name">
                         KOORG BROADBAND SERVICES <br></br>PRIVATE LIMITED
                     </p>
