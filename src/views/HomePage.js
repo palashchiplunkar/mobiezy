@@ -51,11 +51,6 @@ export default function HomePage() {
                     <label className="Amt_Due">Number of Open Complaints</label>
                     <label className="Amt_Due">12</label>
                 </div>
-                
-                <div class="complaints">
-                    <label className="Amt_Due">Number of Open Complaints</label>
-                    <label className="Amt_Due">12</label>
-                </div>
 
                 <div className="collect-btn-div">
                     <button className="collectBtn" type="submit">
