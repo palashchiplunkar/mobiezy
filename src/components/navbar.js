@@ -46,10 +46,7 @@ const Navbar = () => {
             </div>
 
             <div class="navitem">
-                <img
-                    src={require("../assets/three_more.png")}
-                    class="nav_img"
-                />
+                <img src={require("../assets/three_more.png")} class="nav_img" />
                 <span class="more_nav">More</span>
             </div> */}
       {/* <BottomNavigation

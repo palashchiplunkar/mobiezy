@@ -1,0 +1,13 @@
+{
+    
+        "LP_lbl_UserName": "User Name",
+        "LP_data_UserName": "Enter User Name",
+        "LP_error_UserName": "Invalid User Name",
+        "LP_lbl_Password": "Password",
+        "LP_data_Password": "Enter Password",	
+        "LP_error_Password": "Invalid Password !",			  
+        "LP_lbl_Remember_Me": "Remember Me",			  
+        "LP_Button_Login": "LOGIN",			  
+        "LP_lbl_Version": "Version :  2. 0 . 65"
+    
+}

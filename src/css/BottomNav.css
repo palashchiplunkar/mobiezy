@@ -1,4 +1,8 @@
 .navbar {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
     background-color: #FFFFFF;
     position: fixed !important;
     /* margin-left:5% ;

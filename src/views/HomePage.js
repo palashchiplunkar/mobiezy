@@ -4,6 +4,8 @@ import Navbar from "../components/navbar";
 import "../css/HomeStyles.css";
 import { useState } from "react";
 import MobileNavigation from "../components/hamnavigation";
+import HamDrawer from "../components/hamburger";
+import HamburgerDrawer from "react-hamburger-drawer";
 
 export default function HomePage() {
     return (

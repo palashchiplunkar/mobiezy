@@ -9,14 +9,31 @@ import { MdSignalCellularAlt } from "react-icons/md";
 import { AiOutlineWifi } from "react-icons/ai";
 import { BsBatteryFull } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
+import i18next from "i18next";
+
 export default function SelectLanguage() {
-  const navigate=useNavigate();
+    const navigate = useNavigate();
+    const { t } = useTranslation();
+    // get the input value
+    const handleRadioChange = (e) => {
+        if (e.target.value === "English") {
+            i18next.changeLanguage("en_US");
+            t("en");
+        }
+        
+        if (e.target.value === "Hindi") {
+            i18next.changeLanguage("hi_IN");
+            t("hi_IN");
+        }
+    };
+
     return (
         <div>
             <img className="bg-img" src={require("../assets/BG.JPG")} />
             <div className="HomeHeader">
                 <FaAngleLeft
-                onClick={()=>navigate("/home")}
+                    onClick={() => navigate("/home")}
                     style={{
                         color: "white",
                         height: "25px",
@@ -66,6 +83,7 @@ export default function SelectLanguage() {
                                 name={"lang"}
                                 value={"English"}
                                 className="RadioButtons"
+                                onChange={handleRadioChange}
                             />
                             <label className="RadioLabel">English</label>
                         </div>
@@ -85,6 +103,7 @@ export default function SelectLanguage() {
                                 name={"lang"}
                                 value={"தமிழ்"}
                                 className="RadioButtons"
+                                onChange={handleRadioChange}
                             />
                             <label className="RadioLabel">தமிழ்</label>
                         </div>
@@ -94,8 +113,9 @@ export default function SelectLanguage() {
                             <input
                                 type={"radio"}
                                 name={"lang"}
-                                value={"हिन्दी"}
+                                value={"Hindi"}
                                 className="RadioButtons"
+                                onChange={handleRadioChange}
                             />
                             <label className="RadioLabel">हिन्दी</label>
                         </div>
