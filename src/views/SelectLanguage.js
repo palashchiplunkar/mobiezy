@@ -29,7 +29,7 @@ export default function SelectLanguage() {
     const handleRadioChange = (e) => {
         if (e.target.value === "English") {
             i18next.changeLanguage("en_US");
-            t("en");
+            t("en_US");
         }
         
         if (e.target.value === "Hindi") {
@@ -124,7 +124,7 @@ export default function SelectLanguage() {
                             <input
                                 type={"radio"}
                                 name={"lang"}
-                                value={"hn"}
+                                value={"Hindi"}
                                 id="Hindi"
                                 className="RadioButtons"
                                 onChange={handleRadioChange}

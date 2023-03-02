@@ -29,7 +29,7 @@ export default function LoginPage() {
                         type="text"
                         autocomplete="off"
                         className="username"
-                        placeholder="Enter User Name"
+                        placeholder={t("LP_data_UserName")}
                     />
 
                     <label className="passwd-label">{t("LP_lbl_Password")}</label>
@@ -38,12 +38,12 @@ export default function LoginPage() {
                         type="password"
                         autocomplete="off"
                         className="passwd"
-                        placeholder="Enter Password"
+                        placeholder={t("LP_data_Password")}
                     />
 
                     <div className="remember-me-div">
                         <input className="rmcb" type="checkbox" />
-                        <label class="rememberme">Remember me</label>
+                        <label class="rememberme">{t("LP_lbl_Remember_Me")}</label>
                     </div>
 
                     <div className="login-btn-div">
@@ -51,12 +51,12 @@ export default function LoginPage() {
                             className="loginBtn"
                             onClick={() => handleSubmit()}
                         >
-                            Login
+                            {t("LP_Button_Login")}
                         </button>
                     </div>
                 </form>
 
-                <p className="version">Version 2. 0 . 65</p>
+                <p className="version">{t("LP_lbl_Version")}</p>
             </div>
         </div>
     );
