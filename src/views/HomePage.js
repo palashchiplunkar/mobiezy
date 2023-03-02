@@ -9,7 +9,7 @@ export default function HomePage() {
     return (
         <div class="container">
             <img className="home-bg-img" src={require("../assets/BG.JPG")} />
-            <div>
+            {/* <div> */}
                 <div class="headerblue">
                     <MobileNavigation />
                     <p class="Company_name">
@@ -54,7 +54,7 @@ export default function HomePage() {
                         COLLECT BILL
                     </button>
                 </div>
-            </div>
+            {/* </div> */}
             <Navbar />
         </div>
     );
