@@ -11,30 +11,29 @@ import { BsBatteryFull } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import i18next from "i18next";
+
 export default function SelectLanguage() {
-  const navigate=useNavigate();
-    const {t}=useTranslation();
+    const navigate = useNavigate();
+    const { t } = useTranslation();
     // get the input value
     const handleRadioChange = (e) => {
-       if(e.target.value==="English"){
-            i18next.changeLanguage("en");
+        if (e.target.value === "English") {
+            i18next.changeLanguage("en_US");
+            t("en");
+        }
         
-           t("en");
-
-       }
-       if(e.target.value==="hn"){
-        i18next.changeLanguage("es");
-        t("es");
-       }
+        if (e.target.value === "Hindi") {
+            i18next.changeLanguage("hi_IN");
+            t("hi_IN");
+        }
     };
-
 
     return (
         <div>
             <img className="bg-img" src={require("../assets/BG.JPG")} />
             <div className="HomeHeader">
                 <FaAngleLeft
-                onClick={()=>navigate("/home")}
+                    onClick={() => navigate("/home")}
                     style={{
                         color: "white",
                         height: "25px",
@@ -114,7 +113,7 @@ export default function SelectLanguage() {
                             <input
                                 type={"radio"}
                                 name={"lang"}
-                                value={"hn"}
+                                value={"Hindi"}
                                 className="RadioButtons"
                                 onChange={handleRadioChange}
                             />
