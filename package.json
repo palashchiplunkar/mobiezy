@@ -22,7 +22,11 @@
     "react-icons": "^4.7.1",
     "react-router-dom": "^6.8.1",
     "react-scripts": "^5.0.1",
+<<<<<<< HEAD
     "react-select": "^5.7.0",
+=======
+    "reactjs-popup": "^2.0.5",
+>>>>>>> 82350f7e39ef2de43310673f16eefc58bae755a0
     "web-vitals": "^2.1.4"
   },
   "scripts": {
