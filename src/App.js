@@ -3,6 +3,7 @@ import LoginPage from "./views/LoginPage";
 import HomePage from "./views/HomePage";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import SelectLanguage from "./views/SelectLanguage";
+
 function App() {
   return (
     <BrowserRouter>

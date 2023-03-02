@@ -8,6 +8,10 @@ const MobileNavigation = () => {
   const [open, setOpen] = useState(false);
   const toggleNavbar = () => setOpen(!open);
   const navigate = useNavigate();
+  const handleLanguageBar=()=>{
+    navigate("/select");
+    toggleNavbar();
+  }
   return (
     <>
       <BiMenu
@@ -38,7 +42,7 @@ const MobileNavigation = () => {
               className="ham-drawer__body__item__arrow"
             />
           </div>
-          <div className="ham-drawer__body__item" onClick={()=>navigate("/select")}>
+          <div className="ham-drawer__body__item" onClick={handleLanguageBar}>
             <p className="ham-drawer__body__item__text">Language Preference</p>
             <img
               src={require("../assets/side_arrow.png")}
