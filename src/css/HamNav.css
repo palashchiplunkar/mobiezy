@@ -9,19 +9,18 @@
     margin-top: 10px;
     /* transform: translateX(-100%);
     transition: transform 0.3s ease-in-out; */
-
 }
-.ham-drawer__header{
+.ham-drawer__header {
     width: 100%;
     height: 20vh;
-    background-color: #0090DA;
+    background-color: #0090da;
 }
-.ham-drawer__space{
+.ham-drawer__space {
     width: 100%;
     height: 3vh;
-    background-color: #0090DA;
+    background-color: #0090da;
 }
-.ham-drawer_user_details{
+.ham-drawer_user_details {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -34,84 +33,78 @@
     width: 92%;
     margin-left: auto;
     margin-right: auto;
-    
-       
-    
 
     /* Add gradient border color of #A4CE4E and #0090DA */
-    border:1px solid linear-gradient(90deg, #A4CE4E 0%, #0090DA 100%);
+    border: 1px solid linear-gradient(90deg, #a4ce4e 0%, #0090da 100%);
 }
-.ham-drawer__profile_img{
+.ham-drawer__profile_img {
     width: 67.3px;
-height: 65px;
+    height: 65px;
     border-radius: 50%;
     background-color: #fff;
-    
 }
-.ham-drawer__user_name{
-    font-family: 'Noto Sans';
+.ham-drawer__user_name {
+    font-family: "Noto Sans";
     font-style: normal;
     font-weight: 700;
     font-size: 16px;
     line-height: 150%;
     /* or 144% */
-    
+
     text-align: center;
-    
+
     color: #ffff;
     display: flex;
     align-items: center;
     letter-spacing: 0.2px;
-    position :absolute;
+    position: absolute;
     top: 5%;
     left: 35%;
 }
-.ham-drawer__user_email{
+.ham-drawer__user_email {
     /* Add this below username */
 
-    font-family: 'Noto Sans';
+    font-family: "Noto Sans";
     font-style: normal;
     font-weight: 400;
     font-size: 14px;
     line-height: 150%;
     /* or 21px */
-    
+
     text-align: center;
-    
+
     color: #ffff;
     display: flex;
     align-items: center;
     letter-spacing: 0.2px;
-    position :absolute;
+    position: absolute;
     top: 10%;
     left: 35%;
-
 }
-.ham-drawer__user_phone{
+.ham-drawer__user_phone {
     /* Add this below username */
 
-    font-family: 'Noto Sans';
+    font-family: "Noto Sans";
     font-style: normal;
     font-weight: 400;
     font-size: 14px;
     line-height: 150%;
     /* or 21px */
-    
+
     text-align: center;
-    
+
     color: #ffff;
     display: flex;
     align-items: center;
     letter-spacing: 0.2px;
-    position :absolute;
+    position: absolute;
     top: 15%;
     left: 35%;
-
 }
-.ham-drawer__body{
+.ham-drawer__body {
     margin-top: 30px;
 }
-.ham-drawer__body__item{
+.ham-drawer__body__item {
     /* margin-top: 10px; */
     display: flex;
     flex-direction: row;
@@ -125,30 +118,29 @@ height: 65px;
     width: 92%;
     margin-left: auto;
     margin-right: auto;
-   
+
     /* Add gradient border color of #A4CE4E and #0090DA */
-    border:1px solid linear-gradient(90deg, #A4CE4E 0%, #0090DA 100%);
-    
+    border: 1px solid linear-gradient(90deg, #a4ce4e 0%, #0090da 100%);
 }
-.ham-drawer__body__item__arrow{
+.ham-drawer__body__item__arrow {
     display: flex;
     justify-content: center;
     align-items: center;
     margin-right: 10px;
 }
-.ham-drawer__body__item__text{
-    font-family: 'Noto Sans';
-font-style: normal;
-font-weight: 500;
-font-size: 16px;
-line-height: 150%;
-/* or 24px */
+.ham-drawer__body__item__text {
+    font-family: "Noto Sans";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 150%;
+    /* or 24px */
 
-display: flex;
-align-items: center;
-letter-spacing: 0.2px;
+    display: flex;
+    align-items: center;
+    letter-spacing: 0.2px;
 
-/* Darkest Gray */
+    /* Darkest Gray */
 
-color: #333333;
+    color: #333333;
 }
