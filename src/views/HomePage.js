@@ -9,17 +9,19 @@ export default function HomePage() {
     return (
         <div class="container">
             <img className="home-bg-img" src={require("../assets/BG.JPG")} />
-            {/* <div> */}
+            <div>
                 <div class="headerblue">
                     <MobileNavigation />
                     <p class="Company_name">
                         KOORG BROADBAND SERVICES <br></br>PRIVATE LIMITED
                     </p>
 
-                    <img
-                        src={require("../assets/profile.jpg")}
-                        class="profile_img"
-                    />
+                    <div className="profile-img-div">
+                        <img
+                            src={require("../assets/profile.jpg")}
+                            class="profile_img"
+                        />
+                    </div>
                 </div>
                 <p class="user_name">Hi, Dinesh</p>
                 <div class="amount_due">
@@ -54,7 +56,7 @@ export default function HomePage() {
                         COLLECT BILL
                     </button>
                 </div>
-            {/* </div> */}
+            </div>
             <Navbar />
         </div>
     );
