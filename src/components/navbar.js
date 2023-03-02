@@ -1,6 +1,5 @@
 import "../css/BottomNav.css";
 import { BottomNavigation, BottomNavigationAction } from "@mui/material";
-import "reactjs-bottom-navigation/dist/index.css";
 import { useState } from "react";
 import { AiFillHome } from "react-icons/ai";
 import { BiUserCircle } from "react-icons/bi";
