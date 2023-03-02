@@ -16,19 +16,6 @@ import {useEffect,useState} from 'react';
 import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
 export default function SelectLanguage() {
-<<<<<<< HEAD
-    const navigate = useNavigate();
-    const { t } = useTranslation();
-    const handleLanguageChange = (e) => {
-        
-        // Get Value of Checked Radio Button using querySelectors
-        const checkedRadio = document.querySelector('input[name="lang"]:checked').value;
-        console.log(checkedRadio);
-        if (checkedRadio === "English") {
-            i18next.changeLanguage("en_US");
-            
-        }
-=======
   const Languages ={
     English: {
       heading: "Greetings!",
@@ -55,7 +42,6 @@ export default function SelectLanguage() {
     if (checkedRadio === "English") {
       i18next.changeLanguage("en_US");
     }
->>>>>>> 82350f7e39ef2de43310673f16eefc58bae755a0
 
     if (checkedRadio === "Hindi") {
       i18next.changeLanguage("hi_IN");
