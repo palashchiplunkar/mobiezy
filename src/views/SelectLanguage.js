@@ -50,10 +50,10 @@ export default function SelectLanguage() {
                         marginLeft: "20px",
                     }}
                 />
-                <p className="HeaderLabel">Language Preference</p>
+                <p className="HeaderLabel">{t("LS_lbl_Settings")}</p>
             </div>
             <div>
-                <p className="PreviewLabel">Preview</p>
+                <p className="PreviewLabel">{t("LS_lbl_Preview")}</p>
                 <div className="PreviewBackground">
                     <div className="StatusBar">
                         <p className="Time">9:41</p>
@@ -75,15 +75,14 @@ export default function SelectLanguage() {
                         <FaBell style={{ position: "relative", left: "75%" }} />
                     </div>
                     <div className="GreetingBox">
-                        <p className="GreetingsLabel">Greetings!</p>
+                        <p className="GreetingsLabel">{t("LS_lbl_Greet")}</p>
                         <p className="GreetingsPara">
-                            Welcome to the family of 5000+ Cable & Internet
-                            Operators
+                            {t("LS_data_Greet")}
                         </p>
                     </div>
                 </div>
                 <p className="SelectLangLabel">
-                    Select Your Language of Preference
+                    {t('LS_lbl_Select_Lang')}
                 </p>
                 <div className="LanguageGroup">
                     <div className="LanguageColumn">
@@ -154,13 +153,11 @@ export default function SelectLanguage() {
                 <div className="BottomMessageContainer">
                     <AiFillInfoCircle className="MDInfo" />
                     <p className="BottomMessage">
-                        Language Option can be changed back at anytime, Some
-                        critical information will still continue to be in
-                        English.
+                        {t("LS_message_desc")}
                     </p>
                 </div>
                 <button className="SubmitButton">
-                    <span>SUBMIT</span>
+                    <span>{t("LS_button_SUBMIT")}</span>
                 </button>
             </div>
         </div>

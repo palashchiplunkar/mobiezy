@@ -15,5 +15,32 @@
         "HO_lbl_Collected": "Amount Collected in this Month",
         "HO_lbl_Daily": "Amount Collected Today",
         "HO_lbl_Complaints": "Number of Open Complaints",
-        "HO_button_Collect_Bill": "COLLECT BILL"
+        "HO_button_Collect_Bill": "COLLECT BILL",
+
+        "CP_lbl_Name": "Name",
+        "CP_lbl_Customer_Id": "Customer Id",
+        "CP_lbl_VC_No": "VC No",
+        "CP_lbl_STB_No": "STB No",
+        "CP_lbl_Expiry_date": "Expiry Date",	
+        "CP_lbl_Last_Paid": "Last Paid Amount",	
+        "CP_lbl_Base_amt": "Base Amount",
+        "CP_lbl_Tax": "Tax Amount",
+        "CP_lbl_Pack_amt": "Total Pack Amount",
+        "CP_lbl_balance": "Previous Balance",	  
+        "CP_lbl_Total_Pay": "Total Payable Amount",
+        "CP_button_Collect_Payment": "COLLECT",
+  	  
+        "LS_lbl_Settings": "Language Preference",
+        "LS_lbl_Preview": "Preview",
+        "LS_lbl_Greet": "Greetings!",
+        "LS_data_Greet": "Welcome to the family of 5000+ Cable & Internet Operators",	
+        "LS_lbl_Select_Lang": "Select Your Language of Preference",			  
+        "LS_Radio_English": "English",
+        "LS_Radio_Hindi": "हिन्दी",
+        "LS_Radio_Kannada": "ಕನ್ನಡ",
+        "LS_Radio_Malayalam": "മലയാളം",
+        "LS_Radio_Tamil": "தமிழ்",
+        "LS_Radio_Telugu": "తెలుగు",				  
+        "LS_message_desc": "Language Option can be changed back at anytime, Some critical information will still continue to be in English.",			  
+        "LS_button_SUBMIT": "SUBMIT"
 }
