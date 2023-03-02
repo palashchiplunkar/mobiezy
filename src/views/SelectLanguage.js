@@ -8,12 +8,15 @@ import { FaBell } from "react-icons/fa";
 import { MdSignalCellularAlt } from "react-icons/md";
 import { AiOutlineWifi } from "react-icons/ai";
 import { BsBatteryFull } from "react-icons/bs";
+import { useNavigate } from "react-router-dom";
 export default function SelectLanguage() {
+  const navigate=useNavigate();
     return (
         <div>
             <img className="bg-img" src={require("../assets/BG.JPG")} />
             <div className="HomeHeader">
                 <FaAngleLeft
+                onClick={()=>navigate("/home")}
                     style={{
                         color: "white",
                         height: "25px",
