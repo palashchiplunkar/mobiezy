@@ -167,13 +167,10 @@ export default function SelectLanguage() {
                         {t("LS_message_desc")}
                     </p>
                 </div>
-                <Popup trigger={
+                
                 <button className="SubmitButton" onClick={handleLanguageChange}>
                     <span>{t("LS_button_SUBMIT")}</span>
-                </button>}>
-                <div>GeeksforGeeks</div>
-                <button>Click here</button>
-            </Popup>
+                </button>
                 
             </div>
             
