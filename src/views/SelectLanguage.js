@@ -13,6 +13,8 @@ import { useTranslation } from "react-i18next";
 import i18next from "i18next";
 import cookie from "js-cookie";
 import {useEffect} from 'react';   
+import Popup from 'reactjs-popup';
+import 'reactjs-popup/dist/index.css';
 export default function SelectLanguage() {
     const navigate = useNavigate();
     const { t } = useTranslation();
@@ -165,9 +167,13 @@ export default function SelectLanguage() {
                         {t("LS_message_desc")}
                     </p>
                 </div>
+                <Popup trigger={
                 <button className="SubmitButton" onClick={handleLanguageChange}>
                     <span>{t("LS_button_SUBMIT")}</span>
-                </button>
+                </button>}>
+                <div>GeeksforGeeks</div>
+                <button>Click here</button>
+            </Popup>
                 
             </div>
             
