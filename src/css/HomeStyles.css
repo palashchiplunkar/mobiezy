@@ -11,14 +11,18 @@
 
 .container {
     height: 100%;
+    padding: 10px !important;
 }
 
 .headerblue {
+    display: flex;
+    flex-direction: column;
+    object-fit: contain;
+    /* margin-top: 10px; */
     height: 20vh;
-    padding: 10px;
+    width: 100%;
     background-color: #0090da;
     position: relative;
-    top: 10px;
 }
 
 .profile-img-div {
@@ -34,7 +38,7 @@
     margin-left: auto;
     margin-right: auto;
     position: absolute;
-    top: 12vh;
+    top: 15vh;
 }
 
 .user_name {
@@ -43,19 +47,17 @@
     left: 0%;
     right: 63.8%;
     top: 25%;
-
     font-family: "Noto Sans";
     font-style: normal;
     font-weight: 700;
     font-size: 16px;
     line-height: 23px;
-    /* or 144% */
     text-align: center;
-
     color: #333333;
 }
 
 .amount_due {
+    height: 50px;
     background: rgba(220, 21, 21, 0.82);
     border-radius: 15px;
     display: flex;
@@ -63,34 +65,42 @@
     justify-content: center;
     align-items: center;
     padding: 1px;
+    margin-left: 26px;
+    margin-right: 26px;
     gap: 10px;
-    margin-top: 30%;
+    margin-top: 20%;
 }
 
 .Amt_Due {
+    width: 337px;
+    height: 16px;
     font-family: "Noto Sans";
     font-style: normal;
     font-weight: 700;
-    font-size: 20px;
-    line-height: 21px;
-    /* or 105% */
+    font-size: 16px;
+    line-height: 16px;
+    text-align: center;
     text-align: center;
     color: #ffffff;
 }
 
 .amount_collected_month {
+    height: 50px;
     background: rgba(160, 195, 52, 0.92);
     border-radius: 15px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 1px;
-    gap: 10px;
     margin-top: 20px;
+    margin-left: 26px;
+    margin-right: 26px;
+    line-height: 21px;
+    gap: 10px;
 }
 
 .amount_collected_today {
+    height: 50px;
     background: #cf4dce;
     border-radius: 15px;
     display: flex;
@@ -98,11 +108,14 @@
     justify-content: center;
     align-items: center;
     padding: 1px;
+    margin-left: 26px;
+    margin-right: 26px;
     gap: 10px;
     margin-top: 20px;
 }
 
 .complaints {
+    height: 50px;
     background: #cebb00;
     border-radius: 15px;
     display: flex;
@@ -110,6 +123,8 @@
     justify-content: center;
     align-items: center;
     padding: 1px;
+    margin-left: 26px;
+    margin-right: 26px;
     gap: 10px;
     margin-top: 20px;
 }
@@ -157,8 +172,8 @@
 }
 
 .collectBtn {
-    margin-top: 20%;
-    margin-bottom: 5%;
+    margin-top: 10vh;
+    margin-bottom: 15%;
     align-items: center;
     color: #ffffff;
     font-family: "Noto Sans", sans-serif;

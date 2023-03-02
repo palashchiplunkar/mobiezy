@@ -33,12 +33,8 @@
                 window.addEventListener("load", () => {
                     navigator.serviceWorker
                         .register("./serviceWorker.js")
-                        .then((reg) => {
-                            console.log("Worker Registered");
-                        })
-                        .catch((err) => {
-                            console.log("Erro in Service Worker ", err);
-                        });
+                        .then((reg) => console.log("Success: ", reg.scope))
+                        .catch((err) => console.log("Failure: ", err));
                 });
             }
         </script>
