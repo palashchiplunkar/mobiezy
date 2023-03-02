@@ -11,22 +11,43 @@ import { BsBatteryFull } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import i18next from "i18next";
+import cookie from "js-cookie";
+import {useEffect} from 'react';  
 
 export default function SelectLanguage() {
     const navigate = useNavigate();
     const { t } = useTranslation();
-    // get the input value
-    const handleRadioChange = (e) => {
-        if (e.target.value === "English") {
+    const handleLanguageChange = (e) => {
+        console.log("Hello World");
+        // Get Value of Checked Radio Button using querySelectors
+        const checkedRadio = document.querySelector('input[name="lang"]:checked').value;
+        console.log(checkedRadio);
+        if (checkedRadio === "English") {
             i18next.changeLanguage("en_US");
-            t("en");
+            
         }
-        
-        if (e.target.value === "Hindi") {
+
+        if (checkedRadio === "Hindi") {
             i18next.changeLanguage("hi_IN");
-            t("hi_IN");
+            
         }
     };
+
+    // Get Cookie 
+    const cookieValue = cookie.get("i18next") || 'en_US';
+    const currentLanguage = i18next.language;
+    
+    // Console.log(CookieValue);
+    console.log(currentLanguage);
+    
+    useEffect(() => {
+        if (cookieValue === "en_US") {
+            document.getElementById("English").checked = true;
+        }
+        if (cookieValue === "hi_IN") {
+            document.getElementById("Hindi").checked = true;
+        }
+    }, []);
 
     return (
         <div>
@@ -40,10 +61,11 @@ export default function SelectLanguage() {
                         marginLeft: "20px",
                     }}
                 />
-                <p className="HeaderLabel">Language Preference</p>
+                <p className="HeaderLabel">{t("LS_lbl_Settings")}</p>
             </div>
+
             <div>
-                <p className="PreviewLabel">Preview</p>
+                <p className="PreviewLabel">{t("LS_lbl_Preview")}</p>
                 <div className="PreviewBackground">
                     <div className="StatusBar">
                         <p className="Time">9:41</p>
@@ -57,6 +79,7 @@ export default function SelectLanguage() {
                             style={{ position: "relative", left: "82%" }}
                         />
                     </div>
+
                     <div className="SearchBar">
                         <BiMenu style={{ marginLeft: "5%" }} />
                         <AiOutlineSearch
@@ -64,26 +87,31 @@ export default function SelectLanguage() {
                         />
                         <FaBell style={{ position: "relative", left: "75%" }} />
                     </div>
+
                     <div className="GreetingBox">
-                        <p className="GreetingsLabel">Greetings!</p>
+                        <p className="GreetingsLabel">{t("LS_lbl_Greet")}</p>
                         <p className="GreetingsPara">
-                            Welcome to the family of 5000+ Cable & Internet
-                            Operators
+                            {t("LS_data_Greet")}
                         </p>
                     </div>
+
                 </div>
+
                 <p className="SelectLangLabel">
-                    Select Your Language of Preference
+                    {t('LS_lbl_Select_Lang')}
                 </p>
+               
                 <div className="LanguageGroup">
                     <div className="LanguageColumn">
                         <div>
+                        
                             <input
                                 type={"radio"}
                                 name={"lang"}
                                 value={"English"}
+                                id={"English"}
                                 className="RadioButtons"
-                                onChange={handleRadioChange}
+                                
                             />
                             <label className="RadioLabel">English</label>
                         </div>
@@ -97,28 +125,32 @@ export default function SelectLanguage() {
                             />
                             <label className="RadioLabel">ಕನ್ನಡ</label>
                         </div>
+
                         <div>
                             <input
                                 type={"radio"}
                                 name={"lang"}
                                 value={"தமிழ்"}
                                 className="RadioButtons"
-                                onChange={handleRadioChange}
+                                
                             />
                             <label className="RadioLabel">தமிழ்</label>
                         </div>
                     </div>
+
                     <div className="LanguageColumn">
                         <div>
                             <input
                                 type={"radio"}
                                 name={"lang"}
                                 value={"Hindi"}
+                                id={"Hindi"}
                                 className="RadioButtons"
-                                onChange={handleRadioChange}
+                              
                             />
                             <label className="RadioLabel">हिन्दी</label>
                         </div>
+
                         <div>
                             <input
                                 type={"radio"}
@@ -128,6 +160,7 @@ export default function SelectLanguage() {
                             />
                             <label className="RadioLabel">മലയാളം</label>
                         </div>
+
                         <div>
                             <input
                                 type={"radio"}
@@ -139,16 +172,16 @@ export default function SelectLanguage() {
                         </div>
                     </div>
                 </div>
+
                 <div className="BottomMessageContainer">
                     <AiFillInfoCircle className="MDInfo" />
                     <p className="BottomMessage">
-                        Language Option can be changed back at anytime, Some
-                        critical information will still continue to be in
-                        English.
+                        {t("LS_message_desc")}
                     </p>
                 </div>
-                <button className="SubmitButton">
-                    <span>SUBMIT</span>
+
+                <button className="SubmitButton" onClick={handleLanguageChange}>
+                    <span>{t("LS_button_SUBMIT")}</span>
                 </button>
             </div>
         </div>
