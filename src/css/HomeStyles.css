@@ -11,14 +11,16 @@
 
 .container {
     height: 100%;
+    padding: 0% !important;
 }
 
 .headerblue {
     height: 20vh;
-    padding: 10px;
+    width: 100%;
+    /* padding: 10px; */
     background-color: #0090da;
     position: relative;
-    top: 10px;
+    /* top: 10px; */
 }
 
 .profile-img-div {
@@ -34,7 +36,7 @@
     margin-left: auto;
     margin-right: auto;
     position: absolute;
-    top: 12vh;
+    top: 15vh;
 }
 
 .user_name {
@@ -63,6 +65,8 @@
     justify-content: center;
     align-items: center;
     padding: 1px;
+    margin-left: 26px;
+    margin-right: 26px;
     gap: 10px;
     margin-top: 30%;
 }
@@ -72,8 +76,7 @@
     font-style: normal;
     font-weight: 700;
     font-size: 20px;
-    line-height: 21px;
-    /* or 105% */
+    margin-left: 26px;
     text-align: center;
     color: #ffffff;
 }
@@ -86,6 +89,9 @@
     justify-content: center;
     align-items: center;
     padding: 1px;
+    margin-left: 26px;
+    margin-right: 26px;
+    line-height: 21px;
     gap: 10px;
     margin-top: 20px;
 }
@@ -98,6 +104,8 @@
     justify-content: center;
     align-items: center;
     padding: 1px;
+    margin-left: 26px;
+    margin-right: 26px;
     gap: 10px;
     margin-top: 20px;
 }
@@ -110,6 +118,8 @@
     justify-content: center;
     align-items: center;
     padding: 1px;
+    margin-left: 26px;
+    margin-right: 26px;
     gap: 10px;
     margin-top: 20px;
 }
@@ -157,7 +167,7 @@
 }
 
 .collectBtn {
-    margin-top: 20%;
+    margin-top: 15%;
     margin-bottom: 5%;
     align-items: center;
     color: #ffffff;

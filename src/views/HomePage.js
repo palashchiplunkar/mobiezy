@@ -23,29 +23,35 @@ export default function HomePage() {
                         />
                     </div>
                 </div>
+
                 <p class="user_name">Hi, Dinesh</p>
+
                 <div class="amount_due">
                     <label className="Amt_Due">
                         Total Amount Due as on Today
                     </label>
                     <label className="Amt_Due">2310086.00</label>
                 </div>
+
                 <div class="amount_collected_month">
                     <label className="Amt_Due">
                         Amount Collected in this Month
                     </label>
                     <label className="Amt_Due">10086</label>
                 </div>
+
                 <div class="amount_collected_today">
                     <label className="Amt_Due">
                         Amount Collected in this Today
                     </label>
                     <label className="Amt_Due">2100</label>
                 </div>
+
                 <div class="complaints">
                     <label className="Amt_Due">Number of Open Complaints</label>
                     <label className="Amt_Due">12</label>
                 </div>
+                
                 <div class="complaints">
                     <label className="Amt_Due">Number of Open Complaints</label>
                     <label className="Amt_Due">12</label>
