@@ -21,6 +21,11 @@
     top: 10px;
 }
 
+.profile-img-div {
+    display: flex;
+    justify-content: center;
+}
+
 .profile_img {
     width: 84px;
     height: 88px;
@@ -30,7 +35,6 @@
     margin-right: auto;
     position: absolute;
     top: 12vh;
-    left: 35%;
 }
 
 .user_name {
