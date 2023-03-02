@@ -38,18 +38,23 @@ export default function LoginPage() {
             placeholder="Enter Password"
           />
 
-          <div className="remember-me-div">
-            <input className="rmcb" type="checkbox" />
-            <label class="rememberme">Remeber me</label>
-          </div>
+                    <div className="remember-me-div">
+                        <input className="rmcb" type="checkbox" />
+                        <label class="rememberme">Remember me</label>
+                    </div>
 
-          <div className="login-btn-div">
-            <button className="loginBtn" onClick={() => handleSubmit()}>
-              Login
-            </button>
-          </div>
-        </form>
-      </div>
-    </div>
-  );
+                    <div className="login-btn-div">
+                        <button
+                            className="loginBtn"
+                            onClick={() => handleSubmit()}
+                        >
+                            Login
+                        </button>
+                    </div>
+                </form>
+
+                <p className="version">Version 2. 0 . 65</p>
+            </div>
+        </div>
+    );
 }

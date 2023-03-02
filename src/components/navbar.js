@@ -1,4 +1,4 @@
-import "../css/HomeStyles.css"
+import "../css/BottomNav.css"
 
 const Navbar = () => {
     return (
