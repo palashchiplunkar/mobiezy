@@ -32,7 +32,9 @@ export default function LoginPage() {
                         placeholder={t("LP_data_UserName")}
                     />
 
-                    <label className="passwd-label">{t("LP_lbl_Password")}</label>
+                    <label className="passwd-label">
+                        {t("LP_lbl_Password")}
+                    </label>
                     <input
                         required="true"
                         type="password"
@@ -43,7 +45,9 @@ export default function LoginPage() {
 
                     <div className="remember-me-div">
                         <input className="rmcb" type="checkbox" />
-                        <label class="rememberme">{t("LP_lbl_Remember_Me")}</label>
+                        <label class="rememberme">
+                            {t("LP_lbl_Remember_Me")}
+                        </label>
                     </div>
 
                     <div className="login-btn-div">

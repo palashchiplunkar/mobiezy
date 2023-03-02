@@ -7,6 +7,7 @@ import MobileNavigation from "../components/hamnavigation";
 import HamDrawer from "../components/hamburger";
 import HamburgerDrawer from "react-hamburger-drawer";
 import { useTranslation } from "react-i18next";
+
 export default function HomePage() {
     const { t } = useTranslation();
     return (
@@ -14,7 +15,7 @@ export default function HomePage() {
             <img className="home-bg-img" src={require("../assets/BG.JPG")} />
             <div>
                 <div class="headerblue">
-                    <MobileNavigation/>
+                    <MobileNavigation />
                     <p class="Company_name">
                         KOORG BROADBAND SERVICES <br></br>PRIVATE LIMITED
                     </p>
@@ -30,30 +31,22 @@ export default function HomePage() {
                 <p class="user_name">{t("HO_lbl_wish")} Dinesh</p>
 
                 <div class="amount_due">
-                    <label className="Amt_Due">
-                        {t("HO_lbl_Unpaid")}
-                    </label>
+                    <label className="Amt_Due">{t("HO_lbl_Unpaid")}</label>
                     <label className="Amt_Due">2310086.00</label>
                 </div>
 
                 <div class="amount_collected_month">
-                    <label className="Amt_Due">
-                       {t("HO_lbl_Collected")}
-                    </label>
+                    <label className="Amt_Due">{t("HO_lbl_Collected")}</label>
                     <label className="Amt_Due">10086</label>
                 </div>
 
                 <div class="amount_collected_today">
-                    <label className="Amt_Due">
-                        {t("HO_lbl_Daily")}
-                    </label>
+                    <label className="Amt_Due">{t("HO_lbl_Daily")}</label>
                     <label className="Amt_Due">2100</label>
                 </div>
 
                 <div class="complaints">
-                    <label className="Amt_Due">
-                        {t("HO_lbl_Complaints")}
-                    </label>
+                    <label className="Amt_Due">{t("HO_lbl_Complaints")}</label>
                     <label className="Amt_Due">12</label>
                 </div>
 
