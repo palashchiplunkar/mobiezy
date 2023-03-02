@@ -3,7 +3,7 @@
     "name": "Mobicable",
     "icons": [
         {
-            "src": "../src/assets/img2.png",
+            "src": "./logo/daily1.png",
             "type": "image/png",
             "sizes": "1024x1024"  
         }
