@@ -18,7 +18,7 @@ export default function SelectLanguage() {
     const navigate = useNavigate();
     const { t } = useTranslation();
     const handleLanguageChange = (e) => {
-        console.log("Hello World");
+        
         // Get Value of Checked Radio Button using querySelectors
         const checkedRadio = document.querySelector('input[name="lang"]:checked').value;
         console.log(checkedRadio);

@@ -18,7 +18,6 @@
     display: flex;
     flex-direction: column;
     object-fit: contain;
-    /* margin-top: 10px; */
     height: 20vh;
     width: 100%;
     background-color: #0090da;

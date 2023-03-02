@@ -1,0 +1,53 @@
+.home-bg-img {
+    position: fixed;
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    top: 0;
+    opacity: 0.4;
+    z-index: -1;
+}
+
+.cotainer {
+    height: 100%;
+    /* padding: 10px !important; */
+}
+
+.header-blue {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    object-fit: contain;
+    height: 20vh;
+    background: #0090da;
+    width: 100%;
+    background-color: #0090da;
+}
+
+.area-div {
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    top: 15%;
+    left: 18px;
+}
+
+.area-p{
+    text-align: center;
+    font-family: "Noto Sans";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    color: #FFFFFF;
+    letter-spacing: 0.2px;
+    line-height: 16px;
+}
+
+.area-dropdown {
+    width: 100%;
+    left: 10%;
+    border: 0;
+    background: transparent;
+}
