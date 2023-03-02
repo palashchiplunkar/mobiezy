@@ -11,32 +11,39 @@ import { BsBatteryFull } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import i18next from "i18next";
-
+import cookie from "js-cookie";
+import {useEffect} from 'react';   
 export default function SelectLanguage() {
     const navigate = useNavigate();
     const { t } = useTranslation();
-    // get the input value
-    // Check which language is selected in the cookie
-    // const i = "en";
-    // // if the language is english, set the radio button to english
-    // if(i==="en"){
-    //     document.getElementById("English").checked=true;
-    // }
-    // if(i==="es"){
-    //     document.getElementById("hn").checked=true;
-    // }
-
-    const handleRadioChange = (e) => {
-        if (e.target.value === "English") {
+    const handleLanguageChange = (e) => {
+        console.log("Hello World");
+        // get value of checked radio button using queryselectors
+        const checkedRadio = document.querySelector('input[name="lang"]:checked').value;
+        console.log(checkedRadio);
+        if (checkedRadio === "English") {
             i18next.changeLanguage("en_US");
-            t("en_US");
+            
         }
-        
-        if (e.target.value === "Hindi") {
+        if (checkedRadio === "Hindi") {
             i18next.changeLanguage("hi_IN");
-            t("hi_IN");
+            
         }
     };
+    // get cookie 
+    const cookieValue = cookie.get("i18next") || 'en_US';
+    const currentLanguage = i18next.language;
+    // console.log(cookieValue);
+    console.log(currentLanguage);
+    useEffect(() => {
+        if (cookieValue === "en_US") {
+            document.getElementById("English").checked = true;
+        }
+        if (cookieValue === "hi_IN") {
+            document.getElementById("Hindi").checked = true;
+        }
+    }, []);
+
 
     return (
         <div>
@@ -84,16 +91,18 @@ export default function SelectLanguage() {
                 <p className="SelectLangLabel">
                     {t('LS_lbl_Select_Lang')}
                 </p>
+               
                 <div className="LanguageGroup">
                     <div className="LanguageColumn">
                         <div>
+                        
                             <input
                                 type={"radio"}
                                 name={"lang"}
                                 value={"English"}
-                                id="English"
+                                id={"English"}
                                 className="RadioButtons"
-                                onChange={handleRadioChange}
+                                
                             />
                             <label className="RadioLabel">English</label>
                         </div>
@@ -113,7 +122,7 @@ export default function SelectLanguage() {
                                 name={"lang"}
                                 value={"தமிழ்"}
                                 className="RadioButtons"
-                                onChange={handleRadioChange}
+                                
                             />
                             <label className="RadioLabel">தமிழ்</label>
                         </div>
@@ -124,9 +133,9 @@ export default function SelectLanguage() {
                                 type={"radio"}
                                 name={"lang"}
                                 value={"Hindi"}
-                                id="Hindi"
+                                id={"Hindi"}
                                 className="RadioButtons"
-                                onChange={handleRadioChange}
+                              
                             />
                             <label className="RadioLabel">हिन्दी</label>
                         </div>
@@ -156,10 +165,12 @@ export default function SelectLanguage() {
                         {t("LS_message_desc")}
                     </p>
                 </div>
-                <button className="SubmitButton">
+                <button className="SubmitButton" onClick={handleLanguageChange}>
                     <span>{t("LS_button_SUBMIT")}</span>
                 </button>
+                
             </div>
+            
         </div>
     );
 }
