@@ -1,4 +1,15 @@
-.ham-drawer {
+.active {
+    position: fixed;
+    top: 0;
+    left: -100%;
+    width: 90%;
+    height: 90%;
+    background-color: #fff;
+    z-index: 100;
+    margin-top: 10px;
+    transition: 950ms;
+}
+.inactive{
     position: fixed;
     top: 0;
     left: 0;
@@ -7,8 +18,7 @@
     background-color: #fff;
     z-index: 100;
     margin-top: 10px;
-    /* transform: translateX(-100%);
-    transition: transform 0.3s ease-in-out; */
+    transition: 350ms;
 }
 .ham-drawer__header {
     width: 100%;
@@ -122,6 +132,7 @@
     /* Add gradient border color of #A4CE4E and #0090DA */
     border: 1px solid linear-gradient(90deg, #a4ce4e 0%, #0090da 100%);
 }
+
 .ham-drawer__body__item__arrow {
     display: flex;
     justify-content: center;
