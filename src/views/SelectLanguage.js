@@ -15,6 +15,16 @@ export default function SelectLanguage() {
   const navigate=useNavigate();
     const {t}=useTranslation();
     // get the input value
+    // Check which language is selected in the cookie
+    // const i = "en";
+    // // if the language is english, set the radio button to english
+    // if(i==="en"){
+    //     document.getElementById("English").checked=true;
+    // }
+    // if(i==="es"){
+    //     document.getElementById("hn").checked=true;
+    // }
+
     const handleRadioChange = (e) => {
        if(e.target.value==="English"){
             i18next.changeLanguage("en");
@@ -83,6 +93,7 @@ export default function SelectLanguage() {
                                 type={"radio"}
                                 name={"lang"}
                                 value={"English"}
+                                id="English"
                                 className="RadioButtons"
                                 onChange={handleRadioChange}
                             />
@@ -115,6 +126,7 @@ export default function SelectLanguage() {
                                 type={"radio"}
                                 name={"lang"}
                                 value={"hn"}
+                                id="Hindi"
                                 className="RadioButtons"
                                 onChange={handleRadioChange}
                             />
