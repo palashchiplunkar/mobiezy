@@ -1,17 +1,16 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import "../css/LoginStyles.css";
-
+import {useTranslation} from 'react-i18next'
 export default function LoginPage() {
   const navigate = useNavigate();
   const handleSubmit = () => {
     navigate("/home");
   };
-
+const {t}=useTranslation();
   return (
     <div className="App">
       <img className="bg-img" src={require("../assets/BG.JPG")} />
-
       <div className="authForm">
         <img className="header-img1" src={require("../assets/d1.png")} />
         <img
@@ -20,7 +19,7 @@ export default function LoginPage() {
         />
 
         <form className="login">
-          <label className="user-label">User Name</label>
+          <label className="user-label">{t('LP_lbl_UserName')}</label>
           <input
             required="true"
             type="text"
