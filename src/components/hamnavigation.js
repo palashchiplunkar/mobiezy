@@ -3,9 +3,11 @@ import { useState } from "react";
 import { BiMenu } from "react-icons/bi";
 import {AiOutlineClose} from "react-icons/ai"
 import "../css/HamNav.css";
+import { useNavigate } from "react-router-dom";
 const MobileNavigation = () => {
-  const [open, setOpen] = useState(true);
+  const [open, setOpen] = useState(false);
   const toggleNavbar = () => setOpen(!open);
+  const navigate=useNavigate();
   return (
     <>
       <BiMenu
@@ -14,7 +16,7 @@ const MobileNavigation = () => {
       />
       {open && (
         <div className="ham-drawer">
-            <AiOutlineClose onClick={toggleNavbar} style={{}}/>
+            <AiOutlineClose onClick={toggleNavbar} />
           <div className="ham-drawer__header">
             <div className="ham-drawer__space"></div>
             <div className="ham-drawer_user_details">
