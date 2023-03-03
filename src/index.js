@@ -15,9 +15,11 @@ i18n
     
     fallbackLng: "en_US",
     detection :{
-      order: ['cookie', 'htmlTag', 'localStorage', 'path', 'subdomain'],
-      caches: ['cookie']
+      
+      order: ['localStorage','cookie', 'navigator', 'htmlTag', 'path', 'subdomain'],
+      caches: ['localStorage']   
     },
+
 
     backend :{
       loadPath: '/assests/locales/{{lng}}/translations.json'
