@@ -1,5 +1,6 @@
 import React from "react";
 import { RiSortDesc } from "react-icons/ri";
+import customerDrawer from "../components/customerDrawer";
 import "../css/Customer.css";
 
 const actions = [
@@ -29,15 +30,8 @@ export default function Customer() {
           </div>
           <div className="filter-div">
             <p className="filter-p">Filter</p>
-            <div className="filter-button">
-              <RiSortDesc
-                style={{
-                  color: "white",
-                  margin: "auto",
-                  width: "25px",
-                  height: "50px",
-                }}
-              />
+            <div className="filter-button" onClick={()=><customerDrawer/>}>
+              <RiSortDesc className="filter-icon" />
             </div>
           </div>
         </div>
