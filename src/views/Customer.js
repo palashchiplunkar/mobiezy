@@ -1,5 +1,5 @@
 import React from "react";
-import {RiSortDesc} from 'react-icons/ri'
+import { RiSortDesc } from "react-icons/ri";
 import "../css/Customer.css";
 
 const actions = [
@@ -16,16 +16,29 @@ export default function Customer() {
         <div className="header-blue">
           <div className="area-div">
             <p className="area-p">Area</p>
-            <select name="test" id="test" className="area-dropdown" placeholder="All Areas">
-              
-              <option value="blr">Bangalore</option>
+            <select
+              name="test"
+              id="test"
+              className="area-dropdown"
+              placeholder="All Areas"
+            >    
+              <option>All Areas</option>
+              <option value="bangalore">Bangalore</option>
+              <option value="mangalore">Mangalore</option>
             </select>
           </div>
           <div className="filter-div">
-          <p className="filter-p">Filter</p>
-          <div className="filter-button">
-            <RiSortDesc style={{color:'white',margin:'auto',width:'25px',height:'50px'}}/>
-          </div>
+            <p className="filter-p">Filter</p>
+            <div className="filter-button">
+              <RiSortDesc
+                style={{
+                  color: "white",
+                  margin: "auto",
+                  width: "25px",
+                  height: "50px",
+                }}
+              />
+            </div>
           </div>
         </div>
       </div>
