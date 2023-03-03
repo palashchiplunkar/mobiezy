@@ -55,8 +55,6 @@ export default function SelectLanguage() {
       buttons: [
         {
           label: 'OK',
-          // add color for button
-          color: 'green',
           onClick: () => {handleLanguageChange()}
         },
         {
