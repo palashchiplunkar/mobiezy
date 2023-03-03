@@ -19,6 +19,10 @@ const MobileNavigation = () => {
             if (!navRef.current.contains(e.target)) {
                 setOpen(false);
             }
+
+            else {
+                setOpen(true);
+            }
         };
 
         document.addEventListener("mousedown", handler);
