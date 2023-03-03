@@ -1,9 +1,10 @@
 import NavLinks from "./navLinks";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { BiMenu } from "react-icons/bi";
 import { AiOutlineClose } from "react-icons/ai";
 import "../css/HamNav.css";
 import { Link, useNavigate } from "react-router-dom";
+import { refType } from "@mui/utils";
 
 const MobileNavigation = () => {
     const [open, setOpen] = useState(false);
@@ -14,13 +15,30 @@ const MobileNavigation = () => {
         toggleNavbar();
     };
 
+    let navRef = useRef();
+
+    useEffect( () => {
+        let handler = (e) => {
+
+            if(!navRef.current.contains(e.target)){
+                setOpen(false);
+            }
+        };
+
+        document.addEventListener("mousedown", handler);
+
+        return() => {
+            document.addEventListener("mousedown", handler);
+        }
+    });
+
     return (
         <>
             <BiMenu
                 style={{ color: "white", width: "40px", height: "30px" }}
                 onClick={toggleNavbar}
             />
-            <div className={open ? "inactive" : "active"}>
+            <div className={open ? "inactive" : "active"} ref={navRef}>
                 <div className="ham-drawer__header">
                     <div className="ham-drawer__space"></div>
                     <div className="ham-drawer_user_details">

@@ -1,4 +1,5 @@
 import React from "react";
+import { useEffect } from "react";
 
 import Navbar from "../components/navbar";
 import "../css/HomeStyles.css";
@@ -11,6 +12,7 @@ import { ClickAwayListener } from "@mui/material";
 
 export default function HomePage() {
     const { t } = useTranslation();
+
     return (
         <div class="container">
             <img className="home-bg-img" src={require("../assets/BG.JPG")} />
