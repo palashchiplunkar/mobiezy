@@ -13,6 +13,7 @@ function App() {
         <Route path="/select" element={<SelectLanguage/>}/>
         <Route path="/home" element={<HomePage/>}/>
         <Route path="/customer" element={<Customer/>}/>
+        <Route path="/customerDrawer" element={<customerDrawer/>}/>
       </Routes>
     </BrowserRouter>
   );

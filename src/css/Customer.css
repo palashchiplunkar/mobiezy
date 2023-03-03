@@ -1,53 +1,112 @@
 .home-bg-img {
-    position: fixed;
-    object-fit: cover;
-    height: 100%;
-    width: 100%;
-    left: 0;
-    top: 0;
-    opacity: 0.4;
-    z-index: -1;
+  position: fixed;
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
+  left: 0;
+  top: 0;
+  opacity: 0.4;
+  z-index: -1;
 }
 
 .cotainer {
-    height: 100%;
-    /* padding: 10px !important; */
+  height: 100%;
+  /* padding: 10px !important; */
 }
 
 .header-blue {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    object-fit: contain;
-    height: 20vh;
-    background: #0090da;
-    width: 100%;
-    background-color: #0090da;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  object-fit: contain;
+  height: 18vh;
+  background: #0090da;
+  width: 100%;
+  background-color: #0090da;
 }
 
 .area-div {
-    position: absolute;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    top: 15%;
-    left: 18px;
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  top: 15%;
+  left: 18px;
 }
 
-.area-p{
-    text-align: center;
-    font-family: "Noto Sans";
-    font-style: normal;
-    font-weight: 700;
-    font-size: 14px;
-    color: #FFFFFF;
-    letter-spacing: 0.2px;
-    line-height: 16px;
+.area-p {
+  text-align: center;
+  font-family: "Noto Sans";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 14px;
+  color: #ffffff;
+  letter-spacing: 1px;
+  line-height: 16px;
 }
 
 .area-dropdown {
-    width: 100%;
-    left: 10%;
-    border: 0;
-    background: transparent;
+  position: relative;
+  top: 0;
+  left: 10%;
+  width: 120px;
+  height: 50px;
+  font-family: "Noto Sans", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 24px;
+  letter-spacing: 1px;
+  color: #ffffff;
+  outline: none;
+  border: none;
+  border-bottom: 2px solid white;
+  background-color: #0090da;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+  z-index: 0;
+}
+
+.filter-p {
+  position: relative;
+  align-self: flex-start;
+  width: 43px;
+  height: 22px;
+
+  font-family: "Noto Sans";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 22px;
+  text-align: center;
+  color: #ffffff;
+  letter-spacing: 1px;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+}
+
+.filter-div {
+  position: relative;
+  left: 80%;
+  top: 10%;
+}
+
+.filter-button {
+  position: absolute;
+  text-align: center;
+  width: 50px;
+  height: 50px;
+  top: 60%;
+  left: -1%;
+  border-radius: 50%;
+  background: #007abc;
+}
+
+.filter-icon {
+  color: white;
+  margin: auto;
+  width: 25px;
+  height: 50px;
 }
