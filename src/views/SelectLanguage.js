@@ -50,16 +50,18 @@ export default function SelectLanguage() {
 
   // Get Cookie
   const cookieValue = cookie.get("i18next") || "en_US";
+  const localstorageValue = localStorage.getItem("i18nextLng") || "en_US";
+  console.log(localstorageValue);
   const currentLanguage = i18next.language;
 
   // Console.log(CookieValue);
-  console.log(currentLanguage);
+  // console.log(currentLanguage);
 
   useEffect(() => {
-    if (cookieValue === "en_US") {
+    if (localstorageValue === "en_US") {
       document.getElementById("English").checked = true;
     }
-    if (cookieValue === "hi_IN") {
+    if (localstorageValue === "hi_IN") {
       document.getElementById("Hindi").checked = true;
     }
   }, []);
