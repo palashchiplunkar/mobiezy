@@ -1,6 +1,4 @@
-import { Dropdown } from "bootstrap";
 import React from "react";
-import Select from "react-select";
 
 import "../css/Customer.css";
 
@@ -19,7 +17,6 @@ export default function Customer() {
                 <div className="header-blue">
                     <div className="area-div">
                         <p className="area-p">Area</p>
-                        <Select className="area-dropdown" options={actions} placeholder="All Areas" />
                     </div>
                 </div>
             </div>
