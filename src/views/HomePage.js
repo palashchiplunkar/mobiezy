@@ -7,6 +7,7 @@ import MobileNavigation from "../components/hamnavigation";
 import HamDrawer from "../components/hamburger";
 import HamburgerDrawer from "react-hamburger-drawer";
 import { useTranslation } from "react-i18next";
+import { ClickAwayListener } from "@mui/material";
 
 export default function HomePage() {
     const { t } = useTranslation();
