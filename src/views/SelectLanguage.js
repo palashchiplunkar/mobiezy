@@ -14,7 +14,8 @@ import i18next from "i18next";
 import cookie from "js-cookie";
 import {useEffect,useState} from 'react';   
 import { confirmAlert } from 'react-confirm-alert';
-import 'react-confirm-alert/src/react-confirm-alert.css';
+import '../css/alert_popup.css'
+// import 'react-confirm-alert/src/react-confirm-alert.css';
 import 'reactjs-popup/dist/index.css';
 export default function SelectLanguage() {
   const Languages ={
