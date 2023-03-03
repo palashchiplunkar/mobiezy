@@ -63,7 +63,9 @@ export default function SelectLanguage() {
           label: 'Cancel',
           onClick: () => console.log('Cancel button clicked')
         }
-      ]
+      ],
+      closeOnEscape: true,
+      closeOnClickOutside: false,
     });
   }
 
