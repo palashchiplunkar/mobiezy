@@ -1,10 +1,7 @@
-import NavLinks from "./navLinks";
 import { useState, useEffect, useRef } from "react";
 import { BiMenu } from "react-icons/bi";
-import { AiOutlineClose } from "react-icons/ai";
 import "../css/HamNav.css";
-import { Link, useNavigate } from "react-router-dom";
-import { refType } from "@mui/utils";
+import { useNavigate } from "react-router-dom";
 
 const MobileNavigation = () => {
     const [open, setOpen] = useState(false);
@@ -17,19 +14,18 @@ const MobileNavigation = () => {
 
     let navRef = useRef();
 
-    useEffect( () => {
+    useEffect(() => {
         let handler = (e) => {
-
-            if(!navRef.current.contains(e.target)){
+            if (!navRef.current.contains(e.target)) {
                 setOpen(false);
             }
         };
 
         document.addEventListener("mousedown", handler);
 
-        return() => {
+        return () => {
             document.addEventListener("mousedown", handler);
-        }
+        };
     });
 
     return (
