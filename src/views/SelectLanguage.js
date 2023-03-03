@@ -13,7 +13,8 @@ import { useTranslation } from "react-i18next";
 import i18next from "i18next";
 import cookie from "js-cookie";
 import {useEffect,useState} from 'react';   
-import Popup from 'reactjs-popup';
+import { confirmAlert } from 'react-confirm-alert';
+import 'react-confirm-alert/src/react-confirm-alert.css';
 import 'reactjs-popup/dist/index.css';
 export default function SelectLanguage() {
   const Languages ={
@@ -47,6 +48,23 @@ export default function SelectLanguage() {
       i18next.changeLanguage("hi_IN");
     }
   };
+  const handleShowPopup = () => {
+    confirmAlert({
+      title: 'Do You Want to Save Changes?',
+      buttons: [
+        {
+          label: 'OK',
+          // add color for button
+          color: 'green',
+          onClick: () => {handleLanguageChange()}
+        },
+        {
+          label: 'Cancel',
+          onClick: () => console.log('Cancel button clicked')
+        }
+      ]
+    });
+  }
 
   // Get Cookie
   const cookieValue = cookie.get("i18next") || "en_US";
@@ -182,9 +200,10 @@ export default function SelectLanguage() {
           <p className="BottomMessage">{t("LS_message_desc")}</p>
         </div>
 
-        <button className="SubmitButton" onClick={handleLanguageChange}>
+        <button className="SubmitButton" onClick={handleShowPopup}>
           <span>{t("LS_button_SUBMIT")}</span>
         </button>
+        
       </div>
     </div>
   );
