@@ -3,8 +3,67 @@ import { RiSortDesc } from "react-icons/ri";
 import "../css/Report.css";
 // import calender icon from react-icons
 import { RiCalendarEventFill } from "react-icons/ri";
-
 export default function MonthReport() {
+    const handletodate = () => {
+        const todateInput = document.getElementById("todate");
+    todateInput.focus();
+    
+
+  todateInput.dispatchEvent(new MouseEvent("click", { bubbles: true }));
+    };
+    const ownerdata = [
+        {
+            ownerid: "MR14012",
+            ownername: "Deepak Kumar",
+            owneramt: "778",
+        },
+        {
+            ownerid: "JB0213",
+            ownername: "Akshay Vaidya",
+            owneramt: "190",
+        },
+        {
+            ownerid: "BG70279",
+            ownername : "Dinesh Kumar",
+            owneramt: "578",
+        },
+        {
+            ownerid: "KS00567",
+            ownername: "Raghavendra Ganiga",
+            owneramt: "55",
+        },
+        {
+            ownerid: "PB700214",
+            ownername: "Gurmeet Singh",
+            owneramt: "394",
+        }
+
+    ]
+    // populate the select option with ownername
+    const OwnerSelection =() => {
+        const OwnerSelectionData = ownerdata.map((data) => {
+            return (
+                <option value={data.ownername}>{data.ownername}</option>
+            );
+        });
+        return OwnerSelectionData;
+    }
+    // const Owners = () => {
+    const Owners =() => {
+    const OwnerData = ownerdata.map((data) => {
+        return (
+            <div className="report-data-div">
+                <div className="report-data-owner">
+                    <p className="report-data-owner-id">{data.ownerid}</p>
+                    <p className="report-data-owner-amt">{data.owneramt}</p>
+                </div>
+                <p className="report-data-owner-name">{data.ownername}</p>
+            </div>
+        );
+        
+    });
+    return OwnerData;
+    }
     return (
         <div className="container-report">
             <img className="home-bg-img" src={require("../assets/BG.JPG")} />
@@ -14,15 +73,15 @@ export default function MonthReport() {
             <div className="date-report">
                 <div className="from-date">
                     <p className="from-date-label">From Date</p>
-                    <input className="from-date-input" type="date" />
-                    <RiCalendarEventFill className="calender-icon" />
+                    <input className="from-date-input" type="date" id="fromdate" />
+                    <RiCalendarEventFill className="calender-icon"  />
 
                 </div>
                 <div className="to-date">
                     <p className="to-date-label">To Date</p>
-                    <input className="to-date-input" type="date" />
+                    <input className="to-date-input" type="date" id="todate"/>
                     {/* add calender icon side to input */}
-                    <RiCalendarEventFill className="calender-icon" />
+                    <RiCalendarEventFill className="calender-icon" onClick={handletodate} />
 
 
                 </div>
@@ -32,24 +91,34 @@ export default function MonthReport() {
                 {/* Add dropdown option */}
                 <select className="get-report-dropdown">
                     <option value="owner">Owner Sur ...</option>
-                    <option value="owner1">Owner 1</option>
-                    <option value="owner2">Owner 2</option>
-                    <option value="owner3">Owner 3</option>
+                    
+                    <OwnerSelection/>
                 </select>
                 <button className="get-report-btn">Get Report</button>
             </div>
 
             <div className="report-data">
-            <div class="report-data-div">
-                <div class="report-data-owner">
-                    <p class="report-data-owner-id">Owner ID</p>
-                    <p class="report-data-owner-amt">Amount</p>
-                </div>
-                <p class="report-data-owner-name">Owner Name</p>
-                </div>
+           
+                <Owners />
+               
 
             </div>
+            <div className="float-div">
+            <div  className="report-total">
+                <div className="total-amount-collected">
 
+                    <p className="total-amount-collected-label">Total Amount Collected : </p>
+                    <p className="total-amount-collected-value">₹ 21050.00</p>
+                </div>
+                <div className="total-amount-collected">
+                    <p className="no-of-transactions-label">Number of Transactions : </p>
+                    <p className="no-of-transactions-value">47</p>
+                    
+                </div>
+            </div>
+
+            <button className="print-report-btn">PRINT REPORT</button>
+        </div>
             
         </div>
     );
