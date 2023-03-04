@@ -108,3 +108,50 @@
     background: white;
     box-sizing: border-box;
 }
+.DrawerTitle{
+    position: relative;
+    left:18px;
+    font-family: 'Noto Sans',sans-serif;
+
+    font-weight: 800;
+    font-size: 20px;
+    line-height: 28px;
+
+    color: #000000; 
+}
+.Switch-unchecked{
+    display: "flex";
+    justify-content: "center";
+    align-items: "center";
+    height: 100%;
+    font-family: 'Noto Sans';
+    font-style:'normal';
+    font-weight: 400;
+    font-size: 12px;
+    color: #ffffff;
+    padding-left: 2px;
+    line-height: 27px;
+}
+.Switch-checked{
+    display: "flex";
+    justify-content: "center";
+    align-items: "center";
+    height: 100%;
+    font-family: 'Noto Sans';
+    font-style:'normal';
+    font-weight: 400;
+    font-size: 12px;
+    color: #ffffff;
+    padding-left: 4px;
+    line-height: 27px;
+}
+.SortOptionsLabel{
+    position: relative;
+    left: 18px;
+}
+.SortOptionsContent{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    position: relative;
+}
