@@ -78,105 +78,120 @@ export default function Customer() {
                     </select>
                 </div>
 
-        <div className="filter-div">
-          <p className="filter-p">Filter</p>
-          <div className="filter-button" onClick={() => openDrawer()}>
-            <RiSortDesc className="filter-icon" />
-          </div>
-        </div>
-      </div>
-      <Drawer
-        isVisible={isVisible}
-        onClose={onClose}
-        className={"drawer"}
-        hideScrollbars={"true"}
-      >
-        <div style={{ padding: "10px" }}>
-          <p className="DrawerTitle">Sort Options</p>
-          <div sty>
-            <div className="SortOptionsContent">
-              <p className="SortOptionsLabel">Active Paid Customer</p>
-              <PaidSwitchComponent />
+                <div className="filter-div">
+                    <p className="filter-p">Filter</p>
+                    <div className="filter-button" onClick={() => openDrawer()}>
+                        <RiSortDesc className="filter-icon" />
+                    </div>
+                </div>
             </div>
-            <div className="SortOptionsContent">
-              <p className="SortOptionsLabel">Active Unpaid Customer</p>
-              <UnPaidSwitchComponent />
-            </div>
-            <div className="SortOptionsContent">
-              <p className="SortOptionsLabel">All Customers</p>
-              <AllSwitchComponent />
-            </div>
-          </div>
-          <p className="DrawerTitle">Sort By</p>
-          <div className="DrawerSortColumn">
-            <div>
-              <input
-                type={"radio"}
-                name={"lang"}
-                value={"English"}
-                id={"English"}
-                className="DrawerRadioButtons"
-                onChange={
-                  (e) => console.log(e)
-                  //setLanguage(Languages[e.target.value])
-                }
-              />
-              <label className="DrawerRadioLabel">Pending amount</label>
-            </div>
-            <div>
-              <input
-                type={"radio"}
-                name={"lang"}
-                value={"English"}
-                id={"English"}
-                className="DrawerRadioButtons"
-                onChange={
-                  (e) => console.log(e)
-                  //setLanguage(Languages[e.target.value])
-                }
-              />
-              <label className="DrawerRadioLabel">Customer Id</label>
-            </div>
-          </div>
-          <p className="DrawerTitle" style={{ marginTop: "20px" }}>
-            Sort Type
-          </p>
-          <div className="DrawerSortColumn">
-            <div>
-              <input
-                type={"radio"}
-                name={"lang"}
-                value={"English"}
-                id={"English"}
-                className="DrawerRadioButtons"
-                onChange={
-                  (e) => console.log(e)
-                  //setLanguage(Languages[e.target.value])
-                }
-              />
-              <label className="DrawerRadioLabel">Ascending</label>
-            </div>
-            <div>
-              <input
-                type={"radio"}
-                name={"lang"}
-                value={"English"}
-                id={"English"}
-                className="DrawerRadioButtons"
-                onChange={
-                  (e) => console.log(e)
-                  //setLanguage(Languages[e.target.value])
-                }
-              />
-              <label className="DrawerRadioLabel">Descending</label>
-            </div>
-          </div>
-          <button className="DrawerSubmitButton" onClick={()=>setIsVisible(false)}>
-            <span>SUBMIT</span>
-          </button>
-        </div>
-      </Drawer>
-      <Navbar value={1} />
+            <Drawer
+                isVisible={isVisible}
+                onClose={onClose}
+                className={"drawer"}
+                hideScrollbars={"true"}
+            >
+                <div style={{ padding: "10px" }}>
+                    <p className="DrawerTitle">Sort Options</p>
+                    <div sty>
+                        <div className="SortOptionsContent">
+                            <p className="SortOptionsLabel">
+                                Active Paid Customer
+                            </p>
+                            <PaidSwitchComponent />
+                        </div>
+                        <div className="SortOptionsContent">
+                            <p className="SortOptionsLabel">
+                                Active Unpaid Customer
+                            </p>
+                            <UnPaidSwitchComponent />
+                        </div>
+                        <div className="SortOptionsContent">
+                            <p className="SortOptionsLabel">All Customers</p>
+                            <AllSwitchComponent />
+                        </div>
+                    </div>
+                    <p className="DrawerTitle">Sort By</p>
+                    <div className="DrawerSortColumn">
+                        <div>
+                            <input
+                                type={"radio"}
+                                name={"lang"}
+                                value={"English"}
+                                id={"English"}
+                                className="DrawerRadioButtons"
+                                onChange={
+                                    (e) => console.log(e)
+                                    //setLanguage(Languages[e.target.value])
+                                }
+                            />
+                            <label className="DrawerRadioLabel">
+                                Pending amount
+                            </label>
+                        </div>
+                        <div>
+                            <input
+                                type={"radio"}
+                                name={"lang"}
+                                value={"English"}
+                                id={"English"}
+                                className="DrawerRadioButtons"
+                                onChange={
+                                    (e) => console.log(e)
+                                    //setLanguage(Languages[e.target.value])
+                                }
+                            />
+                            <label className="DrawerRadioLabel">
+                                Customer Id
+                            </label>
+                        </div>
+                    </div>
+                    <p className="DrawerTitle" style={{ marginTop: "20px" }}>
+                        Sort Type
+                    </p>
+                    <div className="DrawerSortColumn">
+                        <div>
+                            <input
+                                type={"radio"}
+                                name={"lang"}
+                                value={"English"}
+                                id={"English"}
+                                className="DrawerRadioButtons"
+                                onChange={
+                                    (e) => console.log(e)
+                                    //setLanguage(Languages[e.target.value])
+                                }
+                            />
+                            <label className="DrawerRadioLabel">
+                                Ascending
+                            </label>
+                        </div>
+                        <div>
+                            <input
+                                type={"radio"}
+                                name={"lang"}
+                                value={"English"}
+                                id={"English"}
+                                className="DrawerRadioButtons"
+                                onChange={
+                                    (e) => console.log(e)
+                                    //setLanguage(Languages[e.target.value])
+                                }
+                            />
+                            <label className="DrawerRadioLabel">
+                                Descending
+                            </label>
+                        </div>
+                    </div>
+                    <button
+                        className="DrawerSubmitButton"
+                        onClick={() => setIsVisible(false)}
+                    >
+                        <span>SUBMIT</span>
+                    </button>
+                </div>
+            </Drawer>
+            <Navbar value={1} />
             <div className="card-div">
                 <div className="card-group1-div">
                     <div class="card-line1-div">
