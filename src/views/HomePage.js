@@ -9,6 +9,7 @@ export default function HomePage() {
     const { t } = useTranslation();
 
     return (
+        <>
         <div class="container">
             <img className="home-bg-img" src={require("../assets/BG.JPG")} />
             <div>
@@ -54,7 +55,9 @@ export default function HomePage() {
                     </button>
                 </div>
             </div>
-            <Navbar value={0}/>
+            
         </div>
+        <Navbar value={0}/>
+        </>
     );
 }

@@ -10,7 +10,7 @@ const Navbar = ({ value }) => {
   return (
     <div>
       <BottomNavigation
-        sx={{ width: "100%", position: "fixed", bottom: 0 }}
+        sx={{width:'100%', position: "fixed", bottom: 0 }}
         value={value}
       >
         <BottomNavigationAction
