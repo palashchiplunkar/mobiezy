@@ -98,6 +98,9 @@ export default function Customer() {
             <AllSwitchComponent />
           </div>
         </div>
+        <p className="DrawerTitle">Sort By</p>
+     
+
       </Drawer>
       <Navbar value={1} />
 
