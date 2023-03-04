@@ -105,51 +105,114 @@
 /* Card */
 
 .card-div {
-    background: white;
-    box-sizing: border-box;
-}
-.DrawerTitle{
     position: relative;
-    left:18px;
-    font-family: 'Noto Sans',sans-serif;
+    background: white;
+    border-width: 1px;
+    border-style: solid;
+    border-image: linear-gradient(to right, #0090da, #a4ce4e) 1;
+    box-sizing: border-box;
+    margin: 2% 0% 0% 0%;
+    padding: 3%;
+}
+
+.card-line1-div {
+    display: flex;
+    justify-content: space-between;
+}
+
+.card-name-p {
+    float: left;
+    color: #252525;
+    font-family: "Noto Sans";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 114%;
+    letter-spacing: 0.2px;
+}
+
+.card-price-p {
+    float: right;
+    color: #a0c334;
+    font-family: "Noto Sans";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 114%;
+    text-align: right;
+    letter-spacing: 0.2px;
+}
+
+.card-line2-div {
+    display: flex;
+    justify-content: space-between;
+}
+
+.card-date-p {
+    font-family: "Noto Sans";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 114%;
+    letter-spacing: 0.2px;
+    color: #252525;
+}
+
+.card-reg-p {
+    font-family: "Noto Sans";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 114%;
+    text-align: right;
+    letter-spacing: 0.2px;
+    color: #252525;
+}
+
+/* Drawer */
+
+.DrawerTitle {
+    position: relative;
+    left: 18px;
+    font-family: "Noto Sans", sans-serif;
 
     font-weight: 800;
     font-size: 20px;
     line-height: 28px;
 
-    color: #000000; 
+    color: #000000;
 }
-.Switch-unchecked{
+.Switch-unchecked {
     display: "flex";
     justify-content: "center";
     align-items: "center";
     height: 100%;
-    font-family: 'Noto Sans';
-    font-style:'normal';
+    font-family: "Noto Sans";
+    font-style: "normal";
     font-weight: 400;
     font-size: 12px;
     color: #ffffff;
     padding-left: 2px;
     line-height: 27px;
 }
-.Switch-checked{
+.Switch-checked {
     display: "flex";
     justify-content: "center";
     align-items: "center";
     height: 100%;
-    font-family: 'Noto Sans';
-    font-style:'normal';
+    font-family: "Noto Sans";
+    font-style: "normal";
     font-weight: 400;
     font-size: 12px;
     color: #ffffff;
     padding-left: 4px;
     line-height: 27px;
 }
-.SortOptionsLabel{
+.SortOptionsLabel {
     position: relative;
     left: 18px;
 }
-.SortOptionsContent{
+.SortOptionsContent {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
