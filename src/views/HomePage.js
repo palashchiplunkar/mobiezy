@@ -4,9 +4,12 @@ import Navbar from "../components/navbar";
 import "../css/HomeStyles.css";
 import MobileNavigation from "../components/hamnavigation";
 import { useTranslation } from "react-i18next";
+import { useNavigate } from "react-router-dom";
 
 export default function HomePage() {
     const { t } = useTranslation();
+    const navigate = useNavigate();
+
 
     return (
         <div class="container">
@@ -33,7 +36,9 @@ export default function HomePage() {
                     <label className="Amt_Due">2310086.00</label>
                 </div>
 
-                <div class="amount_collected_month">
+                <div class="amount_collected_month"
+                    onClick={() => navigate("/monthlyreport")}
+                >
                     <label className="Amt_Due">{t("HO_lbl_Collected")}</label>
                     <label className="Amt_Due">10086</label>
                 </div>

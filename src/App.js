@@ -5,7 +5,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import SelectLanguage from "./views/SelectLanguage";
 import Customer from "./views/Customer";
 import Navbar from "./components/navbar";
-
+import MonthReport from "./views/MonthlyReport";
 
 function App() {
   return (
@@ -16,6 +16,7 @@ function App() {
         <Route path="/home" element={<HomePage/>}/>
         <Route path="/customer" element={<Customer/>}/>
         <Route path="/customerDrawer" element={<customerDrawer/>}/>
+        <Route path="/monthlyReport" element={<MonthReport/>}/>
       </Routes>
     </BrowserRouter>
   );
