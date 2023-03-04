@@ -55,9 +55,9 @@
     color: #333333;
 }
 
-.amount-due-today-div {
+.amt-due-today-div {
     height: 50px;
-    background: #F2F2F2;
+    background: #f2f2f2;
     border: 1px dashed #333333;
     border-radius: 15px;
     display: flex;
@@ -80,13 +80,13 @@
     font-size: 16px;
     line-height: 16px;
     text-align: center;
-    text-align: center;
-    color: #DD2224;
+    color: #dd2224;
 }
 
-.amount_collected_month {
+.amt-collected-month-div {
     height: 50px;
-    background: rgba(160, 195, 52, 0.92);
+    background: #f2f2f2;
+    border: 1px solid #333333;
     border-radius: 15px;
     display: flex;
     flex-direction: column;
@@ -99,9 +99,23 @@
     gap: 10px;
 }
 
-.amount_collected_today {
+.amt-collected-month-content {
+    width: 337px;
+    height: 16px;
+    font-family: "Noto Sans";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 16px;
+    text-align: center;
+    color: #3aa45e;
+}
+
+.amt-collected-today-div {
     height: 50px;
-    background: #cf4dce;
+    background: #f2f2f2;
+    box-sizing: border-box;
+    border: 1px solid #333333;
     border-radius: 15px;
     display: flex;
     flex-direction: column;
@@ -114,10 +128,24 @@
     margin-top: 20px;
 }
 
-.complaints {
+.amt-collected-today-content {
+    width: 337px;
+    height: 16px;
+    font-family: "Noto Sans";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 16px;
+    text-align: center;
+    color: #b43cb3;
+}
+
+.complaints-div {
     height: 50px;
-    background: #cebb00;
+    background: #f2f2f2;
+    border: 1px solid #333333;
     border-radius: 15px;
+    box-sizing: border-box;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -127,6 +155,44 @@
     margin-right: 26px;
     gap: 10px;
     margin-top: 20px;
+}
+
+.complaints-content {
+    width: 337px;
+    height: 16px;
+    font-family: "Noto Sans";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 16px;
+    text-align: center;
+    color: #877C0C;
+}
+
+.collect-btn-div {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    top: calc(50% - 48px/2 + 7px);
+}
+
+.collectBtn {
+    margin-top: 10vh;
+    margin-bottom: 15%;
+    align-items: center;
+    color: #ffffff;
+    font-family: "Noto Sans", sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    border: none;
+    text-align: center;
+    text-transform: uppercase;
+    background: #0090da;
+    border-radius: 20px;
+    width: 224px;
+    height: 48px;
+    gap: 8px;
 }
 
 .Company_name {
@@ -163,29 +229,4 @@
     /* add it to left */
 
     margin: 3px;
-}
-
-.collect-btn-div {
-    display: flex;
-    justify-content: center;
-    flex-direction: row;
-}
-
-.collectBtn {
-    margin-top: 10vh;
-    margin-bottom: 15%;
-    align-items: center;
-    color: #ffffff;
-    font-family: "Noto Sans", sans-serif;
-    font-style: normal;
-    font-weight: 700;
-    font-size: 14px;
-    border: none;
-    text-align: center;
-    text-transform: uppercase;
-    background: #0090da;
-    border-radius: 20px;
-    width: 224px;
-    height: 48px;
-    gap: 8px;
 }
