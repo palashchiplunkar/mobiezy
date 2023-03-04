@@ -54,7 +54,7 @@ export default function HomePage() {
                     </button>
                 </div>
             </div>
-            <Navbar />
+            <Navbar value={0}/>
         </div>
     );
 }

@@ -4,6 +4,8 @@ import HomePage from "./views/HomePage";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import SelectLanguage from "./views/SelectLanguage";
 import Customer from "./views/Customer";
+import Navbar from "./components/navbar";
+
 
 function App() {
   return (

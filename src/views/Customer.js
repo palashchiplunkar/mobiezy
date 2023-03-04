@@ -38,7 +38,7 @@ export default function Customer() {
                     </div>
                 </div>
             </div>
-            <Navbar />
+            <Navbar value={1}/>
 
             <div className="card-div">
                 <div class="container">
