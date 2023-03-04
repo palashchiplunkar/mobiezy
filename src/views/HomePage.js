@@ -28,9 +28,9 @@ export default function HomePage() {
 
                 <p class="user_name">{t("HO_lbl_wish")} Dinesh</p>
 
-                <div class="amount_due">
-                    <label className="Amt_Due">{t("HO_lbl_Unpaid")}</label>
-                    <label className="Amt_Due">2310086.00</label>
+                <div class="amount-due-today-div">
+                    <label className="amt-due-today-content">{t("HO_lbl_Unpaid")}</label>
+                    <label className="amt-due-today-content">2310086.00</label>
                 </div>
 
                 <div class="amount_collected_month">

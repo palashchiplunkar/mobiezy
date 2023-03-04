@@ -55,9 +55,10 @@
     color: #333333;
 }
 
-.amount_due {
+.amount-due-today-div {
     height: 50px;
-    background: rgba(220, 21, 21, 0.82);
+    background: #F2F2F2;
+    border: 1px dashed #333333;
     border-radius: 15px;
     display: flex;
     flex-direction: column;
@@ -70,7 +71,7 @@
     margin-top: 20%;
 }
 
-.Amt_Due {
+.amt-due-today-content {
     width: 337px;
     height: 16px;
     font-family: "Noto Sans";
@@ -80,7 +81,7 @@
     line-height: 16px;
     text-align: center;
     text-align: center;
-    color: #ffffff;
+    color: #DD2224;
 }
 
 .amount_collected_month {
