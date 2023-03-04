@@ -58,7 +58,7 @@
 .amt-due-today-div {
     height: 50px;
     background: #f2f2f2;
-    border: 1px dashed #333333;
+    border: 1px solid #333333;
     border-radius: 15px;
     display: flex;
     flex-direction: column;
