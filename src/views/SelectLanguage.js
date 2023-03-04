@@ -19,23 +19,52 @@ import "../css/alert_popup.css";
 import "reactjs-popup/dist/index.css";
 
 export default function SelectLanguage() {
-    const Languages = {
-        English: {
-            heading: "Greetings!",
-            message:
-                "Welcome to the family of 5000+ Cable & Internet Operators",
-        },
+  const Languages ={
+    English: {
+      heading: "Greetings!",
+      message: "Welcome to the family of 5000+ Cable & Internet Operators",
+    },
+    Hindi: {
+      heading: "नमस्ते ,",
+      message: "5000+ केबल और इंटरनेट ऑपरेटरों के परिवार में आपका स्वागत है",
+    },
+  }
+  const [language, setLanguage] = useState({
+    heading: "Greetings!",
+    message: "Welcome to the family of 5000+ Cable & Internet Operators",
+  });
+  const navigate = useNavigate();
+  const { t } = useTranslation();
+  const handleLanguageChange = (e) => {
+    console.log("Hello World");
+    // Get Value of Checked Radio Button using querySelectors
+    const checkedRadio = document.querySelector(
+      'input[name="lang"]:checked'
+    ).value;
+    console.log(checkedRadio);
+    if (checkedRadio === "English") {
+      i18next.changeLanguage("en_US");
+    }
 
-        Hindi: {
-            heading: "नमस्ते ,",
-            message:
-                "5000+ केबल और इंटरनेट ऑपरेटरों के परिवार में आपका स्वागत है",
+    if (checkedRadio === "Hindi") {
+      i18next.changeLanguage("hi_IN");
+    }
+  };
+  const handleShowPopup = () => {
+    confirmAlert({
+      title: 'Do You Want to Save Changes?',
+      buttons: [
+        {
+          label: 'OK',
+          onClick: () => {handleLanguageChange()}
         },
-    };
-
-    const [language, setLanguage] = useState({
-        heading: "Greetings!",
-        message: "Welcome to the family of 5000+ Cable & Internet Operators",
+        {
+          label: 'Cancel',
+          onClick: () => console.log('Cancel button clicked')
+        }
+      ],
+      closeOnEscape: true,
+      closeOnClickOutside: false,
     });
 
     const navigate = useNavigate();
