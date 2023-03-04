@@ -66,9 +66,11 @@
     flex-grow: 0;
     z-index: 0;
 }
+
 .area-dropdown::placeholder{
     color: white;
 }
+
 .filter-div {
     display: flex;
     justify-content: flex-end;

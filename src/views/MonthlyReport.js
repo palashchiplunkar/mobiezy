@@ -66,26 +66,23 @@ export default function MonthReport() {
     return (
         <div className="container-report">
             <img className="home-bg-img" src={require("../assets/BG.JPG")} />
+
             <div className="headerblue-report">
                 <h2 className="report-label">Monthly Report</h2>
             </div>
+
             <div className="date-report">
                 <div className="from-date">
                     <p className="from-date-label">From Date</p>
-                    <input
-                        className="from-date-input"
-                        type="date"
-                        id="fromdate"
-                    />
-                    <RiCalendarEventFill className="calender-icon" />
+                    <input className="from-date-input" type="date" id="fromdate" />
+                    <RiCalendarEventFill className="from-date-calender-icon" />
                 </div>
-                
+
                 <div className="to-date">
-                    <p className="to-date-label">To Date</p>
+                    <p className="to-date-label">End Date</p>
                     <input className="to-date-input" type="date" id="todate" />
-                    {/* add calender icon side to input */}
                     <RiCalendarEventFill
-                        className="calender-icon"
+                        className="to-date-calender-icon"
                         onClick={handletodate}
                     />
                 </div>
