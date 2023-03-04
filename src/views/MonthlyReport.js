@@ -1,7 +1,7 @@
 import React from "react";
 import { RiCalendarEventFill } from "react-icons/ri";
 
-import "../css/Report.css";
+import "../css/MonthlyReport.css";
 
 export default function MonthReport() {
     const handletodate = () => {
