@@ -66,7 +66,9 @@
     flex-grow: 0;
     z-index: 0;
 }
-
+.area-dropdown::placeholder{
+    color: white;
+}
 .filter-div {
     display: flex;
     justify-content: flex-end;
@@ -111,7 +113,7 @@
     border-style: solid;
     border-image: linear-gradient(to right, #0090da, #a4ce4e) 1;
     box-sizing: border-box;
-    margin: 2% 0% 0% 0%;
+    margin-top: 4%;
     padding: 3%;
 }
 
@@ -133,7 +135,6 @@
 
 .card-price-p {
     float: right;
-    color: #a0c334;
     font-family: "Noto Sans";
     font-style: normal;
     font-weight: 700;
@@ -173,11 +174,13 @@
 .card-line3-div {
     display: flex;
     justify-content: space-between;
+
 }
 
 .card-phone-p {
     float: left;
     margin-top: 1.5%;
+    margin-left: 6px;
     font-family: "Noto Sans";
     font-style: normal;
     font-weight: 400;
@@ -200,8 +203,7 @@
     border-radius: 20px;
     letter-spacing: 0.24px;
     color: #ffffff;
-    padding: 1%;
-    width: 18%;
+    padding: 2%;
     margin-bottom: 1%;
 }
 

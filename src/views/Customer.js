@@ -5,6 +5,8 @@ import "../css/Customer.css";
 import { useState } from "react";
 import Drawer from "react-bottom-drawer";
 import Switch from "react-switch";
+import { TfiMobile } from "react-icons/tfi";
+import { color } from "@mui/system";
 
 export default function Customer() {
   const [isVisible, setIsVisible] = useState(false);
@@ -12,6 +14,90 @@ export default function Customer() {
   const [isUnPaidChecked, setIsUnPaidChecked] = useState(false);
   const [isAllChecked, setIsAllChecked] = useState(false);
 
+  const CustomerData = [
+    {
+      id: "KS00567",
+      name: "Raghavendra Ganiga",
+      date: "21/03/2023",
+      price: -15,
+      phno: "9886522612",
+      status: "Active",
+      address:
+        "3rd Floor, #280, SLV Arcade Kathriguppe Circle, Outer Ring Rd, Banashankari 3rd Stage, Bengaluru, Karnataka 560085",
+    },
+    {
+      id: "JB0213",
+      name: "Akshay Vaidya",
+      date: "21/02/2023",
+      price: 275,
+      phno: "9740769579",
+      status: "Temporarily Disconnected",
+      address: "",
+    },
+    {
+      id: "BG70279",
+      name: "Dinesh Kumar",
+      date: "03/02/2022",
+      price: 25,
+      phno: "9886522612",
+      status: "Permanently Disconnected",
+      address:
+        "No.153, Bannerghatta Main Rd, Vijayashri Layout, Bengaluru, Karnataka 560076",
+    },
+  ];
+  const Customers = () => {
+    const eachCustomer = CustomerData.map((customer) => {
+      return (
+        <div className="card-div">
+          <div className="card-group1-div">
+            <div class="card-line1-div">
+              <p className="card-name-p">{customer.name}</p>
+              <p
+                className="card-price-p"
+                style={{ color: customer.price >= 0 ? "#DC1515" : "#a0c334" }}
+              >
+                ₹ {customer.price}
+              </p>
+            </div>
+
+            <div className="card-line2-div">
+              <p className="card-date-p">{customer.date}</p>
+              <p className="card-reg-p">{customer.id}</p>
+            </div>
+
+            <div className="card-line3-div">
+              <div style={{display:"flex"}}>
+                <TfiMobile style={{ color: "#007ABC" }} />
+                <p className="card-phone-p">{customer.phno}</p>
+              </div>
+             
+
+              <p
+                className="card-status-p"
+                style={{
+                  backgroundColor:
+                    customer.status == "Active"
+                      ? "#a0c334"
+                      : customer.status == "Temporarily Disconnected"
+                      ? "#DC1515"
+                      : "#000000",
+                }}
+              >
+                {customer.status}
+              </p>
+            </div>
+          </div>
+          {customer.address ? (
+            <div className="card-group2-div">
+              <div className="card-underline-div"></div>
+              <p className="card-address-p">{customer.address}</p>
+            </div>
+          ) : null}
+        </div>
+      );
+    });
+    return <>{eachCustomer}</>;
+  };
   const onClose = React.useCallback(() => {
     setIsVisible(false);
   }, []);
@@ -74,6 +160,11 @@ export default function Customer() {
         <div className="header-blue">
           <div className="area-div">
             <p className="area-p">Area</p>
+            <input type={"text"} placeholder="Search" className="area-dropdown" style={{
+                color:'white',
+                position:'absolute',
+                top:"90%",
+            }}/>
             <select
               name="test"
               className="area-dropdown"
@@ -83,6 +174,7 @@ export default function Customer() {
               <option value="bangalore">Bangalore</option>
               <option value="mangalore">Mangalore</option>
             </select>
+           
           </div>
 
           <div className="filter-div">
@@ -187,33 +279,7 @@ export default function Customer() {
             </button>
           </div>
         </Drawer>
-
-        <div className="card-div">
-          <div className="card-group1-div">
-            <div class="card-line1-div">
-              <p className="card-name-p">Raghavendra Ganiga</p>
-              <p className="card-price-p">₹ -15</p>
-            </div>
-
-            <div className="card-line2-div">
-              <p className="card-date-p">21/03/2023</p>
-              <p className="card-reg-p">KS00567</p>
-            </div>
-
-            <div className="card-line3-div">
-              <p className="card-phone-p">9886522612</p>
-              <p className="card-status-p">Acitve</p>
-            </div>
-          </div>
-
-          <div className="card-group2-div">
-            <div className="card-underline-div"></div>
-            <p className="card-address-p">
-              3rd Floor, #280, SLV Arcade Kathriguppe Circle, Outer Ring Rd,
-              Banashankari 3rd Stage, Bengaluru, Karnataka 560085
-            </p>
-          </div>
-        </div>
+        <Customers />
       </div>
       <Navbar value={1} />
     </>
