@@ -307,10 +307,10 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     margin-right: 10px;
 }
 
-.print-report-btn {
-    width: 50%;
-    height: 10vh;
-    background-color: #0090da;
+.print-report-btn{
+    width: 60%;
+    height: 70px;
+    background-color: #0090DA;
     border-radius: 50px;
     border: none;
     outline: none;
