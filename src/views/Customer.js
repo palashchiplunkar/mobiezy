@@ -126,7 +126,12 @@ export default function Customer() {
                 </div>
 
                 <div className="card-group2-div">
-                    
+                    <div className="card-underline-div"></div>
+                    <p className="card-address-p">
+                        3rd Floor, #280, SLV Arcade Kathriguppe Circle, Outer
+                        Ring Rd, Banashankari 3rd Stage, Bengaluru, Karnataka
+                        560085
+                    </p>
                 </div>
             </div>
         </div>
