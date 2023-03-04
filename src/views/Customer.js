@@ -27,8 +27,9 @@ export default function Customer() {
                         <option value="mangalore">Mangalore</option>
                     </select>
                 </div>
+
                 <div className="filter-div">
-                    {/* <p className="filter-p">Filter</p> */}
+                    <p className="filter-p">Filter</p>
                     <div
                         className="filter-button"
                         onClick={() => <customerDrawer />}
@@ -38,6 +39,15 @@ export default function Customer() {
                 </div>
             </div>
             <Navbar />
+
+            <div className="card-div">
+                <div class="container">
+                    <h4>
+                        <b>John Doe</b>
+                    </h4>
+                    <p>Architect & Engineer</p>
+                </div>
+            </div>
         </div>
     );
 }

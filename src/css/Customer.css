@@ -68,20 +68,22 @@
 }
 
 .filter-div {
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 8%;
     position: relative;
     top: 18%;
-    left: 35%
 }
 
 .filter-p {
-    /* position: relative;
+    position: relative;
     font-family: "Noto Sans";
     font-style: normal;
     font-weight: 700;
     font-size: 16px;
     line-height: 22px;
     text-align: center;
-    color: #ffffff; */
+    color: #ffffff;
 }
 
 .filter-button {
@@ -90,14 +92,19 @@
     width: 50px;
     height: 50px;
     top: 60%;
-    left: 43%;
     border-radius: 50%;
     background: #007abc;
 }
 
 .filter-icon {
     color: white;
-    margin: auto;
     width: 25px;
     height: 50px;
+}
+
+/* Card */
+
+.card-div {
+    background: white;
+    box-sizing: border-box;
 }
