@@ -1,16 +1,16 @@
 import React from "react";
-import { RiSortDesc } from "react-icons/ri";
-import "../css/Report.css";
-// import calender icon from react-icons
 import { RiCalendarEventFill } from "react-icons/ri";
+
+import "../css/Report.css";
+
 export default function MonthReport() {
     const handletodate = () => {
         const todateInput = document.getElementById("todate");
-    todateInput.focus();
-    
+        todateInput.focus();
 
-  todateInput.dispatchEvent(new MouseEvent("click", { bubbles: true }));
+        todateInput.dispatchEvent(new MouseEvent("click", { bubbles: true }));
     };
+
     const ownerdata = [
         {
             ownerid: "MR14012",
@@ -24,7 +24,7 @@ export default function MonthReport() {
         },
         {
             ownerid: "BG70279",
-            ownername : "Dinesh Kumar",
+            ownername: "Dinesh Kumar",
             owneramt: "578",
         },
         {
@@ -36,90 +36,97 @@ export default function MonthReport() {
             ownerid: "PB700214",
             ownername: "Gurmeet Singh",
             owneramt: "394",
-        }
+        },
+    ];
 
-    ]
     // populate the select option with ownername
-    const OwnerSelection =() => {
+    const OwnerSelection = () => {
         const OwnerSelectionData = ownerdata.map((data) => {
-            return (
-                <option value={data.ownername}>{data.ownername}</option>
-            );
+            return <option value={data.ownername}>{data.ownername}</option>;
         });
         return OwnerSelectionData;
-    }
+    };
+
     // const Owners = () => {
-    const Owners =() => {
-    const OwnerData = ownerdata.map((data) => {
-        return (
-            <div className="report-data-div">
-                <div className="report-data-owner">
-                    <p className="report-data-owner-id">{data.ownerid}</p>
-                    <p className="report-data-owner-amt">{data.owneramt}</p>
+    const Owners = () => {
+        const OwnerData = ownerdata.map((data) => {
+            return (
+                <div className="report-data-div">
+                    <div className="report-data-owner">
+                        <p className="report-data-owner-id">{data.ownerid}</p>
+                        <p className="report-data-owner-amt">{data.owneramt}</p>
+                    </div>
+                    <p className="report-data-owner-name">{data.ownername}</p>
                 </div>
-                <p className="report-data-owner-name">{data.ownername}</p>
-            </div>
-        );
-        
-    });
-    return OwnerData;
-    }
+            );
+        });
+        return OwnerData;
+    };
+
     return (
         <div className="container-report">
             <img className="home-bg-img" src={require("../assets/BG.JPG")} />
             <div className="headerblue-report">
-            <h2 className="report-label">Monthly Report</h2>
+                <h2 className="report-label">Monthly Report</h2>
             </div>
             <div className="date-report">
                 <div className="from-date">
                     <p className="from-date-label">From Date</p>
-                    <input className="from-date-input" type="date" id="fromdate" />
-                    <RiCalendarEventFill className="calender-icon"  />
-
+                    <input
+                        className="from-date-input"
+                        type="date"
+                        id="fromdate"
+                    />
+                    <RiCalendarEventFill className="calender-icon" />
                 </div>
+                
                 <div className="to-date">
                     <p className="to-date-label">To Date</p>
-                    <input className="to-date-input" type="date" id="todate"/>
+                    <input className="to-date-input" type="date" id="todate" />
                     {/* add calender icon side to input */}
-                    <RiCalendarEventFill className="calender-icon" onClick={handletodate} />
-
-
+                    <RiCalendarEventFill
+                        className="calender-icon"
+                        onClick={handletodate}
+                    />
                 </div>
-
             </div>
+
             <div className="get-report-div">
                 {/* Add dropdown option */}
                 <select className="get-report-dropdown">
                     <option value="owner">Owner Sur ...</option>
-                    
-                    <OwnerSelection/>
+
+                    <OwnerSelection />
                 </select>
                 <button className="get-report-btn">Get Report</button>
             </div>
 
             <div className="report-data">
-           
                 <Owners />
-               
-
             </div>
+
             <div className="float-div">
-            <div  className="report-total">
-                <div className="total-amount-collected">
+                <div className="report-total">
+                    <div className="total-amount-collected">
+                        <p className="total-amount-collected-label">
+                            Total Amount Collected :{" "}
+                        </p>
+                        <p className="total-amount-collected-value">
+                            ₹ 21050.00
+                        </p>
+                    </div>
 
-                    <p className="total-amount-collected-label">Total Amount Collected : </p>
-                    <p className="total-amount-collected-value">₹ 21050.00</p>
+                    <div className="total-amount-collected">
+                        <p className="no-of-transactions-label">
+                            Number of Transactions :{" "}
+                        </p>
+                        <p className="no-of-transactions-value">47</p>
+                    </div>
                 </div>
-                <div className="total-amount-collected">
-                    <p className="no-of-transactions-label">Number of Transactions : </p>
-                    <p className="no-of-transactions-value">47</p>
-                    
-                </div>
+
+                <button className="print-report-btn">PRINT REPORT</button>
+
             </div>
-
-            <button className="print-report-btn">PRINT REPORT</button>
-        </div>
-            
         </div>
     );
-}       
+}
