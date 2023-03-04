@@ -44,6 +44,7 @@ export default function Customer() {
                 "No.153, Bannerghatta Main Rd, Vijayashri Layout, Bengaluru, Karnataka 560076",
         },
     ];
+
     const Customers = () => {
         const eachCustomer = CustomerData.map((customer) => {
             return (
@@ -120,7 +121,7 @@ export default function Customer() {
         setIsUnPaidChecked(!isUnPaidChecked);
         setIsAllChecked(false);
     };
-    
+
     const AllhandleSwitch = () => {
         setIsPaidChecked(false);
         setIsUnPaidChecked(false);
@@ -207,6 +208,8 @@ export default function Customer() {
                         </div>
                     </div>
                 </div>
+
+                <Customers />
 
                 <Drawer
                     isVisible={isVisible}
@@ -319,7 +322,6 @@ export default function Customer() {
                         </button>
                     </div>
                 </Drawer>
-                <Customers />
             </div>
             <Navbar value={1} />
         </>
