@@ -108,14 +108,25 @@ export default function Customer() {
             <Navbar value={1} />
 
             <div className="card-div">
-                <div class="card-line1-div">
-                    <p className="card-name-p">Raghavendra Ganiga</p>
-                    <p className="card-price-p">₹ -15</p>
+                <div className="card-group1-div">
+                    <div class="card-line1-div">
+                        <p className="card-name-p">Raghavendra Ganiga</p>
+                        <p className="card-price-p">₹ -15</p>
+                    </div>
+
+                    <div className="card-line2-div">
+                        <p className="card-date-p">21/03/2023</p>
+                        <p className="card-reg-p">KS00567</p>
+                    </div>
+
+                    <div className="card-line3-div">
+                        <p className="card-phone-p">9886522612</p>
+                        <p className="card-status-p">Acitve</p>
+                    </div>
                 </div>
 
-                <div class="card-line2-div">
-                    <p className="card-date-p">21/03/2023</p>
-                    <p className="card-reg-p">KS00567</p>
+                <div className="card-group2-div">
+                    
                 </div>
             </div>
         </div>
