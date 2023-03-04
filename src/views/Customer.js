@@ -18,11 +18,17 @@ export default function Customer() {
     const openDrawer = React.useCallback(() => setIsVisible(true), []);
     const PaidhandleSwitch = () => {
         setIsPaidChecked(!isPaidChecked);
+        setIsUnPaidChecked(false);
+        setIsAllChecked(false);
     };
     const UnpaidhandleSwitch = () => {
+        setIsPaidChecked(false);
         setIsUnPaidChecked(!isUnPaidChecked);
+        setIsAllChecked(false);
     };
     const AllhandleSwitch = () => {
+        setIsPaidChecked(false);
+        setIsUnPaidChecked(false);
         setIsAllChecked(!isAllChecked);
     };
     const PaidSwitchComponent = () => {
@@ -62,6 +68,7 @@ export default function Customer() {
         );
     };
     return (
+        <>
         <div className="container">
             <img className="home-bg-img" src={require("../assets/BG.JPG")} />
             <div className="header-blue">
@@ -176,7 +183,7 @@ export default function Customer() {
           </button>
         </div>
       </Drawer>
-      <Navbar value={1} />
+   
             <div className="card-div">
                 <div className="card-group1-div">
                     <div class="card-line1-div">
@@ -205,5 +212,7 @@ export default function Customer() {
                 </div>
             </div>
         </div>
+           <Navbar value={1} />
+           </>
     );
 }
