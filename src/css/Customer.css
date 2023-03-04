@@ -110,7 +110,7 @@
 }
 .DrawerTitle{
     position: relative;
-    left:18px;
+    margin-bottom: 20px;
     font-family: 'Noto Sans',sans-serif;
 
     font-weight: 800;
@@ -147,11 +147,64 @@
 }
 .SortOptionsLabel{
     position: relative;
-    left: 18px;
 }
 .SortOptionsContent{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     position: relative;
+}
+.DrawerRadioButtons{
+    position: relative;
+    left:20px;
+    width:20px;
+    height:20px;
+    color:#0090DA;
+}
+.DrawerRadioLabel{
+font-family: 'Noto Sans';
+font-style: normal;
+font-weight: 400;
+font-size: 16px;
+letter-spacing: 0.2px;
+margin-left: 30px;
+
+color: #333333;
+}
+.DrawerSortColumn{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+.DrawerSubmitButton{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 15px 105px;
+    gap: 8px;
+    border: none;
+    position: relative;
+    width: 224px;
+    height: 48px;
+    left: calc(50% - 224px / 2);
+    top:30px;
+color:#ffffff;
+font-family: "Noto Sans", sans-serif;
+font-style: normal;
+font-weight: 700;
+font-size: 14px;
+line-height: 19px;
+letter-spacing: 1px;
+    background: #0090da;
+    border-radius: 20px;
+}
+.drawer{
+    height: 70%;
+}
+.drawer__content {
+    max-height: 100% !important;
+    overflow-y: visible !important;
+    overflow-x: visible !important;
 }
