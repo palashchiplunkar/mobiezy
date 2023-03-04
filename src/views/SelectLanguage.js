@@ -25,26 +25,30 @@ export default function SelectLanguage() {
             message:
                 "Welcome to the family of 5000+ Cable & Internet Operators",
         },
+
         Hindi: {
             heading: "नमस्ते ,",
             message:
                 "5000+ केबल और इंटरनेट ऑपरेटरों के परिवार में आपका स्वागत है",
         },
     };
+
     const [language, setLanguage] = useState({
         heading: "Greetings!",
         message: "Welcome to the family of 5000+ Cable & Internet Operators",
     });
+
     const navigate = useNavigate();
     const { t } = useTranslation();
 
     const handleLanguageChange = (e) => {
-        
         // Get Value of Checked Radio Button using querySelectors
         const checkedRadio = document.querySelector(
             'input[name="lang"]:checked'
         ).value;
+
         console.log(checkedRadio);
+
         if (checkedRadio === "English") {
             i18next.changeLanguage("en_US");
         }
@@ -64,11 +68,12 @@ export default function SelectLanguage() {
                         handleLanguageChange();
                     },
                 },
+
                 {
                     label: "Cancel",
                     onClick: () => console.log("Cancel button clicked"),
-                },
-            ],
+                }
+            ]
         });
     };
 
