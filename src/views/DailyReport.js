@@ -77,7 +77,7 @@ export default function DailyReport() {
                             Total Amount Collected :{" "}
                         </p>
                         <p className="total-amount-collected-value">
-                            ₹ 21050.00
+                            ₹ 832.00
                         </p>
                     </div>
 
@@ -85,7 +85,7 @@ export default function DailyReport() {
                         <p className="no-of-transactions-label">
                             Number of Transactions :{" "}
                         </p>
-                        <p className="no-of-transactions-value">47</p>
+                        <p className="no-of-transactions-value">3</p>
                     </div>
                 </div>
 
