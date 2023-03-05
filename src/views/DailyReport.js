@@ -4,7 +4,7 @@ import OwnerData from "../components/ownerdatadiv";
 
 import "../css/Report.css";
 
-export default function MonthReport() {
+export default function DailyReport() {
     const handletodate = () => {
         const todateInput = document.getElementById("todate");
         todateInput.focus();
@@ -62,29 +62,9 @@ export default function MonthReport() {
         <div className="container-report">
             <img className="home-bg-img" src={require("../assets/BG.JPG")} />
             <div className="headerblue-report">
-                <h2 className="report-label">Monthly Report</h2>
+                <h2 className="report-label">Daily Report</h2>
             </div>
-            <div className="date-report">
-                <div className="from-date">
-                    <p className="from-date-label">From Date</p>
-                    <input
-                        className="from-date-input"
-                        type="date"
-                        id="fromdate"
-                    />
-                    <RiCalendarEventFill className="calender-icon" />
-                </div>
-                
-                <div className="to-date">
-                    <p className="to-date-label">To Date</p>
-                    <input className="to-date-input" type="date" id="todate" />
-                    {/* add calender icon side to input */}
-                    <RiCalendarEventFill
-                        className="calender-icon"
-                        onClick={handletodate}
-                    />
-                </div>
-            </div>
+            
 
             <div className="get-report-div">
                 {/* Add dropdown option */}

@@ -43,7 +43,9 @@ export default function HomePage() {
                     <label className="amt-collected-month-content">10086</label>
                 </div>
 
-                <div class="amt-collected-today-div">
+                <div class="amt-collected-today-div"
+                onClick={() => navigate("/dailyReport")}
+                >
                     <label className="amt-collected-today-content">{t("HO_lbl_Daily")}</label>
                     <label className="amt-collected-today-content">2100</label>
                 </div>

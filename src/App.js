@@ -6,6 +6,7 @@ import SelectLanguage from "./views/SelectLanguage";
 import Customer from "./views/Customer";
 import Navbar from "./components/navbar";
 import MonthReport from "./views/MonthlyReport";
+import DailyReport from "./views/DailyReport";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route path="/customer" element={<Customer/>}/>
         <Route path="/customerDrawer" element={<customerDrawer/>}/>
         <Route path="/monthlyReport" element={<MonthReport/>}/>
+        <Route path="/dailyReport" element={<DailyReport/>}/>
       </Routes>
     </BrowserRouter>
   );
