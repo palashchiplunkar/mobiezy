@@ -2,7 +2,7 @@ import React from "react";
 import { RiCalendarEventFill } from "react-icons/ri";
 import OwnerData from "../components/ownerdatadiv";
 
-import "../css/Report.css";
+import "../css/MonthlyReport.css";
 
 export default function DailyReport() {
     const handletodate = () => {
@@ -14,9 +14,9 @@ export default function DailyReport() {
 
     const ownerdata = [
         {
-            ownerid: "MR14012",
-            ownername: "Deepak Kumar",
-            owneramt: "778",
+            ownerid: "KS00567",
+            ownername: "Raghavendra Ganiga",
+            owneramt: "55",
         },
         {
             ownerid: "JB0213",
@@ -27,16 +27,6 @@ export default function DailyReport() {
             ownerid: "BG70279",
             ownername: "Dinesh Kumar",
             owneramt: "578",
-        },
-        {
-            ownerid: "KS00567",
-            ownername: "Raghavendra Ganiga",
-            owneramt: "55",
-        },
-        {
-            ownerid: "PB700214",
-            ownername: "Gurmeet Singh",
-            owneramt: "394",
         },
     ];
 
