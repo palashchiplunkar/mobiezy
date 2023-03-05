@@ -71,8 +71,8 @@
     border-bottom: 2px solid #1e90ff;
     background: transparent;
     font-size: 16px;
-    width: 85%;
-    margin-left: -10%;
+    width: 100%;
+    margin-left: 5%;
     padding: 2% 0% 0% 0%;
 }
 
@@ -84,7 +84,7 @@
     height: 20px;
     margin-top: 18%;
     margin-bottom: 5px;
-    margin-left: 120px;
+    margin-left: 150px;
 }
 
 .to-date {
@@ -103,7 +103,7 @@
     font-size: 12px;
     line-height: 133%;
     color: #333333;
-    margin-left: -83%;
+    margin-left: -112%;
     margin-bottom: 0;
 }
 
@@ -118,8 +118,8 @@
     border-bottom: 2px solid #1e90ff;
     outline: none;
     background: transparent;
-    width: 85%;
-    margin-right: 45%;
+    width: 100%;
+    margin-right: 60%;
     padding: 2% 0% 0% 0%;
 }
 
