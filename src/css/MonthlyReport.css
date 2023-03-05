@@ -309,10 +309,6 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 }
 
 .print-report-btn {
-    /* display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center; */
     font-family: "Noto Sans";
     font-style: normal;
     font-weight: 700;
