@@ -247,7 +247,7 @@ export default function Customer() {
                             <div>
                                 <input
                                     type={"radio"}
-                                    name={"lang"}
+                                    name={"sort-by"}
                                     value={"English"}
                                     id={"English"}
                                     className="DrawerRadioButtons"
@@ -263,7 +263,7 @@ export default function Customer() {
                             <div>
                                 <input
                                     type={"radio"}
-                                    name={"lang"}
+                                    name={"sort-by"}
                                     value={"English"}
                                     id={"English"}
                                     className="DrawerRadioButtons"
@@ -287,7 +287,7 @@ export default function Customer() {
                             <div>
                                 <input
                                     type={"radio"}
-                                    name={"lang"}
+                                    name={"sort-type"}
                                     value={"English"}
                                     id={"English"}
                                     className="DrawerRadioButtons"
@@ -303,7 +303,7 @@ export default function Customer() {
                             <div>
                                 <input
                                     type={"radio"}
-                                    name={"lang"}
+                                    name={"sort-type"}
                                     value={"English"}
                                     id={"English"}
                                     className="DrawerRadioButtons"
