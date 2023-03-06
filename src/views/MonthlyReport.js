@@ -12,7 +12,7 @@ export default function MonthReport() {
         todateInput.dispatchEvent(new MouseEvent("click", { bubbles: true }));
     };
     const handlefromdate = () =>{
-        const fromdateInput = document.getElementById("fromdate");
+        const fromdateInput = document.getElementById("fromdateinp");
         fromdateInput.focus();
 
         fromdateInput.dispatchEvent(new MouseEvent("click", { bubbles: true }));
@@ -75,9 +75,9 @@ export default function MonthReport() {
             <div className="date-report">
                 <div className="from-date">
                     <p className="from-date-label">From Date</p>
-                    <input className="from-date-input" type="date" id="fromdate" />
+                    <input className="from-date-input" type="date" id="fromdateinp" />
                     <RiCalendarEventFill className="from-date-calender-icon" 
-                        onclick={handlefromdate}
+                        onClick={handlefromdate}
                     />
                 </div>
 
