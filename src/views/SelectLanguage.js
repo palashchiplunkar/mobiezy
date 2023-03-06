@@ -13,7 +13,6 @@ import i18next from "i18next";
 import cookie from "js-cookie";
 import { useEffect, useState } from "react";
 import { confirmAlert } from "react-confirm-alert";
-
 import "../css/alert_popup.css";
 import "reactjs-popup/dist/index.css";
 import "../css/SelectLanguage.css";
