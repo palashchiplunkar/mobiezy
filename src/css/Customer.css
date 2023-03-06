@@ -240,12 +240,60 @@
 
 .DrawerTitle {
     position: relative;
-    margin-bottom: 20px;
     font-family: "Noto Sans", sans-serif;
-    font-weight: 800;
+    font-style: normal;
+    font-weight: 700;
     font-size: 20px;
-    line-height: 28px;
+    line-height: 140%;
     color: #000000;
+    margin-bottom: 20px;
+}
+
+.SortOptionsContent {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    position: relative;
+}
+
+.SortOptionsLabel {
+    position: relative;
+    font-family: "Noto Sans";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 22px;
+    letter-spacing: -0.16px;
+    color: #333333;
+}
+
+.DrawerSortColumn {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    /* vertical-align: middle; */
+}
+
+.DrawerRadioButtons {
+    position: relative;
+    width: 20px;
+    height: 20px;
+    color: #0090da;
+}
+
+.DrawerRadioLabel {
+    position: relative;
+    font-family: "Noto Sans";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 22px;
+    letter-spacing: 0.2px;
+    color: #333333;
+    margin-left: 12px;
+    margin-right: 15px;
+    vertical-align:top;
 }
 
 .Switch-unchecked {
@@ -274,43 +322,6 @@
     color: #ffffff;
     padding-left: 4px;
     line-height: 27px;
-}
-
-.SortOptionsLabel {
-    position: relative;
-}
-
-.SortOptionsContent {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    position: relative;
-}
-
-.DrawerRadioButtons {
-    position: relative;
-    left: 20px;
-    width: 20px;
-    height: 20px;
-    color: #0090da;
-}
-
-.DrawerRadioLabel {
-    font-family: "Noto Sans";
-    font-style: normal;
-    font-weight: 400;
-    font-size: 16px;
-    letter-spacing: 0.2px;
-    margin-left: 30px;
-
-    color: #333333;
-}
-
-.DrawerSortColumn {
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    justify-content: flex-start;
 }
 
 .DrawerSubmitButton {
