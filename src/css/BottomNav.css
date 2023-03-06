@@ -5,13 +5,9 @@
     justify-content: space-evenly;
     background-color: #FFFFFF;
     position: fixed !important;
-    /* margin-left:5% ;
-    margin-right: 5%;
-    width:90%; */
     width:100%;
     bottom: 0;
     padding: 0px 20px 0px 20px !important;
- 
     box-shadow: 0px -2px 12px rgba(0, 0, 0, 0.08);
 }
 

@@ -9,18 +9,24 @@
 }
 
 .cotainer {
+    position: relative;
     height: 100%;
 }
 
 .header-blue {
-    position: relative;
-    display: flex;
+    position: absolute;
+    /* display: flex;
     flex-direction: column;
-    object-fit: contain;
-    height: 15vh;
+    object-fit: contain; */
+    height: 20vh;
     background: #0090da;
     width: 100%;
     background-color: #0090da;
+    right: 10px;
+    /* padding-right: 5px; */
+    /* margin-right: 10px !important; */
+    /* left: 10px; */
+    /* margin-right: 100px !important; */
 }
 
 .area-div {
@@ -66,7 +72,7 @@
     z-index: 0;
 }
 
-.area-dropdown::placeholder{
+.area-dropdown::placeholder {
     color: white;
 }
 
@@ -106,6 +112,10 @@
 }
 
 /* Card */
+
+.customer-card-div {
+    overflow-y: scroll;
+}
 
 .card-div {
     position: relative;
@@ -175,7 +185,6 @@
 .card-line3-div {
     display: flex;
     justify-content: space-between;
-
 }
 
 .card-phone-p {
@@ -231,14 +240,13 @@
 .DrawerTitle {
     position: relative;
     margin-bottom: 20px;
-    font-family: 'Noto Sans',sans-serif;
-
+    font-family: "Noto Sans", sans-serif;
     font-weight: 800;
     font-size: 20px;
     line-height: 28px;
-
     color: #000000;
 }
+
 .Switch-unchecked {
     display: "flex";
     justify-content: "center";
@@ -252,6 +260,7 @@
     padding-left: 2px;
     line-height: 27px;
 }
+
 .Switch-checked {
     display: "flex";
     justify-content: "center";
@@ -265,64 +274,73 @@
     padding-left: 4px;
     line-height: 27px;
 }
+
 .SortOptionsLabel {
     position: relative;
 }
+
 .SortOptionsContent {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     position: relative;
 }
-.DrawerRadioButtons{
-    position: relative;
-    left:20px;
-    width:20px;
-    height:20px;
-    color:#0090DA;
-}
-.DrawerRadioLabel{
-font-family: 'Noto Sans';
-font-style: normal;
-font-weight: 400;
-font-size: 16px;
-letter-spacing: 0.2px;
-margin-left: 30px;
 
-color: #333333;
+.DrawerRadioButtons {
+    position: relative;
+    left: 20px;
+    width: 20px;
+    height: 20px;
+    color: #0090da;
 }
-.DrawerSortColumn{
+
+.DrawerRadioLabel {
+    font-family: "Noto Sans";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    letter-spacing: 0.2px;
+    margin-left: 30px;
+
+    color: #333333;
+}
+
+.DrawerSortColumn {
     display: flex;
     flex-direction: row;
     align-items: flex-start;
     justify-content: flex-start;
 }
-.DrawerSubmitButton{
+
+.DrawerSubmitButton {
     display: flex;
+    position: relative;
     flex-direction: row;
     justify-content: center;
     align-items: center;
+    color: #ffffff;
+    background: #0090da;
+    font-family: "Noto Sans", sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 19px;
+    letter-spacing: 1px;
     padding: 15px 105px;
     gap: 8px;
     border: none;
-    position: relative;
     width: 224px;
     height: 48px;
     left: calc(50% - 224px / 2);
-    top:30px;
-color:#ffffff;
-font-family: "Noto Sans", sans-serif;
-font-style: normal;
-font-weight: 700;
-font-size: 14px;
-line-height: 19px;
-letter-spacing: 1px;
-    background: #0090da;
+    top: 60px;
+    bottom: auto;
     border-radius: 20px;
 }
-.drawer{
-    height: 70%;
+
+.drawer {
+    height: 80%;
 }
+
 .drawer__content {
     max-height: 100% !important;
     overflow-y: visible !important;

@@ -1,11 +1,12 @@
 import React from "react";
 import { RiSortDesc } from "react-icons/ri";
 import Navbar from "../components/navbar";
-import "../css/Customer.css";
 import { useState } from "react";
 import Drawer from "react-bottom-drawer";
 import Switch from "react-switch";
 import { TfiMobile } from "react-icons/tfi";
+
+import "../css/Customer.css";
 
 export default function Customer() {
     const [isVisible, setIsVisible] = useState(false);
@@ -209,7 +210,9 @@ export default function Customer() {
                     </div>
                 </div>
 
-                <Customers />
+                <div className="customer-card-div">
+                    <Customers/>
+                </div>  
 
                 <Drawer
                     isVisible={isVisible}
