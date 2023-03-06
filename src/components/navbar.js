@@ -1,9 +1,9 @@
 import { BottomNavigation, BottomNavigationAction } from "@mui/material";
-import { useState } from "react";
 import { AiFillHome } from "react-icons/ai";
 import { BiUserCircle } from "react-icons/bi";
 import { FiMoreHorizontal } from "react-icons/fi";
 import { Link, useNavigate } from "react-router-dom";
+
 import "../css/BottomNav.css";
 
 const Navbar = ({ value }) => {
