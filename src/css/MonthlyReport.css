@@ -333,5 +333,5 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  margin-bottom: 5%;
+  margin-bottom: 12%;
 }
