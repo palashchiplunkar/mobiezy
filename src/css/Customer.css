@@ -14,19 +14,17 @@
 }
 
 .header-blue {
-    position: absolute;
-    /* display: flex;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 1%;
+    display: flex;
     flex-direction: column;
-    object-fit: contain; */
+    object-fit: contain;
     height: 20vh;
     background: #0090da;
-    width: 100%;
+    width: 98%;
     background-color: #0090da;
-    right: 10px;
-    /* padding-right: 5px; */
-    /* margin-right: 10px !important; */
-    /* left: 10px; */
-    /* margin-right: 100px !important; */
 }
 
 .area-div {
@@ -114,6 +112,9 @@
 /* Card */
 
 .customer-card-div {
+    z-index: -1;
+    margin-top: 20vh;
+    margin-bottom: 10vh;
     overflow-y: scroll;
 }
 
