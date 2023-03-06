@@ -66,6 +66,11 @@ body.react-confirm-alert-body-element {
     justify-content: flex-start;
     margin-top: 20px;
   }
+
+  .react-confirm-alert-body{
+    width:40vh;
+
+  }
   
   .react-confirm-alert-button-group > button {
     outline: none;

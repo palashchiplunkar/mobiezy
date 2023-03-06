@@ -1,7 +1,6 @@
 import React from "react";
 import { RiCalendarEventFill } from "react-icons/ri";
 import OwnerData from "../components/ownerdatadiv";
-
 import "../css/MonthlyReport.css";
 
 export default function DailyReport() {
