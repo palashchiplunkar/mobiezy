@@ -4,7 +4,6 @@ import { useRef, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import loginAPI from "../services/authApi";
-
 import "../css/LoginStyles.css";
 
 export default function LoginPage() {
@@ -15,9 +14,11 @@ export default function LoginPage() {
     const [rememberMe, setRememberMe] = useState(false);
     useEffect(() => {
         const user = localStorage.getItem("user");
+       
         if (user) {
             navigate('/home');
         }
+        
     }, []);
 
     const handleSubmit = (e) => {
@@ -40,6 +41,7 @@ export default function LoginPage() {
                 if(rememberMe) {
                     localStorage.setItem("user", user); 
                 }
+                
                 
                 navigate('/home');
 

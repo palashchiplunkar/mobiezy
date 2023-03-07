@@ -21,6 +21,7 @@
     "react-bootstrap": "^2.7.2",
     "react-bottom-drawer": "^0.1.1",
     "react-confirm-alert": "^3.0.6",
+    "react-cookie": "^4.1.1",
     "react-dom": "^18.2.0",
     "react-hamburger-drawer": "^21.11.19",
     "react-i18next": "^12.2.0",
