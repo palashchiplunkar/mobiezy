@@ -12,9 +12,7 @@ export default function LoginPage() {
 
     const [user, setUser] = useState('');
     const [pwd, setPwd] = useState('');
-    // check if remberme is selected
     const [rememberMe, setRememberMe] = useState(false);
-    // check if user is logged in using localstorage
     useEffect(() => {
         const user = localStorage.getItem("user");
         if (user) {
