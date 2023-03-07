@@ -10,24 +10,20 @@ import {useState, useEffect} from "react";
 export default function HomePage() {
     const { t } = useTranslation();
     const navigate = useNavigate();
-    // use api to get data
-    // const [data, setData] = useState({});
     const [data, setData] = useState(JSON.parse(localStorage.getItem("homedata")) || {});
-    
+    let count=1;
     useEffect(() => {
-
         loginAPI.post("/getagentsummary", {"agent_id":"11276"})
         .then((response) => {
             console.log(response.data.report[0])
             if (response.data.report[0]) {
                 setData(response.data.report[0]);
             }
-            localStorage.setItem("homedata", JSON.stringify(response.data.report[0]));
-            
+            localStorage.setItem("homedata", JSON.stringify(response.data.report[0])); 
         })
         .catch((e) => {
             console.log(e)
-            alert(e.message);
+            // alert(e.message);
         })
     }, []);
 
