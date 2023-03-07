@@ -4,7 +4,9 @@ import { useRef, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import loginAPI from "../services/authApi";
+import cookie from "js-cookie";
 import "../css/LoginStyles.css";
+
 
 export default function LoginPage() {
     const navigate = useNavigate();
@@ -18,6 +20,8 @@ export default function LoginPage() {
         if (user) {
             navigate('/home');
         }
+       
+       
         
     }, []);
 

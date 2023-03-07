@@ -3,6 +3,7 @@ import { BiMenu } from "react-icons/bi";
 import "../css/HamNav.css";
 import { useNavigate } from "react-router-dom";
 
+
 const MobileNavigation = () => {
     const [open, setOpen] = useState(false);
     const toggleNavbar = () => setOpen(!open);
