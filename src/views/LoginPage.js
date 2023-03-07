@@ -1,4 +1,5 @@
 import React from "react";
+import axios from "axios"
 import { useRef, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
@@ -11,6 +12,15 @@ export default function LoginPage() {
 
     const [user, setUser] = useState('');
     const [pwd, setPwd] = useState('');
+    // check if remberme is selected
+    const [rememberMe, setRememberMe] = useState(false);
+    // check if user is logged in using localstorage
+    useEffect(() => {
+        const user = localStorage.getItem("user");
+        if (user) {
+            navigate('/home');
+        }
+    }, []);
 
     const handleSubmit = (e) => {
 
@@ -29,7 +39,12 @@ export default function LoginPage() {
             }
 
             else {
+                if(rememberMe) {
+                    localStorage.setItem("user", user); 
+                }
+                
                 navigate('/home');
+
             }
         })
 
@@ -76,7 +91,11 @@ export default function LoginPage() {
                 />
 
                 <div className="remember-me-div">
-                    <input className="rmcb" type="checkbox" />
+                    <input className="rmcb" type="checkbox" id="remberme"
+                        onChange={(e) => setRememberMe(e.target.checked)}
+                        value={rememberMe}
+
+                    />
                     <label class="rememberme">{t("LP_lbl_Remember_Me")}</label>
                 </div>
 
