@@ -11,7 +11,11 @@ const MobileNavigation = () => {
         navigate("/select");
         toggleNavbar();
     };
-
+    const handleLogout = () => {
+        localStorage.removeItem("user");
+        navigate("/");
+    };
+    
     let navRef = useRef();
 
     useEffect(() => {
@@ -79,7 +83,9 @@ const MobileNavigation = () => {
                             className="ham-drawer__body__item__arrow"
                         />
                     </div>
-                    <div className="ham-drawer__body__item">
+                    <div className="ham-drawer__body__item"
+                        onClick={handleLogout}
+                    >
                         <p className="ham-drawer__body__item__text">Logout</p>
                         <img
                             src={require("../assets/side_arrow.png")}
