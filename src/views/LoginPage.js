@@ -1,5 +1,5 @@
 import React from "react";
-import { useRef, useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import loginAPI from "../services/authApi";
@@ -16,7 +16,7 @@ export default function LoginPage() {
 
     useEffect(() => {
         const user = localStorage.getItem("user");
-        
+
         if (user) {
             navigate("/home");
         }
@@ -27,6 +27,7 @@ export default function LoginPage() {
             toast.error("Please enter username and password");
             return;
         }
+
         loginAPI
             .post("cableguy2-mobile-user-login-new", {
                 freshInstall: "N",
@@ -41,7 +42,10 @@ export default function LoginPage() {
                 if (response.data.messageText === "UNAUTHORIZED") {
                     toast.error("Invalid username or password");
                     navigate("/");
-                } else {
+                } 
+                
+                else {
+                    
                     if (rememberMe) {
                         localStorage.setItem("user", user);
                     }
@@ -83,7 +87,9 @@ export default function LoginPage() {
                         value={user}
                     />
 
-                    <label className="passwd-label">{t("LP_lbl_Password")}</label>
+                    <label className="passwd-label">
+                        {t("LP_lbl_Password")}
+                    </label>
                     <input
                         required={true}
                         type="password"
@@ -102,11 +108,16 @@ export default function LoginPage() {
                             onChange={(e) => setRememberMe(e.target.checked)}
                             value={rememberMe}
                         />
-                        <label className="rememberme">{t("LP_lbl_Remember_Me")}</label>
+                        <label className="rememberme">
+                            {t("LP_lbl_Remember_Me")}
+                        </label>
                     </div>
 
                     <div className="login-btn-div">
-                        <button className="loginBtn" onClick={() => handleSubmit()}>
+                        <button
+                            className="loginBtn"
+                            onClick={() => handleSubmit()}
+                        >
                             {t("LP_Button_Login")}
                         </button>
                     </div>
