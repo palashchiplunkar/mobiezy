@@ -7,6 +7,7 @@ import Customer from "./views/Customer";
 import Navbar from "./components/navbar";
 import MonthReport from "./views/MonthlyReport";
 import DailyReport from "./views/DailyReport";
+import MoreOptions from "./views/MoreOptions";
 
 function App() {
   return (
@@ -19,6 +20,9 @@ function App() {
         <Route path="/customerDrawer" element={<customerDrawer/>}/>
         <Route path="/monthlyReport" element={<MonthReport/>}/>
         <Route path="/dailyReport" element={<DailyReport/>}/>
+        <Route path="/dailyReport" element={<DailyReport/>}/>
+        <Route path="/more" element={<MoreOptions/>}/>
+
       </Routes>
     </BrowserRouter>
   );

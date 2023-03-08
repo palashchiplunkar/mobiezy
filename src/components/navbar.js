@@ -31,6 +31,8 @@ const Navbar = ({ value }) => {
           label="More"
           icon={<FiMoreHorizontal />}
           showLabel={true}
+          LinkComponent={Link}
+          to="/more"
         />
       </BottomNavigation>
     </div>

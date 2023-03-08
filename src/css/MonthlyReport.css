@@ -9,7 +9,7 @@
 
 .headerblue-report {
   background-color: #1e90ff;
-  height: 10vh;
+  height: 15vh;
   width: 100%;
   display: flex;
   align-items: center;
@@ -25,7 +25,7 @@
   display: flex;
   align-items: center;
   text-align: center;
-  letter-spacing: 0.2px;
+  letter-spacing: 1px;
   color: #ffffff;
   margin-top: 8%;
   margin-bottom: 8%;

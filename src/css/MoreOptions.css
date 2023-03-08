@@ -1,0 +1,41 @@
+.OptionsContainer{
+    display: grid;
+    margin-top: 20%;
+    grid-template-columns: auto auto auto;
+}
+
+.EachOption{
+    width: 100px;
+    height: 100px;
+    margin: 20%;
+    overflow: hidden;
+    background-color: #D9D9D9;
+    border-radius: 20px;
+    border-image: linear-gradient(to right, #0090da, #a4ce4e) 1;
+    border: 2px solid transparent;
+    background-image: linear-gradient(#D9D9D9, #D9D9D9),
+      linear-gradient(to bottom right, #0090da, #a4ce4e);
+    background-origin: border-box;
+    background-clip: content-box, border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.EachOption p{
+    width: 60%;
+    text-align: center;
+    font-family: 'Noto Sans';
+font-style:normal;
+font-weight: 700;
+font-size: 11px;
+line-height: 12px;
+display: flex;
+align-items: center;
+text-align: center;
+
+color: #333333;
+}
+.EachOption img{
+    margin-top: 10%;
+}
