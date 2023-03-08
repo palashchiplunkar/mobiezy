@@ -43,8 +43,9 @@
 .user_name {
     position: relative;
     height: 31px;
-    left: 5vb;
-    margin-right: 30%;
+    left: 4vh;
+    margin-right: 40%;
+    margin-bottom: 0%;
     top: 7vh;
     font-family: "Noto Sans";
     font-style: normal;
