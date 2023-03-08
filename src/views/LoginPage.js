@@ -4,7 +4,12 @@ import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import loginAPI from "../services/authApi";
 import "../css/LoginStyles.css";
+<<<<<<< HEAD
 
+=======
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+>>>>>>> e61cac11d1835c6ba5b44e360790f8bc7d680216
 export default function LoginPage() {
     const navigate = useNavigate();
 
@@ -22,6 +27,7 @@ export default function LoginPage() {
     }, []);
 
     const handleSubmit = (e) => {
+<<<<<<< HEAD
         loginAPI
             .post("cableguy2-mobile-user-login-new", {
                 freshInstall: "N",
@@ -36,6 +42,34 @@ export default function LoginPage() {
                 if (response.data.messageText === "UNAUTHORIZED") {
                     navigate("/");
                 } else {
+=======
+        if(user === "" || pwd === "") {
+            toast.error("Please enter username and password");
+            return 
+        }
+        loginAPI.post("cableguy2-mobile-user-login-new", {
+            freshInstall: "N",
+            appVersion: "2.0.63",
+            device_id: "2714",
+            username: user,
+            password: pwd,
+        })
+
+        .then((response) => {
+            console.log(response)
+            if(response.data.messageText === "UNAUTHORIZED") {
+                toast.error("Invalid username or password");
+                navigate('/');
+            }
+           
+            else {
+               
+                if(rememberMe) {
+                    localStorage.setItem("user", user); 
+                }
+                // use async
+                navigate('/home');
+>>>>>>> e61cac11d1835c6ba5b44e360790f8bc7d680216
 
                     if (rememberMe) {
                         localStorage.setItem("user", user);
@@ -107,7 +141,9 @@ export default function LoginPage() {
                 {/* </form> */}
 
                 <p className="version">{t("LP_lbl_Version")}</p>
+               
             </div>
+            <ToastContainer />  
         </div>
     );
 }
