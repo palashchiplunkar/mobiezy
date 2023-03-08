@@ -1,10 +1,15 @@
 import React from "react";
 
-export default function collectPayment(){
+import "../css/CollectPayment.css";
 
-    return(
+export default function collectPayment() {
+    return (
         <div className="container">
-            <p>Hello</p>
+            <img className="home-bg-img" src={require("../assets/BG.JPG")} />
+
+            <div className="header-blue">
+                
+            </div>
         </div>
     );
 }

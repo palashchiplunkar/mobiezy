@@ -1,0 +1,23 @@
+.home-bg-img {
+    position: fixed;
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    top: 0;
+    opacity: 0.4;
+}
+
+.header-blue {
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 1%;
+    display: flex;
+    flex-direction: column;
+    object-fit: contain;
+    height: 20vh;
+    background: #0090da;
+    width: 98%;
+    background-color: #0090da;
+}
