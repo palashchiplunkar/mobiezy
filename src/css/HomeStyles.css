@@ -46,7 +46,7 @@
     left: 4vh;
     margin-right: 40%;
     margin-bottom: 0%;
-    top: 7vh;
+    top: 6vh;
     font-family: "Noto Sans";
     font-style: normal;
     font-weight: 700;
@@ -69,7 +69,7 @@
     margin-left: 26px;
     margin-right: 26px;
     gap: 10px;
-    margin-top: 20%;
+    margin-top: 15%;
 }
 
 .amt-due-today-content {
