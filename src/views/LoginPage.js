@@ -6,10 +6,12 @@ import loginAPI from "../services/authApi";
 import "../css/LoginStyles.css";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import ReactLoading from 'react-loading';
 
 export default function LoginPage() {
     const navigate = useNavigate();
-
+    const [isLoading, setIsLoading] = useState(false);
+    const [Error, setError] = useState("")
     const [user, setUser] = useState("");
     const [pwd, setPwd] = useState("");
     const [rememberMe, setRememberMe] = useState(false);
@@ -21,10 +23,21 @@ export default function LoginPage() {
             navigate("/home");
         }
     }, []);
-
+    const onchangeuser=(value)=>{
+        setUser(value)
+        setError("")
+    }
+    const onchangepass=(value)=>{
+        setPwd(value)
+        setError("")
+    }
     const handleSubmit = (e) => {
+        setIsLoading(true)
         if (user === "" || pwd === "") {
-            toast.error("Please enter username and password");
+            // toast.error("Please enter username and password");
+            setError("Please enter Username or Password")
+            setIsLoading(false)
+
             return;
         }
 
@@ -40,7 +53,8 @@ export default function LoginPage() {
             .then((response) => {
                 console.log(response);
                 if (response.data.messageText === "UNAUTHORIZED") {
-                    toast.error("Invalid username or password");
+                    // toast.error("Invalid username or password");
+                    setError("Invalid Username or Password")
                     navigate("/");
                 } 
                 
@@ -53,11 +67,14 @@ export default function LoginPage() {
                     navigate("/home");
 
                 }
+                setIsLoading(false)
             })
 
             .catch((e) => {
                 console.log(e);
-                alert(e.message);
+                setError(e.message)
+                setIsLoading(false)
+                //alert(e.message);
             });
     };
 
@@ -83,8 +100,9 @@ export default function LoginPage() {
                         autoComplete="off"
                         className="username"
                         placeholder={t("LP_data_UserName")}
-                        onChange={(e) => setUser(e.target.value)}
+                        onChange={(e) => onchangeuser(e.target.value)}
                         value={user}
+                        style={{borderBottomColor: Error? "red":"#333333"}}
                     />
 
                     <label className="passwd-label">
@@ -96,10 +114,12 @@ export default function LoginPage() {
                         autoComplete="off"
                         className="passwd"
                         placeholder={t("LP_data_Password")}
-                        onChange={(e) => setPwd(e.target.value)}
+                        onChange={(e) => onchangepass(e.target.value)}
                         value={pwd}
-                    />
+                        style={{borderBottomColor: Error? "red":"#333333"}}
 
+                    />
+                    {Error && <p style={{color:"red",textAlign:'center',position:'relative',marginTop:'5%'}}>{Error}</p>}
                     <div className="remember-me-div">
                         <input
                             className="rmcb"
@@ -120,10 +140,16 @@ export default function LoginPage() {
                         >
                             {t("LP_Button_Login")}
                         </button>
-                    </div>
-                {/* </form> */}
 
+                    </div>
+
+                {/* </form> */}
                 <p className="version">{t("LP_lbl_Version")}</p>
+
+                <div style={{display:'flex',justifyContent:'center'}}>
+                {isLoading && <ReactLoading type={"bubbles"} color={"#0090da"} height={75} width={75} />}
+                </div>
+
             </div>
             <ToastContainer />
         </div>

@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route,redirect, Navigate } from "react-router-dom";
 import LoginPage from "./views/LoginPage";
 import HomePage from "./views/HomePage";
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -11,12 +11,15 @@ import MoreOptions from "./views/MoreOptions";
 import AreaWiseReport from "./views/AreaWiseReport";
 
 function App() {
+  const isAuthenticated=!!localStorage.getItem("user")
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<LoginPage/>}/>
         <Route path="/select" element={<SelectLanguage/>}/>
-        <Route path="/home" element={<HomePage/>}/>
+       
+        <Route path="/home" element={<HomePage/> }/>
+
         <Route path="/customer" element={<Customer/>}/>
         <Route path="/customerDrawer" element={<customerDrawer/>}/>
         <Route path="/monthlyReport" element={<MonthReport/>}/>
