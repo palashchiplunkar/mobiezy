@@ -1,17 +1,19 @@
 import React from "react";
-import axios from "axios";
 import Navbar from "../components/navbar";
-import "../css/HomeStyles.css";
 import MobileNavigation from "../components/hamnavigation";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 import loginAPI from "../services/authApi";
 import { useState, useEffect } from "react";
+
+import "../css/HomeStyles.css";
+
 export default function HomePage() {
+
     const { t } = useTranslation();
     const navigate = useNavigate();
-    const [data, setData] = useState(
-        JSON.parse(localStorage.getItem("homedata")) || {}
+    const [data, setData] = useState({}
+        // JSON.parse(localStorage.getItem("homedata")) || {}
     );
 
     useEffect(() => {
@@ -22,10 +24,11 @@ export default function HomePage() {
                 if (response.data.report[0]) {
                     setData(response.data.report[0]);
                 }
-                localStorage.setItem(
-                    "homedata",
-                    JSON.stringify(response.data.report[0])
-                );
+
+                // localStorage.setItem(
+                //     "homedata",
+                //     JSON.stringify(response.data.report[0])
+                // );
             })
 
             .catch((e) => {
