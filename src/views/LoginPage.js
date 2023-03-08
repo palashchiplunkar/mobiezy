@@ -16,18 +16,18 @@ export default function LoginPage() {
 
     useEffect(() => {
         const user = localStorage.getItem("user");
-        
+
         if (user) {
             navigate("/home");
         }
     }, []);
 
     const handleSubmit = (e) => {
-
         if (user === "" || pwd === "") {
             toast.error("Please enter username and password");
             return;
         }
+
         loginAPI
             .post("cableguy2-mobile-user-login-new", {
                 freshInstall: "N",
@@ -42,7 +42,10 @@ export default function LoginPage() {
                 if (response.data.messageText === "UNAUTHORIZED") {
                     toast.error("Invalid username or password");
                     navigate("/");
-                } else {
+                } 
+                
+                else {
+                    
                     if (rememberMe) {
                         localStorage.setItem("user", user);
                     }
@@ -77,7 +80,7 @@ export default function LoginPage() {
                     src={require("../assets/MobiCable.jpg")}
                 />
 
-                <form className="login">
+                {/* <form className="login"> */}
                     <label className="user-label">{t("LP_lbl_UserName")}</label>
                     <input
                         required={true}
@@ -89,7 +92,9 @@ export default function LoginPage() {
                         value={user}
                     />
 
-                    <label className="passwd-label">{t("LP_lbl_Password")}</label>
+                    <label className="passwd-label">
+                        {t("LP_lbl_Password")}
+                    </label>
                     <input
                         required={true}
                         type="password"
@@ -108,15 +113,20 @@ export default function LoginPage() {
                             onChange={(e) => setRememberMe(e.target.checked)}
                             value={rememberMe}
                         />
-                        <label className="rememberme">{t("LP_lbl_Remember_Me")}</label>
+                        <label className="rememberme">
+                            {t("LP_lbl_Remember_Me")}
+                        </label>
                     </div>
 
                     <div className="login-btn-div">
-                        <button className="loginBtn" onClick={() => handleSubmit()}>
+                        <button
+                            className="loginBtn"
+                            onClick={() => handleSubmit()}
+                        >
                             {t("LP_Button_Login")}
                         </button>
                     </div>
-                </form>
+                {/* </form> */}
 
                 <p className="version">{t("LP_lbl_Version")}</p>
             </div>

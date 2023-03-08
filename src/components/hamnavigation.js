@@ -7,7 +7,7 @@ const MobileNavigation = () => {
     const [open, setOpen] = useState(false);
     const toggleNavbar = () => setOpen(!open);
     const navigate = useNavigate();
-    
+
     const handleLanguageBar = () => {
         navigate("/select");
         toggleNavbar();
