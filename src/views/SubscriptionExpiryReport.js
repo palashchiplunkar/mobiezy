@@ -22,51 +22,7 @@ export default function SubscriptionExpiryReport() {
             expiryDate: "2021-08-31",
             daysAway: "2",
         },
-        {
-            count: "1",
-            expiryDate: "2021-08-31",
-            daysAway: "2",
-        },
-        {
-            count: "1",
-            expiryDate: "2021-08-31",
-            daysAway: "2",
-        },
-        {
-            count: "1",
-            expiryDate: "2021-08-31",
-            daysAway: "2",
-        },
-        {
-            count: "1",
-            expiryDate: "2021-08-31",
-            daysAway: "2",
-        },
-        {
-            count: "1",
-            expiryDate: "2021-08-31",
-            daysAway: "2",
-        },
-        {
-            count: "1",
-            expiryDate: "2021-08-31",
-            daysAway: "2",
-        },
-        {
-            count: "1",
-            expiryDate: "2021-08-31",
-            daysAway: "2",
-        },
-        {
-            count: "1",
-            expiryDate: "2021-08-31",
-            daysAway: "2",
-        },
-        {
-            count: "1",
-            expiryDate: "2021-08-31",
-            daysAway: "2",
-        }
+       
     ]
     let count=0;
     const subExpiryList = () => {
