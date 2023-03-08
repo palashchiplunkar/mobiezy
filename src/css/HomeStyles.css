@@ -37,20 +37,21 @@
     margin-left: auto;
     margin-right: auto;
     position: absolute;
-    top: 12vh;
+    top: 15vh;
 }
 
 .user_name {
-    position: relative;
+    position: absolute;
     height: 31px;
-    left: 4vh;
-    top: 7vh;
+    left: 0%;
+    right: 63.8%;
+    top: 25%;
     font-family: "Noto Sans";
     font-style: normal;
     font-weight: 700;
     font-size: 16px;
     line-height: 23px;
-    text-align: left;
+    text-align: center;
     color: #333333;
 }
 
