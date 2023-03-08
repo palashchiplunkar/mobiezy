@@ -7,7 +7,6 @@ import loginAPI from "../services/authApi";
 import cookie from "js-cookie";
 import "../css/LoginStyles.css";
 
-
 export default function LoginPage() {
     const navigate = useNavigate();
 
@@ -26,7 +25,6 @@ export default function LoginPage() {
     }, []);
 
     const handleSubmit = (e) => {
-
         loginAPI.post("cableguy2-mobile-user-login-new", {
             freshInstall: "N",
             appVersion: "2.0.63",
