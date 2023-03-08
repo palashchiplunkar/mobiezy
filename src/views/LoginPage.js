@@ -1,66 +1,67 @@
 import React from "react";
-import axios from "axios"
 import { useRef, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import loginAPI from "../services/authApi";
-import cookie from "js-cookie";
 import "../css/LoginStyles.css";
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 export default function LoginPage() {
     const navigate = useNavigate();
 
-    const [user, setUser] = useState('');
-    const [pwd, setPwd] = useState('');
+    const [user, setUser] = useState("");
+    const [pwd, setPwd] = useState("");
     const [rememberMe, setRememberMe] = useState(false);
+
     useEffect(() => {
         const user = localStorage.getItem("user");
-       
+
         if (user) {
-            navigate('/home');
+            navigate("/home");
         }
-       
-       
-        
     }, []);
 
     const handleSubmit = (e) => {
-        if(user === "" || pwd === "") {
+        if (user === "" || pwd === "") {
             toast.error("Please enter username and password");
-            return 
+            return;
         }
-        loginAPI.post("cableguy2-mobile-user-login-new", {
-            freshInstall: "N",
-            appVersion: "2.0.63",
-            device_id: "2714",
-            username: user,
-            password: pwd,
-        })
+        loginAPI
+            .post("cableguy2-mobile-user-login-new", {
+                freshInstall: "N",
+                appVersion: "2.0.63",
+                device_id: "2714",
+                username: user,
+                password: pwd,
+            })
 
-        .then((response) => {
-            console.log(response)
-            if(response.data.messageText === "UNAUTHORIZED") {
-                toast.error("Invalid username or password");
-                navigate('/');
-            }
-            
-            else {
-                
-                if(rememberMe) {
-                    localStorage.setItem("user", user); 
+            .then((response) => {
+                console.log(response);
+                if (response.data.messageText === "UNAUTHORIZED") {
+                    toast.error("Invalid username or password");
+                    navigate("/");
+                } else {
+                    if (rememberMe) {
+                        localStorage.setItem("user", user);
+                    }
+                    // use async
+                    navigate("/home");
+
+                    if (rememberMe) {
+                        localStorage.setItem("user", user);
+                    }
+
+                    navigate("/home");
                 }
-                // use async
-                navigate('/home');
+            })
 
-            }
-        })
-
-        .catch((e) => {
-            console.log(e)
-            alert(e.message);
-        })
+            .catch((e) => {
+                console.log(e);
+                alert(e.message);
+            });
     };
+
     const { t } = useTranslation();
     return (
         <div className="App">
@@ -83,7 +84,7 @@ export default function LoginPage() {
                     autocomplete="off"
                     className="username"
                     placeholder={t("LP_data_UserName")}
-                    onChange={(e)=>setUser(e.target.value)}
+                    onChange={(e) => setUser(e.target.value)}
                     value={user}
                 />
 
@@ -99,10 +100,12 @@ export default function LoginPage() {
                 />
 
                 <div className="remember-me-div">
-                    <input className="rmcb" type="checkbox" id="remberme"
+                    <input
+                        className="rmcb"
+                        type="checkbox"
+                        id="remberme"
                         onChange={(e) => setRememberMe(e.target.checked)}
                         value={rememberMe}
-
                     />
                     <label class="rememberme">{t("LP_lbl_Remember_Me")}</label>
                 </div>
@@ -115,9 +118,8 @@ export default function LoginPage() {
                 {/* </form> */}
 
                 <p className="version">{t("LP_lbl_Version")}</p>
-               
             </div>
-            <ToastContainer />  
+            <ToastContainer />
         </div>
     );
 }
