@@ -23,6 +23,7 @@ export default function LoginPage() {
     }, []);
 
     const handleSubmit = (e) => {
+
         if (user === "" || pwd === "") {
             toast.error("Please enter username and password");
             return;
