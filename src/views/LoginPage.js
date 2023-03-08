@@ -44,9 +44,9 @@ export default function LoginPage() {
                 toast.error("Invalid username or password");
                 navigate('/');
             }
-           
+            
             else {
-               
+                
                 if(rememberMe) {
                     localStorage.setItem("user", user); 
                 }
