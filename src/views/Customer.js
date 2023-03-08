@@ -227,19 +227,31 @@ export default function Customer() {
                                 <p className="SortOptionsLabel">
                                     Active Paid Customer
                                 </p>
-                                <PaidSwitchComponent />
+                                <input
+                                    type={"radio"}
+                                    name={"sort-option"}
+                                    className="DrawerRadioButtons"
+                                />
                             </div>
                             <div className="SortOptionsContent">
                                 <p className="SortOptionsLabel">
                                     Active Unpaid Customer
                                 </p>
-                                <UnPaidSwitchComponent />
+                                <input
+                                    type={"radio"}
+                                    name={"sort-option"}
+                                    className="DrawerRadioButtons"
+                                />
                             </div>
                             <div className="SortOptionsContent">
                                 <p className="SortOptionsLabel">
                                     All Customers
                                 </p>
-                                <AllSwitchComponent />
+                                <input
+                                    type={"radio"}
+                                    name={"sort-option"}
+                                    className="DrawerRadioButtons"
+                                />
                             </div>
                         </div>
                         <p className="DrawerTitle">Sort By</p>
