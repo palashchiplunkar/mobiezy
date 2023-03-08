@@ -12,9 +12,9 @@ export default function HomePage() {
 
     const { t } = useTranslation();
     const navigate = useNavigate();
-    const [data, setData] = useState({}
-        // JSON.parse(localStorage.getItem("homedata")) || {}
-    );
+    const [data, setData] = useState(
+        JSON.parse(localStorage.getItem("homedata")) || {}
+);
 
     useEffect(() => {
         loginAPI
@@ -25,10 +25,10 @@ export default function HomePage() {
                     setData(response.data.report[0]);
                 }
 
-                // localStorage.setItem(
-                //     "homedata",
-                //     JSON.stringify(response.data.report[0])
-                // );
+                localStorage.setItem(
+                    "homedata",
+                    JSON.stringify(response.data.report[0])
+                );
             })
 
             .catch((e) => {

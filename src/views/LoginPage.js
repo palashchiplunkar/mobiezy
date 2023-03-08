@@ -16,7 +16,7 @@ export default function LoginPage() {
 
     useEffect(() => {
         const user = localStorage.getItem("user");
-
+        
         if (user) {
             navigate("/home");
         }
