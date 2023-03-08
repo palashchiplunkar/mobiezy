@@ -76,46 +76,46 @@ export default function LoginPage() {
                     src={require("../assets/MobiCable.jpg")}
                 />
 
-                {/* <form className="login"> */}
-                <label className="user-label">{t("LP_lbl_UserName")}</label>
-                <input
-                    required="true"
-                    type="text"
-                    autocomplete="off"
-                    className="username"
-                    placeholder={t("LP_data_UserName")}
-                    onChange={(e) => setUser(e.target.value)}
-                    value={user}
-                />
-
-                <label className="passwd-label">{t("LP_lbl_Password")}</label>
-                <input
-                    required="true"
-                    type="password"
-                    autocomplete="off"
-                    className="passwd"
-                    placeholder={t("LP_data_Password")}
-                    onChange={(e) => setPwd(e.target.value)}
-                    value={pwd}
-                />
-
-                <div className="remember-me-div">
+                <form className="login">
+                    <label className="user-label">{t("LP_lbl_UserName")}</label>
                     <input
-                        className="rmcb"
-                        type="checkbox"
-                        id="remberme"
-                        onChange={(e) => setRememberMe(e.target.checked)}
-                        value={rememberMe}
+                        required={true}
+                        type="text"
+                        autoComplete="off"
+                        className="username"
+                        placeholder={t("LP_data_UserName")}
+                        onChange={(e) => setUser(e.target.value)}
+                        value={user}
                     />
-                    <label class="rememberme">{t("LP_lbl_Remember_Me")}</label>
-                </div>
 
-                <div className="login-btn-div">
-                    <button className="loginBtn" onClick={() => handleSubmit()}>
-                        {t("LP_Button_Login")}
-                    </button>
-                </div>
-                {/* </form> */}
+                    <label className="passwd-label">{t("LP_lbl_Password")}</label>
+                    <input
+                        required={true}
+                        type="password"
+                        autoComplete="off"
+                        className="passwd"
+                        placeholder={t("LP_data_Password")}
+                        onChange={(e) => setPwd(e.target.value)}
+                        value={pwd}
+                    />
+
+                    <div className="remember-me-div">
+                        <input
+                            className="rmcb"
+                            type="checkbox"
+                            id="remberme"
+                            onChange={(e) => setRememberMe(e.target.checked)}
+                            value={rememberMe}
+                        />
+                        <label className="rememberme">{t("LP_lbl_Remember_Me")}</label>
+                    </div>
+
+                    <div className="login-btn-div">
+                        <button className="loginBtn" onClick={() => handleSubmit()}>
+                            {t("LP_Button_Login")}
+                        </button>
+                    </div>
+                </form>
 
                 <p className="version">{t("LP_lbl_Version")}</p>
             </div>
