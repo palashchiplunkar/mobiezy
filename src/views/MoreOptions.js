@@ -1,7 +1,9 @@
 import React from "react";
 import Navbar from "../components/navbar";
 import "../css/MoreOptions.css";
+import {useNavigate} from "react-router-dom";
 function MoreOptions() {
+  const navigate = useNavigate();
   let options = [
     {
       id: 1,
@@ -13,13 +15,13 @@ function MoreOptions() {
       id: 2,
       name: "Monthly Report",
       imgUrl: "monthly.png",
-      toLink: "",
+      toLink: "/monthlyReport",
     },
     {
       id: 3,
       name: "Expiry Report",
       imgUrl: "expiry.png",
-      toLink: "",
+      toLink: "/subExpiryReport",
     },
     {
       id: 4,
@@ -37,7 +39,7 @@ function MoreOptions() {
       id: 6,
       name: "Area-wise Due Report ",
       imgUrl: "due.png",
-      toLink: "",
+      toLink: "/areaWiseReport",
     },
     {
       id: 7,
@@ -62,7 +64,7 @@ function MoreOptions() {
         <div className="OptionsContainer">
           {options.map((option) => {
     
-            return <div className="EachOption" id={option.id}>
+            return <div className="EachOption" id={option.id} onClick={() => navigate(option.toLink)}>
                 <img src={require("../assets/"+option.imgUrl)} alt={option.name} width={"45%"}/>
                 <p>{option.name}</p></div>;
           })}

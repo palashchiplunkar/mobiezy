@@ -79,7 +79,7 @@ export default function AreaWiseReport() {
                         Total Pending Amount  :{" "}
                         </p>
                         <p className="total-amount-collected-value">
-                            ₹ 21050.00
+                            ₹ 21050.00  
                         </p>
                     </div>
 
