@@ -48,11 +48,6 @@ export default function LoginPage() {
                     // use async
                     navigate("/home");
 
-                    if (rememberMe) {
-                        localStorage.setItem("user", user);
-                    }
-
-                    navigate("/home");
                 }
             })
 
@@ -76,7 +71,7 @@ export default function LoginPage() {
                     src={require("../assets/MobiCable.jpg")}
                 />
 
-                <form className="login">
+                {/* <form className="login"> */}
                     <label className="user-label">{t("LP_lbl_UserName")}</label>
                     <input
                         required={true}
@@ -115,7 +110,7 @@ export default function LoginPage() {
                             {t("LP_Button_Login")}
                         </button>
                     </div>
-                </form>
+                {/* </form> */}
 
                 <p className="version">{t("LP_lbl_Version")}</p>
             </div>

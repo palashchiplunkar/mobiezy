@@ -26,6 +26,7 @@
     "react-hamburger-drawer": "^21.11.19",
     "react-i18next": "^12.2.0",
     "react-icons": "^4.7.1",
+    "react-loading": "^2.0.3",
     "react-modal": "^3.16.1",
     "react-router-dom": "^6.8.1",
     "react-scripts": "^5.0.1",
