@@ -37,21 +37,22 @@
     margin-left: auto;
     margin-right: auto;
     position: absolute;
-    top: 15vh;
+    top: 12vh;
 }
 
 .user_name {
-    position: absolute;
+    position: relative;
     height: 31px;
-    left: 0%;
-    right: 63.8%;
-    top: 25%;
+    left: 4vh;
+    margin-right: 40%;
+    margin-bottom: 0%;
+    top: 6vh;
     font-family: "Noto Sans";
     font-style: normal;
     font-weight: 700;
     font-size: 16px;
     line-height: 23px;
-    text-align: center;
+    text-align: left;
     color: #333333;
 }
 
@@ -68,7 +69,7 @@
     margin-left: 26px;
     margin-right: 26px;
     gap: 10px;
-    margin-top: 20%;
+    margin-top: 15%;
 }
 
 .amt-due-today-content {
