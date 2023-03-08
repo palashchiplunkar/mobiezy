@@ -59,7 +59,9 @@ export default function LoginPage() {
                     // toast.error("Invalid username or password");
                     setError("Invalid Username or Password");
                     navigate("/");
-                } else {
+                } 
+                else {
+
                     if (rememberMe) {
                         localStorage.setItem("user", user);
                     }
@@ -148,8 +150,15 @@ export default function LoginPage() {
                 {/* </form> */}
                 <p className="version">{t("LP_lbl_Version")}</p>
 
-                <div style={{display:'flex',justifyContent:'center'}}>
-                {isLoading && <ReactLoading type={"bars"} color={"#0090da"} height={75} width={75} />}
+                <div style={{ display: "flex", justifyContent: "center" }}>
+                    {isLoading && (
+                        <ReactLoading
+                            type={"bars"}
+                            color={"#0090da"}
+                            height={75}
+                            width={75}
+                        />
+                    )}
                 </div>
             </div>
             <ToastContainer />

@@ -5,6 +5,7 @@ import { useState } from "react";
 import Drawer from "react-bottom-drawer";
 import Switch from "react-switch";
 import { TfiMobile } from "react-icons/tfi";
+import { useNavigate } from "react-router";
 
 import "../css/Customer.css";
 
@@ -13,6 +14,8 @@ export default function Customer() {
     const [isPaidChecked, setIsPaidChecked] = useState(false);
     const [isUnPaidChecked, setIsUnPaidChecked] = useState(false);
     const [isAllChecked, setIsAllChecked] = useState(false);
+
+    const navigate = useNavigate();
 
     const CustomerData = [
         {
@@ -49,7 +52,7 @@ export default function Customer() {
     const Customers = () => {
         const eachCustomer = CustomerData.map((customer) => {
             return (
-                <div className="card-div">
+                <div className="card-div" onClick={()=>navigate("/collectPayment")}>
                     <div className="card-group1-div">
                         <div class="card-line1-div">
                             <p className="card-name-p">{customer.name}</p>
@@ -73,7 +76,7 @@ export default function Customer() {
 
                         <div className="card-line3-div">
                             <div style={{ display: "flex" }}>
-                                <TfiMobile style={{ color: "#007ABC" }} />
+                                <TfiMobile className="card-mobileIcon" />
                                 <p className="card-phone-p">{customer.phno}</p>
                             </div>
 
