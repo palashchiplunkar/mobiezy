@@ -11,7 +11,7 @@ export default function HomePage() {
     const { t } = useTranslation();
     const navigate = useNavigate();
     const [data, setData] = useState(JSON.parse(localStorage.getItem("homedata")) || {});
-    let count=1;
+    
     useEffect(() => {
         loginAPI.post("/getagentsummary", {"agent_id":"11276"})
         .then((response) => {
