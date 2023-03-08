@@ -3,29 +3,28 @@ import { BiMenu } from "react-icons/bi";
 import "../css/HamNav.css";
 import { useNavigate } from "react-router-dom";
 
-
 const MobileNavigation = () => {
     const [open, setOpen] = useState(false);
     const toggleNavbar = () => setOpen(!open);
     const navigate = useNavigate();
+    
     const handleLanguageBar = () => {
         navigate("/select");
         toggleNavbar();
     };
+
     const handleLogout = () => {
         localStorage.removeItem("user");
         navigate("/");
     };
-    
+
     let navRef = useRef();
 
     useEffect(() => {
         let handler = (e) => {
             if (!navRef.current.contains(e.target)) {
                 setOpen(false);
-            }
-
-            else {
+            } else {
                 setOpen(true);
             }
         };
@@ -84,7 +83,8 @@ const MobileNavigation = () => {
                             className="ham-drawer__body__item__arrow"
                         />
                     </div>
-                    <div className="ham-drawer__body__item"
+                    <div
+                        className="ham-drawer__body__item"
                         onClick={handleLogout}
                     >
                         <p className="ham-drawer__body__item__text">Logout</p>
