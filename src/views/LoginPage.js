@@ -6,7 +6,8 @@ import { useTranslation } from "react-i18next";
 import loginAPI from "../services/authApi";
 import cookie from "js-cookie";
 import "../css/LoginStyles.css";
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 export default function LoginPage() {
     const navigate = useNavigate();
 
@@ -25,6 +26,10 @@ export default function LoginPage() {
     }, []);
 
     const handleSubmit = (e) => {
+        if(user === "" || pwd === "") {
+            toast.error("Please enter username and password");
+            return 
+        }
         loginAPI.post("cableguy2-mobile-user-login-new", {
             freshInstall: "N",
             appVersion: "2.0.63",
@@ -36,15 +41,16 @@ export default function LoginPage() {
         .then((response) => {
             console.log(response)
             if(response.data.messageText === "UNAUTHORIZED") {
+                toast.error("Invalid username or password");
                 navigate('/');
             }
-
+           
             else {
+               
                 if(rememberMe) {
                     localStorage.setItem("user", user); 
                 }
-                
-                
+                // use async
                 navigate('/home');
 
             }
@@ -109,7 +115,9 @@ export default function LoginPage() {
                 {/* </form> */}
 
                 <p className="version">{t("LP_lbl_Version")}</p>
+               
             </div>
+            <ToastContainer />  
         </div>
     );
 }
