@@ -15,13 +15,14 @@
 }
 
 .headerblue {
+    position: relative;
     display: flex;
     flex-direction: column;
     object-fit: contain;
-    height: 20vh;
+    height: 17vh;
     width: 100%;
     background-color: #0090da;
-    position: relative;
+    
 }
 
 .profile-img-div {
@@ -42,11 +43,11 @@
 
 .user_name {
     position: relative;
-    height: 31px;
+    height: 60px;
     left: 4vh;
     margin-right: 40%;
     margin-bottom: 0%;
-    top: 6vh;
+    top: 60px;
     font-family: "Noto Sans";
     font-style: normal;
     font-weight: 700;
