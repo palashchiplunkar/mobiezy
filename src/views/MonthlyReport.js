@@ -66,7 +66,7 @@ export default function MonthReport() {
 
     return (
         <div className="container-report">
-            <img className="home-bg-img" src={require("../assets/BG.JPG")} />
+            {/* <img className="home-bg-img" src={require("../assets/BG.JPG")} /> */}
 
             <div className="headerblue-report">
                 <h2 className="report-label">Monthly Report</h2>
