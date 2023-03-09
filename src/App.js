@@ -19,6 +19,7 @@ import SubscriptionExpiryReport from "./views/SubscriptionExpiryReport";
 import CollectPayment from "./views/CollectPayment";
 import CustomerStatistics from "./views/CustomerStatistics";
 import PrivateRoutes from "./components/PrivateRoutes";
+import Complaints from "./views/Complaints";
 
 function App() {
   return (
@@ -38,7 +39,8 @@ function App() {
             element={<SubscriptionExpiryReport />}
           />
           <Route path="/collectPayment" element={<CollectPayment />} />
-          <Route path="customerStatistics" element={<CustomerStatistics/>}/>
+          <Route path="/customerStatistics" element={<CustomerStatistics/>}/>
+          <Route path="/complaints" element={<Complaints/>}/>
         </Route>
         <Route path="/" element={<LoginPage />} />
       </Routes>

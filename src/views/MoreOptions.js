@@ -27,7 +27,7 @@ function MoreOptions() {
       id: 4,
       name: "View Complaints",
       imgUrl: "complain1.png",
-      toLink: "",
+      toLink: "/complaints",
     },
     {
       id: 5,
