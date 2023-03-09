@@ -17,6 +17,7 @@ import MoreOptions from "./views/MoreOptions";
 import AreaWiseReport from "./views/AreaWiseReport";
 import SubscriptionExpiryReport from "./views/SubscriptionExpiryReport";
 import CollectPayment from "./views/CollectPayment";
+import CustomerStatistics from "./views/CustomerStatistics";
 import PrivateRoutes from "./components/PrivateRoutes";
 
 function App() {
@@ -39,10 +40,27 @@ function App() {
                     path="/subExpiryReport"
                     element={<SubscriptionExpiryReport />}
                 />
-                <Route path="/collectPayment" element={<CollectPayment/>} />
-            </Routes>
-        </BrowserRouter>
-    );
+                <Route path="/collectPayment" element={<CollectPayment/>} /> */}
+        <Route element={<PrivateRoutes/>}>
+          <Route path="/select" element={<SelectLanguage />} />
+          <Route path="/home" element={<HomePage />} />
+          <Route path="/customer" element={<Customer />} />
+          <Route path="/customerDrawer" element={<customerDrawer />} />
+          <Route path="/monthlyReport" element={<MonthReport />} />
+          <Route path="/dailyReport" element={<DailyReport />} />
+          <Route path="/more" element={<MoreOptions />} />
+          <Route path="/areaWiseReport" element={<AreaWiseReport />} />
+          <Route
+            path="/subExpiryReport"
+            element={<SubscriptionExpiryReport />}
+          />
+          <Route path="/collectPayment" element={<CollectPayment />} />
+          <Route path="customerStatistics" element={<CustomerStatistics/>}/>
+        </Route>
+        <Route path="/" element={<LoginPage />} />
+      </Routes>
+    </BrowserRouter>
+  );
 }
 
 export default App;
