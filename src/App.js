@@ -1,10 +1,11 @@
 import {
-    BrowserRouter,
-    Routes,
-    Route,
-    redirect,
-    Navigate,
+  BrowserRouter,
+  Routes,
+  Route,
+  redirect,
+  Navigate,
 } from "react-router-dom";
+
 import LoginPage from "./views/LoginPage";
 import HomePage from "./views/HomePage";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -16,13 +17,14 @@ import MoreOptions from "./views/MoreOptions";
 import AreaWiseReport from "./views/AreaWiseReport";
 import SubscriptionExpiryReport from "./views/SubscriptionExpiryReport";
 import CollectPayment from "./views/CollectPayment";
-import CustomerStatistics from "./views/CustomerStatistics";
+import PrivateRoutes from "./components/PrivateRoutes";
+
 function App() {
-    const isAuthenticated = !!localStorage.getItem("user");
-    return (
-        <BrowserRouter>
-            <Routes>
-                <Route path="/" element={<LoginPage />} />
+  const isAuthenticated = !!localStorage.getItem("user");
+  return (
+    <BrowserRouter>
+      <Routes>
+        {/* <Route path="/" element={<LoginPage />} />
                 <Route path="/select" element={<SelectLanguage />} />
 
                 <Route path="/home" element={<HomePage />} />
@@ -38,7 +40,6 @@ function App() {
                     element={<SubscriptionExpiryReport />}
                 />
                 <Route path="/collectPayment" element={<CollectPayment/>} />
-                <Route path="/customerStatistics" element={<CustomerStatistics/>} />
             </Routes>
         </BrowserRouter>
     );
