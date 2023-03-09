@@ -33,7 +33,7 @@ function MoreOptions() {
       id: 5,
       name: "Customer Summary",
       imgUrl: "summary.png",
-      toLink: "",
+      toLink: "/customerStatistics",
     },
     {
       id: 6,

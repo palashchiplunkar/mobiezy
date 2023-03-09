@@ -17,6 +17,7 @@ import MoreOptions from "./views/MoreOptions";
 import AreaWiseReport from "./views/AreaWiseReport";
 import SubscriptionExpiryReport from "./views/SubscriptionExpiryReport";
 import CollectPayment from "./views/CollectPayment";
+import CustomerStatistics from "./views/CustomerStatistics";
 import PrivateRoutes from "./components/PrivateRoutes";
 
 function App() {
@@ -37,6 +38,7 @@ function App() {
             element={<SubscriptionExpiryReport />}
           />
           <Route path="/collectPayment" element={<CollectPayment />} />
+          <Route path="customerStatistics" element={<CustomerStatistics/>}/>
         </Route>
         <Route path="/" element={<LoginPage />} />
       </Routes>
