@@ -59,7 +59,30 @@
     background-origin: border-box;
     background-clip: content-box, border-box;
     display: subgrid;
-    /* grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr 1fr;
-    grid-gap: 10px; */
+    grid-gap: 10px;
+}
+.line{
+    width: 85%;
+    height: 1px;
+    background-color: #D9D9D6;
+    
+}
+.customer-statistics-data-label{
+    font-family: 'Noto Sans';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 16px;
+/* or 114% */
+
+display: flex;
+align-items: center;
+letter-spacing: 0.2px;
+
+color: #000000;
+}
+.customer-statistics-data-12{
+    width: 80%;
 }

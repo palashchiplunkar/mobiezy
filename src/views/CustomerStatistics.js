@@ -8,7 +8,7 @@ export default function CustomerStatistics() {
     </div>
     <div className='customer-statistics-data-container'>
       <div className='customer-statistics-data-div-1'>
-        <div className='customer-statistics-data-1'>
+        <div className='customer-statistics-data-12'>
           <p className='customer-statistics-data-label'>Active Customers</p>
         </div>
         <div className='customer-statistics-data-1'>
@@ -18,8 +18,9 @@ export default function CustomerStatistics() {
           <p className='customer-statistics-data-label'>100</p>
         </div>
       </div>
+      <div className="line"></div>
       <div className='customer-statistics-data-div-2'>
-        <div className='customer-statistics-data-2'>
+        <div className='customer-statistics-data-12'>
           <p className='customer-statistics-data-label'>Temporarily Disconnected</p>
         </div>
         <div className='customer-statistics-data-2'>
@@ -29,8 +30,9 @@ export default function CustomerStatistics() {
           <p className='customer-statistics-data-label'>100</p>
         </div>
       </div>
+      <div className="line"></div>
       <div className='customer-statistics-data-div-3'>
-        <div className='customer-statistics-data-3'>
+        <div className='customer-statistics-data-12'>
           <p className='customer-statistics-data-label'>Permanently Disconnected</p>
         </div>
         <div className='customer-statistics-data-3'>
@@ -40,8 +42,9 @@ export default function CustomerStatistics() {
           <p className='customer-statistics-data-label'>100</p>
         </div>
       </div>
+      <div className="line"></div>
       <div className='customer-statistics-data-div-4'>
-        <div className='customer-statistics-data-4'>
+        <div className='customer-statistics-data-12'>
           <p className='customer-statistics-data-label'>Total Number of Customers</p>
         </div>
         <div className='customer-statistics-data-4'>
