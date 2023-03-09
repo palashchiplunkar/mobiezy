@@ -16,7 +16,7 @@ export default function CustomerStatistics() {
         </div>
         <div className='customer-statistics-data-1'>
           <p className='customer-statistics-data-label-number'
-          style={{color: "#", fontWeight: 700,fontSize:"15px",lineHeight:"16px",letterSpacing:"0.2px"}}
+          style={{color: "#3AA45E", fontWeight: 700,fontSize:"15px",lineHeight:"16px",letterSpacing:"0.2px"}}
           > 1544</p>
         </div>
       </div>
