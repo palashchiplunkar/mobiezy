@@ -14,7 +14,7 @@ export default function HomePage() {
     const navigate = useNavigate();
     const [data, setData] = useState(
         JSON.parse(localStorage.getItem("homedata")) || {}
-);
+    );
 
     useEffect(() => {
         loginAPI

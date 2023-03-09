@@ -126,12 +126,13 @@
     border-image: linear-gradient(to right, #0090da, #a4ce4e) 1;
     box-sizing: border-box;
     margin-top: 4%;
-    padding: 3%;
+    /* padding: 3%; */
 }
 
 .card-line1-div {
     display: flex;
     justify-content: space-between;
+    padding: 3% 3% 0% 3%;
 }
 
 .card-name-p {
@@ -158,6 +159,7 @@
 .card-line2-div {
     display: flex;
     justify-content: space-between;
+    padding: 3% 3% 0% 3%;
 }
 
 .card-date-p {
@@ -186,11 +188,17 @@
 .card-line3-div {
     display: flex;
     justify-content: space-between;
+    padding: 3% 3% 0% 3%;
+}
+
+.card-mobileIcon {
+    color: #007ABC;
+    margin-top: 5%;
 }
 
 .card-phone-p {
     float: left;
-    margin-top: 1.5%;
+    margin-top: 5.5%;
     margin-left: 6px;
     font-family: "Noto Sans";
     font-style: normal;
