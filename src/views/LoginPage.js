@@ -18,6 +18,9 @@ export default function LoginPage() {
     const [rememberMe, setRememberMe] = useState(false);
 
     useEffect(() => {
+        // const user1 =sessionStorage.setItem("user","test");
+        // console.log(user1)
+
         const user = localStorage.getItem("user");
 
         if (user) {
@@ -63,7 +66,9 @@ export default function LoginPage() {
                     if (rememberMe) {
                         localStorage.setItem("user", user);
                     }
-                    // use async
+                    else{
+                        sessionStorage.setItem("user",JSON.stringify(user))
+                    }
                     navigate("/home");
                 }
                 setIsLoading(false);

@@ -9,6 +9,7 @@ import { useState, useEffect } from "react";
 import "../css/HomeStyles.css";
 
 export default function HomePage() {
+
     const { t } = useTranslation();
     const navigate = useNavigate();
     const [data, setData] = useState(
@@ -17,7 +18,7 @@ export default function HomePage() {
 
     useEffect(() => {
         loginAPI
-            .post("getagentsummary", { agent_id: "11276" })
+            .post("/getagentsummary", { agent_id: "11276" })
             .then((response) => {
                 console.log(response.data.report[0]);
                 if (response.data.report[0]) {
@@ -37,31 +38,31 @@ export default function HomePage() {
 
     return (
         <>
-            <div className="container">
+            <div class="container">
                 <img
                     className="home-bg-img"
                     src={require("../assets/BG.JPG")}
                 />
                 <div>
-                    <div className="headerblue">
+                    <div class="headerblue">
                         <MobileNavigation />
-                        <p className="Company_name">
+                        <p class="Company_name">
                             KOORG BROADBAND SERVICES <br></br>PRIVATE LIMITED
                         </p>
 
                         <div className="profile-img-div">
                             <img
                                 src={require("../assets/profile.jpg")}
-                                className="profile_img"
+                                class="profile_img"
                             />
                         </div>
                     </div>
 
-                    <p className="user_name">
+                    <p class="user_name">
                         {t("HO_lbl_wish")} {data.OPERATOR_NAME}
                     </p>
 
-                    <div className="amt-due-today-div">
+                    <div class="amt-due-today-div">
                         <label className="amt-due-today-content">
                             {t("HO_lbl_Unpaid")}
                         </label>
@@ -71,7 +72,7 @@ export default function HomePage() {
                     </div>
 
                     <div
-                        className="amt-collected-month-div"
+                        class="amt-collected-month-div"
                         onClick={() => navigate("/monthlyreport")}
                     >
                         <label className="amt-collected-month-content">
@@ -83,7 +84,7 @@ export default function HomePage() {
                     </div>
 
                     <div
-                        className="amt-collected-today-div"
+                        class="amt-collected-today-div"
                         onClick={() => navigate("/dailyReport")}
                     >
                         <label className="amt-collected-today-content">
@@ -94,7 +95,7 @@ export default function HomePage() {
                         </label>
                     </div>
 
-                    <div className="complaints-div">
+                    <div class="complaints-div">
                         <label className="complaints-content">
                             {t("HO_lbl_Complaints")}
                         </label>
