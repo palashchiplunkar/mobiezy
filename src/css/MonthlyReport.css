@@ -37,6 +37,7 @@
   justify-content: space-between;
   width: 90%;
   box-sizing: content-box;
+  border: 1px solid #1e90ff;
   margin-top: 4%;
 }
 
