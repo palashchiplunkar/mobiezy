@@ -84,5 +84,8 @@ letter-spacing: 0.2px;
 color: #000000;
 }
 .customer-statistics-data-12{
-    width: 80%;
+    width: 70%;
+}
+.customer-statistics-data-label-number{
+    width:15px;
 }
