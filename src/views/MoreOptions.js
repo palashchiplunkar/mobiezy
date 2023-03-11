@@ -9,7 +9,7 @@ function MoreOptions() {
       id: 1,
       name: "Daily Report",
       imgUrl: "daily2.png",
-      toLink: "",
+      toLink: "/dailyReport",
     },
     {
       id: 2,
