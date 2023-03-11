@@ -1,5 +1,6 @@
 import React from 'react'
 import '../css/Complaints.css'
+import '../css/global.css'
 export default function Complaints() {
 
     const Complaints = [

@@ -8,7 +8,7 @@
   background-color: #ffffff;
 }
 .headerblue-complaints {
-  background-color: #1e90ff;
+  background-color: var(--primay-app-color);
   height: 10vh;
   width: 100%;
   display: flex;
@@ -47,7 +47,7 @@
   border: 2px solid transparent;
   border-radius: 10px;
   background-image: linear-gradient(white, white),
-    linear-gradient(to bottom right, #0090da, #a4ce4e);
+    linear-gradient(to bottom right, var(--primay-app-color), #a4ce4e);
   background-origin: border-box;
   background-clip: content-box, border-box;
   display: subgrid;

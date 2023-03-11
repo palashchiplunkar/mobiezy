@@ -9,7 +9,7 @@
 }
 
 .headerblue-report {
-  background-color: #1e90ff;
+  background-color: var(--primay-app-color);
   height: 10vh;
   width: 100%;
   display: flex;
@@ -46,7 +46,7 @@
   border: 4px solid transparent;
   border-radius: 15px;
   background-image: linear-gradient(white, white),
-    linear-gradient(to bottom right, #0090da, #a4ce4e);
+    linear-gradient(to bottom right, var(--primay-app-color), #a4ce4e);
   background-origin: border-box;
   background-clip: content-box, border-box;
 }
@@ -85,7 +85,7 @@
   border: 2px solid transparent;
   border-radius: 15px;
   background-image: linear-gradient(white, white),
-    linear-gradient(to bottom right, #0090da, #a4ce4e);
+    linear-gradient(to bottom right, var(--primay-app-color), #a4ce4e);
   background-origin: border-box;
   background-clip: content-box, border-box;
 }

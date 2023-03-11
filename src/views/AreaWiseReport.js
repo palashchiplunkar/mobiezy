@@ -1,6 +1,6 @@
 import react from "react";
 import "../css/AreaWiseReport.css";
-
+import "../css/global.css";
 export default function AreaWiseReport() {
 
     const areaData = [

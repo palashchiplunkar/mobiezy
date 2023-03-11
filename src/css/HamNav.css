@@ -23,12 +23,12 @@
 .ham-drawer__header {
     width: 100%;
     height: 20vh;
-    background-color: #0090da;
+    background-color: var(--primay-app-color);
 }
 .ham-drawer__space {
     width: 100%;
     height: 3vh;
-    background-color: #0090da;
+    background-color: var(--primay-app-color);
 }
 .ham-drawer_user_details {
     display: flex;
@@ -45,7 +45,7 @@
     margin-right: auto;
 
     /* Add gradient border color of #A4CE4E and #0090DA */
-    border: 1px solid linear-gradient(90deg, #a4ce4e 0%, #0090da 100%);
+    border: 1px solid linear-gradient(90deg, #a4ce4e 0%, var(--primay-app-color) 100%);
 }
 .ham-drawer__profile_img {
     width: 67.3px;
@@ -130,7 +130,7 @@
     margin-right: auto;
 
     /* Add gradient border color of #A4CE4E and #0090DA */
-    border: 1px solid linear-gradient(90deg, #a4ce4e 0%, #0090da 100%);
+    border: 1px solid linear-gradient(90deg, #a4ce4e 0%, var(--primay-app-color) 100%);
 }
 
 .ham-drawer__body__item__arrow {

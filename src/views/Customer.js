@@ -8,7 +8,7 @@ import { TfiMobile } from "react-icons/tfi";
 import { useNavigate } from "react-router";
 
 import "../css/Customer.css";
-
+import "../css/global.css";
 export default function Customer() {
     const [isVisible, setIsVisible] = useState(false);
     const [isPaidChecked, setIsPaidChecked] = useState(false);

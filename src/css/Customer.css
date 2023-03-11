@@ -22,9 +22,9 @@
     flex-direction: column;
     object-fit: contain;
     height: 20vh;
-    background: #0090da;
+    background: var(--primay-app-color);
     width: 98%;
-    background-color: #0090da;
+    background-color: var(--primay-app-color);
 }
 
 .area-div {
@@ -63,7 +63,7 @@
     outline: none;
     border: none;
     border-bottom: 2px solid white;
-    background-color: #0090da;
+    background-color: var(--primay-app-color);
     flex: none;
     order: 0;
     flex-grow: 0;
@@ -100,7 +100,7 @@
     height: 50px;
     top: 60%;
     border-radius: 50%;
-    background: #007abc;
+    background: var(--primay-app-color);
 }
 
 .filter-icon {
@@ -123,7 +123,7 @@
     background: white;
     border-width: 1px;
     border-style: solid;
-    border-image: linear-gradient(to right, #0090da, #a4ce4e) 1;
+    border-image: linear-gradient(to right, var(--primay-app-color), #a4ce4e) 1;
     box-sizing: border-box;
     margin-top: 4%;
     /* padding: 3%; */
@@ -192,7 +192,7 @@
 }
 
 .card-mobileIcon {
-    color: #007ABC;
+    color: var(--primay-app-color);
     margin-top: 5%;
 }
 
@@ -287,7 +287,7 @@
     position: relative;
     width: 20px;
     height: 20px;
-    color: #0090da;
+    color: var(--primay-app-color);
 }
 
 .DrawerRadioLabel {
@@ -339,7 +339,7 @@
     justify-content: center;
     align-items: center;
     color: #ffffff;
-    background: #0090da;
+    background: var(--primay-app-color);
     font-family: "Noto Sans", sans-serif;
     font-style: normal;
     font-weight: 700;

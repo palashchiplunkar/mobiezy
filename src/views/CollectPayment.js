@@ -1,7 +1,7 @@
 import React from "react";
 
 import "../css/CollectPayment.css";
-
+import "../css/global.css";
 export default function collectPayment() {
     return (
         <div className="container">

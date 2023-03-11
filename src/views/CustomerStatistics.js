@@ -1,5 +1,6 @@
 import React from "react";
 import "../css/CustomerStatistics.css";
+import "../css/global.css";
 export default function CustomerStatistics() {
   return (
     <div className="container-customer-statistics">

@@ -5,6 +5,7 @@ import { FiMoreHorizontal } from "react-icons/fi";
 import { Link, useNavigate } from "react-router-dom";
 
 import "../css/BottomNav.css";
+import "../css/global.css";
 
 const Navbar = ({ value }) => {
   return (

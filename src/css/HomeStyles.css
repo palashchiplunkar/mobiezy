@@ -21,8 +21,7 @@
     object-fit: contain;
     height: 17vh;
     width: 100%;
-    background-color: #0090da;
-    
+    background-color: var(--primay-app-color);
 }
 
 .profile-img-div {
@@ -190,7 +189,7 @@
     border: none;
     text-align: center;
     text-transform: uppercase;
-    background: #0090da;
+    background: var(--primay-app-color);
     border-radius: 20px;
     width: 224px;
     height: 48px;

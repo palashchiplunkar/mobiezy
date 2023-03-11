@@ -7,7 +7,7 @@ import loginAPI from "../services/authApi";
 import { useState, useEffect } from "react";
 
 import "../css/HomeStyles.css";
-
+import "../css/global.css";
 export default function HomePage() {
   const { t } = useTranslation();
   const navigate = useNavigate();

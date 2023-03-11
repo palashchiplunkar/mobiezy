@@ -7,6 +7,7 @@ import { ToastContainer, toast } from "react-toastify";
 import ReactLoading from "react-loading";
 
 import "../css/LoginStyles.css";
+import "../css/global.css";
 import "react-toastify/dist/ReactToastify.css";
 
 export default function LoginPage() {

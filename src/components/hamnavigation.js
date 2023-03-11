@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { BiMenu } from "react-icons/bi";
 import "../css/HamNav.css";
+import "../css/global.css";
 import { useNavigate } from "react-router-dom";
 
 const MobileNavigation = () => {

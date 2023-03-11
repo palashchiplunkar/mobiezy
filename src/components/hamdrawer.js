@@ -1,4 +1,5 @@
 import "../css/HamNav.css";
+import "../css/global.css";
 const HamDrawer = () => {
     return(
         <div className="ham-drawer">
