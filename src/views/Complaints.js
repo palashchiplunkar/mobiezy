@@ -1,6 +1,7 @@
 import React from 'react'
 import '../css/Complaints.css'
 import '../css/global.css'
+import Header from '../components/header'
 export default function Complaints() {
 
     const Complaints = [
@@ -13,7 +14,10 @@ export default function Complaints() {
             status : 'Pending'
         }
     ]
-
+    const headerprops = {
+        text: "View Complaints",
+        height: "10vh"
+    }
     const CompViewList = () => {
         const CompViewDataList = Complaints.map((data) => {
             <div className='complaints-data-div'>
@@ -45,9 +49,8 @@ export default function Complaints() {
 
   return (
     <div className='container-complaints'>
-        <div className='headerblue-complaints'>
-            <h2 className='complaints-label'>View Complaints</h2>
-        </div>
+        
+        <Header {...headerprops}/>
    
         <div className='complaints-data-container'>
             

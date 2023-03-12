@@ -3,7 +3,8 @@ import { useRef, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import "../css/SubReport.css";
-
+import "../css/global.css";
+import Header from "../components/header";
 export default function SubscriptionExpiryReport() {
     const navigate = useNavigate();
     const SubExpiryData = [
@@ -47,11 +48,15 @@ export default function SubscriptionExpiryReport() {
         return SubExpiryDataList;
     }
 
+    const headerprops = {
+        text: "Subscription Expiry Report",
+        height: "10vh",
+    };
+
     return (
         <div className="container-expiry-report">
-            <div className="headerblue-report">
-                <h2 className="report-label">Subscription Expiry Report</h2>
-            </div>
+            
+            <Header {...headerprops} />
             <div className="expiry-data-container">
                 <div className="expiry-report-head-div">
                     <div className="expiry-report-head">

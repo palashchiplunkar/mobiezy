@@ -2,7 +2,8 @@ import React from "react";
 import { RiCalendarEventFill } from "react-icons/ri";
 import OwnerData from "../components/ownerdatadiv";
 import "../css/MonthlyReport.css";
-
+import "../css/global.css";
+import Header from "../components/header";
 export default function DailyReport() {
     const handletodate = () => {
         const todateInput = document.getElementById("todate");
@@ -47,12 +48,15 @@ export default function DailyReport() {
         return OwnerDataList;
     };
 
+    const headerprops = {
+        text: "Daily Report",
+        height: "10vh",
+    };
+
     return (
         <div className="container-report">
             <img className="home-bg-img" src={require("../assets/BG.JPG")} />
-            <div className="headerblue-report">
-                <h2 className="report-label">Daily Report</h2>
-            </div>
+            <Header {...headerprops} />
             
 
             <div className="get-report-div">

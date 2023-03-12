@@ -1,12 +1,17 @@
 import React from "react";
 import "../css/CustomerStatistics.css";
 import "../css/global.css";
+import Header from "../components/header";
 export default function CustomerStatistics() {
+
+  const headerprops = {
+    text: "Customer Statistics",
+    height: "10vh",
+  };
+
   return (
     <div className="container-customer-statistics">
-      <div className="headerblue-customer-statistics">
-        <h2 className="customer-statistics-label">Customer Statistics</h2>
-      </div>
+      <Header {...headerprops} />
       <div className="customer-statistics-data-container">
         <div className="customer-statistics-data-div-1">
           <div className="customer-statistics-data-12">

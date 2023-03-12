@@ -2,6 +2,8 @@ import React from "react";
 import Navbar from "../components/navbar";
 import "../css/MoreOptions.css";
 import {useNavigate} from "react-router-dom";
+import Header from "../components/header";
+import "../css/global.css";
 function MoreOptions() {
   const navigate = useNavigate();
   let options = [
@@ -54,13 +56,15 @@ function MoreOptions() {
       toLink: "",
     },
   ];
+  const headerprops = {
+    text: "More Options",
+    height: "10vh",
+  };
   return (
     <>
       <div>
         <img className="home-bg-img" src={require("../assets/BG.JPG")} />
-        <div className="headerblue-report">
-          <h2 className="report-label">More Options</h2>
-        </div>
+        <Header {...headerprops} />
         <div className="OptionsContainer">
           {options.map((option) => {
     
