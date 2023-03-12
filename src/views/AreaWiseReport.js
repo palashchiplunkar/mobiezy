@@ -1,6 +1,7 @@
 import react from "react";
 import "../css/AreaWiseReport.css";
 import "../css/global.css";
+import Header from "../components/header";
 export default function AreaWiseReport() {
 
     const areaData = [
@@ -47,12 +48,15 @@ export default function AreaWiseReport() {
     return AreaDataList;
 }
 
-
+  // create a props object to pass the text and height of the header
+  const headerprops = {
+    text: "Area-wise Due Report",
+    height:"10vh"
+  }
   return (
     <div className="container-report-area">
-      <div className="headerblue-report">
-        <h2 className="report-label">Area-wise Due Report</h2>
-      </div>
+      
+      <Header {...headerprops} />
 
       <div className="report-data-container">
         <div className="area-report-head-div">
