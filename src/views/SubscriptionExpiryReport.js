@@ -1,12 +1,13 @@
 import React from "react";
-import { useRef, useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import { useTranslation } from "react-i18next";
+// import { useRef, useState, useEffect } from "react";
+// import { useNavigate } from "react-router-dom";
+// import { useTranslation } from "react-i18next";
 import "../css/SubReport.css";
 import "../css/global.css";
 import Header from "../components/header";
+
 export default function SubscriptionExpiryReport() {
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
     const SubExpiryData = [
         {
             count: "1",
@@ -25,7 +26,9 @@ export default function SubscriptionExpiryReport() {
         },
        
     ]
-    let count=0;
+
+    // let count=0;
+
     const subExpiryList = () => {
         const SubExpiryDataList = SubExpiryData.map((data) => {
             return (
@@ -40,7 +43,7 @@ export default function SubscriptionExpiryReport() {
                         <p className="expiry-report-data-label">{data.daysAway}</p>
                     </div>
                     <div className="expiry-report-data">
-                       <img src={require("../assets/detailed_link_eye.png")} className="expiry-report-data-label" />
+                       <img src={require("../assets/detailed_link_eye.png")} alt="img" className="expiry-report-data-label" />
                     </div>
                 </div>
             );
