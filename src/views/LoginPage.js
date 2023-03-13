@@ -41,9 +41,20 @@ export default function LoginPage() {
 
     const handleSubmit = (e) => {
         setIsLoading(true);
-        if (user === "" || pwd === "") {
-            // toast.error("Please enter username and password");
+        if (user === "" && pwd === "") {
             setError("Please enter Username or Password");
+            setIsLoading(false);
+            return;
+        }
+
+        else if (user === "") {
+            setError("Please enter Username");
+            setIsLoading(false);
+            return;
+        }
+
+        else if (pwd === "") {
+            setError("Please enter Password");
             setIsLoading(false);
             return;
         }
