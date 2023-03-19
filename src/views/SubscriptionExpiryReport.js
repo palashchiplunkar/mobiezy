@@ -57,6 +57,7 @@ export default function SubscriptionExpiryReport() {
         <div className="container-expiry-report">
             
             <Header {...headerprops} />
+            
             <div className="expiry-data-container">
                 <div className="expiry-report-head-div">
                     <div className="expiry-report-head">
