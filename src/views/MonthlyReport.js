@@ -4,6 +4,7 @@ import OwnerData from "../components/ownerdatadiv";
 import "../css/MonthlyReport.css";
 import "../css/global.css";
 import Header from "../components/header";
+import GetReportDiv from "../components/getReportDiv";
 export default function MonthReport() {
     const handletodate = () => {
         const todateInput = document.getElementById("todate");
@@ -46,14 +47,6 @@ export default function MonthReport() {
         },
     ];
 
-    // populate the select option with ownername
-    const OwnerSelection = () => {
-        const OwnerSelectionData = ownerdata.map((data) => {
-            return <option value={data.ownername}>{data.ownername}</option>;
-        });
-        return OwnerSelectionData;
-    };
-
     // const Owners = () => {
     const Owners = () => {
         const OwnerDataList = ownerdata.map((data) => {
@@ -67,6 +60,9 @@ export default function MonthReport() {
         text: "Monthly Report",
         height: "10vh",
     };
+    const getReportDivData={
+        ownerdata:ownerdata
+    }
     return (
         <div className="container-report">
             {/* <img className="home-bg-img" src={require("../assets/BG.JPG")} /> */}
@@ -92,15 +88,7 @@ export default function MonthReport() {
                 </div>
             </div>
 
-            <div className="get-report-div">
-                {/* Add dropdown option */}
-                <select className="get-report-dropdown">
-                    <option value="owner">Owner Sur ...</option>
-
-                    <OwnerSelection />
-                </select>
-                <button className="get-report-btn">Get Report</button>
-            </div>
+           <GetReportDiv {...getReportDivData} />
 
             <div className="report-data">
                 <Owners/>
