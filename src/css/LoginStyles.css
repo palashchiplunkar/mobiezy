@@ -1,6 +1,9 @@
 
 .App {
-    overflow-y: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 /* Background Image */
@@ -26,7 +29,6 @@
     margin-right: auto;
     justify-content: center;
     object-fit: contain;
-    aspect-ratio: 3/2;
 }
 
 /* MobiCable Logo */
@@ -37,43 +39,43 @@
     margin-left: auto;
     margin-right: auto;
     margin-top: 5%;
-    width: 315px;
-    height: 66px;
+    width: 80%;
+    height: 100px;
     justify-content: center;
-    object-fit: contain;
-    aspect-ratio: 5/1;
-}
+    object-fit: contain;}
 
 /* Login Form */
 
 .authForm {
-    position: relative;
+    /* position: relative; */
     display: flex;
     flex-direction: column;
     justify-content: center;
-    object-fit: contain;
-    margin-top: 3%;
+
+    /* margin-left: 10%; */
+    /* object-fit: contain; */
+    /* margin-top: 3%;
     margin-left: auto;
-    margin-right: auto;
+    margin-right: auto; */
 }
 
 /* Input Group */
 
-.input-group {
+.inputGroup {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    /* align-items: center; */
     justify-content: center;
-    margin-top: 2%;
+    /* margin-top: 8%; */
+    
+}
+.inputGroup > *{
+    margin-top: 5px;
 }
 
 /* Username */
 
 .user-label {
-    position: relative;
-    margin-top: 10%;
-    margin-left: 15%;
-    width: 279px;
-    height: 16px;
     font-family: "Noto Sans", sans-serif;
     font-style: Normal;
     font-weight: 400;
@@ -84,8 +86,8 @@
 
 .username {
     position: relative;
-    margin-left: 15%;
-    width: 80%;
+    /* margin-left: 15%; */
+    width: 100%;
     height: 28px;
     left: 0%;
     right: 1.58%;
@@ -124,8 +126,8 @@
 
 .passwd-label {
     position: relative;
-    margin-top: 10%;
-    margin-left: 15%;
+    /* margin-top: 10%;
+    margin-left: 15%; */
     width: 279px;
     height: 16px;
     font-family: "Noto Sans";
@@ -138,8 +140,8 @@
 
 .passwd {
     position: relative;
-    margin-left: 15%;
-    width: 80%;
+    /* margin-left: 15%; */
+    width: 100%;
     height: 28px;
     left: 0%;
     right: 1.58%;
@@ -179,8 +181,8 @@
 .remember-me-div {
     display: flex;
     flex-direction: row;
-    margin-top: 10%;
-    margin-left: 15%;
+    /* margin-top: 10%;
+    margin-left: 15%; */
 }
 
 .rememberme {
@@ -199,12 +201,10 @@
 }
 
 /* Login Button */
-
-.login-btn-div {
-    display: flex;
-    justify-content: center;
+.login-btn-div{
+    align-self: center;
+    margin-top: 50px;
 }
-
 .loginBtn {
     color: #ffffff;
     font-family: "Noto Sans", sans-serif;
@@ -217,7 +217,7 @@
     background: var(--primay-app-color);
     border-radius: 20px;
     border: none;
-    margin-top: 8%;
+    /* margin-top: 8%; */
 }
 
 /* Version */
