@@ -3,7 +3,6 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import loginAPI from "../services/authApi";
-import { ToastContainer, toast } from "react-toastify";
 import ReactLoading from "react-loading";
 
 import "../css/LoginStyles.css";
