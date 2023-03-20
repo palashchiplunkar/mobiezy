@@ -63,7 +63,6 @@ function MoreOptions() {
   return (
     <>
       <div>
-        <img className="home-bg-img" src={require("../assets/BG.JPG")} />
         <Header {...headerprops} />
         <div className="OptionsContainer">
           {options.map((option) => {

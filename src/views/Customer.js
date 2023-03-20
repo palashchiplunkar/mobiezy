@@ -174,10 +174,7 @@ export default function Customer() {
     return (
         <>
             <div className="container">
-                <img
-                    className="home-bg-img"
-                    src={require("../assets/BG.JPG")}
-                />
+
                 <div className="header-blue">
                     <div className="area-div">
                         <p className="area-p">Area</p>

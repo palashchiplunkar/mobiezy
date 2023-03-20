@@ -10,6 +10,11 @@ import "../css/HomeStyles.css";
 import "../css/global.css";
 
 export default function HomePage() {
+    useEffect(()=>{
+        console.log(localStorage.getItem("user"))
+        console.log(localStorage.getItem("rememberMe"))
+
+    },[])
 
     const { t } = useTranslation();
     const navigate = useNavigate();
@@ -55,33 +60,14 @@ export default function HomePage() {
     };
 
     useEffect(() => {
-        // loginAPI
-        //   .post("getagentsummary", { agent_id: "11276" })
-        //   .then((response) => {
-        //     console.log(response.data.report[0]);
-        //     if (response.data.report[0]) {
-        //       setData(response.data.report[0]);
-        //     }
-
-        //     localStorage.setItem(
-        //       "homedata",
-        //       JSON.stringify(response.data.report[0])
-        //     );
-        //   })
-
-        //   .catch((e) => {
-        //     console.log(e);
-        //   });
+        
         getHomeData();
     }, []);
 
     return (
         <>
             <div className="container">
-                <img
-                    className="home-bg-img"
-                    src={require("../assets/BG.JPG")}
-                />
+
                 <div>
                     <div className="headerblue">
                         <MobileNavigation />
