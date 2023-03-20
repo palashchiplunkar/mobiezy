@@ -78,10 +78,10 @@ export default function HomePage() {
     return (
         <>
             <div className="container">
-                <img
+                {/* <img
                     className="home-bg-img"
                     src={require("../assets/BG.JPG")}
-                />
+                /> */}
                 <div>
                     <div className="headerblue">
                         <MobileNavigation />
