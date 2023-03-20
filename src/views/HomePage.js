@@ -78,9 +78,9 @@ export default function HomePage() {
       e.stopPropagation();
       
       if (window.confirm("Do you want to exit?")) {
-        window.location.href = 'about:blank';
-        // window.close();
-        // window.pushState(null, null, window.location.href);
+        // window.location.href = 'about:blank';
+        window.close();
+        window.pushState(null, null, window.location.href);
         
       }
     });
