@@ -17,12 +17,17 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 export default function HomePage() {
-  const [alert, setalert] = useState(false);
-  const { t } = useTranslation();
-  const navigate = useNavigate();
-  const [data, setData] = useState(
-    JSON.parse(localStorage.getItem("homedata")) || {}
-  );
+    useEffect(()=>{
+        console.log(localStorage.getItem("user"))
+        console.log(localStorage.getItem("rememberMe"))
+
+    },[])
+
+    const { t } = useTranslation();
+    const navigate = useNavigate();
+    const [data, setData] = useState(
+        JSON.parse(localStorage.getItem("homedata")) || {}
+    );
 
   let userJson;
 
@@ -83,16 +88,15 @@ export default function HomePage() {
     getHomeData();
   }, []);
 
-  return (
-    <>
-      <div className="container">
-        <img className="home-bg-img" src={require("../assets/BG.JPG")} />
-        <div>
-          <div className="headerblue">
-            <MobileNavigation />
-            <p className="Company_name">
-              {userJson ? userJson.operatorName : null}
-            </p>
+    return (
+        <>
+            <div className="container">
+                <div>
+                    <div className="headerblue">
+                        <MobileNavigation />
+                        <p className="Company_name">
+                            {userJson ? userJson.operatorName : null}
+                        </p>
 
             <div className="profile-img-div">
               <img

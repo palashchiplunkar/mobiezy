@@ -12,34 +12,24 @@ import "react-toastify/dist/ReactToastify.css";
 
 export default function LoginPage() {
   const navigate = useNavigate();
+  const [AgentData, setAgentData] = useState(null)
   const [isLoading, setIsLoading] = useState(false);
   const [Error, setError] = useState("");
   const [UError, setUError] = useState("");
   const [PError, setPError] = useState("");
-  const [user, setUser] = useState("");
+  const [user, setUser] = useState(localStorage.getItem("user") || "");
   const [pwd, setPwd] = useState("");
-  const [rememberMe, setRememberMe] = useState(false);
-
-  useEffect(() => {
-    // const user1 =sessionStorage.setItem("user","test");
-    // console.log(user1)
-
-    const user = localStorage.getItem("user");
-
-    if (user) {
-      navigate("/home");
-    }
-  }, []);
+  const [rememberMe, setRememberMe] = useState(
+    localStorage.getItem("rememberMe") || false
+  );
 
   const onchangeuser = (value) => {
     setUser(value);
-    setError("");
     setUError("");
   };
 
   const onchangepass = (value) => {
     setPwd(value);
-    setError("");
     setPError("");
   };
 
@@ -77,25 +67,11 @@ export default function LoginPage() {
           navigate("/");
         } else {
           if (rememberMe) {
-            localStorage.setItem(
-              "user",
-              JSON.stringify({
-                username: user,
-                agentId: response.data.agentId,
-                agentName: response.data.agentName,
-                operatorName: response.data.operatorName,
-              })
-            );
+            setAgentData(response.data)
+            localStorage.setItem("user", user);
+            localStorage.setItem("rememberMe", true);
           } else {
-            sessionStorage.setItem(
-              "user",
-              JSON.stringify({
-                username: user,
-                agentId: response.data.agentId,
-                agentName: response.data.agentName,
-                operatorName: response.data.operatorName,
-              })
-            );
+            sessionStorage.setItem("user", user);
           }
           navigate("/home");
         }
@@ -134,16 +110,14 @@ export default function LoginPage() {
             value={user}
             style={{ borderBottomColor: UError ? "red" : "#333333" }}
           />
-            <p
-              style={{
-                color: "red",
-                visibility: UError? "visible" : "hidden",
-
-              }}
-            >
-              {UError}
-            </p>
-    
+          <p
+            style={{
+              color: "red",
+              visibility: UError ? "visible" : "hidden",
+            }}
+          >
+            {UError}
+          </p>
         </div>
         <div className="inputGroup">
           <label className="passwd-label">{t("LP_lbl_Password")}</label>
@@ -157,17 +131,24 @@ export default function LoginPage() {
             value={pwd}
             style={{ borderBottomColor: PError ? "red" : "#333333" }}
           />
- 
-            <p
-              style={{
-                color: "red",
-                visibility: PError? "visible" : "hidden",
-              }}
-            >
-              {PError}
-            </p>
+
+          <p
+            style={{
+              color: "red",
+              visibility: PError ? "visible" : "hidden",
+            }}
+          >
+            {PError}
+          </p>
         </div>
-        <div className="remember-me-div">
+        <div
+          className="remember-me-div"
+          style={{
+            visibility: localStorage.getItem("rememberMe")
+              ? "hidden"
+              : "visible",
+          }}
+        >
           <input
             className="rmcb"
             type="checkbox"
@@ -177,14 +158,12 @@ export default function LoginPage() {
           />
           <label className="rememberme">{t("LP_lbl_Remember_Me")}</label>
         </div>
-
-       
       </div>
       <div className="login-btn-div">
-          <button className="loginBtn" onClick={() => handleSubmit()}>
-            {t("LP_Button_Login")}
-          </button>
-        </div>
+        <button className="loginBtn" onClick={() => handleSubmit()}>
+          {t("LP_Button_Login")}
+        </button>
+      </div>
       {/* </form> */}
       <p className="version">{t("LP_lbl_Version")}</p>
 

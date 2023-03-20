@@ -86,7 +86,6 @@ const handleAlertOpen=()=>{
 
   return (
     <div>
-      <img className="bg-img" src={require("../assets/BG.JPG")} />
       <div className="HomeHeader">
         <FaAngleLeft
           onClick={() => navigate("/home")}
