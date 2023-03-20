@@ -1,10 +1,12 @@
 import React from "react";
-import { RiCalendarEventFill } from "react-icons/ri";
 import OwnerData from "../components/ownerdatadiv";
-import "../css/MonthlyReport.css";
-import "../css/global.css";
+
 import Header from "../components/header";
 import GetReportDiv from "../components/getReportDiv";
+
+import "../css/MonthlyReport.css";
+import "../css/global.css";
+
 export default function DailyReport() {
     const handletodate = () => {
         const todateInput = document.getElementById("todate");
@@ -31,11 +33,14 @@ export default function DailyReport() {
         },
     ];
 
-    // const Owners = () => {
     const Owners = () => {
         const OwnerDataList = ownerdata.map((data) => {
             return (
-               <OwnerData ownerid={data.ownerid} owneramt={data.owneramt} ownername={data.ownername} />
+                <OwnerData
+                    ownerid={data.ownerid}
+                    owneramt={data.owneramt}
+                    ownername={data.ownername}
+                />
             );
         });
         return OwnerDataList;
@@ -45,18 +50,17 @@ export default function DailyReport() {
         text: "Daily Report",
         height: "10vh",
     };
-   const getReportDivData={
-         ownerdata:ownerdata
-   }
+    const getReportDivData = {
+        ownerdata: ownerdata,
+    };
 
     return (
         <div className="container-report">
-            <img className="home-bg-img" src={require("../assets/BG.JPG")} />
             <Header {...headerprops} />
             <GetReportDiv {...getReportDivData} />
 
             <div className="report-data">
-                <Owners/>
+                <Owners />
             </div>
 
             <div className="float-div">
@@ -65,9 +69,7 @@ export default function DailyReport() {
                         <p className="total-amount-collected-label">
                             Total Amount Collected :{" "}
                         </p>
-                        <p className="total-amount-collected-value">
-                            ₹ 832.00
-                        </p>
+                        <p className="total-amount-collected-value">₹ 832.00</p>
                     </div>
 
                     <div className="total-amount-collected">
@@ -79,7 +81,6 @@ export default function DailyReport() {
                 </div>
 
                 <button className="print-report-btn">PRINT REPORT</button>
-
             </div>
         </div>
     );

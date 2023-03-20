@@ -67,13 +67,12 @@ export default function LoginPage() {
           navigate("/");
         } else {
           if (rememberMe) {
-            
+            setAgentData(response.data)
             localStorage.setItem("user", user);
             localStorage.setItem("rememberMe", true);
           } else {
             sessionStorage.setItem("user", user);
           }
-          setAgentData(response.data)
           navigate("/home");
         }
         setIsLoading(false);

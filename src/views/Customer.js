@@ -9,7 +9,9 @@ import { useNavigate } from "react-router";
 
 import "../css/Customer.css";
 import "../css/global.css";
+
 export default function Customer() {
+
     const [isVisible, setIsVisible] = useState(false);
     const [isPaidChecked, setIsPaidChecked] = useState(false);
     const [isUnPaidChecked, setIsUnPaidChecked] = useState(false);
@@ -52,7 +54,10 @@ export default function Customer() {
     const Customers = () => {
         const eachCustomer = CustomerData.map((customer) => {
             return (
-                <div className="card-div" onClick={()=>navigate("/collectPayment")}>
+                <div
+                    className="card-div"
+                    onClick={() => navigate("/collectPayment")}
+                >
                     <div className="card-group1-div">
                         <div class="card-line1-div">
                             <p className="card-name-p">{customer.name}</p>
@@ -84,9 +89,9 @@ export default function Customer() {
                                 className="card-status-p"
                                 style={{
                                     backgroundColor:
-                                        customer.status == "Active"
+                                        customer.status === "Active"
                                             ? "#a0c334"
-                                            : customer.status ==
+                                            : customer.status ===
                                               "Temporarily Disconnected"
                                             ? "#DC1515"
                                             : "#000000",
@@ -174,7 +179,10 @@ export default function Customer() {
     return (
         <>
             <div className="container">
+<<<<<<< HEAD
 
+=======
+>>>>>>> ee74965a1bafc68cb6e4413c5b9b81867ab18fa6
                 <div className="header-blue">
                     <div className="area-div">
                         <p className="area-p">Area</p>
@@ -211,8 +219,8 @@ export default function Customer() {
                 </div>
 
                 <div className="customer-card-div">
-                    <Customers/>
-                </div>  
+                    <Customers />
+                </div>
 
                 <Drawer
                     isVisible={isVisible}
