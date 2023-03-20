@@ -112,10 +112,12 @@ export default function LoginPage() {
                 <img
                     className="header-img1"
                     src={require("../assets/d1.png")}
+                    alt="Header Image"
                 />
                 <img
                     className="mobicable-logo"
                     src={require("../assets/MobiCable.jpg")}
+                    alt="Logo"
                 />
             </div>
             <div className="authForm">

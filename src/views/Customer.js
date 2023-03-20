@@ -89,9 +89,9 @@ export default function Customer() {
                                 className="card-status-p"
                                 style={{
                                     backgroundColor:
-                                        customer.status == "Active"
+                                        customer.status === "Active"
                                             ? "#a0c334"
-                                            : customer.status ==
+                                            : customer.status ===
                                               "Temporarily Disconnected"
                                             ? "#DC1515"
                                             : "#000000",
