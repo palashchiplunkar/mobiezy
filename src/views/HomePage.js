@@ -8,150 +8,187 @@ import { useState, useEffect } from "react";
 
 import "../css/HomeStyles.css";
 import "../css/global.css";
-
+import "../css/alert_popup.css";
+import "reactjs-popup/dist/index.css";
+import Button from "@mui/material/Button";
+import Dialog from "@mui/material/Dialog";
+import DialogActions from "@mui/material/DialogActions";
+import DialogContent from "@mui/material/DialogContent";
+import DialogContentText from "@mui/material/DialogContentText";
+import DialogTitle from "@mui/material/DialogTitle";
 export default function HomePage() {
+  const [alert, setalert] = useState(false);
+  const { t } = useTranslation();
+  const navigate = useNavigate();
+  const [data, setData] = useState(
+    JSON.parse(localStorage.getItem("homedata")) || {}
+  );
 
-    const { t } = useTranslation();
-    const navigate = useNavigate();
-    const [data, setData] = useState(
-        JSON.parse(localStorage.getItem("homedata")) || {}
-    );
+  let userJson;
 
-    let userJson;
+  const user = localStorage.getItem("user") || sessionStorage.getItem("user");
 
-    const user = localStorage.getItem("user") || sessionStorage.getItem("user");
+  if (user) {
+    userJson = JSON.parse(user);
+  }
 
-    if (user) {
-        userJson = JSON.parse(user);
+  const getHomeData = () => {
+    if (userJson) {
+      loginAPI
+        .post("getagentsummary", {
+          agent_id: userJson.agentId,
+        })
+
+        .then((response) => {
+          if (response.data.report[0]) {
+            setData(response.data.report[0]);
+          }
+
+          localStorage.setItem(
+            "homedata",
+            JSON.stringify(response.data.report[0])
+          );
+
+          sessionStorage.setItem(
+            "homedata",
+            JSON.stringify(response.data.report[0])
+          );
+        })
+
+        .catch((e) => {
+          console.log(e);
+        });
     }
+  };
 
-    const getHomeData = () => {
-        if (userJson) {
-            loginAPI
-                .post("getagentsummary", {
-                    agent_id: userJson.agentId,
-                })
+  const handleAlertOpen = () => {
+    window.close();
+    setalert(false);
+  };
+  
+  useEffect(() => {
+    // get back click event and also create a alert event
+    window.addEventListener("popstate", function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+      
+      if (window.confirm("Do you want to exit?")) {
+        window.close();
+        window.pushState(null, null, window.location.href);
+        
+      }
+    });
+    
 
-                .then((response) => {
-                    if (response.data.report[0]) {
-                        setData(response.data.report[0]);
-                    }
+    getHomeData();
+  }, []);
 
-                    localStorage.setItem(
-                        "homedata",
-                        JSON.stringify(response.data.report[0])
-                    );
+  return (
+    <>
+      <div className="container">
+        <img className="home-bg-img" src={require("../assets/BG.JPG")} />
+        <div>
+          <div className="headerblue">
+            <MobileNavigation />
+            <p className="Company_name">
+              {userJson ? userJson.operatorName : null}
+            </p>
 
-                    sessionStorage.setItem(
-                        "homedata",
-                        JSON.stringify(response.data.report[0])
-                    );
-                })
-                
-                .catch((e) => {
-                    console.log(e);
-                });
-        }
-    };
-
-    useEffect(() => {
-        // loginAPI
-        //   .post("getagentsummary", { agent_id: "11276" })
-        //   .then((response) => {
-        //     console.log(response.data.report[0]);
-        //     if (response.data.report[0]) {
-        //       setData(response.data.report[0]);
-        //     }
-
-        //     localStorage.setItem(
-        //       "homedata",
-        //       JSON.stringify(response.data.report[0])
-        //     );
-        //   })
-
-        //   .catch((e) => {
-        //     console.log(e);
-        //   });
-        getHomeData();
-    }, []);
-
-    return (
-        <>
-            <div className="container">
-                <img
-                    className="home-bg-img"
-                    src={require("../assets/BG.JPG")}
-                />
-                <div>
-                    <div className="headerblue">
-                        <MobileNavigation />
-                        <p className="Company_name">
-                            {userJson ? userJson.operatorName : null}
-                        </p>
-
-                        <div className="profile-img-div">
-                            <img
-                                src={require("../assets/profile.jpg")}
-                                className="profile_img"
-                            />
-                        </div>
-                    </div>
-
-                    <p className="user_name">
-                        {t("HO_lbl_wish")}{" "}
-                        {userJson ? userJson.agentName : null}
-                    </p>
-
-                    <div className="amt-due-today-div">
-                        <label className="amt-due-today-content">
-                            {t("HO_lbl_Unpaid")}
-                        </label>
-                        <label className="amt-due-today-content">
-                            {data.pending_amount}
-                        </label>
-                    </div>
-
-                    <div
-                        className="amt-collected-month-div"
-                        onClick={() => navigate("/monthlyreport")}
-                    >
-                        <label className="amt-collected-month-content">
-                            {t("HO_lbl_Collected")}
-                        </label>
-                        <label className="amt-collected-month-content">
-                            {data.collected_amount}
-                        </label>
-                    </div>
-
-                    <div
-                        className="amt-collected-today-div"
-                        onClick={() => navigate("/dailyReport")}
-                    >
-                        <label className="amt-collected-today-content">
-                            {t("HO_lbl_Daily")}
-                        </label>
-                        <label className="amt-collected-today-content">
-                            {data.daily_collection_amount}
-                        </label>
-                    </div>
-
-                    <div className="complaints-div">
-                        <label className="complaints-content">
-                            {t("HO_lbl_Complaints")}
-                        </label>
-                        <label className="complaints-content">
-                            {data.no_of_complaints}
-                        </label>
-                    </div>
-
-                    <div className="collect-btn-div">
-                        <button className="collectBtn" type="submit">
-                            {t("HO_button_Collect_Bill")}
-                        </button>
-                    </div>
-                </div>
+            <div className="profile-img-div">
+              <img
+                src={require("../assets/profile.jpg")}
+                className="profile_img"
+              />
             </div>
-            <Navbar value={0} />
-        </>
-    );
+          </div>
+
+          <p className="user_name">
+            {t("HO_lbl_wish")} {userJson ? userJson.agentName : null}
+          </p>
+
+          <div className="amt-due-today-div">
+            <label className="amt-due-today-content">
+              {t("HO_lbl_Unpaid")}
+            </label>
+            <label className="amt-due-today-content">
+              {data.pending_amount}
+            </label>
+          </div>
+
+          <div
+            className="amt-collected-month-div"
+            onClick={() => navigate("/monthlyreport")}
+          >
+            <label className="amt-collected-month-content">
+              {t("HO_lbl_Collected")}
+            </label>
+            <label className="amt-collected-month-content">
+              {data.collected_amount}
+            </label>
+          </div>
+
+          <div
+            className="amt-collected-today-div"
+            onClick={() => navigate("/dailyReport")}
+          >
+            <label className="amt-collected-today-content">
+              {t("HO_lbl_Daily")}
+            </label>
+            <label className="amt-collected-today-content">
+              {data.daily_collection_amount}
+            </label>
+          </div>
+
+          <div className="complaints-div">
+            <label className="complaints-content">
+              {t("HO_lbl_Complaints")}
+            </label>
+            <label className="complaints-content">
+              {data.no_of_complaints}
+            </label>
+          </div>
+
+          <div className="collect-btn-div">
+            <button className="collectBtn" type="submit">
+              {t("HO_button_Collect_Bill")}
+            </button>
+          </div>
+        </div>
+      </div>
+      <Navbar value={0} />
+      <Dialog
+        open={alert}
+        onClose={() => setalert(false)}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+      >
+        <DialogTitle
+          id="alert-dialog-title"
+          style={{ fontFamily: "Noto Sans" }}
+        >
+          Want to Exit the Application
+        </DialogTitle>
+        <DialogContent>
+          <DialogContentText
+            id="alert-dialog-description"
+            style={{ fontFamily: "Noto Sans" }}
+          >
+            Are you sure you want to exit the application?
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleAlertOpen} style={{ fontFamily: "Noto Sans" }}>
+            Yes
+          </Button>
+          <Button
+            onClick={() => setalert(false)}
+            autoFocus
+            style={{ fontFamily: "Noto Sans" }}
+          >
+            Cancel
+          </Button>
+        </DialogActions>
+      </Dialog>
+    </>
+  );
 }
