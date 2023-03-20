@@ -79,7 +79,7 @@ export default function HomePage() {
       
       if (window.confirm("Do you want to exit?")) {
         // window.location.href = 'about:blank';
-        window.close();
+        // window.close();
         window.pushState(null, null, window.location.href);
         
       }
