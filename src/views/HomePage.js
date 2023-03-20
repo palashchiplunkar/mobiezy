@@ -10,15 +10,12 @@ import "../css/HomeStyles.css";
 import "../css/global.css";
 
 export default function HomePage() {
-<<<<<<< HEAD
     useEffect(()=>{
         console.log(localStorage.getItem("user"))
         console.log(localStorage.getItem("rememberMe"))
 
     },[])
 
-=======
->>>>>>> ee74965a1bafc68cb6e4413c5b9b81867ab18fa6
     const { t } = useTranslation();
     const navigate = useNavigate();
     const [data, setData] = useState(
@@ -63,20 +60,13 @@ export default function HomePage() {
     };
 
     useEffect(() => {
-<<<<<<< HEAD
         
-=======
->>>>>>> ee74965a1bafc68cb6e4413c5b9b81867ab18fa6
         getHomeData();
     }, []);
 
     return (
         <>
             <div className="container">
-<<<<<<< HEAD
-
-=======
->>>>>>> ee74965a1bafc68cb6e4413c5b9b81867ab18fa6
                 <div>
                     <div className="headerblue">
                         <MobileNavigation />
