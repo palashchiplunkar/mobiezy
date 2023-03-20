@@ -66,10 +66,10 @@ export default function HomePage() {
     }
   };
 
-  const handleAlertOpen = () => {
-    window.close();
-    setalert(false);
-  };
+//   const handleAlertOpen = () => {
+//     window.close();
+//     setalert(false);
+//   };
   
   useEffect(() => {
     // get back click event and also create a alert event
@@ -78,8 +78,9 @@ export default function HomePage() {
       e.stopPropagation();
       
       if (window.confirm("Do you want to exit?")) {
-        window.close();
-        window.pushState(null, null, window.location.href);
+        window.location.href = 'about:blank';
+        // window.close();
+        // window.pushState(null, null, window.location.href);
         
       }
     });
@@ -160,39 +161,7 @@ export default function HomePage() {
         </div>
       </div>
       <Navbar value={0} />
-      <Dialog
-        open={alert}
-        onClose={() => setalert(false)}
-        aria-labelledby="alert-dialog-title"
-        aria-describedby="alert-dialog-description"
-      >
-        <DialogTitle
-          id="alert-dialog-title"
-          style={{ fontFamily: "Noto Sans" }}
-        >
-          Want to Exit the Application
-        </DialogTitle>
-        <DialogContent>
-          <DialogContentText
-            id="alert-dialog-description"
-            style={{ fontFamily: "Noto Sans" }}
-          >
-            Are you sure you want to exit the application?
-          </DialogContentText>
-        </DialogContent>
-        <DialogActions>
-          <Button onClick={handleAlertOpen} style={{ fontFamily: "Noto Sans" }}>
-            Yes
-          </Button>
-          <Button
-            onClick={() => setalert(false)}
-            autoFocus
-            style={{ fontFamily: "Noto Sans" }}
-          >
-            Cancel
-          </Button>
-        </DialogActions>
-      </Dialog>
+      
     </>
   );
 }
