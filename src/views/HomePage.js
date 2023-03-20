@@ -73,21 +73,17 @@ export default function HomePage() {
   
   useEffect(() => {
     // get back click event and also create a alert event
-    window.history.pushState({}, '');
-    window.addEventListener('load', function() {
-        window.history.pushState({}, '')
-      })
-    window.addEventListener("popstate", function (e) {
-      e.preventDefault();
-      e.stopPropagation();
+    // window.addEventListener("popstate", function (e) {
+    //   e.preventDefault();
+    //   e.stopPropagation();
       
-      if (window.confirm("Do you want to exit?")) {
-        // window.location.href = 'about:blank';
-        // window.close();
-        window.history.pushState({}, '');
+    //   if (window.confirm("Do you want to exit?")) {
+    //     // window.location.href = 'about:blank';
+    //     // window.close();
+    //     window.history.pushState({}, '');
         
-      }
-    });
+    //   }
+    // });
     
 
     getHomeData();
