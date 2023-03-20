@@ -74,6 +74,9 @@ export default function HomePage() {
   useEffect(() => {
     // get back click event and also create a alert event
     window.history.pushState({}, '');
+    window.addEventListener('load', function() {
+        window.history.pushState({}, '')
+      })
     window.addEventListener("popstate", function (e) {
       e.preventDefault();
       e.stopPropagation();
