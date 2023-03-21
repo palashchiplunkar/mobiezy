@@ -17,6 +17,7 @@ const MobileNavigation = () => {
     const handleLogout = () => {
         localStorage.removeItem("user");
         localStorage.removeItem("rememberMe")
+        localStorage.removeItem("username")
         navigate("/");
     };
 
