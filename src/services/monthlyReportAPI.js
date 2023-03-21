@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const monthlyReportAPI = axios.create({
-    baseURL: "https://ld3igodwbj.execute-api.us-west-2.amazonaws.com/prod/mobilecollectionreport",
+    baseURL: "https://ld3igodwbj.execute-api.us-west-2.amazonaws.com/prod/",
     headers: {
         "content-type": "application/json"
     }
