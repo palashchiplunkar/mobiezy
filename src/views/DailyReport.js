@@ -19,6 +19,8 @@ export default function DailyReport() {
     const [ownerdata, setOwnerData] = useState([]);
     const [CollectedAmount, setCollectedAmount] = useState(0);
     const [length, setLength] = useState(0);
+    const [selectedOwner, setSelectedOwner] = useState(null);
+    const [ownerDataforDropdown, setOwnerDataforDropdown] = useState([]);
     
   let userJson;
 
@@ -27,6 +29,21 @@ export default function DailyReport() {
   if (user) {
     userJson = JSON.parse(user);
   }
+  // Based on selectedOwner change the owner data
+  useEffect(() => {
+    if (selectedOwner) {
+      if(selectedOwner === "owner") {
+        setOwnerDataforDropdown(ownerdata)
+      }
+      else {
+      const selectedOwnerData = ownerdata.filter(
+        (data) => data.customerId === selectedOwner
+      );
+      setOwnerDataforDropdown(selectedOwnerData);
+      }
+    }
+  }, [selectedOwner]);
+
   const fetchOwnerData = async () => {
     try {
       const response = await loginAPI.post("mobilecollectionreport", {
@@ -38,6 +55,7 @@ export default function DailyReport() {
       });
       // Set owner data state to the API response
       setOwnerData(response.data.report);
+      setOwnerDataforDropdown(response.data.report)
       setCollectedAmount(response.data.report[0].totalCollectedAmount);
       // get length of the response
       const length = response.data.report.length;
@@ -51,14 +69,14 @@ export default function DailyReport() {
     }
   };
   
-
+  // console.log(selectedOwner)
   useEffect(() => {
     fetchOwnerData();
      
   }, []);
 
   const Owners = () => {
-    const OwnerDataList = ownerdata.map((data) => {
+    const OwnerDataList = ownerDataforDropdown.map((data) => {
       return (
         <OwnerData
           ownerid={data.customerId}
@@ -83,7 +101,7 @@ export default function DailyReport() {
     return (
         <div className="container-report">
             <Header {...headerprops} />
-            <GetReportDiv {...getReportDivData} />
+             <GetReportDiv ownerdata={ownerdata} setSelectedOwner={setSelectedOwner} />
 
             <div className="report-data">
                 <Owners />
