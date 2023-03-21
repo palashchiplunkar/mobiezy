@@ -4,7 +4,7 @@ import "../css/getReportDiv.css";
 
 const GetReportDiv = (props) => {
     // const ownerdata = props.ownerdata;
-    const { ownerdata, setSelectedOwner } = props;
+    const { ownerdata, setSelectedOwner, selectCustomerData } = props;
 
     // Add only unique customerId to the json
     const unique = ownerdata
@@ -24,7 +24,7 @@ const GetReportDiv = (props) => {
 
     // Based on user selection change the owner data
     const handleOwnerSelection = (e) => {
-        // set the vale of ownerselect to the selected value
+        // set the value of ownerselect to the selected value
         // document.getElementById("ownerselect").value = e.target;
 
         if (e.target.value === "owner") {
@@ -48,6 +48,7 @@ const GetReportDiv = (props) => {
     return (
         <div className="get-report-div">
             {/* Add dropdown option */}
+
             <select
                 className="get-report-dropdown"
                 id="ownerselect"
@@ -56,10 +57,10 @@ const GetReportDiv = (props) => {
                 <option value="owner" onClick={AllData}>
                     Owner Sur ...
                 </option>
-                {/* <OwnerSelection /> */}
+
                 <OwnerSelection />
             </select>
-            <button className="get-report-btn">Get Report</button>
+            <button className="get-report-btn" onClick={() => selectCustomerData()}>Get Report</button>
         </div>
     );
 };

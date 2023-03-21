@@ -11,8 +11,10 @@ import "../css/MonthlyReport.css";
 import "../css/global.css";
 
 export default function MonthReport() {
+
+    const [defaultOwnerData, setDefaultOwnerData] = useState([]);
     const [ownerdata, setData] = useState([]);
-    const [customerName, setCustomerName] = useState("");
+    const [customerName, setCustomerName] = useState(null);
 
     useEffect(() => {
         monthlyReportAPI
@@ -27,9 +29,23 @@ export default function MonthReport() {
 
             .then((response) => {
                 setData(response.data.report);
+                setDefaultOwnerData(response.data.report);
                 console.log(response.data);
             });
     }, []);
+
+    const selectCustomerData = () => {
+        if (customerName) {
+            if (customerName === "owner") {
+                setData(ownerdata);
+            } else {
+                const selectedOwnerData = ownerdata.filter(
+                    (data) => data.customerId === customerName
+                );
+                setData(selectedOwnerData);
+            }
+        }
+    };
 
     const handletodate = () => {
         const todateInput = document.getElementById("todate");
@@ -64,7 +80,9 @@ export default function MonthReport() {
     };
 
     const getReportDivData = {
-        ownerdata: ownerdata,
+        ownerdata: defaultOwnerData,
+        setSelectedOwner: setCustomerName,
+        selectCustomerData: selectCustomerData,
     };
 
     return (
