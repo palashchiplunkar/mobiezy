@@ -2,7 +2,8 @@ import React from 'react'
 import '../css/getReportDiv.css'
 import OwnerData from '../components/ownerdatadiv'
 const GetReportDiv = (props) => {
-    const ownerdata = props.ownerdata;
+    // const ownerdata = props.ownerdata;
+    const { ownerdata, setSelectedOwner } = props;
     // Add only unique customerId to the json
     const unique = ownerdata
         .map((e) => e.customerId)
@@ -19,17 +20,30 @@ const GetReportDiv = (props) => {
     };
     // Based on user selection change the owner data
     const handleOwnerSelection = (e) => {
+        // set the vale of ownerselect to the selected value
+        // document.getElementById("ownerselect").value = e.target;
+        
+
+        if(e.target.value === "owner") {
+            console.log("owner")
+            setSelectedOwner("owner")
+        }
+        else {
         const selectedOwner = e.target.value;
-        const selectedOwnerData = ownerdata.filter(
-            (data) => data.customerId === selectedOwner
-        );
-        console.log(selectedOwnerData);
-    };
+        const selectedOwnerData = ownerdata.filter((data) => data.customerId === selectedOwner);
+        
+        setSelectedOwner(selectedOwner);
+        }
+      };
+      const AllData = () => {
+        console.log("owner")
+        setSelectedOwner("owner")
+        }
   return (
     <div className="get-report-div">
     {/* Add dropdown option */}
-    <select className="get-report-dropdown" >
-        <option value="owner">Owner Sur ...</option>
+    <select className="get-report-dropdown" id="ownerselect"onChange={handleOwnerSelection}>
+        <option value="owner" onClick={AllData}>Owner Sur ...</option>
         {/* <OwnerSelection /> */}
         <OwnerSelection />
     </select>
