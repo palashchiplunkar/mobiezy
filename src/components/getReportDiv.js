@@ -35,6 +35,19 @@ const GetReportDiv = (props) => {
         setSelectedOwner(selectedOwner);
         }
       };
+      const handleSelection = () => {
+        const selectedOwner = document.getElementById("ownerselect").value;
+        console.log(selectedOwner)
+        if(selectedOwner === "owner") {
+            console.log("owner")
+            setSelectedOwner("owner")
+        }
+        else {
+        const selectedOwnerData = ownerdata.filter((data) => data.customerId === selectedOwner);
+
+        setSelectedOwner(selectedOwner);
+        }
+        };
       const AllData = () => {
         console.log("owner")
         setSelectedOwner("owner")
@@ -42,12 +55,12 @@ const GetReportDiv = (props) => {
   return (
     <div className="get-report-div">
     {/* Add dropdown option */}
-    <select className="get-report-dropdown" id="ownerselect"onChange={handleOwnerSelection}>
+    <select className="get-report-dropdown" id="ownerselect">
         <option value="owner" onClick={AllData}>Owner Sur ...</option>
         {/* <OwnerSelection /> */}
         <OwnerSelection />
     </select>
-    <button className="get-report-btn">Get Report</button>
+    <button className="get-report-btn" onClick={handleSelection}>Get Report</button>
     
 </div>
   )
