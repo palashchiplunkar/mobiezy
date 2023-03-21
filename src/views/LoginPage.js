@@ -17,7 +17,7 @@ export default function LoginPage() {
   const [Error, setError] = useState("");
   const [UError, setUError] = useState("");
   const [PError, setPError] = useState("");
-  const [user, setUser] = useState(localStorage.getItem("user") || "");
+  const [user, setUser] = useState(localStorage.getItem("username") || "");
   const [pwd, setPwd] = useState("");
   const [rememberMe, setRememberMe] = useState(
     localStorage.getItem("rememberMe") || false
@@ -72,6 +72,7 @@ export default function LoginPage() {
           
             setAgentData(response.data)
             localStorage.setItem("user", stringuserjson);
+            localStorage.setItem("username",user)
             localStorage.setItem("rememberMe", true);
           } else {
             sessionStorage.setItem("user", stringuserjson);
