@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { RiSortDesc } from "react-icons/ri";
 import Navbar from "../components/navbar";
 import { useState } from "react";
@@ -49,6 +49,17 @@ export default function Customer() {
         "No.153, Bannerghatta Main Rd, Vijayashri Layout, Bengaluru, Karnataka 560076",
     },
   ];
+
+
+  useEffect (() => {
+    window.history.pushState({}, '');
+    window.addEventListener("popstate", function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+      window.history.pushState({}, '');
+    }
+    );
+  }, [])
 
   const Customers = () => {
     const eachCustomer = CustomerData.map((customer) => {

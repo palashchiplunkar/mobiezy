@@ -88,3 +88,77 @@
 .customer-statistics-data-label-number {
   width: 15px;
 }
+
+.PieChartDiv{
+  width: 85%;
+  height: 100%;
+  margin-top: 5%;
+  margin-bottom: 5%;
+  overflow-x: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow-y: hidden;
+  border: 4px solid transparent;
+    border-radius: 15px;
+    background-image: linear-gradient(white, white),
+        linear-gradient(to bottom right, #0090da, #a4ce4e);
+    background-origin: border-box;
+    background-clip: content-box, border-box;
+}
+
+.recharts-legend-wrapper{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  top: 0;
+}
+
+.pie-chart-with-legend {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  width:400px;
+}
+
+.pie-chart-legend {
+  flex-basis: 100%;
+  width:400px;
+}
+.recharts-legend-wrapper {
+  /* width: 100%;
+   */
+  
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: -70%;
+  
+}
+.custom-legend {
+
+ align-self: center;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  margin-right: 10px;
+  margin-bottom: 5px;
+  
+}
+
+.legend-icon {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  margin-right: 5px;
+}
+
+.legend-text {
+  display: inline-block;
+  font-size: 14px;
+  width : fit-content;
+}

@@ -2,6 +2,7 @@ import React from "react";
 import Navbar from "../components/navbar";
 
 import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
 import Header from "../components/header";
 
@@ -66,6 +67,15 @@ function MoreOptions() {
         text: "More Options",
         height: "10vh",
     };
+    useEffect (() => {
+    window.history.pushState({}, '');
+    window.addEventListener("popstate", function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+      window.history.pushState({}, '');
+    }
+    );
+  }, [])
     return (
         <>
             <div>
