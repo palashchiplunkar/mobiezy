@@ -1,7 +1,5 @@
 import React from "react";
-// import { useRef, useState, useEffect } from "react";
-// import { useNavigate } from "react-router-dom";
-// import { useTranslation } from "react-i18next";
+
 import "../css/SubReport.css";
 import "../css/global.css";
 import Header from "../components/header";
