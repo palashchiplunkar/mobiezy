@@ -160,7 +160,7 @@ export default function HomePage() {
           </div>
 
           <div className="collect-btn-div">
-            <button className="collectBtn" type="submit">
+            <button className="collectBtn" type="submit" onClick={()=>navigate("/collectPayment")}>
               {t("HO_button_Collect_Bill")}
             </button>
           </div>
