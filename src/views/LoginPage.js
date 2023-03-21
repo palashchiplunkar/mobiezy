@@ -60,18 +60,21 @@ export default function LoginPage() {
       })
 
       .then((response) => {
-        console.log(response);
+        // console.log(response);
         if (response.data.messageText === "UNAUTHORIZED") {
           setUError("Invalid Username!");
           setPError("Invalid Password!");
           navigate("/");
         } else {
+          var stringuserjson = JSON.stringify(response.data);
           if (rememberMe) {
+            // convert json object to String
+          
             setAgentData(response.data)
-            localStorage.setItem("user", user);
+            localStorage.setItem("user", stringuserjson);
             localStorage.setItem("rememberMe", true);
           } else {
-            sessionStorage.setItem("user", user);
+            sessionStorage.setItem("user", stringuserjson);
           }
           navigate("/home");
         }
