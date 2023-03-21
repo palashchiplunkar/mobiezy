@@ -1,23 +1,27 @@
 import React from "react";
 import { RiCalendarEventFill } from "react-icons/ri";
+
 import OwnerData from "../components/ownerdatadiv";
-import "../css/MonthlyReport.css";
-import "../css/global.css";
 import Header from "../components/header";
 import GetReportDiv from "../components/getReportDiv";
+
+import "../css/MonthlyReport.css";
+import "../css/global.css";
+
 export default function MonthReport() {
+    
     const handletodate = () => {
         const todateInput = document.getElementById("todate");
         todateInput.focus();
 
         todateInput.dispatchEvent(new MouseEvent("click", { bubbles: true }));
     };
-    const handlefromdate = () =>{
+    const handlefromdate = () => {
         const fromdateInput = document.getElementById("fromdateinp");
         fromdateInput.focus();
 
         fromdateInput.dispatchEvent(new MouseEvent("click", { bubbles: true }));
-    }
+    };
 
     const ownerdata = [
         {
@@ -51,7 +55,11 @@ export default function MonthReport() {
     const Owners = () => {
         const OwnerDataList = ownerdata.map((data) => {
             return (
-               <OwnerData ownerid={data.ownerid} owneramt={data.owneramt} ownername={data.ownername} />
+                <OwnerData
+                    ownerid={data.ownerid}
+                    owneramt={data.owneramt}
+                    ownername={data.ownername}
+                />
             );
         });
         return OwnerDataList;
@@ -60,20 +68,23 @@ export default function MonthReport() {
         text: "Monthly Report",
         height: "10vh",
     };
-    const getReportDivData={
-        ownerdata:ownerdata
-    }
+    const getReportDivData = {
+        ownerdata: ownerdata,
+    };
     return (
         <div className="container-report">
-            {/* <img className="home-bg-img" src={require("../assets/BG.JPG")} /> */}
-
             <Header {...headerprops} />
 
             <div className="date-report">
                 <div className="from-date">
                     <p className="from-date-label">From Date</p>
-                    <input className="from-date-input" type="date" id="fromdateinp" />
-                    <RiCalendarEventFill className="from-date-calender-icon" 
+                    <input
+                        className="from-date-input"
+                        type="date"
+                        id="fromdateinp"
+                    />
+                    <RiCalendarEventFill
+                        className="from-date-calender-icon"
                         onClick={handlefromdate}
                     />
                 </div>
@@ -88,10 +99,10 @@ export default function MonthReport() {
                 </div>
             </div>
 
-           <GetReportDiv {...getReportDivData} />
+            <GetReportDiv {...getReportDivData} />
 
             <div className="report-data">
-                <Owners/>
+                <Owners />
             </div>
 
             <div className="float-div">
@@ -114,7 +125,6 @@ export default function MonthReport() {
                 </div>
 
                 <button className="print-report-btn">PRINT REPORT</button>
-
             </div>
         </div>
     );
