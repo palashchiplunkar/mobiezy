@@ -20,7 +20,6 @@ export default function HomePage() {
     useEffect(()=>{
         console.log(localStorage.getItem("user"))
         console.log(localStorage.getItem("rememberMe"))
-
     },[])
 
     const { t } = useTranslation();
@@ -84,6 +83,13 @@ export default function HomePage() {
         
     //   }
     // });
+    window.history.pushState({}, '');
+    window.addEventListener("popstate", function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+      window.history.pushState({}, '');
+    }
+    );
     
 
     getHomeData();
