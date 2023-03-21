@@ -25,7 +25,7 @@ export default function MonthReport() {
 
         .then((response) => {
             setData(response.data.report)
-            console.log(ownerdata);
+            // console.log(ownerdata);
         })
 
     const handletodate = () => {
