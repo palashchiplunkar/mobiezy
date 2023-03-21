@@ -4,7 +4,7 @@ import "../css/getReportDiv.css";
 
 const GetReportDiv = (props) => {
     // const ownerdata = props.ownerdata;
-    const { ownerdata, setSelectedOwner, selectCustomerData } = props;
+    const { ownerdata, setSelectedOwner } = props;
 
     // Add only unique customerId to the json
     const unique = ownerdata
@@ -23,34 +23,40 @@ const GetReportDiv = (props) => {
     };
 
     // Based on user selection change the owner data
-      const handleSelection = () => {
+    const handleSelection = () => {
         const selectedOwner = document.getElementById("ownerselect").value;
-        console.log(selectedOwner)
-        if(selectedOwner === "owner") {
-            console.log("owner")
-            setSelectedOwner("owner")
-        }
-        else {
-        const selectedOwnerData = ownerdata.filter((data) => data.customerId === selectedOwner);
+        console.log(selectedOwner);
+        if (selectedOwner === "owner") {
+            console.log("owner");
+            setSelectedOwner("owner");
+        } else {
+            // const selectedOwnerData = ownerdata.filter(
+            //     (data) => data.customerId === selectedOwner
+            // );
 
-        setSelectedOwner(selectedOwner);
+            setSelectedOwner(selectedOwner);
         }
-        };
-      const AllData = () => {
-        console.log("owner")
-        setSelectedOwner("owner")
-        }
-  return (
-    <div className="get-report-div">
-    {/* Add dropdown option */}
-    <select className="get-report-dropdown" id="ownerselect">
-        <option value="owner" onClick={AllData}>Owner Sur ...</option>
-        {/* <OwnerSelection /> */}
-        <OwnerSelection />
-    </select>
-    <button className="get-report-btn" onClick={handleSelection}>Get Report</button>
-    
-</div>
-  )
-}
-export default GetReportDiv
+    };
+
+    const AllData = () => {
+        console.log("owner");
+        setSelectedOwner("owner");
+    };
+
+    return (
+        <div className="get-report-div">
+            {/* Add dropdown option */}
+            <select className="get-report-dropdown" id="ownerselect">
+                <option value="owner" onClick={AllData}>
+                    Owner Sur ...
+                </option>
+                {/* <OwnerSelection /> */}
+                <OwnerSelection />
+            </select>
+            <button className="get-report-btn" onClick={handleSelection}>
+                Get Report
+            </button>
+        </div>
+    );
+};
+export default GetReportDiv;

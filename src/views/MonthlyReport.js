@@ -12,9 +12,11 @@ import "../css/global.css";
 
 export default function MonthReport() {
 
-    const [defaultOwnerData, setDefaultOwnerData] = useState([]);
+    // const [defaultOwnerData, setDefaultOwnerData] = useState([]);
     const [ownerdata, setData] = useState([]);
     const [customerName, setCustomerName] = useState(null);
+    const [ownerDataforDropdown, setOwnerDataforDropdown] = useState([]);
+    const [selectedOwner, setSelectedOwner] = useState(null);
 
     useEffect(() => {
         monthlyReportAPI
@@ -29,23 +31,24 @@ export default function MonthReport() {
 
             .then((response) => {
                 setData(response.data.report);
-                setDefaultOwnerData(response.data.report);
+                setOwnerDataforDropdown(response.data.report);
+                // setDefaultOwnerData(response.data.report);
                 console.log(response.data);
             });
     }, []);
 
-    const selectCustomerData = () => {
+    useEffect(() => {
         if (customerName) {
             if (customerName === "owner") {
-                setData(ownerdata);
+                setOwnerDataforDropdown(ownerdata);
             } else {
                 const selectedOwnerData = ownerdata.filter(
                     (data) => data.customerId === customerName
                 );
-                setData(selectedOwnerData);
+                setOwnerDataforDropdown(selectedOwnerData);
             }
         }
-    };
+    }, [customerName]);
 
     const handletodate = () => {
         const todateInput = document.getElementById("todate");
@@ -62,7 +65,7 @@ export default function MonthReport() {
     };
 
     const Owners = () => {
-        const OwnerDataList = ownerdata.map((data) => {
+        const OwnerDataList = ownerDataforDropdown.map((data) => {
             return (
                 <OwnerData
                     ownerid={data.customerId}
@@ -80,9 +83,8 @@ export default function MonthReport() {
     };
 
     const getReportDivData = {
-        ownerdata: defaultOwnerData,
-        setSelectedOwner: setCustomerName,
-        selectCustomerData: selectCustomerData,
+        ownerdata: ownerdata,
+        setSelectedOwner: setCustomerName
     };
 
     return (
