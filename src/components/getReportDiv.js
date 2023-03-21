@@ -19,22 +19,6 @@ const GetReportDiv = (props) => {
         return OwnerSelectionData;
     };
     // Based on user selection change the owner data
-    const handleOwnerSelection = (e) => {
-        // set the vale of ownerselect to the selected value
-        // document.getElementById("ownerselect").value = e.target;
-        
-
-        if(e.target.value === "owner") {
-            console.log("owner")
-            setSelectedOwner("owner")
-        }
-        else {
-        const selectedOwner = e.target.value;
-        const selectedOwnerData = ownerdata.filter((data) => data.customerId === selectedOwner);
-        
-        setSelectedOwner(selectedOwner);
-        }
-      };
       const handleSelection = () => {
         const selectedOwner = document.getElementById("ownerselect").value;
         console.log(selectedOwner)
