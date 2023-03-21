@@ -1,21 +1,40 @@
-import React from "react";
+import React, { useState } from "react";
 import { RiCalendarEventFill } from "react-icons/ri";
 
 import OwnerData from "../components/ownerdatadiv";
 import Header from "../components/header";
 import GetReportDiv from "../components/getReportDiv";
+import monthlyReportAPI from "../services/monthlyReportAPI";
 
 import "../css/MonthlyReport.css";
 import "../css/global.css";
 
 export default function MonthReport() {
-    
+
+    const [ownerdata, setData] = useState([]);
+
+    monthlyReportAPI
+        .post("mobilecollectionreport", {
+            agentId: "11276",
+            operatorId: "1603",
+            Startdate: "",
+            Enddate: "",
+            flag: "N",
+            dailyReport: "N",
+        })
+
+        .then((response) => {
+            setData(response.data.report)
+            console.log(ownerdata);
+        })
+
     const handletodate = () => {
         const todateInput = document.getElementById("todate");
         todateInput.focus();
 
         todateInput.dispatchEvent(new MouseEvent("click", { bubbles: true }));
     };
+
     const handlefromdate = () => {
         const fromdateInput = document.getElementById("fromdateinp");
         fromdateInput.focus();
@@ -23,54 +42,56 @@ export default function MonthReport() {
         fromdateInput.dispatchEvent(new MouseEvent("click", { bubbles: true }));
     };
 
-    const ownerdata = [
-        {
-            ownerid: "MR14012",
-            ownername: "Deepak Kumar",
-            owneramt: "778",
-        },
-        {
-            ownerid: "JB0213",
-            ownername: "Akshay Vaidya",
-            owneramt: "190",
-        },
-        {
-            ownerid: "BG70279",
-            ownername: "Dinesh Kumar",
-            owneramt: "578",
-        },
-        {
-            ownerid: "KS00567",
-            ownername: "Raghavendra Ganiga",
-            owneramt: "55",
-        },
-        {
-            ownerid: "PB700214",
-            ownername: "Gurmeet Singh",
-            owneramt: "394",
-        },
-    ];
+    // const ownerdata = [
+    //     {
+    //         ownerid: "MR14012",
+    //         ownername: "Deepak Kumar",
+    //         owneramt: "778",
+    //     },
+    //     {
+    //         ownerid: "JB0213",
+    //         ownername: "Akshay Vaidya",
+    //         owneramt: "190",
+    //     },
+    //     {
+    //         ownerid: "BG70279",
+    //         ownername: "Dinesh Kumar",
+    //         owneramt: "578",
+    //     },
+    //     {
+    //         ownerid: "KS00567",
+    //         ownername: "Raghavendra Ganiga",
+    //         owneramt: "55",
+    //     },
+    //     {
+    //         ownerid: "PB700214",
+    //         ownername: "Gurmeet Singh",
+    //         owneramt: "394",
+    //     },
+    // ];
 
-    // const Owners = () => {
     const Owners = () => {
         const OwnerDataList = ownerdata.map((data) => {
             return (
                 <OwnerData
-                    ownerid={data.ownerid}
-                    owneramt={data.owneramt}
-                    ownername={data.ownername}
+                    ownerid={data.customerId}
+                    owneramt={data.collectedAmount}
+                    ownername={data.customerName}
                 />
             );
         });
         return OwnerDataList;
     };
+
     const headerprops = {
         text: "Monthly Report",
         height: "10vh",
     };
+
     const getReportDivData = {
         ownerdata: ownerdata,
     };
+
     return (
         <div className="container-report">
             <Header {...headerprops} />
