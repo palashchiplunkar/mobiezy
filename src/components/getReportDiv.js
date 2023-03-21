@@ -1,10 +1,12 @@
 import React from "react";
+import { useState } from "react";
 import OwnerData from "../components/ownerdatadiv";
 import "../css/getReportDiv.css";
 
 const GetReportDiv = (props) => {
     // const ownerdata = props.ownerdata;
     const { ownerdata, setSelectedOwner } = props;
+    const [ selected, setSelected] = useState(null);
 
     // Add only unique customerId to the json
     const unique = ownerdata
@@ -29,24 +31,23 @@ const GetReportDiv = (props) => {
         if (selectedOwner === "owner") {
             console.log("owner");
             setSelectedOwner("owner");
+            setSelected("owner");
         } else {
-            // const selectedOwnerData = ownerdata.filter(
-            //     (data) => data.customerId === selectedOwner
-            // );
-
             setSelectedOwner(selectedOwner);
+            setSelected(selectedOwner);
+            document.getElementById("ownerselect").option = selectedOwner;
         }
     };
 
     const AllData = () => {
-        console.log("owner");
+        // console.log("owner");
         setSelectedOwner("owner");
     };
 
     return (
         <div className="get-report-div">
             {/* Add dropdown option */}
-            <select className="get-report-dropdown" id="ownerselect">
+            <select className="get-report-dropdown" id="ownerselect" onChange={() => setSelectedOwner(selected)}>
                 <option value="owner" onClick={AllData}>
                     Owner Sur ...
                 </option>

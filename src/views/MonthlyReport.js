@@ -12,11 +12,9 @@ import "../css/global.css";
 
 export default function MonthReport() {
 
-    // const [defaultOwnerData, setDefaultOwnerData] = useState([]);
     const [ownerdata, setData] = useState([]);
     const [customerName, setCustomerName] = useState(null);
     const [ownerDataforDropdown, setOwnerDataforDropdown] = useState([]);
-    const [selectedOwner, setSelectedOwner] = useState(null);
 
     useEffect(() => {
         monthlyReportAPI
@@ -45,6 +43,7 @@ export default function MonthReport() {
                 const selectedOwnerData = ownerdata.filter(
                     (data) => data.customerId === customerName
                 );
+
                 setOwnerDataforDropdown(selectedOwnerData);
             }
         }
