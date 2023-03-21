@@ -1,15 +1,18 @@
-import React from 'react'
-import '../css/getReportDiv.css'
-import OwnerData from '../components/ownerdatadiv'
+import React from "react";
+import OwnerData from "../components/ownerdatadiv";
+import "../css/getReportDiv.css";
+
 const GetReportDiv = (props) => {
     // const ownerdata = props.ownerdata;
-    const { ownerdata, setSelectedOwner } = props;
+    const { ownerdata, setSelectedOwner, selectCustomerData } = props;
+
     // Add only unique customerId to the json
     const unique = ownerdata
         .map((e) => e.customerId)
         .map((e, i, final) => final.indexOf(e) === i && i)
         .filter((e) => ownerdata[e])
         .map((e) => ownerdata[e]);
+
     // Map the unique customerId to the dropdown
 
     const OwnerSelection = () => {
@@ -18,6 +21,7 @@ const GetReportDiv = (props) => {
         });
         return OwnerSelectionData;
     };
+
     // Based on user selection change the owner data
       const handleSelection = () => {
         const selectedOwner = document.getElementById("ownerselect").value;

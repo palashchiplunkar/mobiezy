@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { RiCalendarEventFill } from "react-icons/ri";
 
 import OwnerData from "../components/ownerdatadiv";
 import Header from "../components/header";
 import GetReportDiv from "../components/getReportDiv";
+
 import monthlyReportAPI from "../services/monthlyReportAPI";
 
 import "../css/MonthlyReport.css";
@@ -11,22 +12,40 @@ import "../css/global.css";
 
 export default function MonthReport() {
 
+    const [defaultOwnerData, setDefaultOwnerData] = useState([]);
     const [ownerdata, setData] = useState([]);
+    const [customerName, setCustomerName] = useState(null);
 
-    monthlyReportAPI
-        .post("mobilecollectionreport", {
-            agentId: "11276",
-            operatorId: "1603",
-            Startdate: "",
-            Enddate: "",
-            flag: "N",
-            dailyReport: "N",
-        })
+    useEffect(() => {
+        monthlyReportAPI
+            .post("mobilecollectionreport", {
+                agentId: "11276",
+                operatorId: "1603",
+                Startdate: "",
+                Enddate: "",
+                flag: "N",
+                dailyReport: "N",
+            })
 
-        .then((response) => {
-            setData(response.data.report)
-            // console.log(ownerdata);
-        })
+            .then((response) => {
+                setData(response.data.report);
+                setDefaultOwnerData(response.data.report);
+                console.log(response.data);
+            });
+    }, []);
+
+    const selectCustomerData = () => {
+        if (customerName) {
+            if (customerName === "owner") {
+                setData(ownerdata);
+            } else {
+                const selectedOwnerData = ownerdata.filter(
+                    (data) => data.customerId === customerName
+                );
+                setData(selectedOwnerData);
+            }
+        }
+    };
 
     const handletodate = () => {
         const todateInput = document.getElementById("todate");
@@ -42,40 +61,12 @@ export default function MonthReport() {
         fromdateInput.dispatchEvent(new MouseEvent("click", { bubbles: true }));
     };
 
-    // const ownerdata = [
-    //     {
-    //         ownerid: "MR14012",
-    //         ownername: "Deepak Kumar",
-    //         owneramt: "778",
-    //     },
-    //     {
-    //         ownerid: "JB0213",
-    //         ownername: "Akshay Vaidya",
-    //         owneramt: "190",
-    //     },
-    //     {
-    //         ownerid: "BG70279",
-    //         ownername: "Dinesh Kumar",
-    //         owneramt: "578",
-    //     },
-    //     {
-    //         ownerid: "KS00567",
-    //         ownername: "Raghavendra Ganiga",
-    //         owneramt: "55",
-    //     },
-    //     {
-    //         ownerid: "PB700214",
-    //         ownername: "Gurmeet Singh",
-    //         owneramt: "394",
-    //     },
-    // ];
-
     const Owners = () => {
         const OwnerDataList = ownerdata.map((data) => {
             return (
                 <OwnerData
                     ownerid={data.customerId}
-                    owneramt={data.collectedAmount}
+                    owneramt={data.totalCollectedAmount}
                     ownername={data.customerName}
                 />
             );
@@ -89,7 +80,9 @@ export default function MonthReport() {
     };
 
     const getReportDivData = {
-        ownerdata: ownerdata,
+        ownerdata: defaultOwnerData,
+        setSelectedOwner: setCustomerName,
+        selectCustomerData: selectCustomerData,
     };
 
     return (

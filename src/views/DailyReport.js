@@ -1,4 +1,4 @@
-import React, { useEffect,useState } from "react";
+import React, { useEffect, useState } from "react";
 import OwnerData from "../components/ownerdatadiv";
 
 import Header from "../components/header";
@@ -7,7 +7,9 @@ import GetReportDiv from "../components/getReportDiv";
 import "../css/MonthlyReport.css";
 import "../css/global.css";
 import loginAPI from "../services/authApi";
+
 export default function DailyReport() {
+    
     const handletodate = () => {
         const todateInput = document.getElementById("todate");
         todateInput.focus();
@@ -15,80 +17,75 @@ export default function DailyReport() {
         todateInput.dispatchEvent(new MouseEvent("click", { bubbles: true }));
     };
 
-    
     const [ownerdata, setOwnerData] = useState([]);
     const [CollectedAmount, setCollectedAmount] = useState(0);
     const [length, setLength] = useState(0);
     const [selectedOwner, setSelectedOwner] = useState(null);
     const [ownerDataforDropdown, setOwnerDataforDropdown] = useState([]);
-    
-  let userJson;
 
-  const user = localStorage.getItem("user") || sessionStorage.getItem("user");
+    let userJson;
 
-  if (user) {
-    userJson = JSON.parse(user);
-  }
-  // Based on selectedOwner change the owner data
-  useEffect(() => {
-    if (selectedOwner) {
-      if(selectedOwner === "owner") {
-        setOwnerDataforDropdown(ownerdata)
-      }
-      else {
-      const selectedOwnerData = ownerdata.filter(
-        (data) => data.customerId === selectedOwner
-      );
-      setOwnerDataforDropdown(selectedOwnerData);
-      }
+    const user = localStorage.getItem("user") || sessionStorage.getItem("user");
+
+    if (user) {
+        userJson = JSON.parse(user);
     }
-  }, [selectedOwner]);
 
-  const fetchOwnerData = async () => {
-    try {
-      const response = await loginAPI.post("mobilecollectionreport", {
-        agentId: userJson.agentId,
-        considerAgentType: "Y",
-        operatorId: userJson.operatorId,
-        Startdate: "",
-        dailyReport: "N",
-      });
-      // Set owner data state to the API response
-      setOwnerData(response.data.report);
-      setOwnerDataforDropdown(response.data.report)
-      setCollectedAmount(response.data.report[0].totalCollectedAmount);
-      // get length of the response
-      const length = response.data.report.length;
-      setLength(length);
-     console.log(length);
+    // Based on selectedOwner change the owner data
+    useEffect(() => {
+        if (selectedOwner) {
+            if (selectedOwner === "owner") {
+                setOwnerDataforDropdown(ownerdata);
+            } else {
+                const selectedOwnerData = ownerdata.filter(
+                    (data) => data.customerId === selectedOwner
+                );
+                setOwnerDataforDropdown(selectedOwnerData);
+            }
+        }
+    }, [selectedOwner]);
 
-      console.log(response.data.report);
-  
-    } catch (error) {
-      console.log(error);
-    }
-  };
-  
-  // console.log(selectedOwner)
-  useEffect(() => {
-    fetchOwnerData();
-     
-  }, []);
+    const fetchOwnerData = async () => {
+        try {
+            const response = await loginAPI.post("mobilecollectionreport", {
+                agentId: userJson.agentId,
+                considerAgentType: "Y",
+                operatorId: userJson.operatorId,
+                Startdate: "",
+                dailyReport: "N",
+            });
+            // Set owner data state to the API response
+            setOwnerData(response.data.report);
+            setOwnerDataforDropdown(response.data.report);
+            setCollectedAmount(response.data.report[0].totalCollectedAmount);
+            // get length of the response
+            const length = response.data.report.length;
+            setLength(length);
+            console.log(length);
 
-  const Owners = () => {
-    const OwnerDataList = ownerDataforDropdown.map((data) => {
-      return (
-        <OwnerData
-          ownerid={data.customerId}
-          owneramt={data.collectedAmount}
-          ownername={data.customerName}
-        />
-      );
-    });
-    return OwnerDataList;
-  };
-    
+            console.log(response.data.report);
+        } catch (error) {
+            console.log(error);
+        }
+    };
 
+    // console.log(selectedOwner)
+    useEffect(() => {
+        fetchOwnerData();
+    }, []);
+
+    const Owners = () => {
+        const OwnerDataList = ownerDataforDropdown.map((data) => {
+            return (
+                <OwnerData
+                    ownerid={data.customerId}
+                    owneramt={data.collectedAmount}
+                    ownername={data.customerName}
+                />
+            );
+        });
+        return OwnerDataList;
+    };
 
     const headerprops = {
         text: "Daily Report",
@@ -101,7 +98,10 @@ export default function DailyReport() {
     return (
         <div className="container-report">
             <Header {...headerprops} />
-             <GetReportDiv ownerdata={ownerdata} setSelectedOwner={setSelectedOwner} />
+            <GetReportDiv
+                ownerdata={ownerdata}
+                setSelectedOwner={setSelectedOwner}
+            />
 
             <div className="report-data">
                 <Owners />
@@ -113,7 +113,10 @@ export default function DailyReport() {
                         <p className="total-amount-collected-label">
                             Total Amount Collected :{" "}
                         </p>
-                        <p className="total-amount-collected-value">₹{""}{CollectedAmount}</p>
+                        <p className="total-amount-collected-value">
+                            ₹{""}
+                            {CollectedAmount}
+                        </p>
                     </div>
 
                     <div className="total-amount-collected">
