@@ -220,12 +220,16 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 }
 
 .report-data-div {
-    padding: 10px;
+    /* padding: 10px; */
     width: 90%;
     height: 10vh;
     margin-top: 5%;
-    border: 1px solid #1e90ff;
+    border: 1px solid transparent;
     border-radius: 15px;
+    background-image: linear-gradient(white, white),
+        linear-gradient(to bottom right, #0090da, #a4ce4e);
+    background-origin: border-box;
+    background-clip: content-box, border-box;
 }
 
 .report-data-owner {
@@ -243,6 +247,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     letter-spacing: 0.2px;
     color: #252525;
     margin-right: 10px;
+    padding: 10px;
 }
 
 .report-data-owner-amt {
@@ -254,7 +259,8 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     letter-spacing: 0.2px;
     color: #252525;
     margin-left: auto;
-    padding-right: 2%;
+    /* padding-right: 2%; */
+    padding: 10px;
 }
 
 .report-data-owner-name {
@@ -265,7 +271,8 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     line-height: 16px;
     letter-spacing: 0.2px;
     color: #252525;
-    padding-left: 2%;
+    padding-left: 3%;
+    padding-bottom: -3%;
 }
 
 .report-total {

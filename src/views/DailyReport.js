@@ -7,7 +7,7 @@ import GetReportDiv from "../components/getReportDiv";
 import "../css/MonthlyReport.css";
 import "../css/global.css";
 import loginAPI from "../services/authApi";
-
+import ReactLoading from "react-loading";
 export default function DailyReport() {
     
     const handletodate = () => {
@@ -22,6 +22,7 @@ export default function DailyReport() {
     const [length, setLength] = useState(0);
     const [selectedOwner, setSelectedOwner] = useState(null);
     const [ownerDataforDropdown, setOwnerDataforDropdown] = useState([]);
+    const [isLoading, setIsLoading] = useState(false);
 
     let userJson;
 
@@ -55,9 +56,11 @@ export default function DailyReport() {
                 dailyReport: "N",
             });
             // Set owner data state to the API response
+            setIsLoading(false);
             setOwnerData(response.data.report);
             setOwnerDataforDropdown(response.data.report);
             setCollectedAmount(response.data.report[0].totalCollectedAmount);
+            
             // get length of the response
             const length = response.data.report.length;
             setLength(length);
@@ -71,6 +74,7 @@ export default function DailyReport() {
 
     // console.log(selectedOwner)
     useEffect(() => {
+        setIsLoading(true);
         fetchOwnerData();
     }, []);
 
@@ -102,6 +106,16 @@ export default function DailyReport() {
                 ownerdata={ownerdata}
                 setSelectedOwner={setSelectedOwner}
             />
+            <div style={{ display: "flex", justifyContent: "center"}}>
+                {isLoading && (
+                    <ReactLoading
+                        type={"spin"}
+                        color={"#0090da"}
+                        height={75}
+                        width={75}
+                    />
+                )}
+            </div>
 
             <div className="report-data">
                 <Owners />

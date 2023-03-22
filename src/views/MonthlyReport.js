@@ -1,12 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { RiCalendarEventFill } from "react-icons/ri";
-
 import OwnerData from "../components/ownerdatadiv";
 import Header from "../components/header";
 import GetReportDiv from "../components/getReportDiv";
-
 import monthlyReportAPI from "../services/monthlyReportAPI";
-
+import ReactLoading from "react-loading";
 import "../css/MonthlyReport.css";
 import "../css/global.css";
 
@@ -15,8 +13,11 @@ export default function MonthReport() {
     const [ownerdata, setData] = useState([]);
     const [customerName, setCustomerName] = useState(null);
     const [ownerDataforDropdown, setOwnerDataforDropdown] = useState([]);
-
+    const [CollectedAmount, setCollectedAmount] = useState(0);
+    const [length, setLength] = useState(0);
+    const [isLoading, setIsLoading] = useState(false);
     useEffect(() => {
+        setIsLoading(true);
         monthlyReportAPI
             .post("mobilecollectionreport", {
                 agentId: "11276",
@@ -28,14 +29,21 @@ export default function MonthReport() {
             })
 
             .then((response) => {
+                setIsLoading(false);
                 setData(response.data.report);
                 setOwnerDataforDropdown(response.data.report);
+                setCollectedAmount(response.data.report[0].totalCollectedAmount);
+            
+            // get length of the response
+            const length = response.data.report.length;
+            setLength(length);
                 // setDefaultOwnerData(response.data.report);
                 console.log(response.data);
             });
     }, []);
 
     useEffect(() => {
+
         if (customerName) {
             if (customerName === "owner") {
                 setOwnerDataforDropdown(ownerdata);
@@ -68,7 +76,7 @@ export default function MonthReport() {
             return (
                 <OwnerData
                     ownerid={data.customerId}
-                    owneramt={data.totalCollectedAmount}
+                    owneramt={data.collectedAmount}
                     ownername={data.customerName}
                 />
             );
@@ -115,7 +123,16 @@ export default function MonthReport() {
             </div>
 
             <GetReportDiv {...getReportDivData} />
-
+            <div style={{ display: "flex", justifyContent: "center"}}>
+                {isLoading && (
+                    <ReactLoading
+                        type={"spin"}
+                        color={"#0090da"}
+                        height={75}
+                        width={75}
+                    />
+                )}
+            </div>
             <div className="report-data">
                 <Owners />
             </div>
@@ -127,7 +144,7 @@ export default function MonthReport() {
                             Total Amount Collected :{" "}
                         </p>
                         <p className="total-amount-collected-value">
-                            ₹ 21050.00
+                            ₹ {CollectedAmount}
                         </p>
                     </div>
 
@@ -135,7 +152,9 @@ export default function MonthReport() {
                         <p className="no-of-transactions-label">
                             Number of Transactions :{" "}
                         </p>
-                        <p className="no-of-transactions-value">47</p>
+                        <p className="no-of-transactions-value">
+                            {length}
+                        </p>
                     </div>
                 </div>
 
