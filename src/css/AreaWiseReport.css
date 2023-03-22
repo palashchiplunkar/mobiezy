@@ -92,6 +92,7 @@
 .area-report-data {
   width: 30%; /* or any other value that fits */
   text-align: center;
+ 
 }
 .area-report-data-label {
   font-family: "Noto Sans";
@@ -100,7 +101,7 @@
   font-size: 14px;
   line-height: 16px;
   letter-spacing: 0.2px;
-
+  align-self: center;
   color: #252525;
 }
 

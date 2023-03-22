@@ -31,18 +31,17 @@ export default function SubscriptionExpiryReport() {
         const SubExpiryDataList = SubExpiryData.map((data) => {
             return (
                 <div className="expiry-report-data-div">
-                    <div className="expiry-report-data">
-                        <p className="expiry-report-data-label">{data.count}</p>
+                <div className="expiry-report-data">
+                        <p className="expiry-report-data-label">{data.daysAway}</p>
                     </div>
                     <div className="expiry-report-data">
                         <p className="expiry-report-data-label">{data.expiryDate}</p>
                     </div>
                     <div className="expiry-report-data">
-                        <p className="expiry-report-data-label">{data.daysAway}</p>
+                        <p className="expiry-report-data-label">{data.count}</p>
                     </div>
-                    <div className="expiry-report-data">
-                       <img src={require("../assets/detailed_link_eye.png")} alt="img" className="expiry-report-data-label" />
-                    </div>
+                    
+                    
                 </div>
             );
         });
@@ -61,18 +60,17 @@ export default function SubscriptionExpiryReport() {
             
             <div className="expiry-data-container">
                 <div className="expiry-report-head-div">
-                    <div className="expiry-report-head">
-                        <p className="expiry-report-head-label">Count</p>
+                <div className="expiry-report-head">
+                        <p className="expiry-report-head-label">Days Away</p>
                     </div>
                     <div className="expiry-report-head">
                         <p className="expiry-report-head-label">Expiry Date</p>
                     </div>
                     <div className="expiry-report-head">
-                        <p className="expiry-report-head-label">Days Away</p>
+                        <p className="expiry-report-head-label">Count</p>
                     </div>
-                    <div className="expiry-report-head">
-                        <p className="expiry-report-head-label">Details Link</p>
-                    </div>
+                    
+                    
                 
                 </div>
 
