@@ -6,12 +6,22 @@ import Header from '../components/header';
 export default function Complaints() {
   const Complaints = [
     {
+        id:"VL0056708",
+        name:"Yashwanth S Hassan",
+        time: '06:07PM',
+        date: '07/03/2023',
+        location :"Vidyapeeta Layout",
+        status: 'Registered'
+
+
+    },
+    {
       id: "V1954645",
       name: 'John Doe',
-      time: '12:00 PM',
+      time: '12:00PM',
       date: '12/12/2020',
       location: 'Kathmandu',
-      status: 'Pending'
+      status: 'In Progress'
     }
   ];
 
@@ -23,7 +33,6 @@ export default function Complaints() {
   const CompViewList = ({ complaints }) => {
     const CompViewDataList = complaints.map((data) => (
         <div className='complaints-data-div'>
-        <table className='complaints-table'>
         <tr>
         <td className='complaints-name'>{data.name}</td>
         </tr>
@@ -37,10 +46,12 @@ export default function Complaints() {
             <td className='Place-complaint'>{data.location}</td>
             <td></td>
             <td></td>
-            <td className='complaint-status'>{data.status}</td>
+            <td className='complaint-status' style={
+                data.status === 'Registered' ? {color: '#DC1515'} : {color: '#0081B3'}
+
+            } >{data.status}</td>
         </tr>
-    </table>
-    </div>
+        </div>
     ));
 
     return <>{CompViewDataList}</>;
@@ -49,9 +60,13 @@ export default function Complaints() {
   return (
     <div className="container-complaints">
       <Header {...headerprops} />
-      <div className="complaints-data-container">
+      {/* <div className="complaints-data-container"> */}
+      
+        <table className='complaints-table' >
         <CompViewList complaints={Complaints} />
-      </div>
+        </table>
+        {/* </div> */}
+    
     </div>
   );
 }
