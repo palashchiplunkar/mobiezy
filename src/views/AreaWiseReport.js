@@ -4,11 +4,12 @@ import "../css/global.css";
 import Header from "../components/header";
 import monthlyReportAPI from "../services/monthlyReportAPI";
 import { useEffect, useState } from "react";
+import ReactLoading from "react-loading";
 export default function AreaWiseReport() {
   const [areadata, setAreaData] = useState([]);
   const [totalpendingAmount, setTotalPending] = useState(0);
   const [totalupaidCustomer, setTotalUnpaid] = useState(0);
-
+  const [isLoading, setIsLoading] = useState(true);
   let userJson;
   const user = localStorage.getItem("user") || sessionStorage.getItem("user");
   if (user) {
@@ -41,12 +42,14 @@ export default function AreaWiseReport() {
   };
 
   useEffect(() => {
+    
     monthlyReportAPI
       .post("/mobile-agentareasummary", {
         agentId: userJson.agentId,
         operatorId: userJson.operatorId,
       })
       .then((response) => {
+        setIsLoading(false);
         setAreaData(response.data.results);
         // console.log(response.data.results);
         let totalpending = 0;
@@ -55,6 +58,7 @@ export default function AreaWiseReport() {
           totalpending += parseInt(data.pending);
           totalunpaid += parseInt(data.cust_count);
         });
+        
         setTotalPending(totalpending);
         setTotalUnpaid(totalunpaid);
       });
@@ -63,7 +67,7 @@ export default function AreaWiseReport() {
   return (
     <div className="container-report-area">
       <Header {...headerprops} />
-
+      
       <div className="report-data-container">
         <div className="area-report-head-div">
           {/* three heading in single line */}
@@ -79,6 +83,16 @@ export default function AreaWiseReport() {
           </div>
         </div>
       </div>
+      <div style={{ display: "flex", justifyContent: "center"}}>
+                {isLoading && (
+                    <ReactLoading
+                        type={"spin"}
+                        color={"#0090da"}
+                        height={75}
+                        width={75}
+                    />
+                )}
+            </div>
       <div className="report-data">
         <Areadata />
       </div>
