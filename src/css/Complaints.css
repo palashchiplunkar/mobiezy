@@ -35,7 +35,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
- 
 }
 
 .complaints-data-div {
@@ -54,7 +53,6 @@
     linear-gradient(to bottom right, var(--primay-app-color), #a4ce4e);
   background-origin: border-box;
   background-clip: content-box, border-box;
- 
 }
 
 .complaints-data-div {
@@ -86,8 +84,7 @@
   display: block;
   justify-content: center;
   align-items: center;
-  justify-self:center;
-
+  justify-self: center;
 }
 tr {
   display: flex;
@@ -120,7 +117,7 @@ td {
 }
 
 .complaint-status {
-  width:1600px;
+  width: 1600px;
   font-family: "Noto Sans";
   font-style: normal;
   font-weight: 700;
@@ -134,6 +131,6 @@ td {
   margin-right: 5px;
   /* margin-left: -10px; */
 }
-.complaint-date{
-    margin-right: 8px;
+.complaint-date {
+  margin-right: 8px;
 }
