@@ -51,7 +51,7 @@ export default function DailyReport() {
                 agentId: userJson.agentId,
                 considerAgentType: "Y",
                 operatorId: userJson.operatorId,
-                Startdate: "",
+                Startdate: "/",
                 dailyReport: "N",
             });
             // Set owner data state to the API response
