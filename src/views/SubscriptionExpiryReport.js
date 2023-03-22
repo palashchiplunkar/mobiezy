@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-
+import Spinner from "react-bootstrap/Spinner";
 import "../css/SubReport.css";
 import "../css/global.css";
 import Header from "../components/header";
@@ -11,6 +11,9 @@ export default function SubscriptionExpiryReport() {
   const [showItems, setshowItems] = useState([]);
   const [dateResponse, setdateResponse] = useState(null);
   const [expiryResponse, setexpiryResponse] = useState(null);
+  const [isLoading, setisLoading] = useState(false);
+  const [isDateLoading, setisDateLoading] = useState(false);
+
   const SubExpiryData = [
     {
       count: "1",
@@ -29,6 +32,7 @@ export default function SubscriptionExpiryReport() {
     },
   ];
   useEffect(() => {
+    setisLoading(true);
     axios
       .post(
         "https://ld3igodwbj.execute-api.us-west-2.amazonaws.com/prod/cableguy2-mobile-expiry-report",
@@ -38,10 +42,12 @@ export default function SubscriptionExpiryReport() {
         }
       )
       .then((response) => {
-        console.log(response)
-       setexpiryResponse(response.data);
+        console.log(response);
+        setexpiryResponse(response.data);
+        setisLoading(false);
       })
       .catch((err) => {
+        setisLoading(false);
         console.log(err);
       });
   }, []);
@@ -74,6 +80,7 @@ export default function SubscriptionExpiryReport() {
 
   // let count=0;
   const ExpiryCount = ({ date }) => {
+    // setisDateLoading(true)
     axios
       .post(
         "https://ld3igodwbj.execute-api.us-west-2.amazonaws.com/prod/cableguy2-mobile-cust-report-based-on-stb",
@@ -84,10 +91,13 @@ export default function SubscriptionExpiryReport() {
         }
       )
       .then((response) => {
+        console.log(response)
         setdateResponse(response.data);
+        // setisDateLoading(false);
       })
       .catch((err) => {
         console.log(err);
+        setisDateLoading(false)
       });
 
     return (
@@ -97,23 +107,29 @@ export default function SubscriptionExpiryReport() {
           <th>Customer Name</th>
           <th>Phone No</th>
         </tr>
-        {dateResponse && dateResponse.c_report.map((report) => {
-          return (
-            <tr>
-              <td>{report.CUSTOMER_ID}</td>
-              <td style={{ fontWeight: 700 }}>{report.NAME}</td>
-              <td
-                style={{
-                  color: "#0090DA",
-                  textDecorationLine: "underline",
-                  fontWeight: 700,
-                }}
-              >
-                {report.PHONE}
-              </td>
-            </tr>
-          );
-        })}
+        {isDateLoading && (
+        <div >
+          <Spinner animation="border" variant="info" />
+        </div>
+      )}
+        {dateResponse &&
+          dateResponse.c_report.map((report) => {
+            return (
+              <tr>
+                <td>{report.CUSTOMER_ID}</td>
+                <td style={{ fontWeight: 700 }}>{report.NAME}</td>
+                <td
+                  style={{
+                    color: "#0090DA",
+                    textDecorationLine: "underline",
+                    fontWeight: 700,
+                  }}
+                >
+                  {report.PHONE}
+                </td>
+              </tr>
+            );
+          })}
       </table>
     );
   };
@@ -151,7 +167,9 @@ export default function SubscriptionExpiryReport() {
           </div>
           <div>
             {showItems[index] ? (
-              <ExpiryCount date={expiryResponse.stb_report[index].PRE_END_DATE} />
+              <ExpiryCount
+                date={expiryResponse.stb_report[index].PRE_END_DATE}
+              />
             ) : null}
           </div>
         </>
@@ -182,7 +200,14 @@ export default function SubscriptionExpiryReport() {
           </div>
         </div>
       </div>
-      <div className="expiry-data">{ expiryResponse && subExpiryList()}</div>
+
+      <div className="expiry-data">
+      {isLoading && (
+        <div>
+          <Spinner animation="border" variant="info" />
+        </div>
+      )}
+        {expiryResponse && subExpiryList()}</div>
       <div className="float-div-expiry">
         <button className="float-btn">PRINT REPORT</button>
       </div>
