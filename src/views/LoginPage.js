@@ -11,6 +11,7 @@ import "../css/global.css";
 import "react-toastify/dist/ReactToastify.css";
 
 export default function LoginPage() {
+    
     const navigate = useNavigate();
     const [AgentData, setAgentData] = useState(null);
     const [isLoading, setIsLoading] = useState(false);
@@ -90,6 +91,7 @@ export default function LoginPage() {
     };
 
     const { t } = useTranslation();
+
     return (
         <div className="App">
             <div className="ImageContainer">
@@ -177,7 +179,7 @@ export default function LoginPage() {
                     {t("LP_Button_Login")}
                 </button>
             </div>
-           
+
             <p className="version">{t("LP_lbl_Version")}</p>
 
             <div style={{ display: "flex", justifyContent: "center" }}>
