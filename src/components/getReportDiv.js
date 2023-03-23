@@ -1,6 +1,5 @@
 import React from "react";
 import { useState } from "react";
-import OwnerData from "../components/ownerdatadiv";
 import "../css/getReportDiv.css";
 
 const GetReportDiv = (props) => {
@@ -60,4 +59,5 @@ const GetReportDiv = (props) => {
         </div>
     );
 };
+
 export default GetReportDiv;

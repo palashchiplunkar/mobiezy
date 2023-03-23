@@ -56,7 +56,7 @@ export default function DailyReport() {
                 Startdate: "/",
                 dailyReport: "N",
             });
-            
+
             // Set owner data state to the API response
             setIsLoading(false);
             setOwnerData(response.data.report);
@@ -66,10 +66,12 @@ export default function DailyReport() {
             // get length of the response
             const length = response.data.report.length;
             setLength(length);
-            console.log(length);
+            // console.log(length);
 
-            console.log(response.data.report);
-        } catch (error) {
+            // console.log(response.data.report);
+        } 
+        
+        catch (error) {
             console.log(error);
         }
     };
@@ -97,6 +99,7 @@ export default function DailyReport() {
         text: "Daily Report",
         height: "10vh",
     };
+    
     const getReportDivData = {
         ownerdata: ownerdata,
     };

@@ -37,19 +37,19 @@ export default function MonthReport() {
                     dailyReport: "N",
                 })
 
-                .then((response) => {
-                    setIsLoading(false);
-                    setData(response.data.report);
-                    setOwnerDataforDropdown(response.data.report);
-                    setCollectedAmount(
-                        response.data.report[0].totalCollectedAmount
-                    );
+                
+                setIsLoading(false);
+                setData(response.data.report);
+                setOwnerDataforDropdown(response.data.report);
+                setCollectedAmount(
+                    response.data.report[0].totalCollectedAmount
+                );
 
-                    const length = response.data.report.lenght;
-                    setLength(length);
+                const length = response.data.report.lenght;
+                setLength(length);
 
-                    // console.log(userJson.agentId);
-                });
+                // console.log(userJson.agentId);
+                
         } 
         
         catch (error) {
@@ -115,6 +115,7 @@ export default function MonthReport() {
 
     return (
         <div className="container-report">
+
             <Header {...headerprops} />
 
             <div className="date-report">
@@ -142,6 +143,7 @@ export default function MonthReport() {
             </div>
 
             <GetReportDiv {...getReportDivData} />
+
             <div style={{ display: "flex", justifyContent: "center" }}>
                 {isLoading && (
                     <ReactLoading
@@ -152,6 +154,7 @@ export default function MonthReport() {
                     />
                 )}
             </div>
+
             <div className="report-data">
                 <Owners />
             </div>
