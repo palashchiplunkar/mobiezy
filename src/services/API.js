@@ -28,6 +28,13 @@ export default {
             "mobilecollectionreport",
             value
         )
+    },
+    
+    dailyReportAPI(value) {
+        return API.post(
+            "mobilecollectionreport",
+            value
+        )
     }, 
 
     agentAreaSummaryAPI(value) {

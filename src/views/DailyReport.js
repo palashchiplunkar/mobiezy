@@ -1,22 +1,14 @@
 import React, { useEffect, useState } from "react";
 import OwnerData from "../components/ownerdatadiv";
-
 import Header from "../components/header";
 import GetReportDiv from "../components/getReportDiv";
+import API from "../services/API";
+import ReactLoading from "react-loading";
 
 import "../css/MonthlyReport.css";
 import "../css/global.css";
-import loginAPI from "../services/API";
-import ReactLoading from "react-loading";
 
 export default function DailyReport() {
-
-    const handletodate = () => {
-        const todateInput = document.getElementById("todate");
-        todateInput.focus();
-
-        todateInput.dispatchEvent(new MouseEvent("click", { bubbles: true }));
-    };
 
     const [ownerdata, setOwnerData] = useState([]);
     const [CollectedAmount, setCollectedAmount] = useState(0);
@@ -25,12 +17,14 @@ export default function DailyReport() {
     const [ownerDataforDropdown, setOwnerDataforDropdown] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
 
-    let userJson;
+    const user = JSON.parse(localStorage.getItem("user") || sessionStorage.getItem("user"));
 
-    const user = localStorage.getItem("user") || sessionStorage.getItem("user");
-
-    if (user) {
-        userJson = JSON.parse(user);
+    let agentData = {
+        agentId: user.agentId,
+        considerAgentType: "Y",
+        operatorId: user.operatorId,
+        Startdate: "/",
+        dailyReport: "N"
     }
 
     // Based on selectedOwner change the owner data
@@ -47,28 +41,24 @@ export default function DailyReport() {
         }
     }, [selectedOwner]);
 
-    const fetchOwnerData = async () => {
+    const fetchOwnerData = () => {
         try {
-            const response = await loginAPI.post("mobilecollectionreport", {
-                agentId: userJson.agentId,
-                considerAgentType: "Y",
-                operatorId: userJson.operatorId,
-                Startdate: "/",
-                dailyReport: "N",
-            });
 
-            // Set owner data state to the API response
-            setIsLoading(false);
-            setOwnerData(response.data.report);
-            setOwnerDataforDropdown(response.data.report);
-            setCollectedAmount(response.data.report[0].totalCollectedAmount);
+            API.dailyReportAPI(agentData)
+                .then((response) => {
 
-            // get length of the response
-            const length = response.data.report.length;
-            setLength(length);
-            // console.log(length);
+                    // Set owner data state to the API response
+                    setIsLoading(false);
+                    setOwnerData(response.data.report);
+                    setOwnerDataforDropdown(response.data.report);
+                    setCollectedAmount(response.data.report[0].totalCollectedAmount);
 
-            // console.log(response.data.report);
+                    // get length of the response
+                    const length = response.data.report.length;
+                    setLength(length);
+                });
+
+            
         } 
         
         catch (error) {
@@ -76,7 +66,6 @@ export default function DailyReport() {
         }
     };
 
-    // console.log(selectedOwner)
     useEffect(() => {
         setIsLoading(true);
         fetchOwnerData();

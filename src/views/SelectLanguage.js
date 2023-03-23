@@ -10,7 +10,6 @@ import { BsBatteryFull } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import i18next from "i18next";
-import cookie from "js-cookie";
 import { useEffect, useState } from "react";
 import Button from "@mui/material/Button";
 import Dialog from "@mui/material/Dialog";
@@ -48,12 +47,11 @@ export default function SelectLanguage() {
     const { t } = useTranslation();
 
     const handleLanguageChange = (e) => {
+
         // Get Value of Checked Radio Button using querySelectors
         const checkedRadio = document.querySelector(
             'input[name="lang"]:checked'
         ).value;
-
-        console.log(checkedRadio);
 
         if (checkedRadio === "English") {
             i18next.changeLanguage("en_US");
@@ -63,16 +61,15 @@ export default function SelectLanguage() {
             i18next.changeLanguage("hi_IN");
         }
     };
+
     const handleAlertOpen = () => {
         handleLanguageChange();
         setalert(false);
     };
 
     // Get Cookie
-    const cookieValue = cookie.get("i18next") || "en_US";
+
     const localstorageValue = localStorage.getItem("i18nextLng") || "en_US";
-    console.log(localstorageValue);
-    const currentLanguage = i18next.language;
 
     useEffect(() => {
         window.onpopstate = (e) => {};

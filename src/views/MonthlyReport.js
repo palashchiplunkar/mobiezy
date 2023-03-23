@@ -18,17 +18,11 @@ export default function MonthReport() {
     const [length, setLength] = useState(0);
     const [isLoading, setIsLoading] = useState(false);
 
-    let userJson;
-
-    const user = localStorage.getItem("user") || sessionStorage.getItem("user");
-
-    if (user) {
-        userJson = JSON.parse(user);
-    }
+    const user = JSON.parse(localStorage.getItem("user") || sessionStorage.getItem("user"));
 
     let monthlyReportAPIParams = {
-        agentId: userJson.agentId,
-        operatorId: userJson.operatorId,
+        agentId: user.agentId,
+        operatorId: user.operatorId,
         Startdate: "",
         Enddate: "",
         flag: "N",

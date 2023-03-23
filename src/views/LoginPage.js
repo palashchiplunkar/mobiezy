@@ -1,5 +1,5 @@
 import React from "react";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import API from "../services/API";
@@ -11,9 +11,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 export default function LoginPage() {
     const navigate = useNavigate();
-    const [AgentData, setAgentData] = useState(null);
     const [isLoading, setIsLoading] = useState(false);
-    const [Error, setError] = useState("");
     const [UError, setUError] = useState("");
     const [PError, setPError] = useState("");
     const [user, setUser] = useState(localStorage.getItem("username") || "");
@@ -58,21 +56,23 @@ export default function LoginPage() {
         API
             .loginAPI(userData)
                 .then((response) => {
-                // console.log(response)
+               
                     if (response.data.messageText === "UNAUTHORIZED") {
                         setUError("Invalid Username!");
                         setPError("Invalid Password!");
                         navigate("/");
-                    } else {
+                    } 
+                    
+                    else {
+                        
                         var stringuserjson = JSON.stringify(response.data);
                         if (rememberMe) {
-                            // convert json object to String
 
-                            setAgentData(response.data);
                             localStorage.setItem("user", stringuserjson);
                             localStorage.setItem("username", user);
                             localStorage.setItem("rememberMe", true);
-                        } else {
+                        } 
+                        else {
                             sessionStorage.setItem("user", stringuserjson);
                         }
                         navigate("/home");
@@ -81,48 +81,9 @@ export default function LoginPage() {
                 })
 
                 .catch((e) => {
-                    // console.log(e)
-                    setError(e.message);
+                    console.log(e);
                     setIsLoading(false);
                 });
-
-        // loginAPI
-        //     .post("cableguy2-mobile-user-login-new", {
-        //         freshInstall: "N",
-        //         appVersion: "2.0.63",
-        //         device_id: "2714",
-        //         username: user,
-        //         password: pwd,
-        //     })
-
-        //     .then((response) => {
-        //         // console.log(response);
-        //         if (response.data.messageText === "UNAUTHORIZED") {
-        //             setUError("Invalid Username!");
-        //             setPError("Invalid Password!");
-        //             navigate("/");
-        //         } else {
-        //             var stringuserjson = JSON.stringify(response.data);
-        //             if (rememberMe) {
-        //                 // convert json object to String
-
-        //                 setAgentData(response.data);
-        //                 localStorage.setItem("user", stringuserjson);
-        //                 localStorage.setItem("username", user);
-        //                 localStorage.setItem("rememberMe", true);
-        //             } else {
-        //                 sessionStorage.setItem("user", stringuserjson);
-        //             }
-        //             navigate("/home");
-        //         }
-        //         setIsLoading(false);
-        //     })
-
-        //     .catch((e) => {
-        //         console.log(e);
-        //         setError(e.message);
-        //         setIsLoading(false);
-        //     });
     };
 
     const { t } = useTranslation();
