@@ -48,9 +48,11 @@ export default function MonthReport() {
                     const length = response.data.report.lenght;
                     setLength(length);
 
-                    console.log(response.data);
+                    // console.log(userJson.agentId);
                 });
-        } catch (error) {
+        } 
+        
+        catch (error) {
             console.log(error);
         }
     };
