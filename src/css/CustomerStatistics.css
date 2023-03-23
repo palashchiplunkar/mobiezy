@@ -142,14 +142,22 @@
 
 .custom-legend {
     align-self: center;
+    /* width: 100%; */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+
+
     /* width: 200px !important; */
 }
 
 .legend-item {
-    display: flex;
+    display: block;
     align-items: center;
     margin-right: 10px;
     margin-bottom: 5px;
+    /* width: 100%; */
     /* width: 400px; */
 }
 
@@ -163,4 +171,10 @@
 .legend-text {
     display: inline-flex;
     font-size: 14px;
+}
+
+.recharts-default-legend{
+    display:inline-grid;
+    text-align: left !important;
+
 }
