@@ -8,8 +8,9 @@ import "../css/MonthlyReport.css";
 import "../css/global.css";
 import loginAPI from "../services/authApi";
 import ReactLoading from "react-loading";
+
 export default function DailyReport() {
-    
+
     const handletodate = () => {
         const todateInput = document.getElementById("todate");
         todateInput.focus();
@@ -55,12 +56,13 @@ export default function DailyReport() {
                 Startdate: "/",
                 dailyReport: "N",
             });
+            
             // Set owner data state to the API response
             setIsLoading(false);
             setOwnerData(response.data.report);
             setOwnerDataforDropdown(response.data.report);
             setCollectedAmount(response.data.report[0].totalCollectedAmount);
-            
+
             // get length of the response
             const length = response.data.report.length;
             setLength(length);
@@ -106,7 +108,7 @@ export default function DailyReport() {
                 ownerdata={ownerdata}
                 setSelectedOwner={setSelectedOwner}
             />
-            <div style={{ display: "flex", justifyContent: "center"}}>
+            <div style={{ display: "flex", justifyContent: "center" }}>
                 {isLoading && (
                     <ReactLoading
                         type={"spin"}

@@ -5,45 +5,62 @@ import Header from "../components/header";
 import GetReportDiv from "../components/getReportDiv";
 import monthlyReportAPI from "../services/monthlyReportAPI";
 import ReactLoading from "react-loading";
+
 import "../css/MonthlyReport.css";
 import "../css/global.css";
 
 export default function MonthReport() {
-
     const [ownerdata, setData] = useState([]);
     const [customerName, setCustomerName] = useState(null);
     const [ownerDataforDropdown, setOwnerDataforDropdown] = useState([]);
     const [CollectedAmount, setCollectedAmount] = useState(0);
     const [length, setLength] = useState(0);
     const [isLoading, setIsLoading] = useState(false);
+
+    let userJson;
+
+    const user = localStorage.getItem("user") || sessionStorage.getItem("user");
+
+    if (user) {
+        userJson = JSON.parse(user);
+    }
+
+    const fetchOwnerData = async () => {
+        try {
+            const response = await monthlyReportAPI
+                .post("mobilecollectionreport", {
+                    agentId: userJson.agentId,
+                    operatorId: userJson.operatorId,
+                    Startdate: "",
+                    Enddate: "",
+                    flag: "N",
+                    dailyReport: "N",
+                })
+
+                .then((response) => {
+                    setIsLoading(false);
+                    setData(response.data.report);
+                    setOwnerDataforDropdown(response.data.report);
+                    setCollectedAmount(
+                        response.data.report[0].totalCollectedAmount
+                    );
+
+                    const length = response.data.report.lenght;
+                    setLength(length);
+
+                    console.log(response.data);
+                });
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
     useEffect(() => {
         setIsLoading(true);
-        monthlyReportAPI
-            .post("mobilecollectionreport", {
-                agentId: "11276",
-                operatorId: "1603",
-                Startdate: "",
-                Enddate: "",
-                flag: "N",
-                dailyReport: "N",
-            })
-
-            .then((response) => {
-                setIsLoading(false);
-                setData(response.data.report);
-                setOwnerDataforDropdown(response.data.report);
-                setCollectedAmount(response.data.report[0].totalCollectedAmount);
-            
-            // get length of the response
-            const length = response.data.report.length;
-            setLength(length);
-                // setDefaultOwnerData(response.data.report);
-                console.log(response.data);
-            });
+        fetchOwnerData();
     }, []);
 
     useEffect(() => {
-
         if (customerName) {
             if (customerName === "owner") {
                 setOwnerDataforDropdown(ownerdata);
@@ -91,7 +108,7 @@ export default function MonthReport() {
 
     const getReportDivData = {
         ownerdata: ownerdata,
-        setSelectedOwner: setCustomerName
+        setSelectedOwner: setCustomerName,
     };
 
     return (
@@ -123,7 +140,7 @@ export default function MonthReport() {
             </div>
 
             <GetReportDiv {...getReportDivData} />
-            <div style={{ display: "flex", justifyContent: "center"}}>
+            <div style={{ display: "flex", justifyContent: "center" }}>
                 {isLoading && (
                     <ReactLoading
                         type={"spin"}
@@ -152,9 +169,7 @@ export default function MonthReport() {
                         <p className="no-of-transactions-label">
                             Number of Transactions :{" "}
                         </p>
-                        <p className="no-of-transactions-value">
-                            {length}
-                        </p>
+                        <p className="no-of-transactions-value">{length}</p>
                     </div>
                 </div>
 
