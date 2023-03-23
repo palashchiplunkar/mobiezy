@@ -7,7 +7,6 @@ import "../css/CustomerStatistics.css";
 import "../css/global.css";
 
 export default function CustomerStatistics() {
-
     const headerprops = {
         text: "Customer Statistics",
         height: "10vh",

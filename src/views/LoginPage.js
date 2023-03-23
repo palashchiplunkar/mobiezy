@@ -2,8 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import loginAPI from "../services/authApi";
-import { ToastContainer, toast } from "react-toastify";
+import API from "../services/API";
 import ReactLoading from "react-loading";
 
 import "../css/LoginStyles.css";
@@ -11,7 +10,6 @@ import "../css/global.css";
 import "react-toastify/dist/ReactToastify.css";
 
 export default function LoginPage() {
-    
     const navigate = useNavigate();
     const [AgentData, setAgentData] = useState(null);
     const [isLoading, setIsLoading] = useState(false);
@@ -35,6 +33,7 @@ export default function LoginPage() {
     };
 
     const handleSubmit = (e) => {
+
         setIsLoading(true);
         if (user === "" && pwd === "") {
             setUError("Please enter Username");
@@ -51,43 +50,79 @@ export default function LoginPage() {
             return;
         }
 
-        loginAPI
-            .post("cableguy2-mobile-user-login-new", {
-                freshInstall: "N",
-                appVersion: "2.0.63",
-                device_id: "2714",
-                username: user,
-                password: pwd,
-            })
+        let userData = {
+            username: user,
+            password: pwd,
+        };
 
-            .then((response) => {
-                // console.log(response);
-                if (response.data.messageText === "UNAUTHORIZED") {
-                    setUError("Invalid Username!");
-                    setPError("Invalid Password!");
-                    navigate("/");
-                } else {
-                    var stringuserjson = JSON.stringify(response.data);
-                    if (rememberMe) {
-                        // convert json object to String
-
-                        setAgentData(response.data);
-                        localStorage.setItem("user", stringuserjson);
-                        localStorage.setItem("username", user);
-                        localStorage.setItem("rememberMe", true);
+        API
+            .loginAPI(userData)
+                .then((response) => {
+                // console.log(response)
+                    if (response.data.messageText === "UNAUTHORIZED") {
+                        setUError("Invalid Username!");
+                        setPError("Invalid Password!");
+                        navigate("/");
                     } else {
-                        sessionStorage.setItem("user", stringuserjson);
-                    }
-                    navigate("/home");
-                }
-                setIsLoading(false);
-            })
+                        var stringuserjson = JSON.stringify(response.data);
+                        if (rememberMe) {
+                            // convert json object to String
 
-            .catch((e) => {
-                console.log(e);
-                setError(e.message);
-                setIsLoading(false);
-            });
+                            setAgentData(response.data);
+                            localStorage.setItem("user", stringuserjson);
+                            localStorage.setItem("username", user);
+                            localStorage.setItem("rememberMe", true);
+                        } else {
+                            sessionStorage.setItem("user", stringuserjson);
+                        }
+                        navigate("/home");
+                    }
+                    setIsLoading(false);
+                })
+
+                .catch((e) => {
+                    // console.log(e)
+                    setError(e.message);
+                    setIsLoading(false);
+                });
+
+        // loginAPI
+        //     .post("cableguy2-mobile-user-login-new", {
+        //         freshInstall: "N",
+        //         appVersion: "2.0.63",
+        //         device_id: "2714",
+        //         username: user,
+        //         password: pwd,
+        //     })
+
+        //     .then((response) => {
+        //         // console.log(response);
+        //         if (response.data.messageText === "UNAUTHORIZED") {
+        //             setUError("Invalid Username!");
+        //             setPError("Invalid Password!");
+        //             navigate("/");
+        //         } else {
+        //             var stringuserjson = JSON.stringify(response.data);
+        //             if (rememberMe) {
+        //                 // convert json object to String
+
+        //                 setAgentData(response.data);
+        //                 localStorage.setItem("user", stringuserjson);
+        //                 localStorage.setItem("username", user);
+        //                 localStorage.setItem("rememberMe", true);
+        //             } else {
+        //                 sessionStorage.setItem("user", stringuserjson);
+        //             }
+        //             navigate("/home");
+        //         }
+        //         setIsLoading(false);
+        //     })
+
+        //     .catch((e) => {
+        //         console.log(e);
+        //         setError(e.message);
+        //         setIsLoading(false);
+        //     });
     };
 
     const { t } = useTranslation();

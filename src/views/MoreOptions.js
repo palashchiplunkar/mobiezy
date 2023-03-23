@@ -1,18 +1,15 @@
 import React from "react";
 import Navbar from "../components/navbar";
-
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
-
 import Header from "../components/header";
 
 import "../css/MoreOptions.css";
 import "../css/global.css";
 
 function MoreOptions() {
-    
     const navigate = useNavigate();
-    
+
     let options = [
         {
             id: 1,
@@ -63,19 +60,21 @@ function MoreOptions() {
             toLink: "",
         },
     ];
+
     const headerprops = {
         text: "More Options",
         height: "10vh",
     };
-    useEffect (() => {
-    window.history.pushState({}, '');
-    window.addEventListener("popstate", function (e) {
-      e.preventDefault();
-      e.stopPropagation();
-      window.history.pushState({}, '');
-    }
-    );
-  }, [])
+
+    useEffect(() => {
+        window.history.pushState({}, "");
+        window.addEventListener("popstate", function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            window.history.pushState({}, "");
+        });
+    }, []);
+    
     return (
         <>
             <div>

@@ -3,11 +3,12 @@ import { RiCalendarEventFill } from "react-icons/ri";
 import OwnerData from "../components/ownerdatadiv";
 import Header from "../components/header";
 import GetReportDiv from "../components/getReportDiv";
-import monthlyReportAPI from "../services/monthlyReportAPI";
 import ReactLoading from "react-loading";
+import API from "../services/API";
 
 import "../css/MonthlyReport.css";
 import "../css/global.css";
+
 
 export default function MonthReport() {
     const [ownerdata, setData] = useState([]);
@@ -25,19 +26,21 @@ export default function MonthReport() {
         userJson = JSON.parse(user);
     }
 
-    const fetchOwnerData = async () => {
-        try {
-            const response = await monthlyReportAPI
-                .post("mobilecollectionreport", {
-                    agentId: userJson.agentId,
-                    operatorId: userJson.operatorId,
-                    Startdate: "",
-                    Enddate: "",
-                    flag: "N",
-                    dailyReport: "N",
-                })
+    let monthlyReportAPIParams = {
+        agentId: userJson.agentId,
+        operatorId: userJson.operatorId,
+        Startdate: "",
+        Enddate: "",
+        flag: "N",
+        dailyReport: "N",
+    };
 
-                
+    const fetchOwnerData = () => {
+        try {
+
+            API.monthlyReportAPI(monthlyReportAPIParams)
+
+            .then((response) => {
                 setIsLoading(false);
                 setData(response.data.report);
                 setOwnerDataforDropdown(response.data.report);
@@ -47,12 +50,9 @@ export default function MonthReport() {
 
                 const length = response.data.report.lenght;
                 setLength(length);
+            });
 
-                // console.log(userJson.agentId);
-                
-        } 
-        
-        catch (error) {
+        } catch (error) {
             console.log(error);
         }
     };
@@ -115,7 +115,6 @@ export default function MonthReport() {
 
     return (
         <div className="container-report">
-
             <Header {...headerprops} />
 
             <div className="date-report">

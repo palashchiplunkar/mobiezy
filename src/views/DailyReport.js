@@ -6,7 +6,7 @@ import GetReportDiv from "../components/getReportDiv";
 
 import "../css/MonthlyReport.css";
 import "../css/global.css";
-import loginAPI from "../services/authApi";
+import loginAPI from "../services/API";
 import ReactLoading from "react-loading";
 
 export default function DailyReport() {

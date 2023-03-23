@@ -3,25 +3,20 @@ import Navbar from "../components/navbar";
 import MobileNavigation from "../components/hamnavigation";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
-import loginAPI from "../services/authApi";
+import API from "../services/API";
 import { useState, useEffect } from "react";
 
 import "../css/HomeStyles.css";
 import "../css/global.css";
 import "../css/alert_popup.css";
 import "reactjs-popup/dist/index.css";
-import Button from "@mui/material/Button";
-import Dialog from "@mui/material/Dialog";
-import DialogActions from "@mui/material/DialogActions";
-import DialogContent from "@mui/material/DialogContent";
-import DialogContentText from "@mui/material/DialogContentText";
-import DialogTitle from "@mui/material/DialogTitle";
 
 export default function HomePage() {
-    useEffect(() => {
-        console.log(localStorage.getItem("user"));
-        console.log(localStorage.getItem("rememberMe"));
-    }, []);
+
+    // useEffect(() => {
+    //     console.log(localStorage.getItem("user"));
+    //     console.log(localStorage.getItem("rememberMe"));
+    // }, []);
 
     const { t } = useTranslation();
     const navigate = useNavigate();
@@ -37,12 +32,15 @@ export default function HomePage() {
         userJson = JSON.parse(user);
     }
 
+    let agentData = {
+        agent_id: userJson.agentId
+    };
+
     const getHomeData = () => {
         if (userJson) {
-            loginAPI
-                .post("getagentsummary", {
-                    agent_id: userJson.agentId,
-                })
+            API
+
+                .agentSummaryAPI(agentData)
 
                 .then((response) => {
                     if (response.data.report[0]) {
@@ -66,24 +64,8 @@ export default function HomePage() {
         }
     };
 
-    //   const handleAlertOpen = () => {
-    //     window.close();
-    //     setalert(false);
-    //   };
-
     useEffect(() => {
-        // get back click event and also create a alert event
-        // window.addEventListener("popstate", function (e) {
-        //   e.preventDefault();
-        //   e.stopPropagation();
-
-        //   if (window.confirm("Do you want to exit?")) {
-        //     // window.location.href = 'about:blank';
-        //     // window.close();
-        //     window.history.pushState({}, '');
-
-        //   }
-        // });
+    
         window.history.pushState({}, "");
         window.addEventListener("popstate", function (e) {
             e.preventDefault();
