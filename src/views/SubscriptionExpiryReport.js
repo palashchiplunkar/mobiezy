@@ -13,27 +13,11 @@ export default function SubscriptionExpiryReport() {
     const [isLoading, setisLoading] = useState(false);
     const [isDateLoading, setisDateLoading] = useState(false);
 
-    const SubExpiryData = [
-        {
-            count: "1",
-            expiryDate: "2021-08-31",
-            daysAway: "2",
-        },
-        {
-            count: "1",
-            expiryDate: "2021-08-1",
-            daysAway: "2",
-        },
-        {
-            count: "1",
-            expiryDate: "2021-08-2",
-            daysAway: "2",
-        },
-    ];
+    const user = JSON.parse(localStorage.getItem("user") || sessionStorage.getItem("user"));
 
     let agentData = {
-        agent_id: "11276",
-        operator_id: "1603",
+        agent_id: user.agentId,
+        operator_id: user.operatorId,
     };
 
     useEffect(() => {
@@ -46,37 +30,11 @@ export default function SubscriptionExpiryReport() {
                 setisLoading(false);
             })
 
-            .catch((err) => {
+            .catch((e) => {
                 setisLoading(false);
-                console.log(err);
+                console.log(e);
             });
     }, []);
-
-    const sampleResp = {
-        c_report: [
-            {
-                NAME: "BBPS",
-                CUST_NUM: 1002826064,
-                CUSTOMER_ID: "75561",
-                PHONE: "9900064710",
-                PRE_END_DATE: "00-00-0000",
-            },
-            {
-                NAME: "bbpstest1",
-                CUST_NUM: 1002826066,
-                CUSTOMER_ID: "75562",
-                PHONE: "876241992",
-                PRE_END_DATE: "00-00-0000",
-            },
-            {
-                NAME: "abdul salam",
-                CUST_NUM: 1002826286,
-                CUSTOMER_ID: "82820",
-                PHONE: "7761948599",
-                PRE_END_DATE: "00-00-0000",
-            },
-        ],
-    };
 
     const ExpiryCount = ({ date }) => {
         let expiryData = {
