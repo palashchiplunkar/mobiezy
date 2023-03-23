@@ -90,6 +90,7 @@ export default function HomePage() {
                             <img
                                 src={require("../assets/profile.jpg")}
                                 className="profile_img"
+                                alt=""
                             />
                         </div>
                     </div>

@@ -128,63 +128,6 @@ export default function Customer() {
 
     const openDrawer = React.useCallback(() => setIsVisible(true), []);
 
-    const PaidhandleSwitch = () => {
-        setIsPaidChecked(!isPaidChecked);
-        setIsUnPaidChecked(false);
-        setIsAllChecked(false);
-    };
-
-    const UnpaidhandleSwitch = () => {
-        setIsPaidChecked(false);
-        setIsUnPaidChecked(!isUnPaidChecked);
-        setIsAllChecked(false);
-    };
-
-    const AllhandleSwitch = () => {
-        setIsPaidChecked(false);
-        setIsUnPaidChecked(false);
-        setIsAllChecked(!isAllChecked);
-    };
-
-    const PaidSwitchComponent = () => {
-        return (
-            <Switch
-                checked={isPaidChecked}
-                onChange={() => PaidhandleSwitch()}
-                offColor={"#757575"}
-                onColor={"#007ABC"}
-                uncheckedIcon={<div className="Switch-unchecked">OFF</div>}
-                checkedIcon={<div className="Switch-checked">ON</div>}
-            />
-        );
-    };
-
-    const UnPaidSwitchComponent = () => {
-        return (
-            <Switch
-                checked={isUnPaidChecked}
-                onChange={() => UnpaidhandleSwitch()}
-                offColor={"#757575"}
-                onColor={"#007ABC"}
-                uncheckedIcon={<div className="Switch-unchecked">OFF</div>}
-                checkedIcon={<div className="Switch-checked">ON</div>}
-            />
-        );
-    };
-
-    const AllSwitchComponent = () => {
-        return (
-            <Switch
-                checked={isAllChecked}
-                onChange={() => AllhandleSwitch()}
-                offColor={"#757575"}
-                onColor={"#007ABC"}
-                uncheckedIcon={<div className="Switch-unchecked">OFF</div>}
-                checkedIcon={<div className="Switch-checked">ON</div>}
-            />
-        );
-    };
-
     return (
         <>
             <div className="container">

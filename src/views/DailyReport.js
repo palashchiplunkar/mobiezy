@@ -88,10 +88,6 @@ export default function DailyReport() {
         text: "Daily Report",
         height: "10vh",
     };
-    
-    const getReportDivData = {
-        ownerdata: ownerdata,
-    };
 
     return (
         <div className="container-report">
