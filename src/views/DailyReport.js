@@ -11,15 +11,16 @@ import "../css/global.css";
 export default function DailyReport() {
 
     const [ownerdata, setOwnerData] = useState([]);
+    const [agentData, setAgentData] = useState([]);
     const [CollectedAmount, setCollectedAmount] = useState(0);
     const [length, setLength] = useState(0);
-    const [selectedOwner, setSelectedOwner] = useState(null);
+    // const [selectedOwner, setSelectedOwner] = useState(null);
     const [ownerDataforDropdown, setOwnerDataforDropdown] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
 
     const user = JSON.parse(localStorage.getItem("user") || sessionStorage.getItem("user"));
 
-    let agentData = {
+    let ownerDataRequest = {
         agentId: user.agentId,
         considerAgentType: "Y",
         operatorId: user.operatorId,
@@ -28,23 +29,23 @@ export default function DailyReport() {
     }
 
     // Based on selectedOwner change the owner data
-    useEffect(() => {
-        if (selectedOwner) {
-            if (selectedOwner === "owner") {
-                setOwnerDataforDropdown(ownerdata);
-            } else {
-                const selectedOwnerData = ownerdata.filter(
-                    (data) => data.customerId === selectedOwner
-                );
-                setOwnerDataforDropdown(selectedOwnerData);
-            }
-        }
-    }, [selectedOwner]);
+    // useEffect(() => {
+    //     if (selectedOwner) {
+    //         if (selectedOwner === "owner") {
+    //             setOwnerDataforDropdown(ownerdata);
+    //         } else {
+    //             const selectedOwnerData = ownerdata.filter(
+    //                 (data) => data.customerId === selectedOwner
+    //             );
+    //             setOwnerDataforDropdown(selectedOwnerData);
+    //         }
+    //     }
+    // }, [selectedOwner]);
 
     const fetchOwnerData = () => {
         try {
 
-            API.dailyReportAPI(agentData)
+            API.dailyReportAPI(ownerDataRequest)
                 .then((response) => {
 
                     // Set owner data state to the API response
@@ -66,9 +67,29 @@ export default function DailyReport() {
         }
     };
 
+    const fetchDropdownData = () => {
+        try {
+
+            API.dropdownAgentDataAPI({operatorId: user.operatorId})
+                .then((response) => {
+
+                    // console.log(response.data);
+                    setAgentData(response.data.all_agents);
+                });
+
+            console.log(agentData)
+        } 
+        
+        catch (error) {
+            console.log(error);
+        }
+    }
+
     useEffect(() => {
         setIsLoading(true);
         fetchOwnerData();
+        fetchDropdownData();
+        
     }, []);
 
     const Owners = () => {
@@ -93,8 +114,8 @@ export default function DailyReport() {
         <div className="container-report">
             <Header {...headerprops} />
             <GetReportDiv
-                ownerdata={ownerdata}
-                setSelectedOwner={setSelectedOwner}
+                agentData={agentData}
+                setAgentData={setAgentData}
             />
             <div style={{ display: "flex", justifyContent: "center" }}>
                 {isLoading && (

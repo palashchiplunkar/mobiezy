@@ -1,24 +1,16 @@
 import React from "react";
 import { useState } from "react";
 import "../css/getReportDiv.css";
+import API from "../services/API";
 
 const GetReportDiv = (props) => {
-    // const ownerdata = props.ownerdata;
-    const { ownerdata, setSelectedOwner } = props;
+    // const agentData = props.agentData;
+    const { agentData, setAgentData } = props;
     const [ selected, setSelected] = useState(null);
 
-    // Add only unique customerId to the json
-    const unique = ownerdata
-        .map((e) => e.customerId)
-        .map((e, i, final) => final.indexOf(e) === i && i)
-        .filter((e) => ownerdata[e])
-        .map((e) => ownerdata[e]);
-
-    // Map the unique customerId to the dropdown
-
     const OwnerSelection = () => {
-        const OwnerSelectionData = unique.map((data) => {
-            return <option value={data.customerId}>{data.customerName}</option>;
+        const OwnerSelectionData = agentData.map((data) => {
+            return <option value={data.Agent_Id}>{data.Name}</option>;
         });
         return OwnerSelectionData;
     };
@@ -27,26 +19,34 @@ const GetReportDiv = (props) => {
     const handleSelection = () => {
         const selectedOwner = document.getElementById("ownerselect").value;
         console.log(selectedOwner);
-        if (selectedOwner === "owner") {
-            console.log("owner");
-            setSelectedOwner("owner");
-            setSelected("owner");
-        } else {
-            setSelectedOwner(selectedOwner);
-            setSelected(selectedOwner);
-            document.getElementById("ownerselect").option = selectedOwner;
-        }
+        // if (selectedOwner === "owner") {
+        //     console.log("owner");
+        //     setAgentData("owner");
+        //     setSelected("owner");
+        // } 
+        
+        // else {
+        //     setAgentData(selectedOwner);
+        //     setSelected(selectedOwner);
+        //     document.getElementById("ownerselect").option = selectedOwner;
+        // }
+
+        API.dailyReportAPI({agentId: selectedOwner, operatorId:"1603", dailyReport:"Y"})
+            .then((response) => {
+                console.log(response)
+            })
+
     };
 
     const AllData = () => {
         // console.log("owner");
-        setSelectedOwner("owner");
+        setAgentData("owner");
     };
 
     return (
         <div className="get-report-div">
             {/* Add dropdown option */}
-            <select className="get-report-dropdown" id="ownerselect" onChange={() => setSelectedOwner(selected)}>
+            <select className="get-report-dropdown" id="ownerselect" onChange={() => setSelected(selected)}>
                 <option value="owner" onClick={AllData}>
                     Owner Sur ...
                 </option>
