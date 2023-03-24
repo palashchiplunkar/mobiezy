@@ -9,16 +9,17 @@ import API from "../services/API";
 import "../css/MonthlyReport.css";
 import "../css/global.css";
 
-
 export default function MonthReport() {
-    const [ownerdata, setData] = useState([]);
-    const [customerName, setCustomerName] = useState(null);
+    
+    const [agentData, setAgentData] = useState([]);
     const [ownerDataforDropdown, setOwnerDataforDropdown] = useState([]);
     const [CollectedAmount, setCollectedAmount] = useState(0);
     const [length, setLength] = useState(0);
     const [isLoading, setIsLoading] = useState(false);
 
-    const user = JSON.parse(localStorage.getItem("user") || sessionStorage.getItem("user"));
+    const user = JSON.parse(
+        localStorage.getItem("user") || sessionStorage.getItem("user")
+    );
 
     let monthlyReportAPIParams = {
         agentId: user.agentId,
@@ -31,12 +32,10 @@ export default function MonthReport() {
 
     const fetchOwnerData = () => {
         try {
-
             API.monthlyReportAPI(monthlyReportAPIParams)
-
             .then((response) => {
                 setIsLoading(false);
-                setData(response.data.report);
+                setAgentData(response.data.report);
                 setOwnerDataforDropdown(response.data.report);
                 setCollectedAmount(
                     response.data.report[0].totalCollectedAmount
@@ -45,7 +44,21 @@ export default function MonthReport() {
                 const length = response.data.report.lenght;
                 setLength(length);
             });
+        } catch (error) {
+            console.log(error);
+        }
+    };
 
+    const fetchDropdownData = () => {
+        try {
+            API.dropdownAgentDataAPI({ operatorId: user.operatorId }).then(
+                (response) => {
+                    // console.log(response.data);
+                    setAgentData(response.data.all_agents);
+                }
+            );
+
+            console.log(agentData);
         } catch (error) {
             console.log(error);
         }
@@ -54,21 +67,8 @@ export default function MonthReport() {
     useEffect(() => {
         setIsLoading(true);
         fetchOwnerData();
+        fetchDropdownData();
     }, []);
-
-    useEffect(() => {
-        if (customerName) {
-            if (customerName === "owner") {
-                setOwnerDataforDropdown(ownerdata);
-            } else {
-                const selectedOwnerData = ownerdata.filter(
-                    (data) => data.customerId === customerName
-                );
-
-                setOwnerDataforDropdown(selectedOwnerData);
-            }
-        }
-    }, [customerName]);
 
     const handletodate = () => {
         const todateInput = document.getElementById("todate");
@@ -102,11 +102,6 @@ export default function MonthReport() {
         height: "10vh",
     };
 
-    const getReportDivData = {
-        ownerdata: ownerdata,
-        setSelectedOwner: setCustomerName,
-    };
-
     return (
         <div className="container-report">
             <Header {...headerprops} />
@@ -135,7 +130,7 @@ export default function MonthReport() {
                 </div>
             </div>
 
-            <GetReportDiv {...getReportDivData} />
+            <GetReportDiv agentData={agentData} setAgentData={setAgentData} />
 
             <div style={{ display: "flex", justifyContent: "center" }}>
                 {isLoading && (

@@ -56,5 +56,12 @@ export default {
             "cableguy2-mobile-cust-report-based-on-stb",
             value
         )
+    },
+
+    dropdownAgentDataAPI(value) {
+        return API.post(
+            "cableguy2-get-area-and-agent-list",
+            value
+        )
     }
 }
