@@ -50,7 +50,8 @@ export default function CustomerStatistics() {
 
     const CustomLegend = () => {
         return (
-            <div className="custom-legend">
+            <div className="custom-legend" >
+             
                 {legendPayload.map((payload, index) => (
                     <div key={payload.id} className="legend-item">
                         <span
@@ -58,9 +59,11 @@ export default function CustomerStatistics() {
                             style={{ backgroundColor: payload.color }}
                         />
                         <span className="legend-text">{payload.value}</span>
-                        <br></br>
+                        
                     </div>
+                    
                 ))}
+             
             </div>
         );
     };
@@ -193,18 +196,19 @@ export default function CustomerStatistics() {
                         align="center"
                         verticalAlign="bottom"
                         iconSize={10}
-                        // wrapperStyle={{ width: "100%" }}
-                        // payload={realtimeData.map((entry, index) => ({
-                        //   id: entry.name,
-                        //   type: "square",
-                        //   value: entry.name,
-                        //   color: COLORS[index % COLORS.length],
-                        // }))}
-                        // wordWrap={true}
+                        wrapperStyle={{ width: "100%" }}
+                        payload={realtimeData.map((entry, index) => ({
+                          id: entry.name,
+                          type: "square",
+                          value: entry.name,
+                          color: COLORS[index % COLORS.length],
+                        }))}
+                        wordWrap={true}
                         // width={400}
-                        content={<CustomLegend />}
+                        
                     />
                 </PieChart>
+                
             </div>
         </div>
     );
