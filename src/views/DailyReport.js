@@ -65,10 +65,19 @@ export default function DailyReport() {
             console.log(error);
         }
     };
+    // const fetchDropDownData = () => {
+    //     try {
+    //         API.getOwnerData(agentData)
+
+
+    //             .then((response) => {
+
 
     useEffect(() => {
         setIsLoading(true);
+
         fetchOwnerData();
+        // fetchDropDownData();
     }, []);
 
     const Owners = () => {
