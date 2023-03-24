@@ -113,6 +113,12 @@ export default function DailyReport() {
             <GetReportDiv
                 agentData={agentData}
                 setAgentData={setAgentData}
+                ownerDataforDropdown={ownerDataforDropdown}
+                setOwnerDataforDropdown={setOwnerDataforDropdown}
+                isLoading={isLoading}
+                setIsLoading={setIsLoading}
+                setCollectedAmount={setCollectedAmount}
+                setLength={setLength}
             />
             <div style={{ display: "flex", justifyContent: "center" }}>
                 {isLoading && (
