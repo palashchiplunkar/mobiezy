@@ -22,10 +22,8 @@ export default function DailyReport() {
 
     let ownerDataRequest = {
         agentId: user.agentId,
-        considerAgentType: "Y",
         operatorId: user.operatorId,
-        Startdate: "/",
-        dailyReport: "N"
+        dailyReport: "Y"
     }
 
     // Based on selectedOwner change the owner data
@@ -87,7 +85,7 @@ export default function DailyReport() {
 
     useEffect(() => {
         setIsLoading(true);
-
+        fetchDropdownData();
         fetchOwnerData();
     }, []);
 
