@@ -13,13 +13,6 @@ import "reactjs-popup/dist/index.css";
 
 export default function HomePage() {
 
-    const refresh = window.history.back();
-    
-    useEffect(() => {
-        if(refresh === true){
-            window.location.reload();
-        }
-    }, []);
 
     const { t } = useTranslation();
     const navigate = useNavigate();
