@@ -30,6 +30,7 @@ export default function MonthReport() {
         flag: "N",
         dailyReport: "N",
     };
+    
 
     const fetchOwnerData = () => {
         try {
