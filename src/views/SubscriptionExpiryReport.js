@@ -37,11 +37,16 @@ export default function SubscriptionExpiryReport() {
     }, []);
 
     const ExpiryCount = ({ date }) => {
+
+        // Change the format of date to YYYY-MM-DD
+        let dateArray = date.split("-");
+        let newDate = dateArray[2] + "-" + dateArray[1] + "-" + dateArray[0];
+
         let expiryData = {
-            agent_id: "11276",
-            operator_id: "1603",
-            pre_end_date: date,
-        };
+            agent_id: user.agentId,
+            operator_id:user.operatorId,
+            pre_end_date:newDate
+        }
 
         API.subscriptionExpiryReportCountAPI(expiryData)
 
@@ -95,7 +100,8 @@ export default function SubscriptionExpiryReport() {
             (data, index) => {
                 return (
                     <>
-                        <div className="expiry-report-data-div">
+                        <div className="expiry-report-data-div" key={index}>
+                        
                             <div className="expiry-report-data">
                                 <p className="expiry-report-data-label">
                                     {data.DAYS}

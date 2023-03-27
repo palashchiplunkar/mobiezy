@@ -12,13 +12,6 @@ import "../css/alert_popup.css";
 import "reactjs-popup/dist/index.css";
 
 export default function HomePage() {
-    const exit = () => {
-        // window.location = window.location + "#loaded";
-        window.location.reload();
-        window.history.go(-1);
-        window.history.back();
-        console.log("Clicked");
-    };
 
     const { t } = useTranslation();
     const navigate = useNavigate();
@@ -64,17 +57,16 @@ export default function HomePage() {
         }
     };
 
-    // useEffect(() => {
-    //     window.history.pushState({}, "");
-    //     window.addEventListener("popstate", function (e) {
-    //         e.preventDefault();
-    //         e.stopPropagation();
-    //         window.history.pushState({}, "");
-    //     });
-    //     // window.location.reload();
+    useEffect(() => {
+        window.history.pushState({}, "");
+        window.addEventListener("popstate", function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            window.history.pushState({}, "");
+        });
 
-    //     getHomeData();
-    // }, []);
+        getHomeData();
+    }, []);
 
     return (
         <>
@@ -154,8 +146,6 @@ export default function HomePage() {
                 </div>
             </div>
             <Navbar value={0} onChange={() => {window.location.reload();}}/>
-
-            <button onClick={exit}></button>
         </>
     );
 }
