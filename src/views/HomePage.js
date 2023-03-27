@@ -13,6 +13,13 @@ import "reactjs-popup/dist/index.css";
 
 export default function HomePage() {
 
+    $(window).on('popstate', function (e) {
+        var state = e.originalEvent.state;
+        if (state !== null) {
+            window.location.reload();
+        }
+    });
+    
 
     const { t } = useTranslation();
     const navigate = useNavigate();
