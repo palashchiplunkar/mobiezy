@@ -65,6 +65,8 @@ const GetReportDiv = (props) => {
         <option value="11276" onClick={AllData}>
           Owner Sur ...
         </option>
+        <option value="0">Office</option>
+        <option value="1">Online</option>
         <OwnerSelection />
       </select>
       <button className="get-report-btn" onClick={handleSelection}>
