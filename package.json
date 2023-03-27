@@ -19,6 +19,7 @@
     "minpopup": "^1.0.6",
     "postcss-modules-values": "^4.0.0",
     "react": "^18.2.0",
+    "react-bluetooth": "^0.0.0",
     "react-bootstrap": "^2.7.2",
     "react-bottom-drawer": "^0.1.1",
     "react-collapsible": "^2.10.0",
