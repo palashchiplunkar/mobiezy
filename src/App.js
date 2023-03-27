@@ -20,6 +20,7 @@ import CollectPayment from "./views/CollectPayment";
 import CustomerStatistics from "./views/CustomerStatistics";
 import PrivateRoutes from "./components/PrivateRoutes";
 import Complaints from "./views/Complaints";
+import Print from "./views/print";
 
 function App() {
   return (
@@ -43,6 +44,7 @@ function App() {
           <Route path="/complaints" element={<Complaints/>}/>
         </Route>
         <Route path="/" element={<LoginPage />} />
+        <Route path="/print" element={<Print />} />
       </Routes>
     </BrowserRouter>
   );
