@@ -88,27 +88,6 @@ const GetReportDiv = (props) => {
     }
   };
 
-<<<<<<< HEAD
-  return (
-    <div className="get-report-div">
-      <select
-        className="get-report-dropdown"
-        id="ownerselect"
-        value={selected}
-        onChange={handleDropChange}
-      >
-        <option value={agentId}>Owner Summary</option>
-        <option value="0">Office</option>
-        <option value="1">Online</option>
-        <OwnerSelection />
-        {/* <option value={data.customerName}>{data.customerName}</option> */}
-      </select>
-      <button className="get-report-btn" onClick={handleSelection}>
-        Get Report
-      </button>
-    </div>
-  );
-=======
     return (
         <div className="get-report-div">
             <select
@@ -129,7 +108,6 @@ const GetReportDiv = (props) => {
             </button>
         </div>
     );
->>>>>>> 28aa09a81b8f41c3ad6b09daec0a2e52b9aa3c42
 };
 
 export default GetReportDiv;
