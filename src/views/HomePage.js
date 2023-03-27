@@ -162,7 +162,7 @@ export default function HomePage() {
             </div>
             <Navbar value={0} />
 
-            <button onClick={exit}></button>
+            {/* <button onClick={exit}></button> */}
         </>
     );
 }
