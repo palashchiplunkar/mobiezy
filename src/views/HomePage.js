@@ -14,18 +14,11 @@ import "reactjs-popup/dist/index.css";
 export default function HomePage() {
 
     const exit = () => {
-        const reloadUsingLocationHash = () => {
-            window.location.hash = "reload";
-          }
-          window.onload = reloadUsingLocationHash();
-          console.log("Clicked");
+        window.location = window.location + '#loaded';
+            window.location.reload();
+            window.history.back();
+            console.log("Clicked");
     }
-
-    const reloadUsingLocationHash = () => {
-        window.location.hash = "reload";
-      }
-      window.onload = reloadUsingLocationHash();
-      console.log("Clicked");
 
     const { t } = useTranslation();
     const navigate = useNavigate();
@@ -162,7 +155,7 @@ export default function HomePage() {
             </div>
             <Navbar value={0} />
 
-            {/* <button onClick={exit}></button> */}
+            <button onClick={exit}></button>
         </>
     );
 }
