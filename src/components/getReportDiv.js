@@ -21,7 +21,7 @@ const GetReportDiv = (props) => {
 
     const OwnerSelection = () => {
         const OwnerSelectionData = agentData.map((data) => {
-            return <option value={data.Agent_Id}>{data.Name}</option>;
+            return <option value={data.Agent_Id} >{data.Name}</option>;
         });
         return OwnerSelectionData;
     };
@@ -30,7 +30,13 @@ const GetReportDiv = (props) => {
         setOwnerDataforDropdown([]);
         setIsLoading(true);
         const selectedOwner = document.getElementById("ownerselect").value;
-        API.dailyReportAPI({
+        
+        // Set selected state to the selected option
+    setSelected(selectedOwner);
+    // set the dropdown value to the selected option
+    document.getElementById("ownerselect").value = selectedOwner;
+    // console.log(selectedOwner+"Hello");
+    API.dailyReportAPI({
             agentId: selectedOwner,
             operatorId: operatorId,
             dailyReport: "Y",
@@ -62,9 +68,10 @@ const GetReportDiv = (props) => {
                 className="get-report-dropdown"
                 id="ownerselect"
                 onChange={() => setSelected(selected)}
+
             >
                 <option value={agentData.agentId}>
-                    Owner Sur...
+                    Owner Surname
                 </option>
                 <option value="0">Office</option>
                 <option value="1">Online</option>
