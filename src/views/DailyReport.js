@@ -31,13 +31,13 @@ export default function DailyReport() {
             API.dailyReportAPI(ownerDataRequest).then((response) => {
                 // Set owner data state to the API response
                 setIsLoading(false);
-                
+                console.log(response);
                 // setOwnerData(response.data.report);
                 setOwnerDataforDropdown(response.data.report);
                 setCollectedAmount(
                     response.data.report[0].totalCollectedAmount
                 );
-
+ 
                 // get length of the response
                 const length = response.data.report.length;
                 setLength(length);

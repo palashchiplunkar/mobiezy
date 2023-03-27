@@ -25,7 +25,6 @@ const GetReportDiv = (props) => {
     };
 
     const handleSelection = () => {
-
         setOwnerDataforDropdown([]);
         setIsLoading(true);
 
@@ -38,8 +37,10 @@ const GetReportDiv = (props) => {
             considerAgentType: "N",
         })
             .then((response) => {
+
                 setIsLoading(false);
                 setOwnerDataforDropdown(response.data.report);
+        
                 if (response.data.report.length > 0) {
                     setLength(response.data.report.length);
                     setCollectedAmount(
@@ -68,7 +69,7 @@ const GetReportDiv = (props) => {
                 onChange={() => setSelected(selected)}
             >
                 <option value="11276" onClick={AllData}>
-                    Owner Sur ...
+                    Owner Summary
                 </option>
                 <OwnerSelection />
             </select>
