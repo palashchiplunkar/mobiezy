@@ -4,24 +4,25 @@ import "../css/getReportDiv.css";
 import API from "../services/API";
 
 const GetReportDiv = (props) => {
-  const {
-    agentData,
-    setAgentData,
-    ownerDataforDropdown,
-    setOwnerDataforDropdown,
-    isLoading,
-    setIsLoading,
-    setCollectedAmount,
-    setLength,
-  } = props;
-  const [selected, setSelected] = useState(null);
+    const {
+        agentData,
+        setAgentData,
+        ownerDataforDropdown,
+        setOwnerDataforDropdown,
+        isLoading,
+        setIsLoading,
+        setCollectedAmount,
+        setLength,
+    } = props;
 
-  const OwnerSelection = () => {
-    const OwnerSelectionData = agentData.map((data) => {
-      return <option value={data.Agent_Id}>{data.Name}</option>;
-    });
-    return OwnerSelectionData;
-  };
+    const [selected, setSelected] = useState(null);
+
+    const OwnerSelection = () => {
+        const OwnerSelectionData = agentData.map((data) => {
+            return <option value={data.Agent_Id}>{data.Name}</option>;
+        });
+        return OwnerSelectionData;
+    };
 
   const handleSelection = () => {
     setOwnerDataforDropdown([]);
@@ -51,9 +52,9 @@ const GetReportDiv = (props) => {
       });
   };
 
-  const AllData = () => {
-    setAgentData("owner");
-  };
+    const AllData = () => {
+        setAgentData("owner");
+    };
 
   return (
     <div className="get-report-div">
