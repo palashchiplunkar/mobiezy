@@ -4,6 +4,8 @@ const API = axios.create({
     baseURL: "https://ld3igodwbj.execute-api.us-west-2.amazonaws.com/prod/",
     headers: {
         "content-type": "application/json"
+        
+
     }
 });
 
@@ -63,5 +65,12 @@ export default {
             "cableguy2-get-area-and-agent-list",
             value
         )
+    },
+
+    viewCompalintAPI(value) {
+        return API.post(
+            "getmobileassignedcomplaints",
+            value
+        )  
     }
 }
