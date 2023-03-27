@@ -19,7 +19,7 @@ export default function DailyReport() {
     const user = JSON.parse(
         localStorage.getItem("user") || sessionStorage.getItem("user")
     );
-
+    const operatorId = user.operatorId;
     let ownerDataRequest = {
         agentId: user.agentId,
         operatorId: user.operatorId,
@@ -97,6 +97,7 @@ export default function DailyReport() {
                 setIsLoading={setIsLoading}
                 setCollectedAmount={setCollectedAmount}
                 setLength={setLength}
+                operatorId={operatorId}
             />
             <div style={{ display: "flex", justifyContent: "center" }}>
                 {isLoading && (

@@ -13,10 +13,11 @@ const GetReportDiv = (props) => {
         setIsLoading,
         setCollectedAmount,
         setLength,
+        operatorId
     } = props;
 
     const [selected, setSelected] = useState(null);
-
+    console.log(operatorId)
     const OwnerSelection = () => {
         const OwnerSelectionData = agentData.map((data) => {
             return <option value={data.Agent_Id}>{data.Name}</option>;
@@ -30,7 +31,7 @@ const GetReportDiv = (props) => {
     const selectedOwner = document.getElementById("ownerselect").value;
     API.dailyReportAPI({
       agentId: selectedOwner,
-      operatorId: "1603",
+      operatorId: operatorId,
       dailyReport: "Y",
       considerAgentType: "N",
     })
