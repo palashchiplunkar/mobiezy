@@ -10,6 +10,7 @@ import "../css/global.css";
 export default function SubscriptionExpiryReport() {
     // const [showItems, setshowItems] = useState([]);
     // const [dateResponse, setdateResponse] = useState(null);
+    const [phone, setPhone] = useState("");
     const [expiryResponse, setexpiryResponse] = useState(null);
     const [alert, setalert] = useState(false);
     const [isLoading, setisLoading] = useState(false);
@@ -25,7 +26,7 @@ export default function SubscriptionExpiryReport() {
     };
 
     const dialer = () => {
-        window.location.href = "tel:123-456-7890";
+        window.location.href = "tel:" + phone;
     };
 
     useEffect(() => {
@@ -106,7 +107,10 @@ export default function SubscriptionExpiryReport() {
                                         textDecorationLine: "underline",
                                         fontWeight: 700,
                                     }}
-                                    onClick={() => setalert(true)}
+                                    onClick={() => {
+                                        setPhone(report.PHONE);
+                                        setalert(true);
+                                    }}
                                 >
                                     {report.PHONE}
                                 </td>
