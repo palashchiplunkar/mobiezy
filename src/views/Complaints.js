@@ -2,6 +2,8 @@ import React from "react";
 import "../css/Complaints.css";
 import "../css/global.css";
 import Header from "../components/header";
+import API from "../services/API";
+import { useEffect, useState } from "react";
 
 export default function Complaints() {
 
@@ -28,6 +30,22 @@ export default function Complaints() {
         text: "View Complaints",
         height: "10vh",
     };
+    const fetchComplaints = () => {
+        try {
+            API.viewCompalintAPI({
+                agent_id:"11276"
+            }).then((response) => {
+                console.log(response.data);
+                // setComplaints(response.data);
+            });
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
+    useEffect(() => {
+        fetchComplaints();
+    }, []);
 
     const CompViewList = ({ complaints }) => {
         const CompViewDataList = complaints.map((data) => (
@@ -58,7 +76,6 @@ export default function Complaints() {
                 </tr>
             </div>
         ));
-
         return <>{CompViewDataList}</>;
     };
 
