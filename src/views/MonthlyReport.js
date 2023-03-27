@@ -9,6 +9,7 @@ import API from "../services/API";
 import "../css/MonthlyReport.css";
 import "../css/global.css";
 import { Spinner } from "react-bootstrap";
+import DatePicker from "react-date-picker";
 
 // export default function MonthReport() {
 
@@ -177,10 +178,11 @@ export default function MonthlyReport() {
   const [length, setLength] = useState(0);
   const [ownerDataforDropdown, setOwnerDataforDropdown] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-  const [selected, setSelected] = useState(null);
-  const [startDate, setstartDate] = useState(null)
-  const [endDate, setendDate] = useState(null)
-
+  const [selected, setSelected] = useState(new Date());
+  const [startDate, setstartDate] = useState(new Date());
+  const [endDate, setendDate] = useState(new Date());
+  const [stdt, setstdt] = useState(null)
+  const [eddt, seteddt] = useState(null)
   const user = JSON.parse(
     localStorage.getItem("user") || sessionStorage.getItem("user")
   );
@@ -195,33 +197,45 @@ export default function MonthlyReport() {
   const handleDropChange = (e) => {
     setSelected(e.target.value);
   };
+  useEffect(()=>{
+        let date= new Date();
+        let date1 = date.toLocaleDateString().split("/");
 
-  const handletodate = (e) => {
-    const todateInput = document.getElementById("todate");
-    todateInput.focus();
-    todateInput.dispatchEvent(new MouseEvent("click", { bubbles: true }));
-    setstartDate(e.target.value);
-    console.log(e.target.value)
-};
+        let date2 = date1[0] + "-" + date1[1] + "-" + date1[2];
+        let date3 = date1[1] + "-" + date1[0] + "-" + date1[2];
+        setstdt(date1[2] + "-" + date1[0] + "-" + date1[1]);
+        seteddt(date1[2] + "-" + date1[0] + "-" + date1[1]);
+  },[])
+  const handlestartdate = (date) => {
+    let date1 = date.toLocaleDateString().split("/");
 
-  const handlefromdate = (e) => {
-    const fromdateInput = document.getElementById("fromdateinp");
-    fromdateInput.focus();
+    let date2 = date1[0] + "-" + date1[1] + "-" + date1[2];
+    let date3 = date1[1] + "-" + date1[0] + "-" + date1[2];
+    setstartDate(date2);
+    setstdt(date1[2] + "-" + date1[0] + "-" + date1[1]);
+    console.log(stdt);
+  };
 
-    fromdateInput.dispatchEvent(new MouseEvent("click", { bubbles: true }));
-    setendDate(e.target.value)
-    console.log(e.target.value)
+  const handleenddate = (date) => {
+    let date1 = date.toLocaleDateString().split("/");
 
-};
+    let date2 = date1[0] + "-" + date1[1] + "-" + date1[2];
+    let date3 = date1[1] + "-" + date1[0] + "-" + date1[2];
+    setendDate(date2);
+    seteddt(date1[2] + "-" + date1[0] + "-" + date1[1]);
+    console.log(eddt);
+  };
 
-  const fetchOwnerData = (agentType,stdate,eddate) => {
+  const fetchOwnerData = (agentType) => {
     let ownerDataRequest;
+    console.log(stdt,eddt)
     if (agentType) {
       ownerDataRequest = {
-        agentId: selected,
+        agentId: user.agentId,
         considerAgentType: agentType,
         operatorId: user.operatorId,
-        Startdate: "",
+        Startdate: stdt ? stdt : "",
+        Enddate: eddt ? eddt : "",
         dailyReport: "N",
       };
     } else {
@@ -234,6 +248,8 @@ export default function MonthlyReport() {
         dailyReport: "N",
       };
     }
+    console.log("owner", ownerDataRequest);
+
     try {
       API.dailyReportAPI(ownerDataRequest).then((response) => {
         // Set owner data state to the API response
@@ -274,12 +290,19 @@ export default function MonthlyReport() {
         agentId: selected,
         considerAgentType: "N",
         operatorId: user.operatorId,
-        Startdate: "",
+        Startdate: stdt ? stdt : "",
+        Enddate: eddt ? eddt : "",
         dailyReport: "N",
       };
+      console.log(stdt,eddt)
       API.dailyReportAPI(body)
         .then((response) => {
           setOwnerDataforDropdown(response.data.report);
+          setCollectedAmount(response.data.report[0].totalCollectedAmount);
+
+          // get length of the response
+          const length = response.data.report.length;
+          setLength(length);
         })
         .catch((err) => {
           console.log(err);
@@ -322,22 +345,33 @@ export default function MonthlyReport() {
       <div className="date-report">
         <div className="from-date">
           <p className="from-date-label">From Date</p>
-          <input className="from-date-input" type="date" id="fromdateinp" />
+          {/* <input className="from-date-input" type="date" id="fromdateinp" />
           <RiCalendarEventFill
             className="from-date-calender-icon"
             value={startDate}
             onClick={handlefromdate}
+          /> */}
+          <DatePicker
+            calendarIcon={<RiCalendarEventFill style={{ color: "#0090DA" }} />}
+            onChange={(date) => handlestartdate(date)}
+            value={startDate}
+            monthPlaceholder={"MM"}
+            dayPlaceholder={"DD"}
+            yearPlaceholder={"YY"}
+            className={"react-datepicker-wrapper"}
           />
         </div>
 
         <div className="to-date">
           <p className="to-date-label">End Date</p>
-          <input className="to-date-input" type="date" id="todate" />
-          <RiCalendarEventFill
-            className="to-date-calender-icon"
+          <DatePicker
+            calendarIcon={<RiCalendarEventFill style={{ color: "#0090DA" }} />}
+            onChange={(date) => handleenddate(date)}
             value={endDate}
-
-            onClick={handletodate}
+            monthPlaceholder={"MM"}
+            dayPlaceholder={"DD"}
+            yearPlaceholder={"YY"}
+            className={"react-datepicker-wrapper"}
           />
         </div>
       </div>
