@@ -37,9 +37,8 @@ export default function SubscriptionExpiryReport() {
         console.log(e);
       });
   }, []);
-    useEffect (() => {
-        setisLoading(true);
-        
+   
+
 
   const ExpiryCount = ({ date }) => {
     // Change the format of date to YYYY-MM-DD
