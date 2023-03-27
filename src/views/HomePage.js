@@ -14,7 +14,7 @@ import "reactjs-popup/dist/index.css";
 export default function HomePage() {
     const exit = () => {
         // window.location = window.location + "#loaded";
-        // window.location.reload();
+        window.location.reload();
         window.history.go(-1);
         window.history.back();
         console.log("Clicked");
