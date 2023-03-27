@@ -13,10 +13,6 @@ import "reactjs-popup/dist/index.css";
 
 export default function HomePage() {
 
-    if (window.performance && window.performance.navigation.type == window.performance.navigation.TYPE_BACK_FORWARD) {
-        alert('hello world');
-    }
-
     const { t } = useTranslation();
     const navigate = useNavigate();
     const [data, setData] = useState(
@@ -32,14 +28,12 @@ export default function HomePage() {
     }
 
     let agentData = {
-        agent_id: userJson.agentId
+        agent_id: userJson.agentId,
     };
 
     const getHomeData = () => {
         if (userJson) {
-            API
-
-                .agentSummaryAPI(agentData)
+            API.agentSummaryAPI(agentData)
 
                 .then((response) => {
                     if (response.data.report[0]) {
@@ -64,7 +58,6 @@ export default function HomePage() {
     };
 
     useEffect(() => {
-    
         window.history.pushState({}, "");
         window.addEventListener("popstate", function (e) {
             e.preventDefault();
