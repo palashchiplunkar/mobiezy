@@ -1,191 +1,190 @@
 .container-expiry-report {
-  width: 100%;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  background-color: #ffffff;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #ffffff;
 }
-.smallLoader{
-  width: 100%;
+.smallLoader {
+    width: 100%;
 
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #ffffff;
 }
 .headerblue-report {
-  background-color: #1e90ff;
-  height: 10vh;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+    background-color: #1e90ff;
+    height: 10vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 .report-label {
-  font-family: "Noto Sans", sans-serif;
-  font-style: normal;
-  font-weight: 700;
-  font-size: 20px;
-  line-height: 150%;
-  display: flex;
-  align-items: center;
-  text-align: center;
-  letter-spacing: 0.2px;
-  color: #ffffff;
-  margin-top: 8%;
-  margin-bottom: 8%;
+    font-family: "Noto Sans", sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 150%;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    letter-spacing: 0.2px;
+    color: #ffffff;
+    margin-top: 8%;
+    margin-bottom: 8%;
 }
 .expiry-data-container {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .expiry-data {
-  width: 100%;
-  height: 80vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  overflow-y: scroll;
-  scrollbar-width: none;
+    width: 100%;
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-y: scroll;
+    scrollbar-width: none;
 }
 .expiry-report-head-div {
-  display: flex;
-  justify-content: space-between;
-  width: 85%;
-  height: 70px;
-  margin-top: 4%;
-  align-items: center;
-  border: 4px solid transparent;
-  border-radius: 15px;
-  background-image: linear-gradient(white, white),
-    linear-gradient(to bottom right, #0090da, #a4ce4e);
-  background-origin: border-box;
-  background-clip: content-box, border-box;
+    display: flex;
+    justify-content: space-between;
+    width: 85%;
+    height: 70px;
+    margin-top: 4%;
+    align-items: center;
+    border: 4px solid transparent;
+    border-radius: 15px;
+    background-image: linear-gradient(white, white),
+        linear-gradient(to bottom right, #0090da, #a4ce4e);
+    background-origin: border-box;
+    background-clip: content-box, border-box;
 }
 .expiry-report-head {
-  width: 30%; /* or any other value that fits */
-  text-align: center;
-  font-family: "Noto Sans";
-  font-style: normal;
-  font-weight: 700;
-  font-size: 14px;
-  line-height: 16px;
-
-  letter-spacing: 0.2px;
-
-  color: #252525;
+    width: 30%; /* or any other value that fits */
+    text-align: center;
+    font-family: "Noto Sans";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 16px;
+    letter-spacing: 0.2px;
+    color: #252525;
 }
 .expiry-report-data-div {
-  display: flex;
-  justify-content: space-between;
-  width: 85%;
-  height: 50px;
-  margin-top: 4%;
-  align-items: center;
-  border: 2px solid transparent;
-  border-radius: 10px;
-  background-image: linear-gradient(white, white),
-    linear-gradient(to bottom right, #0090da, #a4ce4e);
-  background-origin: border-box;
-  background-clip: content-box, border-box;
+    display: flex;
+    justify-content: space-between;
+    width: 85%;
+    height: 50px;
+    margin-top: 4%;
+    align-items: center;
+    border: 2px solid transparent;
+    border-radius: 10px;
+    background-image: linear-gradient(white, white),
+        linear-gradient(to bottom right, #0090da, #a4ce4e);
+    background-origin: border-box;
+    background-clip: content-box, border-box;
 }
 .expiry-report-data {
-  width: 30%; /* or any other value that fits */
-  text-align: center;
-  font-family: "Noto Sans";
-  font-style: normal;
-  font-weight: 700;
-  font-size: 14px;
-  line-height: 16px;
-  display: flex;
-  justify-content: center;
-  letter-spacing: 0.2px;
+    width: 30%; /* or any other value that fits */
+    text-align: center;
+    font-family: "Noto Sans";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 16px;
+    display: flex;
+    justify-content: center;
+    letter-spacing: 0.2px;
 
-  color: #252525;
+    color: #252525;
 }
 .expiry-report-data-label {
-  font-family: "Noto Sans";
-  font-style: normal;
-  font-weight: 400;
-  font-size: 12px;
-  line-height: 16px;
-  letter-spacing: 0.2px;
-align-self: center;  color: #252525;
+    font-family: "Noto Sans";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 0.2px;
+    align-self: center;
+    color: #252525;
+    margin: 10px !important;
 }
 
 .float-div-expiry {
-  width: 100%;
-  height: 22%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  margin-bottom: 8%;
+    width: 100%;
+    height: 22%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-bottom: 8%;
 }
 .float-btn {
-  font-family: "Noto Sans";
-  font-style: normal;
-  font-weight: 700;
-  font-size: 14px;
-  line-height: 136%;
-  text-align: center;
-  text-transform: uppercase;
-  color: #ffffff;
-  width: 60%;
-  height: 48px;
-  background-color: #0090da;
-  border-radius: 20px;
-  border: none;
-  outline: none;
-  cursor: pointer;
+    font-family: "Noto Sans";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 136%;
+    text-align: center;
+    text-transform: uppercase;
+    color: #ffffff;
+    width: 60%;
+    height: 48px;
+    background-color: #0090da;
+    border-radius: 20px;
+    border: none;
+    outline: none;
+    cursor: pointer;
 }
 .expiryCountTable {
-  margin-top: 20px;
-  border: 2px solid transparent;
-  border-radius: 10px;
-  background-image: linear-gradient(white, white),
-    linear-gradient(to bottom right, #0090da, #a4ce4e);
-  background-origin: border-box;
-  background-clip: content-box, border-box;
-
+    margin-top: 20px;
+    border: 2px solid transparent;
+    border-radius: 10px;
+    background-image: linear-gradient(white, white),
+        linear-gradient(to bottom right, #0090da, #a4ce4e);
+    background-origin: border-box;
+    background-clip: content-box, border-box;
 }
 .expiryCountTable tr th {
-  width: 105px;
-  padding: 10px;
-  font-family: "Noto Sans";
-  font-style: normal;
-  font-weight: 700;
-  font-size: 14px;
-  line-height: 16px;
-  letter-spacing: 0.2px;
-  text-align: center;
-  color: #252525;
+    width: 105px;
+    padding: 10px;
+    font-family: "Noto Sans";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 16px;
+    letter-spacing: 0.2px;
+    text-align: center;
+    color: #252525;
 }
 .borderExpiryHead {
-  border: 4px solid transparent;
-  border-radius: 10px;
-  background-image: linear-gradient(white, white),
-    linear-gradient(to bottom right, #0090da, #a4ce4e);
-  background-origin: border-box;
-  background-clip: content-box, border-box;
+    border: 4px solid transparent;
+    border-radius: 10px;
+    background-image: linear-gradient(white, white),
+        linear-gradient(to bottom right, #0090da, #a4ce4e);
+    background-origin: border-box;
+    background-clip: content-box, border-box;
 }
 .expiryCountTable tr td {
-  /* text-align: center; */
-  padding: 10px;
-  font-family: "Noto Sans";
-  font-style: normal;
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 16px;
-  /* display: flex;
+    /* text-align: center; */
+    padding: 10px;
+    font-family: "Noto Sans";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
+    /* display: flex;
 align-items: center;
 text-align: center; */
-  text-align: center;
-  letter-spacing: 0.2px;
+    text-align: center;
+    letter-spacing: 0.2px;
 
-  color: #252525;
+    color: #252525;
 }
