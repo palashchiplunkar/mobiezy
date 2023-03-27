@@ -57,25 +57,25 @@ const GetReportDiv = (props) => {
         setAgentData("owner");
     };
 
-  return (
-    <div className="get-report-div">
-      <select
-        className="get-report-dropdown"
-        id="ownerselect"
-        onChange={() => setSelected(selected)}
-      >
-        <option value="11276" onClick={AllData}>
-          Owner Sur ...
-        </option>
-        <option value="0">Office</option>
-        <option value="1">Online</option>
-        <OwnerSelection />
-      </select>
-      <button className="get-report-btn" onClick={handleSelection}>
-        Get Report
-      </button>
-    </div>
-  );
+    return (
+        <div className="get-report-div">
+            <select
+                className="get-report-dropdown"
+                id="ownerselect"
+                onChange={() => setSelected(selected)}
+            >
+                <option value="11276" onClick={AllData}>
+                    Owner Sur ...
+                </option>
+                <option value="0">Office</option>
+                <option value="1">Online</option>
+                <OwnerSelection />
+            </select>
+            <button className="get-report-btn" onClick={handleSelection}>
+                Get Report
+            </button>
+        </div>
+    );
 };
 
 export default GetReportDiv;
