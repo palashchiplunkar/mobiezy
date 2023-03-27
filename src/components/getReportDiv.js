@@ -69,7 +69,7 @@ const GetReportDiv = (props) => {
 
             >
                 <option value={agentData.agentId}>
-                    Owner Sur...
+                    Owner Surname
                 </option>
                 <option value="0">Office</option>
                 <option value="1">Online</option>
