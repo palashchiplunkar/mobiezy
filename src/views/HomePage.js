@@ -13,6 +13,11 @@ import "reactjs-popup/dist/index.css";
 
 export default function HomePage() {
 
+    const exit = () => {
+        window.location.reload();
+        window.history.back();
+    }
+
     const { t } = useTranslation();
     const navigate = useNavigate();
     const [data, setData] = useState(
@@ -147,6 +152,8 @@ export default function HomePage() {
                 </div>
             </div>
             <Navbar value={0} />
+
+            <button onClick={exit}></button>
         </>
     );
 }
