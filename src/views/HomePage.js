@@ -14,10 +14,15 @@ import "reactjs-popup/dist/index.css";
 export default function HomePage() {
     const exit = () => {
         // window.location = window.location + "#loaded";
-        window.location.reload();
-        window.history.go(-1);
+        // window.location.reload();
+        // window.history.go(-1);
+        // window.history.back();
+        // console.log(window.history.length);
+
+        for(var i=0; i<window.history.length; i++){
+            window.history.go(-i);
+        }
         window.history.back();
-        console.log("Clicked");
     };
 
     const { t } = useTranslation();
@@ -64,17 +69,17 @@ export default function HomePage() {
         }
     };
 
-    // useEffect(() => {
-    //     window.history.pushState({}, "");
-    //     window.addEventListener("popstate", function (e) {
-    //         e.preventDefault();
-    //         e.stopPropagation();
-    //         window.history.pushState({}, "");
-    //     });
-    //     // window.location.reload();
+    useEffect(() => {
+        window.history.pushState({}, "");
+        window.addEventListener("popstate", function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            window.history.pushState({}, "");
+        });
+        // window.location.reload();
 
-    //     getHomeData();
-    // }, []);
+        getHomeData();
+    }, []);
 
     return (
         <>
