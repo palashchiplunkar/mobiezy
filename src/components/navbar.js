@@ -8,36 +8,44 @@ import "../css/BottomNav.css";
 import "../css/global.css";
 
 const Navbar = ({ value }) => {
-  return (
-    <div>
-      <BottomNavigation
-        sx={{width:'100%', position: "fixed", bottom: 0 }}
-        value={value}
-      >
-        <BottomNavigationAction
-          label="Home"
-          icon={<AiFillHome />}
-          showLabel={true}
-          LinkComponent={Link}
-          to="/home"
-        />
-        <BottomNavigationAction
-          label="Customers"
-          icon={<BiUserCircle />}
-          showLabel={true}
-          LinkComponent={Link}
-          to="/customer"
-        />
-        <BottomNavigationAction
-          label="More"
-          icon={<FiMoreHorizontal />}
-          showLabel={true}
-          LinkComponent={Link}
-          to="/more"
-        />
-      </BottomNavigation>
-    </div>
-  );
+    return (
+        <div>
+            <BottomNavigation
+                sx={{ width: "100%", position: "fixed", bottom: 0 }}
+                value={value}
+            >
+                <BottomNavigationAction
+                    label="Home"
+                    icon={<AiFillHome />}
+                    showLabel={true}
+                    LinkComponent={Link}
+                    to="/home"
+                />
+                <BottomNavigationAction
+                    label="Customers"
+                    icon={<BiUserCircle />}
+                    showLabel={true}
+                    LinkComponent={Link}
+                    to="/customer"
+                />
+                <BottomNavigationAction
+                    label="More"
+                    icon={<FiMoreHorizontal />}
+                    showLabel={true}
+                    LinkComponent={Link}
+                    to="/more"
+                />
+
+                <BottomNavigationAction
+                    label="Bluetooth"
+                    icon={<FiMoreHorizontal />}
+                    showLabel={true}
+                    LinkComponent={Link}
+                    to="/print"
+                />
+            </BottomNavigation>
+        </div>
+    );
 };
 
 export default Navbar;

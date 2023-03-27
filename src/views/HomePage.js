@@ -64,7 +64,6 @@ export default function HomePage() {
             e.stopPropagation();
             window.history.pushState({}, "");
         });
-        // window.location.reload();
 
         getHomeData();
     }, []);
