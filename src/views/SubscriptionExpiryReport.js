@@ -169,7 +169,7 @@ export default function SubscriptionExpiryReport() {
             <div className="expiry-data">
                 {isLoading && (
                     <div>
-                        <Spinner animation="border" variant="info" />
+                        <Spinner animation="border" variant="info" style={{marginTop:"50px"}}/>
                     </div>
                 )}
                 {expiryResponse && subExpiryList()}
