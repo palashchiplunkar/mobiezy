@@ -8,6 +8,7 @@ import API from "../services/API";
 
 import "../css/MonthlyReport.css";
 import "../css/global.css";
+import { Spinner } from "react-bootstrap";
 
 export default function MonthReport() {
     
@@ -134,12 +135,8 @@ export default function MonthReport() {
 
             <div style={{ display: "flex", justifyContent: "center" }}>
                 {isLoading && (
-                    <ReactLoading
-                        type={"spin"}
-                        color={"#0090da"}
-                        height={75}
-                        width={75}
-                    />
+                    <Spinner animation="border" variant="info" style={{marginTop:"100px"}}/>
+                    
                 )}
             </div>
 
