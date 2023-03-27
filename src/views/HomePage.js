@@ -13,10 +13,11 @@ import "reactjs-popup/dist/index.css";
 
 export default function HomePage() {
 
-    // useEffect(() => {
-    //     console.log(localStorage.getItem("user"));
-    //     console.log(localStorage.getItem("rememberMe"));
-    // }, []);
+    useEffect(() => {
+        if(window.history.back == true){
+            window.location.reload();
+        }
+    }, []);
 
     const { t } = useTranslation();
     const navigate = useNavigate();
@@ -72,7 +73,7 @@ export default function HomePage() {
             e.stopPropagation();
             window.history.pushState({}, "");
         });
-        window.location.reload();
+        // window.location.reload();
 
         getHomeData();
     }, []);
