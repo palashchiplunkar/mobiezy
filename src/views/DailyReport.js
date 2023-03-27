@@ -31,6 +31,7 @@ export default function DailyReport() {
             API.dailyReportAPI(ownerDataRequest).then((response) => {
                 // Set owner data state to the API response
                 setIsLoading(false);
+                
                 // setOwnerData(response.data.report);
                 setOwnerDataforDropdown(response.data.report);
                 setCollectedAmount(
@@ -41,6 +42,7 @@ export default function DailyReport() {
                 const length = response.data.report.length;
                 setLength(length);
             });
+
         } catch (error) {
             console.log(error);
         }
@@ -50,7 +52,6 @@ export default function DailyReport() {
         try {
             API.dropdownAgentDataAPI({ operatorId: user.operatorId }).then(
                 (response) => {
-                    // console.log(response.data);
                     setAgentData(response.data.all_agents);
                 }
             );
