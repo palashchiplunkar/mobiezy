@@ -10,78 +10,55 @@ import "../css/global.css";
 
 export default function DailyReport() {
 
-    const [ownerdata, setOwnerData] = useState([]);
     const [agentData, setAgentData] = useState([]);
     const [CollectedAmount, setCollectedAmount] = useState(0);
     const [length, setLength] = useState(0);
-    // const [selectedOwner, setSelectedOwner] = useState(null);
     const [ownerDataforDropdown, setOwnerDataforDropdown] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
 
-    const user = JSON.parse(localStorage.getItem("user") || sessionStorage.getItem("user"));
+    const user = JSON.parse(
+        localStorage.getItem("user") || sessionStorage.getItem("user")
+    );
 
     let ownerDataRequest = {
         agentId: user.agentId,
         operatorId: user.operatorId,
-        dailyReport: "Y"
-    }
-
-    // Based on selectedOwner change the owner data
-    // useEffect(() => {
-    //     if (selectedOwner) {
-    //         if (selectedOwner === "owner") {
-    //             setOwnerDataforDropdown(ownerdata);
-    //         } else {
-    //             const selectedOwnerData = ownerdata.filter(
-    //                 (data) => data.customerId === selectedOwner
-    //             );
-    //             setOwnerDataforDropdown(selectedOwnerData);
-    //         }
-    //     }
-    // }, [selectedOwner]);
+        dailyReport: "Y",
+    };
 
     const fetchOwnerData = () => {
         try {
+            API.dailyReportAPI(ownerDataRequest).then((response) => {
+                // Set owner data state to the API response
+                setIsLoading(false);
+                // setOwnerData(response.data.report);
+                setOwnerDataforDropdown(response.data.report);
+                setCollectedAmount(
+                    response.data.report[0].totalCollectedAmount
+                );
 
-            API.dailyReportAPI(ownerDataRequest)
-                .then((response) => {
-
-                    // Set owner data state to the API response
-                    setIsLoading(false);
-                    setOwnerData(response.data.report);
-                    setOwnerDataforDropdown(response.data.report);
-                    setCollectedAmount(response.data.report[0].totalCollectedAmount);
-
-                    // get length of the response
-                    const length = response.data.report.length;
-                    setLength(length);
-                });
-
-            
-        } 
-        
-        catch (error) {
+                // get length of the response
+                const length = response.data.report.length;
+                setLength(length);
+            });
+        } catch (error) {
             console.log(error);
         }
     };
 
     const fetchDropdownData = () => {
         try {
-
-            API.dropdownAgentDataAPI({operatorId: user.operatorId})
-                .then((response) => {
-
+            API.dropdownAgentDataAPI({ operatorId: user.operatorId }).then(
+                (response) => {
                     // console.log(response.data);
                     setAgentData(response.data.all_agents);
-                });
+                }
+            );
 
-            console.log(agentData)
-        } 
-        
-        catch (error) {
+        } catch (error) {
             console.log(error);
         }
-    }
+    };
 
     useEffect(() => {
         setIsLoading(true);
