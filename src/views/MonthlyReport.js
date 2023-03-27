@@ -181,7 +181,8 @@ export default function MonthlyReport() {
   const [selected, setSelected] = useState(new Date());
   const [startDate, setstartDate] = useState(new Date());
   const [endDate, setendDate] = useState(new Date());
-  let stdt, eddt;
+  const [stdt, setstdt] = useState(null)
+  const [eddt, seteddt] = useState(null)
   const user = JSON.parse(
     localStorage.getItem("user") || sessionStorage.getItem("user")
   );
@@ -196,14 +197,22 @@ export default function MonthlyReport() {
   const handleDropChange = (e) => {
     setSelected(e.target.value);
   };
+  useEffect(()=>{
+        let date= new Date();
+        let date1 = date.toLocaleDateString().split("/");
 
+        let date2 = date1[0] + "-" + date1[1] + "-" + date1[2];
+        let date3 = date1[1] + "-" + date1[0] + "-" + date1[2];
+        setstdt(date1[2] + "-" + date1[0] + "-" + date1[1]);
+        seteddt(date1[2] + "-" + date1[0] + "-" + date1[1]);
+  },[])
   const handlestartdate = (date) => {
     let date1 = date.toLocaleDateString().split("/");
 
     let date2 = date1[0] + "-" + date1[1] + "-" + date1[2];
     let date3 = date1[1] + "-" + date1[0] + "-" + date1[2];
     setstartDate(date2);
-    stdt = date1[2] + "-" + date1[0] + "-" + date1[1];
+    setstdt(date1[2] + "-" + date1[0] + "-" + date1[1]);
     console.log(stdt);
   };
 
@@ -213,12 +222,13 @@ export default function MonthlyReport() {
     let date2 = date1[0] + "-" + date1[1] + "-" + date1[2];
     let date3 = date1[1] + "-" + date1[0] + "-" + date1[2];
     setendDate(date2);
-    eddt = date1[2] + "-" + date1[0] + "-" + date1[1];
+    seteddt(date1[2] + "-" + date1[0] + "-" + date1[1]);
     console.log(eddt);
   };
 
   const fetchOwnerData = (agentType) => {
     let ownerDataRequest;
+    console.log(stdt,eddt)
     if (agentType) {
       ownerDataRequest = {
         agentId: user.agentId,
@@ -284,9 +294,15 @@ export default function MonthlyReport() {
         Enddate: eddt ? eddt : "",
         dailyReport: "N",
       };
+      console.log(stdt,eddt)
       API.dailyReportAPI(body)
         .then((response) => {
           setOwnerDataforDropdown(response.data.report);
+          setCollectedAmount(response.data.report[0].totalCollectedAmount);
+
+          // get length of the response
+          const length = response.data.report.length;
+          setLength(length);
         })
         .catch((err) => {
           console.log(err);
