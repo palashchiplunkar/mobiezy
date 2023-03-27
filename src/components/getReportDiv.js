@@ -29,6 +29,7 @@ const GetReportDiv = (props) => {
         setOwnerDataforDropdown([]);
         setIsLoading(true);
         const selectedOwner = document.getElementById("ownerselect").value;
+        
         // Set selected state to the selected option
     setSelected(selectedOwner);
     // set the dropdown value to the selected option
