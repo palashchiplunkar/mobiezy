@@ -63,17 +63,17 @@ export default function HomePage() {
         }
     };
 
-    useEffect(() => {
-        window.history.pushState({}, "");
-        window.addEventListener("popstate", function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-            window.history.pushState({}, "");
-        });
-        // window.location.reload();
+    // useEffect(() => {
+    //     window.history.pushState({}, "");
+    //     window.addEventListener("popstate", function (e) {
+    //         e.preventDefault();
+    //         e.stopPropagation();
+    //         window.history.pushState({}, "");
+    //     });
+    //     // window.location.reload();
 
-        getHomeData();
-    }, []);
+    //     getHomeData();
+    // }, []);
 
     return (
         <>
@@ -154,7 +154,7 @@ export default function HomePage() {
             </div>
             <Navbar value={0} onChange={() => {window.location.reload();}}/>
 
-            <button onClick={() => {window.history.go(-1)}}></button>
+            <button onClick={() => {window.location.reload();}}></button>
         </>
     );
 }
