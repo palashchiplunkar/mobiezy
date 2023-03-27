@@ -344,3 +344,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     flex-direction: column;
     margin-bottom: 12%;
 }
+
+.react-datepicker-wrapper{
+   border: 2px solid #0090da;
+}
