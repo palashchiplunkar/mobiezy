@@ -3,7 +3,6 @@ import OwnerData from "../components/ownerdatadiv";
 import Header from "../components/header";
 import GetReportDiv from "../components/getReportDiv";
 import API from "../services/API";
-import ReactLoading from "react-loading";
 
 import "../css/MonthlyReport.css";
 import "../css/global.css";
@@ -20,6 +19,7 @@ export default function DailyReport() {
     const user = JSON.parse(
         localStorage.getItem("user") || sessionStorage.getItem("user")
     );
+
     const operatorId = user.operatorId;
     let ownerDataRequest = {
         agentId: user.agentId,
@@ -32,7 +32,7 @@ export default function DailyReport() {
             API.dailyReportAPI(ownerDataRequest).then((response) => {
                 // Set owner data state to the API response
                 setIsLoading(false);
-                console.log(response);
+                // console.log(response);
                 // setOwnerData(response.data.report);
                 setOwnerDataforDropdown(response.data.report);
                 setCollectedAmount(
@@ -103,7 +103,6 @@ export default function DailyReport() {
             <div style={{ display: "flex", justifyContent: "center" }}>
                 {isLoading && (
                     <Spinner animation="border" variant="info" style={{marginTop:"100px"}}/>
-
                 )}
             </div>
 

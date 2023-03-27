@@ -18,6 +18,7 @@ const GetReportDiv = (props) => {
 
     const [selected, setSelected] = useState(null);
     console.log(operatorId);
+
     const OwnerSelection = () => {
         const OwnerSelectionData = agentData.map((data) => {
             return <option value={data.Agent_Id} >{data.Name}</option>;
@@ -43,7 +44,6 @@ const GetReportDiv = (props) => {
         })
             .then((response) => {
                 setIsLoading(false);
-                console.log(response.data.report);
                 setOwnerDataforDropdown(response.data.report);
                 if (response.data.report.length > 0) {
                     setLength(response.data.report.length);
@@ -56,6 +56,7 @@ const GetReportDiv = (props) => {
                     setCollectedAmount(0);
                 }
             })
+        
             .catch((error) => {
                 console.log(error);
             });
