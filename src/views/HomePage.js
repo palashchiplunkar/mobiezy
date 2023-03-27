@@ -13,13 +13,9 @@ import "reactjs-popup/dist/index.css";
 
 export default function HomePage() {
 
-    $(window).on('popstate', function (e) {
-        var state = e.originalEvent.state;
-        if (state !== null) {
-            window.location.reload();
-        }
-    });
-    
+    if (window.performance && window.performance.navigation.type == window.performance.navigation.TYPE_BACK_FORWARD) {
+        alert('hello world');
+    }
 
     const { t } = useTranslation();
     const navigate = useNavigate();
