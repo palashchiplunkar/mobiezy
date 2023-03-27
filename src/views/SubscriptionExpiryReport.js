@@ -37,65 +37,85 @@ export default function SubscriptionExpiryReport() {
         console.log(e);
       });
   }, []);
+  
+  useEffect(() => {
+    setdateResponse(null);
+    
+    }, [openIndex]);
+
    
 
 
-  const ExpiryCount = ({ date }) => {
-    // Change the format of date to YYYY-MM-DD
-    console.log(date);
-    let dateArray = date.split("-");
-    let newDate = dateArray[2] + "-" + dateArray[1] + "-" + dateArray[0];
-
-    let expiryData = {
-      agent_id: user.agentId,
-      operator_id: user.operatorId,
-      pre_end_date: newDate,
-    };
-
-    API.subscriptionExpiryReportCountAPI(expiryData)
-
-      .then((response) => {
-        setdateResponse(response.data);
-      })
-
-      .catch((e) => {
-        console.log(e);
-        setisDateLoading(false);
-      });
-
-    return (
-      <table className="expiryCountTable">
-        <tr className="borderExpiryHead">
-          <th>Customer Id</th>
-          <th>Customer Name</th>
-          <th>Phone No</th>
-        </tr>
-        {isDateLoading && (
-          <div>
-            <Spinner animation="border" variant="info" />
-          </div>
-        )}
-        {dateResponse &&
-          dateResponse.c_report.map((report) => {
-            return (
-              <tr>
-                <td>{report.CUSTOMER_ID}</td>
-                <td style={{ fontWeight: 700 }}>{report.NAME}</td>
-                <td
-                  style={{
-                    color: "#0090DA",
-                    textDecorationLine: "underline",
-                    fontWeight: 700,
-                  }}
-                >
-                  {report.PHONE}
-                </td>
-              </tr>
-            );
-          })}
-      </table>
-    );
-  };
+    const ExpiryCount = ({ date }) => {
+        const [isLoading, setIsLoading] = useState(false);
+        const [countData, setCountData] = useState(null);
+      
+        useEffect(() => {
+          let isMounted = true;
+          setIsLoading(true);
+      
+          // Change the format of date to YYYY-MM-DD
+          let dateArray = date.split("-");
+          let newDate = dateArray[2] + "-" + dateArray[1] + "-" + dateArray[0];
+      
+          let expiryData = {
+            agent_id: user.agentId,
+            operator_id:user.operatorId,
+            pre_end_date:newDate
+          };
+      
+          API.subscriptionExpiryReportCountAPI(expiryData)
+            .then((response) => {
+              if (isMounted) {
+                setCountData(response.data);
+                setIsLoading(false);
+              }
+            })
+            .catch((e) => {
+              console.log(e);
+              setIsLoading(false);
+            });
+      
+          return () => {
+            isMounted = false;
+          };
+        }, [date]);
+      
+        return (
+          <table className="expiryCountTable">
+            <tr className="borderExpiryHead">
+              <th>Customer Id</th>
+              <th>Customer Name</th>
+              <th>Phone No</th>
+            </tr>
+            {isLoading && (
+                
+              <div className="smallLoader">
+                <Spinner animation="border" variant="info" />
+              </div>
+              
+            )}
+            {countData &&
+              countData.c_report.map((report) => {
+                return (
+                  <tr>
+                    <td>{report.CUSTOMER_ID}</td>
+                    <td style={{ fontWeight: 700 }}>{report.NAME}</td>
+                    <td
+                      style={{
+                        color: "#0090DA",
+                        textDecorationLine: "underline",
+                        fontWeight: 700,
+                      }}
+                    >
+                      {report.PHONE}
+                    </td>
+                  </tr>
+                );
+              })}
+          </table>
+        );
+      };
 
   const subExpiryList = () => {
     const handleItemClick = (index) => {
