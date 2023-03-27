@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Spinner from "react-bootstrap/Spinner";
 import Header from "../components/header";
+import { Dialog, DialogTitle, DialogContent, DialogContentText, DialogActions, Button } from "@mui/material";
 import API from "../services/API";
 
 import "../css/SubReport.css";
@@ -10,6 +11,7 @@ export default function SubscriptionExpiryReport() {
     // const [showItems, setshowItems] = useState([]);
     // const [dateResponse, setdateResponse] = useState(null);
     const [expiryResponse, setexpiryResponse] = useState(null);
+    const [alert, setalert] = useState(false);
     const [isLoading, setisLoading] = useState(false);
     // const [isDateLoading, setisDateLoading] = useState(false);
     const [openIndex, setOpenIndex] = useState(null);
@@ -104,7 +106,7 @@ export default function SubscriptionExpiryReport() {
                                         textDecorationLine: "underline",
                                         fontWeight: 700,
                                     }}
-                                    onClick={dialer}
+                                    onClick={() => setalert(true)}
                                 >
                                     {report.PHONE}
                                 </td>
@@ -199,6 +201,58 @@ export default function SubscriptionExpiryReport() {
             <div className="float-div-expiry">
                 <button className="float-btn">PRINT REPORT</button>
             </div>
+
+            <Dialog
+                open={alert}
+                onClose={() => setalert(false)}
+                aria-labelledby="alert-dialog-title"
+                aria-describedby="alert-dialog-description"
+            >
+                <DialogTitle
+                    id="alert-dialog-title"
+                    style={{ fontFamily: "Noto Sans" }}
+                >
+                    What do you want to do?
+                </DialogTitle>
+                <DialogContent>
+                    <DialogContentText
+                        id="alert-dialog-description"
+                        style={{
+                            display: "flex",
+                            alignItems: "center",
+                            justifyContent: "center", 
+                            fontFamily: "Noto Sans",
+                            background: "var(--primay-app-color)",
+                            color: "white",
+                            border: "none",
+                            borderRadius: "20px",
+                            margin: "15px",
+                            padding: "10px"
+                         }}
+                    >
+                        Go to Renewal Page
+                    </DialogContentText>
+
+                    <DialogContentText
+                        id="alert-dialog-description"
+                        style={{
+                            display: "flex",
+                            alignItems: "center",
+                            justifyContent: "center", 
+                            fontFamily: "Noto Sans",
+                            color: "black",
+                            border: "solid black 1px",
+                            borderRadius: "20px",
+                            margin: "15px",
+                            padding: "10px"
+                         }}
+
+                         onClick={dialer}
+                    >
+                        Call the Customer
+                    </DialogContentText>
+                </DialogContent>
+            </Dialog>
         </div>
     );
 }
