@@ -3,16 +3,39 @@ import React from "react";
 import "../css/print.css";
 
 export default function Print() {
+
+    const print = () => {
+        navigator.bluetooth
+            .writeValue((device) => {
+        
+            })
+    }
+
     const search = () => {
         navigator.bluetooth
-            .requestDevice({ filters: [{ services: ["battery_service"] }] })
-            .then((device) => {
-                
+            .requestDevice({
+                acceptAllDevices: true,
+                // optionalServices: ["battery_service"], // Required to access service later.
             })
+            .then((device) => {
+                // Human-readable name of the device.
+                console.log(device.name);
+
+                // Attempts to connect to remote GATT Server.
+                return device.gatt.connect();
+            })
+
+            .then(characteristic => {
+                // Writing 1 is the signal to reset energy expended.
+                const resetEnergyExpended = "H";
+                return characteristic.writeValue(resetEnergyExpended);
+              })
+
             .catch((error) => {
                 console.error(error);
             });
     };
+
 
     return (
         <>
