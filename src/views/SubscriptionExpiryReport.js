@@ -36,9 +36,10 @@ export default function SubscriptionExpiryReport() {
             });
     }, []);
 
+    
     const ExpiryCount = ({ date }) => {
-
         // Change the format of date to YYYY-MM-DD
+        
         let dateArray = date.split("-");
         let newDate = dateArray[2] + "-" + dateArray[1] + "-" + dateArray[0];
 
@@ -47,7 +48,7 @@ export default function SubscriptionExpiryReport() {
             operator_id:user.operatorId,
             pre_end_date:newDate
         }
-
+        
         API.subscriptionExpiryReportCountAPI(expiryData)
 
             .then((response) => {
@@ -58,6 +59,7 @@ export default function SubscriptionExpiryReport() {
                 console.log(e);
                 setisDateLoading(false);
             });
+    
 
         return (
             <table className="expiryCountTable">
@@ -134,7 +136,6 @@ export default function SubscriptionExpiryReport() {
       
         return SubExpiryDataList;
       };
-      
 
     const headerprops = {
         text: "Subscription Expiry Report",
