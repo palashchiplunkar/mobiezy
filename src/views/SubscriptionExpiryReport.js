@@ -12,7 +12,7 @@ export default function SubscriptionExpiryReport() {
     const [expiryResponse, setexpiryResponse] = useState(null);
     const [isLoading, setisLoading] = useState(false);
     const [isDateLoading, setisDateLoading] = useState(false);
-
+    const [openIndex, setOpenIndex] = useState(null);
     const user = JSON.parse(localStorage.getItem("user") || sessionStorage.getItem("user"));
 
     let agentData = {
@@ -94,60 +94,47 @@ export default function SubscriptionExpiryReport() {
             </table>
         );
     };
-
+    
     const subExpiryList = () => {
-        const SubExpiryDataList = expiryResponse.stb_report.map(
-            (data, index) => {
-                return (
-                    <>
-                        <div className="expiry-report-data-div" key={index}>
-                        
-                            <div className="expiry-report-data">
-                                <p className="expiry-report-data-label">
-                                    {data.DAYS}
-                                </p>
-                            </div>
-                            <div className="expiry-report-data">
-                                <p className="expiry-report-data-label">
-                                    {data.PRE_END_DATE}
-                                </p>
-                            </div>
-                            <div className="expiry-report-data">
-                                <p
-                                    className="expiry-report-data-label"
-                                    style={{
-                                        width: "10px",
-                                        color: "#0090DA",
-                                        borderBottom: "2px solid #0090DA",
-                                        paddingBottom: "2px",
-                                        fontWeight: 700,
-                                    }}
-                                    onClick={() => {
-                                        let Items = showItems.slice();
-                                        Items[index] = !Items[index];
-                                        setshowItems(Items);
-                                    }}
-                                >
-                                    {data.COUNT}
-                                </p>
-                            </div>
-                        </div>
-                        <div>
-                            {showItems[index] ? (
-                                <ExpiryCount
-                                    date={
-                                        expiryResponse.stb_report[index]
-                                            .PRE_END_DATE
-                                    }
-                                />
-                            ) : null}
-                        </div>
-                    </>
-                );
-            }
-        );
+        const handleItemClick = (index) => {
+          setOpenIndex(openIndex === index ? null : index);
+        };
+        const SubExpiryDataList = expiryResponse.stb_report.map((data, index) => {
+          return (
+            <React.Fragment key={index}>
+              <div className="expiry-report-data-div">
+                <div className="expiry-report-data">
+                  <p className="expiry-report-data-label">{data.DAYS}</p>
+                </div>
+                <div className="expiry-report-data">
+                  <p className="expiry-report-data-label">{data.PRE_END_DATE}</p>
+                </div>
+                <div className="expiry-report-data">
+                  <p
+                    className="expiry-report-data-label"
+                    style={{
+                      width: "10px",
+                      color: "#0090DA",
+                      borderBottom: "2px solid #0090DA",
+                      paddingBottom: "2px",
+                      fontWeight: 700,
+                    }}
+                    onClick={() => handleItemClick(index)}
+                  >
+                    {data.COUNT}
+                  </p>
+                </div>
+              </div>
+              {openIndex === index && (
+                <ExpiryCount date={data.PRE_END_DATE} />
+              )}
+            </React.Fragment>
+          );
+        });
+      
         return SubExpiryDataList;
-    };
+      };
+      
 
     const headerprops = {
         text: "Subscription Expiry Report",
