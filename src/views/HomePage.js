@@ -12,18 +12,6 @@ import "../css/alert_popup.css";
 import "reactjs-popup/dist/index.css";
 
 export default function HomePage() {
-    const exit = () => {
-        // window.location = window.location + "#loaded";
-        // window.location.reload();
-        // window.history.go(-1);
-        // window.history.back();
-        // console.log(window.history.length);
-
-        for(var i=0; i<window.history.length; i++){
-            window.history.go(-i);
-        }
-        window.history.back();
-    };
 
     const { t } = useTranslation();
     const navigate = useNavigate();
@@ -159,8 +147,6 @@ export default function HomePage() {
                 </div>
             </div>
             <Navbar value={0} onChange={() => {window.location.reload();}}/>
-
-            <button onClick={exit}></button>
         </>
     );
 }
