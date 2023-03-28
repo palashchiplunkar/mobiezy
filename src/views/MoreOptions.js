@@ -6,60 +6,73 @@ import Header from "../components/header";
 
 import "../css/MoreOptions.css";
 import "../css/global.css";
-
+import { useState } from "react";
 function MoreOptions() {
     const navigate = useNavigate();
-
+    const user = JSON.parse(
+        localStorage.getItem("user") || sessionStorage.getItem("user")
+    );
+    const MSO_ID = user.MSO_ID;
+// const [optionsset, setOptions] = useState([]);
     let options = [
         {
             id: 1,
             name: "Daily Report",
             imgUrl: "daily2.png",
             toLink: "/dailyReport",
+            toShow: true,
         },
         {
             id: 2,
             name: "Monthly Report",
             imgUrl: "monthly.png",
             toLink: "/monthlyReport",
+            toShow: true,
         },
         {
             id: 3,
             name: "Expiry Report",
             imgUrl: "expiry.png",
             toLink: "/subExpiryReport",
+            toShow: true,
         },
         {
             id: 4,
             name: "View Complaints",
             imgUrl: "complain1.png",
             toLink: "/complaints",
+            toShow: true,
         },
         {
             id: 5,
             name: "Customer Summary",
             imgUrl: "summary.png",
             toLink: "/customerStatistics",
+            toShow: true,
         },
         {
             id: 6,
             name: "Area-wise Due Report ",
             imgUrl: "due.png",
             toLink: "/areaWiseReport",
+            toShow: true,
         },
         {
             id: 7,
             name: "Renewal Report",
             imgUrl: "renewal.png",
             toLink: "",
+            toShow : MSO_ID === 0 ? false : true,
         },
         {
             id: 8,
             name: "Wallet Recharge",
             imgUrl: "wallet.png",
             toLink: "",
+            toShow : MSO_ID === 0 ? false : true,
         },
     ];
+    // setOptions(options);
 
     const headerprops = {
         text: "More Options",
@@ -81,6 +94,7 @@ function MoreOptions() {
                 <Header {...headerprops} />
                 <div className="OptionsContainer">
                     {options.map((option) => {
+                        if (!option.toShow) return null;
                         return (
                             <div
                                 className="EachOption"
