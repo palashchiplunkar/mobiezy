@@ -5,7 +5,7 @@ import Header from "../components/header";
 import API from "../services/API";
 import { useEffect, useState } from "react";
 import axios from "axios";
-
+import { Spinner } from "react-bootstrap";
 export default function Complaints() {
   // const Complaints = [
   //   {
@@ -26,10 +26,8 @@ export default function Complaints() {
   //   },
   // ];
   const [Complaints, setComplaints] = useState([]);
-  const [FormatDate, setFormatDate] = useState([]);
-  const [FormatTime, setFormatTime] = useState([]);
+  const [isLoading, setLoading] = useState(false);
 
-  
   const headerprops = {
     text: "View Complaints",
     height: "10vh",
@@ -41,7 +39,7 @@ export default function Complaints() {
     API.viewCompalintAPI({
       agent_id:user.agentId,
   }).then((response) => {
-    
+        setLoading(false);
         // console.log(response.data.complaints);
         setComplaints(response.data.complaints);
       });
@@ -51,6 +49,7 @@ export default function Complaints() {
   };
 
   useEffect(() => {
+    setLoading(true);
     fetchComplaints();
   }, []);
 
@@ -103,7 +102,15 @@ export default function Complaints() {
   return (
     <div className="container-complaints">
       <Header {...headerprops} />
-
+      <div style={{ display: "flex", justifyContent: "center" }}>
+        {isLoading && (
+          <Spinner
+            animation="border"
+            variant="info"
+            style={{ marginTop: "100px" }}
+          />
+        )}
+      </div>
       <table className="complaints-table">
         <CompViewList complaints={Complaints} />
       </table>
