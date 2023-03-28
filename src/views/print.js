@@ -61,25 +61,25 @@ export default function Print() {
     //     });
     //         };
 
-    // return (
-    //     <>
-    //         <div className="container">
-    //             <div className="headerblue">
-    //                 <div className="profile-img-div">
-    //                     <img
-    //                         src={require("../assets/profile.jpg")}
-    //                         className="profile_img"
-    //                         alt=""
-    //                     />
-    //                 </div>
+    return (
+        <>
+            <div className="container">
+                <div className="headerblue">
+                    <div className="profile-img-div">
+                        <img
+                            src={require("../assets/profile.jpg")}
+                            className="profile_img"
+                            alt=""
+                        />
+                    </div>
 
-    //                 <button onClick={search} className="search-button">
-    //                     Search
-    //                 </button>
-    //             </div>
-    //         </div>
-    //     </>
-    // );
+                    <button onClick={search} className="search-button">
+                        Search
+                    </button>
+                </div>
+            </div>
+        </>
+    );
 
     // Write a code to connexcta adn print something on thermal printer 
     // bluetoothPrinter
