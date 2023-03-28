@@ -1,87 +1,52 @@
 import axios from "axios";
 
 const API = axios.create({
-    baseURL: "https://ld3igodwbj.execute-api.us-west-2.amazonaws.com/prod/",
-    headers: {
-        "Content-Type": "application/json",
-        
-    }
+  baseURL: "https://ld3igodwbj.execute-api.us-west-2.amazonaws.com/prod/",
+  headers: {
+    "Content-Type": "application/json",
+  },
 });
 
 export default {
+  loginAPI(value) {
+    return API.post("cableguy2-mobile-user-login-new", value);
+  },
 
-    loginAPI(value) {
-        return API.post(
-            "cableguy2-mobile-user-login-new",
-            value
-        )
-    },
+  agentSummaryAPI(value) {
+    return API.post("getagentsummary", value);
+  },
 
-    agentSummaryAPI(value) {
-        return API.post(
-            "getagentsummary",
-            value
-        )
-    },
+  monthlyReportAPI(value) {
+    return API.post("mobilecollectionreport", value);
+  },
 
-    monthlyReportAPI(value) {
-        return API.post(
-            "mobilecollectionreport",
-            value
-        )
-    },
-    
-    dailyReportAPI(value) {
-        return API.post(
-            "mobilecollectionreport",
-            value
-        )
-    }, 
-    OwnerMonthlyReportAPI(value) {
-        return API.post(
-            "filtermobilecollectionreport",
-            value
-        )
-    }, 
+  dailyReportAPI(value) {
+    return API.post("mobilecollectionreport", value);
+  },
+  OwnerMonthlyReportAPI(value) {
+    return API.post("filtermobilecollectionreport", value);
+  },
 
-    agentAreaSummaryAPI(value) {
-        return API.post(
-            "mobile-agentareasummary",
-            value
-        )
-    },
+  agentAreaSummaryAPI(value) {
+    return API.post("mobile-agentareasummary", value);
+  },
 
-    subscriptionExpiryReportAPI(value) {
-        return API.post(
-            "cableguy2-mobile-expiry-report",
-            value
-        )
-    },
+  subscriptionExpiryReportAPI(value) {
+    return API.post("cableguy2-mobile-expiry-report", value);
+  },
 
-    subscriptionExpiryReportCountAPI(value) {
-        return API.post(
-            "cableguy2-mobile-cust-report-based-on-stb",
-            value
-        )
-    },
+  subscriptionExpiryReportCountAPI(value) {
+    return API.post("cableguy2-mobile-cust-report-based-on-stb", value);
+  },
 
-    dropdownAgentDataAPI(value) {
-        return API.post(
-            "cableguy2-get-area-and-agent-list",
-            value
-        )
-    },
+  dropdownAgentDataAPI(value) {
+    return API.post("cableguy2-get-area-and-agent-list", value);
+  },
 
-    viewCompalintAPI(value) {
-        return API.post(
-            "getmobileassignedcomplaints",
-            value
-        )  
-    },
-    customerSummaryAPI(value) {
-        return API.post(
-            "mobile-agent-op-summary",
-            value
-        )
-    }
-}
+  viewCompalintAPI(value) {
+    return API.post("getmobileassignedcomplaints", value);
+  },
+  customerSummary(value) {
+    return API.post("mobile-agent-op-summary", value);
+  },
+};
