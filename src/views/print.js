@@ -86,7 +86,7 @@ export default function Print() {
         console.log(characteristic);
         const encoder = new TextEncoder();
         const data = encoder.encode("Hello, world!");
-        console.log(characteristic.readValue(data));
+        console.log(characteristic.writeValue(data));
         // characteristic.readValue();
         // characteristics.writeValue("Jai");
     };
