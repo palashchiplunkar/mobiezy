@@ -42,7 +42,7 @@ export default function Complaints() {
       agent_id:user.agentId,
   }).then((response) => {
     
-        console.log(response.data.complaints);
+        // console.log(response.data.complaints);
         setComplaints(response.data.complaints);
       });
     } catch (error) {
