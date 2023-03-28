@@ -1,30 +1,13 @@
 import React from "react";
-import "../css/Complaints.css";
-import "../css/global.css";
 import Header from "../components/header";
 import API from "../services/API";
 import { useEffect, useState } from "react";
-import axios from "axios";
 import { Spinner } from "react-bootstrap";
+
+import "../css/Complaints.css";
+import "../css/global.css";
+
 export default function Complaints() {
-    // const Complaints = [
-    //   {
-    //     id: "VL0056708",
-    //     name: "Yashwanth S Hassan",
-    //     time: "06:07PM",
-    //     date: "07/03/2023",
-    //     location: "Vidyapeeta Layout",
-    //     status: "Registered",
-    //   },
-    //   {
-    //     id: "V1954645",
-    //     name: "John Doe",
-    //     time: "12:00PM",
-    //     date: "12/12/2020",
-    //     location: "Kathmandu",
-    //     status: "In Progress",
-    //   },
-    // ];
     const [Complaints, setComplaints] = useState([]);
     const [isLoading, setLoading] = useState(false);
 
@@ -78,19 +61,7 @@ export default function Complaints() {
                     <td className="complaints-name">{data.NAME}</td>
                 </tr>
                 <tr className="comp-line2">
-                    <td
-                        className="complaints-id"
-                        style={{
-                            display: "flex",
-                            flexDirection: "row",
-
-                            // minWidth: "90px",
-                            whiteSpace: "pre-wrap",
-                            wordBreak: "break-word",
-                        }}
-                    >
-                        {data.CUSTOMER_ID}
-                    </td>
+                    <td className="complaints-id">{data.CUSTOMER_ID}</td>
                     <td></td>
                     <td>{formatTime(data.COMP_DATE)}</td>
                     <td className="complaint-date">
@@ -116,6 +87,7 @@ export default function Complaints() {
         ));
         return <>{CompViewDataList}</>;
     };
+
     return (
         <div className="container-complaints">
             <Header {...headerprops} />

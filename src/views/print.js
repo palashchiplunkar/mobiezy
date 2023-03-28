@@ -4,27 +4,91 @@ import "../css/print.css";
 
 export default function Print() {
 
+    // async function requestSerialPort() {
+    //     try {
+    //         const port = await navigator.serial.requestPort();
+    //         console.log("Serial port selected:", port);
+    //         return port;
+    
+    //     } catch (error) {
+    //         console.error("Failed to request serial port:", error);
+    //     }
+    // }
+
+    // async function connectToBluetoothDevice(port) {
+    //     try {
+    //         await port.open({
+    //             baudRate: 115200,
+    //             dataBits: 8,
+    //             stopBits: 1,
+    //             parity: "none",
+    //         });
+    //         console.log("Connected to serial port:", port);
+    //         const encoder = new TextEncoder();
+    //         const writer = port.writable.getWriter();
+    //         await writer.write(encoder.encode("PING"));
+    //         writer.releaseLock();
+    //         // Send commands to the Bluetooth device
+
+    //     } catch (error) {
+    //         console.error("Failed to connect to serial port:", error);
+    //     }
+    // }
+
+    // async function sendCommand(port, command) {
+    //     try {
+    //         const encoder = new TextEncoder();
+    //         await port.write(encoder.encode(command));
+    //         console.log("Command sent:", command);
+    //         writer.releaseLock();
+    //     } catch (error) {
+    //         console.error("Failed to send command:", error);
+    //     }
+    // }
+
+    // async function connectToDevice() {
+    //     const port = await requestSerialPort();
+    //     if (port) {
+    //         await connectToBluetoothDevice(port);
+    //         await sendCommand(port, "AT\r\n");
+    //     }
+    // }
+
     const search = async () => {
-        await navigator.bluetooth
-            .requestDevice({
-                acceptAllDevices: true,
-                // filters: [{
-                //     services: [0x1800]
-                //   }],
-                // optionalServices: ["bef8d6c9-9c21-4c9e-b632-bd58c1009f9f"]
-                // optionalServices: [0x1122]
-                // optionalServices: [0x181c]
-                // optionalServices: [0x2A00]
-            })
+        // await navigator.bluetooth
+        //     .requestDevice({
+        //         acceptAllDevices: true,
+        //     })
 
-            .then((device) => {
-                // Human-readable name of the device.
-                console.log(device.name);
+        //     .then((device) => {
 
-                // Attempts to connect to remote GATT Server.
-                const server = device.gatt.connect();
-            })
-               
+        //         console.log(device.name);
+        //         const server = device.gatt.connect();
+        // })
+
+        let device = await navigator.bluetooth.requestDevice({
+            acceptAllDevices: true,
+        });
+
+        let server = await device.gatt.connect();
+        console.log(server);
+        let service = await server.getPrimaryService(
+            "00001800-0000-1000-8000-00805f9b34fb"
+        );
+        // let services = await server.getPrimaryServices();
+        console.log(service);
+        let characteristic = await service.getCharacteristic(
+            "0000182a-0000-1000-8000-00805f9b34fb"
+        );
+        // console.log(characteristic.properties.write = true);
+        // let characteristic = await service.getCharacteristic(0x1123);
+        // let characteristics = await service.getCharacteristics();
+        console.log(characteristic);
+        const encoder = new TextEncoder();
+        const data = encoder.encode("Hello, world!");
+        console.log(characteristic.writeValue(data));
+        // characteristic.readValue();
+        // characteristics.writeValue("Jai");
     };
 
     return (

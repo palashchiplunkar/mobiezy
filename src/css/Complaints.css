@@ -1,136 +1,157 @@
 .container-complaints {
-  width: 100%;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  /* justify-content: center; */
-  background-color: #ffffff;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* justify-content: center; */
+    background-color: #ffffff;
 }
 .headerblue-complaints {
-  background-color: var(--primay-app-color);
-  height: 10vh;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+    background-color: var(--primay-app-color);
+    height: 10vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 .complaints-label {
-  font-family: "Noto Sans", sans-serif;
-  font-style: normal;
-  font-weight: 700;
-  font-size: 20px;
-  line-height: 150%;
-  display: flex;
-  align-items: center;
-  text-align: center;
-  letter-spacing: 0.2px;
-  color: #ffffff;
-  margin-top: 8%;
-  margin-bottom: 8%;
+    font-family: "Noto Sans", sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 150%;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    letter-spacing: 0.2px;
+    color: #ffffff;
+    margin-top: 8%;
+    margin-bottom: 8%;
 }
 
-.complaints-data-container {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.complaints-id {
+    display: flex;
+    flex-direction: row;
+    white-space: pre-wrap;
+    word-break: break-all;
 }
 
-.complaints-data-div {
-  display: flex;
-  justify-content: space-between;
-  width: 85%;
-  /* height : 70px; */
-  margin-top: 4%;
-  align-items: center;
-  align-content: center;
-  margin-left: auto;
-  margin-right: auto;
-  border: 2px solid transparent;
-  border-radius: 10px;
-  background-image: linear-gradient(white, white),
-    linear-gradient(to bottom right, var(--primay-app-color), #a4ce4e);
-  background-origin: border-box;
-  background-clip: content-box, border-box;
-}
-
-.complaints-data-div {
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.complaints-data {
-  flex-basis: 100%;
-  display: flex;
-  justify-content: space-between;
-}
-
-.complaints-data-label {
-  font-weight: bold;
-  /* margin-right: 10px; */
-}
-
-.complaints-data:nth-of-type(2) .complaints-data-label {
-  flex-basis: 35%;
-}
-
-.complaints-data:nth-of-type(3) .complaints-data-label:first-of-type {
-  flex-basis: 50%;
-}
-
-.complaints-table {
-  width: 100%;
-  display: block;
-  justify-content: center;
-  align-items: center;
-  justify-self: center;
-}
-tr {
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-
-  align-items: center;
-}
-td {
-  color: #000000;
-  padding: 1% 1% 0.5% 2.5%;
-  /* margin:5%; */
-  width: 100%;
-  margin: auto;
-}
-.complaints-name {
-  font-family: "Noto Sans";
-  font-style: normal;
-  font-weight: 700;
-  font-size: 14px;
-  line-height: 15px;
-  display: flex;
-  align-items: center;
-  letter-spacing: 0.2px;
-
-  color: #252525;
-}
-.Place-complaint {
-  width: 2000px;
+.complaint-date {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    margin-right: 3%;
 }
 
 .complaint-status {
-  width: 1600px;
-  font-family: "Noto Sans";
-  font-style: normal;
-  font-weight: 700;
-  font-size: 13px;
-  line-height: 14px;
-  display: flex;
-  align-items: center;
-  text-align: right;
-  letter-spacing: 0.2px;
-  text-transform: uppercase;
-  margin-right: 5px;
-  /* margin-left: -10px; */
+    width: 1600px;
+    font-family: "Noto Sans";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 13px;
+    line-height: 14px;
+    display: flex;
+    align-items: right;
+    text-align: right;
+    letter-spacing: 0.2px;
+    text-transform: uppercase;
+    margin-right: -10%;
+    padding: 0;
 }
-.complaint-date {
-  margin-right: 8px;
+
+.time-td{
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    text-align: left;
+    padding: 0 !important;
+    margin-right: 10%;
 }
+
+.complaints-data-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.complaints-data-div {
+    display: flex;
+    justify-content: space-between;
+    width: 85%;
+    /* height : 70px; */
+    margin-top: 4%;
+    align-items: center;
+    align-content: center;
+    margin-left: auto;
+    margin-right: auto;
+    border: 2px solid transparent;
+    border-radius: 10px;
+    background-image: linear-gradient(white, white),
+        linear-gradient(to bottom right, var(--primay-app-color), #a4ce4e);
+    background-origin: border-box;
+    background-clip: content-box, border-box;
+}
+
+.complaints-data-div {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.complaints-data {
+    flex-basis: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.complaints-data-label {
+    font-weight: bold;
+    /* margin-right: 10px; */
+}
+
+.complaints-data:nth-of-type(2) .complaints-data-label {
+    flex-basis: 35%;
+}
+
+.complaints-data:nth-of-type(3) .complaints-data-label:first-of-type {
+    flex-basis: 50%;
+}
+
+.complaints-table {
+    width: 100%;
+    display: block;
+    justify-content: center;
+    align-items: center;
+    justify-self: center;
+}
+tr {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+
+    align-items: center;
+}
+td {
+    color: #000000;
+    padding: 1% 1% 0.5% 2.5%;
+    /* margin:5%; */
+    width: 100%;
+    margin: auto;
+}
+.complaints-name {
+    font-family: "Noto Sans";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 15px;
+    display: flex;
+    align-items: center;
+    letter-spacing: 0.2px;
+
+    color: #252525;
+}
+.Place-complaint {
+    width: 2000px;
+}
+
