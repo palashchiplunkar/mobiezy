@@ -89,7 +89,7 @@ export default function Print() {
 
         console.log(characteristic);
         const encoder = new TextEncoder();
-        const data = encoder.encode("\n\n\n\n\nVarshith v hegde\na");
+        const data = encoder.encode("\n\n      -----CABLE TV------\n\n")            
         // console.log(characteristic.writeValue(data));
         // characteristic.readValue();
         characteristic.writeValue(data);
