@@ -63,21 +63,21 @@ export default function Print() {
 
         let device = await navigator.bluetooth.requestDevice({
             acceptAllDevices: true,
-            optionalServices: ["e7810a71-73ae-499d-8c15-faa9aef0c3f2"]
+            optionalServices: ["e7810a71-73ae-499d-8c15-faa9aef0c3f2"],
         });
 
         let server = await device.gatt.connect();
 
         console.log(server);
-        
+
         let service = await server.getPrimaryService(
             "e7810a71-73ae-499d-8c15-faa9aef0c3f2"
         );
-        
+
         // let services = await server.getPrimaryServices();
-        
+
         console.log(service);
-        
+
         // let characteristics = await service.getCharacteristics();
         // let characteristic = await service.getCharacteristic(
         //     "0000182a-0000-1000-8000-00805f9b34fb"
@@ -86,10 +86,10 @@ export default function Print() {
         let characteristic = await service.getCharacteristic(
             "bef8d6c9-9c21-4c9e-b632-bd58c1009f9f"
         );
-        
+
         console.log(characteristic);
         const encoder = new TextEncoder();
-        const data = encoder.encode("\n\n\n\n\n\Hello, world!\na");
+        const data = encoder.encode("\n\n\n\n\nVarshith v hegde\na");
         // console.log(characteristic.writeValue(data));
         // characteristic.readValue();
         characteristic.writeValue(data);
