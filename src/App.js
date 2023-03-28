@@ -19,6 +19,7 @@ import CustomerStatistics from "./views/CustomerStatistics";
 import PrivateRoutes from "./components/PrivateRoutes";
 import Complaints from "./views/Complaints";
 import Print from "./views/print";
+import PaymentHistory from "./views/PaymentHistory";
 
 function App() {
     return (
@@ -52,6 +53,7 @@ function App() {
                         element={<CustomerStatistics />}
                     />
                     <Route path="/complaints" element={<Complaints />} />
+                    <Route path="/history" element={<PaymentHistory/>}/>
                 </Route>
                 <Route path="/" element={<LoginPage />} />
                 <Route path="/print" element={<Print />} />

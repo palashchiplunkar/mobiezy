@@ -19,7 +19,11 @@ export default function CustomerStatistics() {
   };
   const COLORS = ["#92d050", "#ffc000", "#ff0000"];
 
-  const [realtimeData, setRealtimeData] = useState();
+  const [realtimeData, setRealtimeData] = useState([
+    { name: "Active Customers", value: 0 },
+    { name: "Temporarily Disconnected", value: 0 },
+    { name: "Permanently Disconnected", value: 0 },
+  ]);
 
   const fetchCustomerData = () => {
     let body = {
