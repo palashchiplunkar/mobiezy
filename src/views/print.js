@@ -1,17 +1,19 @@
 import React from "react";
-// import escpos from "escpos";
 
 import "../css/print.css";
 
 export default function Print() {
-
-    // const bluetoothDevice = new escpos.Bluetooth("02:1D:A4:91:66:CC", 1);
-    // const bluetoothPrinter = new escpos.Printer(bluetoothDevice);
-
     const search = async () => {
         await navigator.bluetooth
             .requestDevice({
                 acceptAllDevices: true,
+                // filters: [{
+                //     services: [0x1800]
+                //   }],
+                // optionalServices: ["bef8d6c9-9c21-4c9e-b632-bd58c1009f9f"]
+                // optionalServices: [0x1122]
+                // optionalServices: [0x181c]
+                // optionalServices: [0x2A00]
             })
 
             .then((device) => {
@@ -22,6 +24,7 @@ export default function Print() {
                 const server = device.gatt.connect();
 
                 console.log(server);
+                // device.gatt.getPrimaryService(0x1122);
                 window.print();
                 // console.log(service);
             })
@@ -30,16 +33,18 @@ export default function Print() {
                 console.error(error);
             });
     };
+
+    
     // const search = () => {
     //     var SERVICE = '000018f0-0000-1000-8000-00805f9b34fb';
     //     var WRITE = '00002af1-0000-1000-8000-00805f9b34fb';
-        
+
     //     var DATA = ''
     //         + '\x1B' + '\x61' + '\x31'                                              // center align
     //         + '\x1D' + '\x21' + '\x11' + 'Hello\nBluetooth!\n\n'                    // double font size
     //         + '\x1D' + '\x21' + '\x00' + '... from your friends\nat https://qz.io'  // normal font size
     //         + '\n\n\n\n\n\n\n';                                                     // feed paper
-        
+
     //     var deviceHandle;
     //     navigator.bluetooth.requestDevice({ filters: [{ services: [SERVICE]}] }).then(device => {
     //         console.log(device);
@@ -65,13 +70,13 @@ export default function Print() {
         <>
             <div className="container">
                 <div className="headerblue">
-                    <div className="profile-img-div">
+                    {/* <div className="profile-img-div">
                         <img
                             src={require("../assets/profile.jpg")}
                             className="profile_img"
                             alt=""
                         />
-                    </div>
+                    </div> */}
 
                     <button onClick={search} className="search-button">
                         Search
@@ -80,11 +85,4 @@ export default function Print() {
             </div>
         </>
     );
-
-    // Write a code to connexcta adn print something on thermal printer 
-    // bluetoothPrinter
-    // From https://github.com/WebBluetoothCG/demos/blob/gh-pages/bluetooth-printer/index.html
-  
-
-
 }
