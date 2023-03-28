@@ -48,7 +48,21 @@ export default function Print() {
             await sendCommand(port, "AT\r\n");
         }
     }
-
+    const [characteristic, setCharacteristic] = React.useState(null);
+    // const printArea = async () => {
+    //     // check if device is connected to any bluetooth device
+    //     // if (navigator.bluetooth) {
+    //     //     console.log("Bluetooth is available");
+    //     // } else {
+    //     //     console.log("Bluetooth is not available");
+    //     // }
+    //     // Directly print
+    //     const encoder = new TextEncoder();
+    //     const data = encoder.encode("\n\n      -----CABLE TV------\n\n");
+        
+    // }
+        
+        
     const search = async () => {
         // await navigator.bluetooth
         //     .requestDevice({
@@ -60,6 +74,8 @@ export default function Print() {
         //         console.log(device.name);
         //         const server = device.gatt.connect();
         // })
+        if(characteristic === null) {
+            console.log("No device connected");
 
         let device = await navigator.bluetooth.requestDevice({
             acceptAllDevices: true,
@@ -73,7 +89,7 @@ export default function Print() {
         let service = await server.getPrimaryService(
             "e7810a71-73ae-499d-8c15-faa9aef0c3f2"
         );
-
+            setCharacteristic(null)
         // let services = await server.getPrimaryServices();
 
         console.log(service);
@@ -83,9 +99,9 @@ export default function Print() {
         //     "0000182a-0000-1000-8000-00805f9b34fb"
         // );
 
-        let characteristic = await service.getCharacteristic(
+        setCharacteristic(service.getCharacteristic(
             "bef8d6c9-9c21-4c9e-b632-bd58c1009f9f"
-        );
+        ));
 
         console.log(characteristic);
         const encoder = new TextEncoder();
@@ -93,6 +109,15 @@ export default function Print() {
         // console.log(characteristic.writeValue(data));
         // characteristic.readValue();
         characteristic.writeValue(data);
+        }
+        else{
+            console.log("Device connected");
+            const encoder = new TextEncoder();
+            const data = encoder.encode("\n\n      -----CABLE TV------\n\n")            
+            // console.log(characteristic.writeValue(data));
+            // characteristic.readValue();
+            characteristic.writeValue(data);
+        }
     };
 
     return (
@@ -110,6 +135,9 @@ export default function Print() {
                     <button onClick={search} className="search-button">
                         Search
                     </button>
+                    {/* <button onClick={printArea} className="search-button">
+                        Print
+                    </button> */}
                 </div>
             </div>
         </>
