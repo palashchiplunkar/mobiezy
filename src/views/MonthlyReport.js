@@ -178,11 +178,11 @@ export default function MonthlyReport() {
   const [length, setLength] = useState(0);
   const [ownerDataforDropdown, setOwnerDataforDropdown] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-  const [selected, setSelected] = useState(new Date());
+  const [selected, setSelected] = useState("Owner Summary");
   const [startDate, setstartDate] = useState(new Date());
   const [endDate, setendDate] = useState(new Date());
-  const [stdt, setstdt] = useState(null)
-  const [eddt, seteddt] = useState(null)
+  const [stdt, setstdt] = useState(null);
+  const [eddt, seteddt] = useState(null);
   const user = JSON.parse(
     localStorage.getItem("user") || sessionStorage.getItem("user")
   );
@@ -197,15 +197,15 @@ export default function MonthlyReport() {
   const handleDropChange = (e) => {
     setSelected(e.target.value);
   };
-  useEffect(()=>{
-        let date= new Date();
-        let date1 = date.toLocaleDateString().split("/");
+  useEffect(() => {
+    let date = new Date();
+    let date1 = date.toLocaleDateString().split("/");
 
-        let date2 = date1[0] + "-" + date1[1] + "-" + date1[2];
-        let date3 = date1[1] + "-" + date1[0] + "-" + date1[2];
-        setstdt(date1[2] + "-" + date1[0] + "-" + date1[1]);
-        seteddt(date1[2] + "-" + date1[0] + "-" + date1[1]);
-  },[])
+    let date2 = date1[0] + "-" + date1[1] + "-" + date1[2];
+    let date3 = date1[1] + "-" + date1[0] + "-" + date1[2];
+    setstdt(date1[2] + "-" + date1[0] + "-" + date1[1]);
+    seteddt(date1[2] + "-" + date1[0] + "-" + date1[1]);
+  }, []);
   const handlestartdate = (date) => {
     let date1 = date.toLocaleDateString().split("/");
 
@@ -228,7 +228,8 @@ export default function MonthlyReport() {
 
   const fetchOwnerData = (agentType) => {
     let ownerDataRequest;
-    console.log(stdt,eddt)
+    // console.log(stdt, eddt);
+    console.log("agentid",user.agentId)
     if (agentType) {
       ownerDataRequest = {
         agentId: user.agentId,
@@ -236,7 +237,8 @@ export default function MonthlyReport() {
         operatorId: user.operatorId,
         Startdate: stdt ? stdt : "",
         Enddate: eddt ? eddt : "",
-        dailyReport: "N",
+        dailyReport: "F",
+        flag: "N",
       };
     } else {
       ownerDataRequest = {
@@ -254,7 +256,7 @@ export default function MonthlyReport() {
       API.dailyReportAPI(ownerDataRequest).then((response) => {
         // Set owner data state to the API response
         setIsLoading(false);
-
+        console.log(response)
         setOwnerDataforDropdown(response.data.report);
         setCollectedAmount(response.data.report[0].totalCollectedAmount);
 
@@ -283,6 +285,7 @@ export default function MonthlyReport() {
 
   const getFilterReport = () => {
     // console.log(selected,user.agentId)
+    console.log("getfilter report",selected);
     if (selected == "Owner Summary") {
       fetchOwnerData("Y");
     } else {
@@ -294,11 +297,15 @@ export default function MonthlyReport() {
         Enddate: eddt ? eddt : "",
         dailyReport: "N",
       };
-      console.log(stdt,eddt)
+      console.log("Agent Api Called ",body);
+  
       API.dailyReportAPI(body)
         .then((response) => {
           setOwnerDataforDropdown(response.data.report);
-          setCollectedAmount(response.data.report[0].totalCollectedAmount);
+          console.log(response.data.report[0].totalCollectedAmount);
+          if (response.data.report[0].totalCollectedAmount != null) {
+            setCollectedAmount(response.data.report[0].totalCollectedAmount);
+          }
 
           // get length of the response
           const length = response.data.report.length;
