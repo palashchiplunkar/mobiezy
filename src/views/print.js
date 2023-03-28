@@ -3,69 +3,56 @@ import React from "react";
 import "../css/print.css";
 
 export default function Print() {
-    function str2ab(str) {
-        var buf = new ArrayBuffer(str.length * 2); // 2 bytes for each char
-        var bufView = new Uint16Array(buf);
-        for (var i = 0, strLen = str.length; i < strLen; i++) {
-            bufView[i] = str.charCodeAt(i);
-        }
-        return buf;
-    }
 
-    async function requestSerialPort() {
-        try {
-            const port = await navigator.serial.requestPort();
-            console.log("Serial port selected:", port);
-            return port;
-        } catch (error) {
-            console.error("Failed to request serial port:", error);
-        }
-    }
+    // async function requestSerialPort() {
+    //     try {
+    //         const port = await navigator.serial.requestPort();
+    //         console.log("Serial port selected:", port);
+    //         return port;
+    
+    //     } catch (error) {
+    //         console.error("Failed to request serial port:", error);
+    //     }
+    // }
 
-    async function connectToBluetoothDevice(port) {
-        try {
-            await port.open({
-                baudRate: 115200,
-                dataBits: 8,
-                stopBits: 1,
-                parity: "none",
-            });
-            console.log("Connected to serial port:", port);
-            const encoder = new TextEncoder();
-            const writer = port.writable.getWriter();
-            await writer.write(encoder.encode("PING"));
-            writer.releaseLock();
-            // Send commands to the Bluetooth device
+    // async function connectToBluetoothDevice(port) {
+    //     try {
+    //         await port.open({
+    //             baudRate: 115200,
+    //             dataBits: 8,
+    //             stopBits: 1,
+    //             parity: "none",
+    //         });
+    //         console.log("Connected to serial port:", port);
+    //         const encoder = new TextEncoder();
+    //         const writer = port.writable.getWriter();
+    //         await writer.write(encoder.encode("PING"));
+    //         writer.releaseLock();
+    //         // Send commands to the Bluetooth device
 
-            // const writer = port.writable.getWriter();
-            // const data = new Uint8Array([104, 101, 108, 108, 111]); // hello
-            // writer.write(data);
-            // Allow the serial port to be closed later.
-            // writer.releaseLock();
+    //     } catch (error) {
+    //         console.error("Failed to connect to serial port:", error);
+    //     }
+    // }
 
-        } catch (error) {
-            console.error("Failed to connect to serial port:", error);
-        }
-    }
+    // async function sendCommand(port, command) {
+    //     try {
+    //         const encoder = new TextEncoder();
+    //         await port.write(encoder.encode(command));
+    //         console.log("Command sent:", command);
+    //         writer.releaseLock();
+    //     } catch (error) {
+    //         console.error("Failed to send command:", error);
+    //     }
+    // }
 
-    async function sendCommand(port, command) {
-        try {
-            // const encoder = new TextEncoder();
-            // await port.write(encoder.encode(command));
-            // console.log("Command sent:", command);
-            // writer.releaseLock();
-        } catch (error) {
-            console.error("Failed to send command:", error);
-        }
-    }
-
-    async function connectToDevice() {
-        const port = await requestSerialPort();
-        if (port) {
-            await connectToBluetoothDevice(port);
-            await sendCommand(port, "AT\r\n");
-        }
-    }
+    // async function connectToDevice() {
+    //     const port = await requestSerialPort();
+    //     if (port) {
+    //         await connectToBluetoothDevice(port);
+    //         await sendCommand(port, "AT\r\n");
+    //     }
+    // }
 
     const search = async () => {
         // await navigator.bluetooth
@@ -116,7 +103,7 @@ export default function Print() {
                         />
                     </div> */}
 
-                    <button onClick={connectToDevice} className="search-button">
+                    <button onClick={search} className="search-button">
                         Search
                     </button>
                 </div>
