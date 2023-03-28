@@ -37,6 +37,12 @@ export default {
             value
         )
     }, 
+    OwnerMonthlyReportAPI(value) {
+        return API.post(
+            "filtermobilecollectionreport",
+            value
+        )
+    }, 
 
     agentAreaSummaryAPI(value) {
         return API.post(

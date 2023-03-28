@@ -10,6 +10,7 @@ import "../css/MonthlyReport.css";
 import "../css/global.css";
 import { Spinner } from "react-bootstrap";
 import DatePicker from "react-date-picker";
+import { set } from "lodash";
 
 // export default function MonthReport() {
 
@@ -178,10 +179,11 @@ export default function MonthlyReport() {
   const [ownerDataforDropdown, setOwnerDataforDropdown] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [selected, setSelected] = useState("Owner Summary");
-  const [startDate, setstartDate] = useState(new Date());
-  const [endDate, setendDate] = useState(new Date());
+  const [startDate, setstartDate] = useState(null);
+  const [endDate, setendDate] = useState(null);
   const [stdt, setstdt] = useState(null);
   const [eddt, seteddt] = useState(null);
+  const [Error, setError] = useState("");
   const user = JSON.parse(
     localStorage.getItem("user") || sessionStorage.getItem("user")
   );
@@ -199,36 +201,35 @@ export default function MonthlyReport() {
   useEffect(() => {
     let date = new Date();
     let date1 = date.toLocaleDateString().split("/");
-
-    let date2 = date1[0] + "-" + date1[1] + "-" + date1[2];
-    let date3 = date1[1] + "-" + date1[0] + "-" + date1[2];
     setstdt(date1[2] + "-" + date1[0] + "-" + date1[1]);
     seteddt(date1[2] + "-" + date1[0] + "-" + date1[1]);
   }, []);
   const handlestartdate = (date) => {
-    let date1 = date.toLocaleDateString().split("/");
+    if (date) {
+      let date1 = date.toLocaleDateString().split("/");
 
-    let date2 = date1[0] + "-" + date1[1] + "-" + date1[2];
-    let date3 = date1[1] + "-" + date1[0] + "-" + date1[2];
-    setstartDate(date2);
-    setstdt(date1[2] + "-" + date1[0] + "-" + date1[1]);
-    console.log(stdt);
+      let date2 = date1[0] + "-" + date1[1] + "-" + date1[2];
+      let date3 = date1[1] + "-" + date1[0] + "-" + date1[2];
+      setstartDate(date2);
+      setstdt(date1[2] + "-" + date1[0] + "-" + date1[1]);
+      console.log(stdt);
+    }
   };
 
   const handleenddate = (date) => {
-    let date1 = date.toLocaleDateString().split("/");
+    if (date) {
+      let date1 = date.toLocaleDateString().split("/");
 
-    let date2 = date1[0] + "-" + date1[1] + "-" + date1[2];
-    let date3 = date1[1] + "-" + date1[0] + "-" + date1[2];
-    setendDate(date2);
-    seteddt(date1[2] + "-" + date1[0] + "-" + date1[1]);
-    console.log(eddt);
+      let date2 = date1[0] + "-" + date1[1] + "-" + date1[2];
+      let date3 = date1[1] + "-" + date1[0] + "-" + date1[2];
+      setendDate(date2);
+      seteddt(date1[2] + "-" + date1[0] + "-" + date1[1]);
+      console.log(eddt);
+    }
   };
 
   const fetchOwnerData = (agentType) => {
     let ownerDataRequest;
-    // console.log(stdt, eddt);
-    console.log("agentid",user.agentId)
     if (agentType) {
       ownerDataRequest = {
         agentId: user.agentId,
@@ -239,6 +240,33 @@ export default function MonthlyReport() {
         dailyReport: "F",
         flag: "N",
       };
+      console.log("filterowner", ownerDataRequest);
+      setOwnerDataforDropdown([]);
+
+      try {
+        API.OwnerMonthlyReportAPI(ownerDataRequest).then((response) => {
+          if (response.data.report.length > 0) {
+            // Set owner data state to the API response
+            setIsLoading(false);
+            setOwnerDataforDropdown(response.data.report);
+            setCollectedAmount(response.data.report[0].totalCollectedAmount);
+
+            // get length of the response
+            const length = response.data.report.length;
+            setLength(length);
+            setError("");
+          } else {
+            console.log("filterowner", response);
+            setOwnerDataforDropdown([]);
+            setCollectedAmount(0);
+            setLength(0);
+            setError("No details Found");
+          }
+        });
+      } catch (error) {
+        setError("No details Found");
+        console.log(error.message);
+      }
     } else {
       ownerDataRequest = {
         agentId: user.agentId,
@@ -248,23 +276,31 @@ export default function MonthlyReport() {
         flag: "N",
         dailyReport: "N",
       };
-    }
-    console.log("owner", ownerDataRequest);
 
-    try {
-      API.dailyReportAPI(ownerDataRequest).then((response) => {
-        // Set owner data state to the API response
-        setIsLoading(false);
-        console.log(response)
-        setOwnerDataforDropdown(response.data.report);
-        setCollectedAmount(response.data.report[0].totalCollectedAmount);
+      console.log("owner", ownerDataRequest);
+      setOwnerDataforDropdown([]);
 
-        // get length of the response
-        const length = response.data.report.length;
-        setLength(length);
-      });
-    } catch (error) {
-      console.log(error);
+      try {
+        API.dailyReportAPI(ownerDataRequest).then((response) => {
+          if (response.data.report.length > 0) {
+            setIsLoading(false);
+            console.log(response);
+            setOwnerDataforDropdown(response.data.report);
+            setCollectedAmount(response.data.report[0].totalCollectedAmount);
+            const length = response.data.report.length;
+            setLength(length);
+            setError("");
+          } else {
+            setOwnerDataforDropdown([]);
+            setCollectedAmount(0);
+            setLength(0);
+            setError("No details Found");
+          }
+        });
+      } catch (error) {
+        setError("No details Found");
+        console.log(error.message);
+      }
     }
   };
 
@@ -283,11 +319,17 @@ export default function MonthlyReport() {
   };
 
   const getFilterReport = () => {
-    // console.log(selected,user.agentId)
-    console.log("getfilter report",selected);
+    console.log(stdt,eddt)
+
+    console.log("getfilter report", selected);
     if (selected == "Owner Summary") {
+      setIsLoading(true);
       fetchOwnerData("Y");
+      setIsLoading(false);
     } else {
+      setIsLoading(true);
+      setError("");
+
       const body = {
         agentId: selected,
         considerAgentType: "N",
@@ -296,22 +338,32 @@ export default function MonthlyReport() {
         Enddate: eddt ? eddt : "",
         dailyReport: "N",
       };
-      console.log("Agent Api Called ",body);
-  
+      console.log("Agent Api Called ", body);
+      setOwnerDataforDropdown([]);
       API.dailyReportAPI(body)
         .then((response) => {
-          setOwnerDataforDropdown(response.data.report);
-          console.log(response.data.report[0].totalCollectedAmount);
-          if (response.data.report[0].totalCollectedAmount != null) {
-            setCollectedAmount(response.data.report[0].totalCollectedAmount);
-          }
+          if (response.data.report.length>0) {
+            setOwnerDataforDropdown(response.data.report);
 
-          // get length of the response
-          const length = response.data.report.length;
-          setLength(length);
+            setCollectedAmount(response.data.report[0].totalCollectedAmount);
+            const length = response.data.report.length;
+            setLength(length);
+            setError("");
+          } else {
+            setOwnerDataforDropdown([]);
+            setError("No Details Found");
+            setCollectedAmount(0);
+            setLength(0);
+          }
+          setIsLoading(false);
         })
         .catch((err) => {
-          console.log(err);
+          setIsLoading(false);
+          setCollectedAmount(0);
+          setLength(0);
+          setError("No Details Found");
+
+          console.log(err.message);
         });
     }
   };
@@ -364,7 +416,8 @@ export default function MonthlyReport() {
             monthPlaceholder={"MM"}
             dayPlaceholder={"DD"}
             yearPlaceholder={"YY"}
-            className={"react-datepicker-wrapper"}
+            className={"react-datepicker"}
+            clearIcon={null}
           />
         </div>
 
@@ -378,6 +431,7 @@ export default function MonthlyReport() {
             dayPlaceholder={"DD"}
             yearPlaceholder={"YY"}
             className={"react-datepicker-wrapper"}
+            clearIcon={null}
           />
         </div>
       </div>
@@ -420,6 +474,7 @@ export default function MonthlyReport() {
             style={{ marginTop: "100px" }}
           />
         )}
+        {Error && <p style={{ marginTop: "100px" }}>{Error}</p>}
       </div>
 
       <div className="report-data">
