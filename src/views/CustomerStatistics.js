@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 
 import "../css/CustomerStatistics.css";
 import "../css/global.css";
-
+import API from "../services/API";
 export default function CustomerStatistics() {
     const headerprops = {
         text: "Customer Statistics",
@@ -23,15 +23,27 @@ export default function CustomerStatistics() {
 
     useEffect(() => {
         // Replace this with your code to fetch real-time data
-        const interval = setInterval(() => {
+        API.customerSummaryAPI({
+            agentId:"11276",
+            operatorId:"1603"
+        }).then((response) => {
+            console.log(response.data);
             setRealtimeData([
-                { name: "Active Customers", value: 1544 },
-                { name: "Temporarily Disconnected", value: 51 },
-                { name: "Permanently Disconnected", value: 11 },
+                {
+                    name: "Active Customers",
+                    value: response.data.Active,
+                },
+                {
+                    name: "Temporarily Disconnected",
+                    value: response.data.temporarilyDisconnected,
+                },
+                {
+                    name: "Permanently Disconnected",
+                    value: response.data.permanentlyDisconnected,
+                },
             ]);
-        }, 1000);
-
-        return () => clearInterval(interval);
+        });
+        
     }, []);
 
     const legendFormatter = (value) => {

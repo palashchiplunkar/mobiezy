@@ -71,5 +71,11 @@ export default {
             "getmobileassignedcomplaints",
             value
         )  
+    },
+    customerSummaryAPI(value) {
+        return API.post(
+            "mobile-agent-op-summary",
+            value
+        )
     }
 }
