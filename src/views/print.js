@@ -4,9 +4,6 @@ import "../css/print.css";
 
 export default function Print() {
 
-    const escpos = require('escpos');
-    // escpos.Bluetooth = require("escpos-bluetooth");
-
     const search = async () => {
         await navigator.bluetooth
             .requestDevice({
