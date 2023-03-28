@@ -74,7 +74,19 @@ export default function Complaints() {
           <td className="complaints-name">{data.NAME}</td>
         </tr>
         <tr className="comp-line2">
-          <td> {data.CUSTOMER_ID}</td>
+        <td
+            className="complaints-id"
+            style={{
+              display:"flex",
+              flexDirection:"row",
+
+              // minWidth: "90px",
+              whiteSpace: "pre-wrap",
+              wordBreak: "break-word",
+            }}
+          >
+            {data.CUSTOMER_ID}
+          </td>
           <td></td>
           <td>{formatTime(data.COMP_DATE)}</td>
           <td className="complaint-date">{formatDate(data.COMP_DATE)}</td>
@@ -98,7 +110,6 @@ export default function Complaints() {
     ));
     return <>{CompViewDataList}</>;
   };
-
   return (
     <div className="container-complaints">
       <Header {...headerprops} />
