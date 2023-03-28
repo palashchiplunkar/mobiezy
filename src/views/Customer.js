@@ -6,7 +6,7 @@ import Drawer from "react-bottom-drawer";
 import Switch from "react-switch";
 import { TfiMobile } from "react-icons/tfi";
 import { useNavigate } from "react-router";
-
+import API from "../services/API";
 import "../css/Customer.css";
 import "../css/global.css";
 
@@ -16,9 +16,10 @@ export default function Customer() {
     const [isPaidChecked, setIsPaidChecked] = useState(false);
     const [isUnPaidChecked, setIsUnPaidChecked] = useState(false);
     const [isAllChecked, setIsAllChecked] = useState(false);
+    const [dropDownAreaData, setDropDownAreaData] = useState([]);
 
     const navigate = useNavigate();
-
+    const user = JSON.parse( localStorage.getItem("user") || sessionStorage.getItem("user") );
     const CustomerData = [
         {
             id: "KS00567",
@@ -52,14 +53,30 @@ export default function Customer() {
     ];
 
     useEffect(() => {
+
         window.history.pushState({}, "");
         window.addEventListener("popstate", function (e) {
             e.preventDefault();
             e.stopPropagation();
             window.history.pushState({}, "");
         });
-    }, []);
+        API.dropdownAgentDataAPI({ operatorId: user.operatorId }).then(
+            (response) => {
+                // console.log(response.data.all_areas)
+                setDropDownAreaData(response.data.all_areas);
+            }
 
+        );
+
+    }, []);
+    const DropDownArea = () => {
+        const DropDownAreaData = dropDownAreaData.map((data) => {
+            return (
+                <option value={data.area_id}>{data.area_name}</option>
+            );  
+        });
+        return DropDownAreaData;
+    };
     const Customers = () => {
         const eachCustomer = CustomerData.map((customer) => {
             return (
@@ -150,8 +167,7 @@ export default function Customer() {
                             placeholder="All Areas"
                         >
                             <option>All Areas</option>
-                            <option value="bangalore">Bangalore</option>
-                            <option value="mangalore">Mangalore</option>
+                            <DropDownArea/>
                         </select>
                     </div>
 
