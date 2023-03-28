@@ -47,7 +47,6 @@ export default function SelectLanguage() {
     const { t } = useTranslation();
 
     const handleLanguageChange = (e) => {
-
         // Get Value of Checked Radio Button using querySelectors
         const checkedRadio = document.querySelector(
             'input[name="lang"]:checked'
@@ -74,12 +73,12 @@ export default function SelectLanguage() {
     useEffect(() => {
         window.onpopstate = (e) => {};
     });
-    
+
     useEffect(() => {
         if (localstorageValue === "en_US") {
             document.getElementById("English").checked = true;
         }
-        
+
         if (localstorageValue === "hi_IN") {
             document.getElementById("Hindi").checked = true;
         }
