@@ -168,6 +168,7 @@ export default function Customer() {
                         >
                             <option>All Areas</option>
                             <DropDownArea/>
+                            
                         </select>
                     </div>
 
