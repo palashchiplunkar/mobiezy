@@ -67,7 +67,7 @@ export default function Complaints() {
       const amPm = hours >= 12 ? "PM" : "AM";
       const formattedHours = hours % 12 === 0 ? 12 : hours % 12;
       const formattedMinutes = minutes < 10 ? `0${minutes}` : minutes;
-      return `${formattedHours}:${formattedMinutes} ${amPm}`;
+      return `${formattedHours}:${formattedMinutes}${amPm}`;
     };
     const CompViewDataList = complaints.map((data) => (
       <div className="complaints-data-div">
