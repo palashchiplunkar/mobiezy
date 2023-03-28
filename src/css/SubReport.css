@@ -103,6 +103,7 @@
   line-height: 16px;
   display: flex;
   justify-content: center;
+  align-items: center;
   letter-spacing: 0.2px;
 
   color: #252525;

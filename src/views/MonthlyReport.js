@@ -155,7 +155,6 @@ import DatePicker from "react-date-picker";
 //                             ₹ {CollectedAmount}
 //                         </p>
 //                     </div>
-
 //                     <div className="total-amount-collected">
 //                         <p className="no-of-transactions-label">
 //                             Number of Transactions :{" "}
