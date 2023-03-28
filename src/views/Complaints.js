@@ -39,7 +39,7 @@ export default function Complaints() {
   const fetchComplaints = () => {
     try {
     API.viewCompalintAPI({
-      agent_id:"11276",
+      agent_id:user.agentId,
   }).then((response) => {
     
         console.log(response.data.complaints);
