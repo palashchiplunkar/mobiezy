@@ -19,7 +19,7 @@ export default function CustomerStatistics() {
   };
   const COLORS = ["#92d050", "#ffc000", "#ff0000"];
 
-  const [realtimeData, setRealtimeData] = useState(data);
+  const [realtimeData, setRealtimeData] = useState();
 
   const fetchCustomerData = () => {
     let body = {
