@@ -20,6 +20,7 @@ import PrivateRoutes from "./components/PrivateRoutes";
 import Complaints from "./views/Complaints";
 import Print from "./views/Print";
 import PaymentHistory from "./views/PaymentHistory";
+import RecordVisit from "./views/RecordVisit";
 
 function App() {
     return (
@@ -54,6 +55,7 @@ function App() {
                     />
                     <Route path="/complaints" element={<Complaints />} />
                     <Route path="/history" element={<PaymentHistory/>}/>
+                    <Route path="/recordVisit" element={<RecordVisit/>}/>
                 </Route>
                 <Route path="/" element={<LoginPage />} />
                 <Route path="/print" element={<Print />} />
