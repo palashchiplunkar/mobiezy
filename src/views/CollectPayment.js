@@ -4,8 +4,9 @@ import { TbPlus } from "react-icons/tb";
 import { AiOutlineMinus } from "react-icons/ai";
 import "../css/CollectPayment.css";
 import "../css/global.css";
-
+import { useNavigate } from "react-router-dom";
 export default function collectPayment() {
+    const navigate = useNavigate();
     const stbOptions = [
         {
             id: 1,
@@ -39,11 +40,13 @@ export default function collectPayment() {
             id: 1,
             name: "Edit Customer",
             imgUrl: "Edit.png",
+            toLink: "/editCustomer",
         },
         {
             id: 2,
             name: "Edit STB",
             imgUrl: "Editstb1.png",
+            toLink:"/editSetTopBox"
         },
         {
             id: 3,
@@ -59,6 +62,7 @@ export default function collectPayment() {
             id: 5,
             name: "History",
             imgUrl: "history.png",
+
         },
         {
             id: 6,
@@ -79,6 +83,7 @@ export default function collectPayment() {
             id: 9,
             name: "Record Visit",
             imgUrl: "recordvis.png",
+            toLink:"/recordVisit"
         },
     ];
     
@@ -246,6 +251,9 @@ export default function collectPayment() {
                                     <div
                                         className="STBEachOption"
                                         id={option.id}
+                                        onClick={() => {
+                                            navigate(option.toLink)
+                                        }}
                                     >
                                         <img
                                             src={require("../assets/" +
