@@ -17,7 +17,8 @@ import "../css/global.css";
 export default function Complaints() {
     const [Complaints, setComplaints] = useState([]);
     const [isLoading, setLoading] = useState(false);
-    const [alert, setalert] = useState(true);
+    const [alert, setAlert] = useState(false);
+    const [selectedComplaint, setSelectedComplaint] = useState([]);
     const headerprops = {
         text: "View Complaints",
         height: "10vh",
@@ -44,7 +45,12 @@ export default function Complaints() {
         setLoading(true);
         fetchComplaints();
     }, []);
-
+    const formatDate = (dateString) => {
+        const date = new Date(dateString);
+        return `${
+            date.getMonth() + 1
+        }/${date.getDate()}/${date.getFullYear()}`;
+    };
     const CompViewList = ({ complaints }) => {
         const formatDate = (dateString) => {
             const date = new Date(dateString);
@@ -62,9 +68,13 @@ export default function Complaints() {
             const formattedMinutes = minutes < 10 ? `0${minutes}` : minutes;
             return `${formattedHours}:${formattedMinutes}${amPm}`;
         };
-        
+        const handleComplaintClick = (complaint) => {
+            setSelectedComplaint(complaint);
+            console.log(complaint)
+            setAlert(true);
+          };
         const CompViewDataList = complaints.map((data) => (
-            <div className="complaints-data-div">
+            <div className="complaints-data-div" onClick={() => handleComplaintClick(data)}>
                 <tr>
                     <td className="complaints-name">{data.NAME}</td>
                 </tr>
@@ -88,7 +98,7 @@ export default function Complaints() {
                                 : { color: "#0081B3" }
                         }
                     >
-                        {data.COMP_STATUS}
+                    {data.COMP_STATUS}
                     </td>
                 </tr>
             </div>
@@ -113,7 +123,7 @@ export default function Complaints() {
             </table>
             <Dialog
                 open={alert}
-                onClose={() => setalert(false)}
+                onClose={() => setAlert(false)}
                 aria-labelledby="alert-dialog-title"
                 aria-describedby="alert-dialog-description"
             >
@@ -124,45 +134,32 @@ export default function Complaints() {
                     Complaint Management
                 </DialogTitle>
                 <DialogContent>
-                    <DialogContentText style={{ marginLeft: "5%" }}>
-                        {/* One Horizontal Line */}
-                        <div className="line"></div>
-                        <div>
-                            <p>Complaint Id : CP001256 </p>
-                            <p>Complaint Date : 12/12/2021</p>
-                            <p>Compaint Type : Cable Issue</p>
-                            <p>Complaint Desc : Channle not coming</p>
-                        </div>
-                    </DialogContentText>
-                    <DialogTitle
-                        id="alert-dialog-title"
-                        style={{ fontFamily: "Noto Sans", marginLeft: "5%" }}
-                    >
-                        Complaint Status
-                    </DialogTitle>
-                    <DialogContentText>
-                        {/* One Horizontal Line */}
-                        <div className="line"></div>
-                        <div>
-                            <select
-                                name="status"
-                                id="status"
-                                style={{
-                                    width: "100%",
-                                    height: "40px",
-                                    borderRadius: "10px",
-                                    border: "none",
-                                    background: "var(--primay-app-color)",
-                                    color: "white",
-                                    fontFamily: "Noto Sans",
-                                }}
-                            >
-                                <option value="Registered">Registered</option>
-                                <option value="In Progress">In Progress</option>
-                                <option value="Completed">Completed</option>
-                            </select>
-                        </div>
-                    </DialogContentText>
+                <DialogContentText style={{marginLeft:"5%"}}>
+                {/* One Horizontal Line */}
+                    <div className="line"></div>
+                    <div>
+                        <p>Complaint Id : {selectedComplaint.COMP_ID} </p>
+                        <p>Complaint Date : {formatDate(selectedComplaint.COMP_DATE)}</p>
+                        <p>Compaint Type :  {selectedComplaint.CMP_TYPE}</p>
+                        <p>Complaint Desc : {selectedComplaint.CMP_DETAIL}</p>
+
+                    </div>
+                </DialogContentText>
+                <DialogTitle id="alert-dialog-title" style={{ fontFamily: "Noto Sans" , marginLeft: "5%"}}>
+                    Complaint Status
+                </DialogTitle>
+                <DialogContentText style={{marginLeft:"5%"}}>
+                {/* One Horizontal Line */}
+                    <div className="line"></div>
+                    <div>
+                    <select name="status" id="status" style={{width: "100%", height: "40px", borderRadius: "10px", border: "none",  fontFamily: "Noto Sans"}}>
+                        <option value="Registered">Registered</option>
+                        <option value="In Progress">In Progress</option>
+                        <option value="Completed">Completed</option>
+                    </select>
+                    <input type="text" placeholder="Enter Your Comment Here" style={{width: "100%", height: "40px", borderRadius: "10px", border: "none",  fontFamily: "Noto Sans"}}/>
+                    </div>
+                </DialogContentText>
                     <DialogContentText
                         id="alert-dialog-description"
                         style={{
@@ -178,7 +175,7 @@ export default function Complaints() {
                             padding: "10px",
                         }}
                     >
-                        Go to Renewal Page
+                        SUBMIT
                     </DialogContentText>
                 </DialogContent>
             </Dialog>
