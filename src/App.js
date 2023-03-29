@@ -18,7 +18,7 @@ import Print from "./views/Print";
 import PaymentHistory from "./views/PaymentHistory";
 import HistoryVisit from "./views/HistoryVisit";
 import RecordVisit from "./views/RecordVisit";
-
+import EditCustomer from "./views/EditCustomer";
 function App() {
     return (
         <BrowserRouter>
@@ -55,6 +55,7 @@ function App() {
                     <Route path="/print" element={<Print />} />
                     <Route path="/historyVist" element={<HistoryVisit />} />
                     <Route path="/recordVisit" element={<RecordVisit/>}/>
+                    <Route path="/editCustomer" element={<EditCustomer/>}/>
                 </Route>
                 <Route path="/" element={<LoginPage />} />
             </Routes>
