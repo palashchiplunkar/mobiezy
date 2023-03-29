@@ -8,7 +8,7 @@
     opacity: 0.4;
 }
 
-.cotainer {
+.customer-cotainer {
     position: relative;
     height: 100%;
 }
@@ -111,7 +111,7 @@
 
 /* Card */
 
-.customer-card-div {
+.customer-page-card-div {
     z-index: -1;
     margin-top: 20vh;
     margin-bottom: 10vh;
@@ -126,6 +126,8 @@
     border-image: linear-gradient(to right, var(--primay-app-color), #a4ce4e) 1;
     box-sizing: border-box;
     margin-top: 4%;
+    margin-left: 16px;
+    margin-right: 16px;
     /* padding: 3%; */
 }
 

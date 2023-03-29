@@ -3,7 +3,6 @@ import { RiSortDesc } from "react-icons/ri";
 import Navbar from "../components/navbar";
 import { useState } from "react";
 import Drawer from "react-bottom-drawer";
-import Switch from "react-switch";
 import { TfiMobile } from "react-icons/tfi";
 import { useNavigate } from "react-router";
 import API from "../services/API";
@@ -12,9 +11,6 @@ import "../css/global.css";
 
 export default function Customer() {
     const [isVisible, setIsVisible] = useState(false);
-    const [isPaidChecked, setIsPaidChecked] = useState(false);
-    const [isUnPaidChecked, setIsUnPaidChecked] = useState(false);
-    const [isAllChecked, setIsAllChecked] = useState(false);
     const [dropDownAreaData, setDropDownAreaData] = useState([]);
 
     const navigate = useNavigate();
@@ -145,7 +141,7 @@ export default function Customer() {
 
     return (
         <>
-            <div className="container">
+            <div className="customer-container">
                 <div className="header-blue">
                     <div className="area-div">
                         <p className="area-p">Area</p>
@@ -180,7 +176,7 @@ export default function Customer() {
                     </div>
                 </div>
 
-                <div className="customer-card-div">
+                <div className="customer-page-card-div">
                     <Customers />
                 </div>
 
