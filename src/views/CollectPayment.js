@@ -33,6 +33,7 @@ export default function collectPayment() {
             imgUrl: "resend.png",
         },
     ];
+
     const CusOptions = [
         {
             id: 1,
@@ -80,6 +81,7 @@ export default function collectPayment() {
             imgUrl: "recordvis.png",
         },
     ];
+    
     return (
         <>
             <div className="header-blue1">
