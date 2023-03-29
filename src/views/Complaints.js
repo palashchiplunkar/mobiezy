@@ -3,7 +3,14 @@ import Header from "../components/header";
 import API from "../services/API";
 import { useEffect, useState } from "react";
 import { Spinner } from "react-bootstrap";
-import { Dialog, DialogTitle, DialogContent, DialogContentText, DialogActions, Button } from "@mui/material";
+import {
+    Dialog,
+    DialogTitle,
+    DialogContent,
+    DialogContentText,
+    DialogActions,
+    Button,
+} from "@mui/material";
 import "../css/Complaints.css";
 import "../css/global.css";
 
@@ -55,6 +62,7 @@ export default function Complaints() {
             const formattedMinutes = minutes < 10 ? `0${minutes}` : minutes;
             return `${formattedHours}:${formattedMinutes}${amPm}`;
         };
+        
         const CompViewDataList = complaints.map((data) => (
             <div className="complaints-data-div">
                 <tr>
@@ -111,51 +119,64 @@ export default function Complaints() {
             >
                 <DialogTitle
                     id="alert-dialog-title"
-                    style={{ fontFamily: "Noto Sans" , marginLeft: "5%"}}
+                    style={{ fontFamily: "Noto Sans", marginLeft: "5%" }}
                 >
                     Complaint Management
-                  
                 </DialogTitle>
                 <DialogContent>
-                <DialogContentText style={{marginLeft:"5%"}}>
-                {/* One Horizontal Line */}
-                    <div className="line"></div>
-                    <div>
-                        <p>Complaint Id : CP001256 </p>
-                        <p>Complaint Date : 12/12/2021</p>
-                        <p>Compaint Type : Cable Issue</p>
-                        <p>Complaint Desc : Channle not coming</p>
-
-                    </div>
-                </DialogContentText>
-                <DialogTitle id="alert-dialog-title" style={{ fontFamily: "Noto Sans" , marginLeft: "5%"}}>
-                    Complaint Status
-                </DialogTitle>
-                <DialogContentText>
-                {/* One Horizontal Line */}
-                    <div className="line"></div>
-                    <div>
-                    <select name="status" id="status" style={{width: "100%", height: "40px", borderRadius: "10px", border: "none", background: "var(--primay-app-color)", color: "white", fontFamily: "Noto Sans"}}>
-                        <option value="Registered">Registered</option>
-                        <option value="In Progress">In Progress</option>
-                        <option value="Completed">Completed</option>
-                    </select>
-                    </div>
-                </DialogContentText>
+                    <DialogContentText style={{ marginLeft: "5%" }}>
+                        {/* One Horizontal Line */}
+                        <div className="line"></div>
+                        <div>
+                            <p>Complaint Id : CP001256 </p>
+                            <p>Complaint Date : 12/12/2021</p>
+                            <p>Compaint Type : Cable Issue</p>
+                            <p>Complaint Desc : Channle not coming</p>
+                        </div>
+                    </DialogContentText>
+                    <DialogTitle
+                        id="alert-dialog-title"
+                        style={{ fontFamily: "Noto Sans", marginLeft: "5%" }}
+                    >
+                        Complaint Status
+                    </DialogTitle>
+                    <DialogContentText>
+                        {/* One Horizontal Line */}
+                        <div className="line"></div>
+                        <div>
+                            <select
+                                name="status"
+                                id="status"
+                                style={{
+                                    width: "100%",
+                                    height: "40px",
+                                    borderRadius: "10px",
+                                    border: "none",
+                                    background: "var(--primay-app-color)",
+                                    color: "white",
+                                    fontFamily: "Noto Sans",
+                                }}
+                            >
+                                <option value="Registered">Registered</option>
+                                <option value="In Progress">In Progress</option>
+                                <option value="Completed">Completed</option>
+                            </select>
+                        </div>
+                    </DialogContentText>
                     <DialogContentText
                         id="alert-dialog-description"
                         style={{
                             display: "flex",
                             alignItems: "center",
-                            justifyContent: "center", 
+                            justifyContent: "center",
                             fontFamily: "Noto Sans",
                             background: "var(--primay-app-color)",
                             color: "white",
                             border: "none",
                             borderRadius: "20px",
                             margin: "15px",
-                            padding: "10px"
-                         }}
+                            padding: "10px",
+                        }}
                     >
                         Go to Renewal Page
                     </DialogContentText>

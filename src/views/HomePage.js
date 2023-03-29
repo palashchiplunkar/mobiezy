@@ -12,7 +12,6 @@ import "../css/alert_popup.css";
 import "reactjs-popup/dist/index.css";
 
 export default function HomePage() {
-
     const { t } = useTranslation();
     const navigate = useNavigate();
     const [data, setData] = useState(
@@ -93,7 +92,7 @@ export default function HomePage() {
                     </p>
 
                     <div className="amt-due-today-div">
-                        <label className="amt-due-today-content">
+                        <label className="amt-due-today-content" onClick={() => navigate("/customer")}>
                             {t("HO_lbl_Unpaid")}
                         </label>
                         <label className="amt-due-today-content">
@@ -145,7 +144,13 @@ export default function HomePage() {
                     </div>
                 </div>
             </div>
-            <Navbar value={0} onChange={() => {window.location.reload();}}/>
+
+            <Navbar
+                value={0}
+                onChange={() => {
+                    window.location.reload();
+                }}
+            />
         </>
     );
 }
