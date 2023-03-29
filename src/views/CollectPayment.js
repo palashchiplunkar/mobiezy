@@ -268,10 +268,7 @@ export default function collectPayment() {
                         </div>
                     </Collapsible>
                 </div>
-            </div>
-          </Collapsible>
-        </div>
-      </div>
+            </div>  
     </>
   );
 }
