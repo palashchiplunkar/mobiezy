@@ -6,14 +6,15 @@ import Header from "../components/header";
 
 import "../css/MoreOptions.css";
 import "../css/global.css";
-import { useState } from "react";
+
 function MoreOptions() {
+
     const navigate = useNavigate();
     const user = JSON.parse(
         localStorage.getItem("user") || sessionStorage.getItem("user")
     );
     const MSO_ID = user.MSO_ID;
-// const [optionsset, setOptions] = useState([]);
+
     let options = [
         {
             id: 1,
@@ -72,7 +73,6 @@ function MoreOptions() {
             toShow : MSO_ID === 0 ? false : true,
         },
     ];
-    // setOptions(options);
 
     const headerprops = {
         text: "More Options",

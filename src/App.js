@@ -52,7 +52,7 @@ function App() {
                     <Route path="/complaints" element={<Complaints />} />
                     <Route path="/history" element={<PaymentHistory />} />
                     <Route path="/print" element={<Print />} />
-                    <Route path="/historyVist" elemetn={<HistoryVisit />} />
+                    <Route path="/historyVist" element={<HistoryVisit />} />
                 </Route>
                 <Route path="/" element={<LoginPage />} />
             </Routes>
