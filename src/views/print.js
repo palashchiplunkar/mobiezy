@@ -16,13 +16,17 @@ export default function Print() {
 
     const search = async () => {
         let device = await navigator.bluetooth.requestDevice({
+            // filters : [{services: ["e7810a71-73ae-499d-8c15-faa9aef0c3f2"]}],
             acceptAllDevices: true,
-            optionalServices: ["e7810a71-73ae-499d-8c15-faa9aef0c3f2"],
+            optionalServices: ["e7810a71-73ae-499d-8c15-faa9aef0c3f2"]
         });
 
         let server = await device.gatt.connect();
-
-        console.log(server);
+        setConnection(true);
+        setDeviceNew(device);
+    
+    
+        console.log(devicenew.gatt);
 
         let service = await server.getPrimaryService(
             "e7810a71-73ae-499d-8c15-faa9aef0c3f2"
@@ -32,7 +36,7 @@ export default function Print() {
 
         let characteristic = await service.getCharacteristic(
             "bef8d6c9-9c21-4c9e-b632-bd58c1009f9f"
-        );
+        )
 
         console.log(characteristic);
         const encoder = new TextEncoder();
@@ -63,6 +67,9 @@ export default function Print() {
                     <button onClick={search} className="search-button">
                         Search
                     </button>
+                    {/* <button onClick={printArea} className="search-button">
+                        Print
+                    </button> */}
                 </div>
             </div>
         </>
