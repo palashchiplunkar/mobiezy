@@ -60,6 +60,7 @@ export default function Customer() {
             e.stopPropagation();
             window.history.pushState({}, "");
         });
+        
         API.dropdownAgentDataAPI({ operatorId: user.operatorId }).then(
             (response) => {
                 // console.log(response.data.all_areas)
