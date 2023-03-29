@@ -26,10 +26,10 @@ export default function HistoryVisit() {
         },
     ];
 
-    const CompViewList = ({ complaints }) => {
-        const CompViewDataList = complaints.map((data) => (
+    const ViewList = ({ listData }) => {
+        const ViewDataList = listData.map((data) => (
             <>
-                <div className="agnt-border">
+                <tbody className="agnt-border">
                     <tr className="agnt-tr">
                         <td className="agnt-name-label-td">Visited Agent</td>
                         <td className="agnt-colon-td"> : </td>
@@ -44,11 +44,11 @@ export default function HistoryVisit() {
                             {data.visitedTime}
                         </td>
                     </tr>
-                </div>
+                </tbody>
             </>
         ));
 
-        return <>{CompViewDataList}</>;
+        return <>{ViewDataList}</>;
     };
 
     return (
@@ -57,6 +57,7 @@ export default function HistoryVisit() {
 
             <div className="cust-details-div">
                 <table className="cust-details-table">
+                    <tbody>
                     <tr className="cust-name-tr">
                         <td className="cust-name-label-td">Customer Name</td>
                         <td className="cust-colon-td"> : </td>
@@ -67,12 +68,13 @@ export default function HistoryVisit() {
                         <td className="cust-colon-td"> : </td>
                         <td className="cust-id-data-td">213</td>
                     </tr>
+                    </tbody>
                 </table>
             </div>
 
             <div className="agnt-details-div">
                 <table className="agnt-details-table">
-                    <CompViewList complaints={tempData} />
+                    <ViewList listData={tempData} />
                 </table>
             </div>
         </div>
