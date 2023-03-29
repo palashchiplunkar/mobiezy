@@ -1,9 +1,15 @@
 import React from "react";
+import { useState } from "react";
 
 import Navbar from "../components/navbar";
 import "../css/print.css";
 
 export default function Print() {
+    const [input, setInput] = useState("");
+
+    const handleInput = (event) => {
+        setInput(event.target.value);
+    };
 
     const printData = {
         heading: "\n     ------CABLE TV------\n",
@@ -19,14 +25,11 @@ export default function Print() {
         let device = await navigator.bluetooth.requestDevice({
             // filters : [{services: ["e7810a71-73ae-499d-8c15-faa9aef0c3f2"]}],
             acceptAllDevices: true,
-            optionalServices: ["e7810a71-73ae-499d-8c15-faa9aef0c3f2"]
+            optionalServices: ["e7810a71-73ae-499d-8c15-faa9aef0c3f2"],
         });
 
         let server = await device.gatt.connect();
-        // setConnection(true);
-        // setDeviceNew(device);
-    
-    
+
         // console.log(devicenew.gatt);
 
         let service = await server.getPrimaryService(
@@ -37,13 +40,13 @@ export default function Print() {
 
         let characteristic = await service.getCharacteristic(
             "bef8d6c9-9c21-4c9e-b632-bd58c1009f9f"
-        )
+        );
 
         console.log(characteristic);
         const encoder = new TextEncoder();
 
         for (const i in printData) {
-            // console.log(`${printData[i]}`);
+            console.log(`${printData[i]}`);
             try {
                 await characteristic.writeValue(encoder.encode(printData[i]));
                 console.log(encoder.encode(printData[i]));
@@ -64,15 +67,26 @@ export default function Print() {
                             alt=""
                         />
                     </div>
-                    {/* Add a input text field with some state */}
-                    
 
-                    <button onClick={search} className="search-button">
-                        Search
-                    </button>
-                    {/* <button onClick={printArea} className="search-button">
+                    <input
+                        className="text-input"
+                        type="text"
+                        placeholder="Type Message"
+                        onChange={handleInput}
+                    />
+
+                    <button onClick={search} className="print-button">
                         Print
-                    </button> */}
+                    </button>
+
+                    <h2
+                        style={{
+                            position: "relative",
+                            marginTop: "10%",
+                        }}
+                    >
+                        Message : {input}
+                    </h2>
                 </div>
             </div>
             <Navbar value={3} />
