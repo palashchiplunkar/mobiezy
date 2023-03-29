@@ -18,7 +18,7 @@ import CollectPayment from "./views/CollectPayment";
 import CustomerStatistics from "./views/CustomerStatistics";
 import PrivateRoutes from "./components/PrivateRoutes";
 import Complaints from "./views/Complaints";
-import Print from "./views/print";
+import Print from "./views/Print";
 import PaymentHistory from "./views/PaymentHistory";
 
 function App() {
