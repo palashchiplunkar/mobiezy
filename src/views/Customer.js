@@ -11,7 +11,6 @@ import "../css/Customer.css";
 import "../css/global.css";
 
 export default function Customer() {
-    
     const [isVisible, setIsVisible] = useState(false);
     const [isPaidChecked, setIsPaidChecked] = useState(false);
     const [isUnPaidChecked, setIsUnPaidChecked] = useState(false);
@@ -19,7 +18,9 @@ export default function Customer() {
     const [dropDownAreaData, setDropDownAreaData] = useState([]);
 
     const navigate = useNavigate();
-    const user = JSON.parse( localStorage.getItem("user") || sessionStorage.getItem("user") );
+    const user = JSON.parse(
+        localStorage.getItem("user") || sessionStorage.getItem("user")
+    );
     const CustomerData = [
         {
             id: "KS00567",
@@ -53,30 +54,27 @@ export default function Customer() {
     ];
 
     useEffect(() => {
-
         window.history.pushState({}, "");
         window.addEventListener("popstate", function (e) {
             e.preventDefault();
             e.stopPropagation();
             window.history.pushState({}, "");
         });
+
         API.dropdownAgentDataAPI({ operatorId: user.operatorId }).then(
             (response) => {
-                // console.log(response.data.all_areas)
                 setDropDownAreaData(response.data.all_areas);
             }
-
         );
-
     }, []);
+
     const DropDownArea = () => {
         const DropDownAreaData = dropDownAreaData.map((data) => {
-            return (
-                <option value={data.area_id}>{data.area_name}</option>
-            );  
+            return <option value={data.area_id}>{data.area_name}</option>;
         });
         return DropDownAreaData;
     };
+    
     const Customers = () => {
         const eachCustomer = CustomerData.map((customer) => {
             return (
@@ -167,8 +165,7 @@ export default function Customer() {
                             placeholder="All Areas"
                         >
                             <option>All Areas</option>
-                            <DropDownArea/>
-                            
+                            <DropDownArea />
                         </select>
                     </div>
 

@@ -1,8 +1,4 @@
-import {
-    BrowserRouter,
-    Routes,
-    Route,
-} from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import LoginPage from "./views/LoginPage";
 import HomePage from "./views/HomePage";
@@ -18,9 +14,11 @@ import CollectPayment from "./views/CollectPayment";
 import CustomerStatistics from "./views/CustomerStatistics";
 import PrivateRoutes from "./components/PrivateRoutes";
 import Complaints from "./views/Complaints";
-import Print from "./views/print";
+import Print from "./views/Print";
 import PaymentHistory from "./views/PaymentHistory";
-
+import HistoryVisit from "./views/HistoryVisit";
+import RecordVisit from "./views/RecordVisit";
+import EditCustomer from "./views/EditCustomer";
 function App() {
     return (
         <BrowserRouter>
@@ -53,10 +51,13 @@ function App() {
                         element={<CustomerStatistics />}
                     />
                     <Route path="/complaints" element={<Complaints />} />
-                    <Route path="/history" element={<PaymentHistory/>}/>
+                    <Route path="/history" element={<PaymentHistory />} />
+                    <Route path="/print" element={<Print />} />
+                    <Route path="/historyVisit" element={<HistoryVisit />} />
+                    <Route path="/recordVisit" element={<RecordVisit/>}/>
+                    <Route path="/editCustomer" element={<EditCustomer/>}/>
                 </Route>
                 <Route path="/" element={<LoginPage />} />
-                <Route path="/print" element={<Print />} />
             </Routes>
         </BrowserRouter>
     );

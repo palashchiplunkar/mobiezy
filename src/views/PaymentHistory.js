@@ -1,6 +1,5 @@
 import React from "react";
 import { FaAngleLeft } from "react-icons/fa";
-import { useEffect, useState } from "react";
 import { TfiMobile } from "react-icons/tfi";
 
 import { useNavigate } from "react-router-dom";
