@@ -8,34 +8,34 @@ import { useNavigate } from "react-router-dom";
 
 export default function collectPayment() {
 
-    // const navigate = useNavigate();
-    const stbOptions = [
-        {
-            id: 1,
-            name: "Import Packs",
-            imgUrl: "import.jpg",
-        },
-        {
-            id: 2,
-            name: "Renew STB",
-            imgUrl: "renew.png",
-        },
-        {
-            id: 3,
-            name: "Add Channel",
-            imgUrl: "add.png",
-        },
-        {
-            id: 4,
-            name: "Retrack",
-            imgUrl: "retrack.png",
-        },
-        {
-            id: 5,
-            name: "Resend Request",
-            imgUrl: "resend.png",
-        },
-    ];
+  // const navigate = useNavigate();
+  const stbOptions = [
+    {
+      id: 1,
+      name: "Import Packs",
+      imgUrl: "import.jpg",
+    },
+    {
+      id: 2,
+      name: "Renew STB",
+      imgUrl: "renew.png",
+    },
+    {
+      id: 3,
+      name: "Add Channel",
+      imgUrl: "add.png",
+    },
+    {
+      id: 4,
+      name: "Retrack",
+      imgUrl: "retrack.png",
+    },
+    {
+      id: 5,
+      name: "Resend Request",
+      imgUrl: "resend.png",
+    },
+  ];
 
     const CusOptions = [
         {
@@ -268,7 +268,7 @@ export default function collectPayment() {
                         </div>
                     </Collapsible>
                 </div>
-            </div>
-        </>
-    );
+            </div>  
+    </>
+  );
 }
