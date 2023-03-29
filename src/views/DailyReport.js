@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import OwnerData from "../components/ownerdatadiv";
 import Header from "../components/header";
-import GetReportDiv from "../components/getReportDiv";
 import API from "../services/API";
 
 import "../css/MonthlyReport.css";
@@ -11,6 +10,7 @@ import { Spinner } from "react-bootstrap";
 export default function DailyReport() {
     const [agentData, setAgentData] = useState([]);
     const [CollectedAmount, setCollectedAmount] = useState(0);
+    const [noCollection, setNoCollection] = useState(false);
     const [length, setLength] = useState(0);
     const [ownerDataforDropdown, setOwnerDataforDropdown] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
@@ -30,6 +30,7 @@ export default function DailyReport() {
     const handleDropChange = (e) => {
         setSelected(e.target.value);
     };
+
     let ownerDataRequest = {
         agentId: user.agentId,
         operatorId: user.operatorId,
@@ -43,9 +44,14 @@ export default function DailyReport() {
                 setIsLoading(false);
 
                 setOwnerDataforDropdown(response.data.report);
-                setCollectedAmount(
-                    response.data.report[0].totalCollectedAmount
-                );
+
+                if (response.data.length > 0) {
+                    setCollectedAmount(
+                        response.data.report[0].totalCollectedAmount
+                    );
+                } else {
+                    setNoCollection(true);
+                }
 
                 // get length of the response
                 const length = response.data.report.length;
@@ -53,6 +59,7 @@ export default function DailyReport() {
             });
         } catch (error) {
             console.log(error);
+            alert(error);
         }
     };
 
@@ -71,7 +78,6 @@ export default function DailyReport() {
     };
 
     const getFilterReport = () => {
-        // console.log(selected,user.agentId)
         if (selected == "Owner Summary") {
             fetchOwnerData();
         } else {
@@ -135,6 +141,16 @@ export default function DailyReport() {
                 <button className="get-report-btn" onClick={getFilterReport}>
                     Get Report
                 </button>
+            </div>
+
+            <div
+                className="no-collection-div"
+                style={{
+                    display: noCollection == true ? "block" : "none",
+                    marginTop: "50%"
+                }}
+            >
+                No Collection Today
             </div>
 
             <div style={{ display: "flex", justifyContent: "center" }}>

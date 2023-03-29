@@ -41,7 +41,7 @@ export default function Print() {
             // console.log(`${printData[i]}`);
             try {
                 await characteristic.writeValue(encoder.encode(printData[i]));
-                console.log(encoder.encode(i));
+                console.log(encoder.encode(printData[i]));
             } catch (error) {
                 console.log(error);
             }
