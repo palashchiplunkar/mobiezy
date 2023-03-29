@@ -1,8 +1,4 @@
-import {
-    BrowserRouter,
-    Routes,
-    Route,
-} from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import LoginPage from "./views/LoginPage";
 import HomePage from "./views/HomePage";
@@ -20,6 +16,7 @@ import PrivateRoutes from "./components/PrivateRoutes";
 import Complaints from "./views/Complaints";
 import Print from "./views/Print";
 import PaymentHistory from "./views/PaymentHistory";
+import HistoryVisit from "./views/HistoryVisit";
 
 function App() {
     return (
@@ -53,10 +50,11 @@ function App() {
                         element={<CustomerStatistics />}
                     />
                     <Route path="/complaints" element={<Complaints />} />
-                    <Route path="/history" element={<PaymentHistory/>}/>
+                    <Route path="/history" element={<PaymentHistory />} />
+                    <Route path="/print" element={<Print />} />
+                    <Route path="/historyVist" elemetn={<HistoryVisit />} />
                 </Route>
                 <Route path="/" element={<LoginPage />} />
-                <Route path="/print" element={<Print />} />
             </Routes>
         </BrowserRouter>
     );
