@@ -1,10 +1,6 @@
 .history-visit-container {
     width: 100%;
     height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: white;
 }
 
 .cust-details-div {
@@ -12,6 +8,8 @@
     flex-direction: column;
     align-items: center;
     width: 90%;
+    margin-left: auto;
+    margin-right: auto;
     margin-top: 30px;
     margin-bottom: 30px;
     border: 4px solid transparent;

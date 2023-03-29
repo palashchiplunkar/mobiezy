@@ -27,28 +27,22 @@ export default function HistoryVisit() {
     ];
 
     const ViewList = ({ listData }) => {
-        const ViewDataList = listData.map((data) => (
-            <>
-                <tbody className="agnt-border">
-                    <tr className="agnt-tr">
-                        <td className="agnt-name-label-td">Visited Agent</td>
-                        <td className="agnt-colon-td"> : </td>
-                        <td className="agnt-name-data-td">
-                            {data.visitedAgnt}
-                        </td>
-                    </tr>
-                    <tr className="agnt-tr">
-                        <td className="agnt-time-label-td">Visited Time</td>
-                        <td className="agnt-colon-td"> : </td>
-                        <td className="agnt-time-data-td">
-                            {data.visitedTime}
-                        </td>
-                    </tr>
-                </tbody>
-            </>
+        const AgentDataList = listData.map((data) => (
+            <tbody className="agnt-border">
+                <tr className="agnt-tr">
+                    <td className="agnt-name-label-td">Visited Agent</td>
+                    <td className="agnt-colon-td"> : </td>
+                    <td className="agnt-name-data-td">{data.visitedAgnt}</td>
+                </tr>
+                <tr className="agnt-tr">
+                    <td className="agnt-time-label-td">Visited Time</td>
+                    <td className="agnt-colon-td"> : </td>
+                    <td className="agnt-time-data-td">{data.visitedTime}</td>
+                </tr>
+            </tbody>
         ));
 
-        return <>{ViewDataList}</>;
+        return <>{AgentDataList}</>;
     };
 
     return (
@@ -58,16 +52,20 @@ export default function HistoryVisit() {
             <div className="cust-details-div">
                 <table className="cust-details-table">
                     <tbody>
-                    <tr className="cust-name-tr">
-                        <td className="cust-name-label-td">Customer Name</td>
-                        <td className="cust-colon-td"> : </td>
-                        <td className="cust-name-data-td">Sharath S Naik</td>
-                    </tr>
-                    <tr className="cust-id-tr">
-                        <td className="cust-id-label-td">Customer ID</td>
-                        <td className="cust-colon-td"> : </td>
-                        <td className="cust-id-data-td">213</td>
-                    </tr>
+                        <tr className="cust-name-tr">
+                            <td className="cust-name-label-td">
+                                Customer Name
+                            </td>
+                            <td className="cust-colon-td"> : </td>
+                            <td className="cust-name-data-td">
+                                Sharath S Naik
+                            </td>
+                        </tr>
+                        <tr className="cust-id-tr">
+                            <td className="cust-id-label-td">Customer ID</td>
+                            <td className="cust-colon-td"> : </td>
+                            <td className="cust-id-data-td">213</td>
+                        </tr>
                     </tbody>
                 </table>
             </div>
