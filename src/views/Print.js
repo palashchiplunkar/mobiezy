@@ -11,14 +11,24 @@ export default function Print() {
         setInput(event.target.value);
     };
 
+    // const printData = {
+    //     heading: "\n     ------CABLE TV------\n",
+    //     dottedLine1: "-------------------------------",
+    //     billHeading: "\n          Last Bill\n",
+    //     receiptNo: "\n  Receipt No : 9030405205276M1",
+    //     custID: "\n  Customer ID   : M1",
+    //     custName: "\n  Customer Name : M21  \n\n",
+    //     endLine: "\n\n",
+    // };
+
     const printData = {
-        heading: "\n     ------CABLE TV------\n",
+        heading: "\n     ------Mobiezy------\n",
         dottedLine1: "-------------------------------",
-        billHeading: "\n          Last Bill\n",
-        receiptNo: "\n  Receipt No : 9030405205276M1",
-        custID: "\n  Customer ID   : M1",
-        custName: "\n  Customer Name : M21  \n\n",
-        endLine: "\n\n",
+        billHeading: "\n      Your Message:\n",
+        receiptNo: "\n         ",
+        msg: input.toString(),
+        endLine: "\n-------------------------------\n",
+        finalLine: "\n\n"
     };
 
     const search = async () => {
@@ -45,22 +55,15 @@ export default function Print() {
         console.log(characteristic);
         const encoder = new TextEncoder();
 
-        // for (const i in printData) {
-        // console.log(`${printData[i]}`);
-        try {
-            await characteristic.writeValue(
-                encoder.encode(
-                    "\n\n------------------------------\n" +
-                        input +
-                        "\n------------------------------\n" +
-                        "   \n\n  "
-                )
-            );
-            console.log(encoder.encode(input));
-        } catch (error) {
-            console.log(error);
+        for (const i in printData) {
+            console.log(`${printData[i]}`);
+            try {
+                await characteristic.writeValue(encoder.encode(printData[i]));
+                console.log(encoder.encode(printData[i]));
+            } catch (error) {
+                console.log(error);
+            }
         }
-        // }
     };
 
     return (
