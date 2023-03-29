@@ -46,13 +46,20 @@ export default function Print() {
         const encoder = new TextEncoder();
 
         // for (const i in printData) {
-            // console.log(`${printData[i]}`);
-            try {
-                await characteristic.writeValue(encoder.encode("\n------------------------------\n"+input+"\n------------------------------\n"+"\n\n"));
-                console.log(encoder.encode(input));
-            } catch (error) {
-                console.log(error);
-            }
+        // console.log(`${printData[i]}`);
+        try {
+            await characteristic.writeValue(
+                encoder.encode(
+                    "\n------------------------------\n" +
+                        input +
+                        "\n------------------------------\n" +
+                        "\n\n"
+                )
+            );
+            console.log(encoder.encode(input));
+        } catch (error) {
+            console.log(error);
+        }
         // }
     };
 
