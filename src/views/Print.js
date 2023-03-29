@@ -1,5 +1,6 @@
 import React from "react";
 
+import Navbar from "../components/navbar";
 import "../css/print.css";
 
 export default function Print() {
@@ -74,6 +75,7 @@ export default function Print() {
                     </button> */}
                 </div>
             </div>
+            <Navbar value={3} />
         </>
     );
 }
