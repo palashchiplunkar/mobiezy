@@ -147,7 +147,7 @@ export default function DailyReport() {
                 className="no-collection-div"
                 style={{
                     display: noCollection == true ? "block" : "none",
-                    marginTop: "50%"
+                    marginTop: "40%"
                 }}
             >
                 No Collection Today
