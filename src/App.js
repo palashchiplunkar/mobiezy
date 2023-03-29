@@ -19,6 +19,7 @@ import PaymentHistory from "./views/PaymentHistory";
 import HistoryVisit from "./views/HistoryVisit";
 import RecordVisit from "./views/RecordVisit";
 import EditCustomer from "./views/EditCustomer";
+import EditSetTopBox from "./views/EditSetTopBox";
 function App() {
     return (
         <BrowserRouter>
@@ -56,6 +57,7 @@ function App() {
                     <Route path="/historyVist" element={<HistoryVisit />} />
                     <Route path="/recordVisit" element={<RecordVisit/>}/>
                     <Route path="/editCustomer" element={<EditCustomer/>}/>
+                    <Route path="/editSetTopBox" element={<EditSetTopBox/>}/>
                 </Route>
                 <Route path="/" element={<LoginPage />} />
             </Routes>
