@@ -7,7 +7,6 @@ import "../css/global.css";
 import { useNavigate } from "react-router-dom";
 
 export default function collectPayment() {
-
   // const navigate = useNavigate();
   const stbOptions = [
     {
