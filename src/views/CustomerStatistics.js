@@ -42,6 +42,7 @@ export default function CustomerStatistics() {
     useEffect(() => {
         fetchCustomerData();
     }, []);
+    
     useEffect(() => {
         setRealtimeData([
             {
