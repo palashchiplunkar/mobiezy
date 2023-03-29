@@ -63,6 +63,8 @@ export default function Print() {
                             alt=""
                         />
                     </div>
+                    {/* Add a input text field with some state */}
+                    
 
                     <button onClick={search} className="search-button">
                         Search
