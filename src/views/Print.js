@@ -50,10 +50,10 @@ export default function Print() {
         try {
             await characteristic.writeValue(
                 encoder.encode(
-                    "\n------------------------------\n" +
+                    "\n\n------------------------------\n" +
                         input +
                         "\n------------------------------\n" +
-                        "\n\n"
+                        "   \n\n  "
                 )
             );
             console.log(encoder.encode(input));
