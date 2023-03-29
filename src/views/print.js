@@ -22,11 +22,11 @@ export default function Print() {
         });
 
         let server = await device.gatt.connect();
-        setConnection(true);
-        setDeviceNew(device);
+        // setConnection(true);
+        // setDeviceNew(device);
     
     
-        console.log(devicenew.gatt);
+        // console.log(devicenew.gatt);
 
         let service = await server.getPrimaryService(
             "e7810a71-73ae-499d-8c15-faa9aef0c3f2"
