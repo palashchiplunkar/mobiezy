@@ -69,47 +69,33 @@ export default function PaymentHistory() {
                 <p className="card-name-p">Name : Nikhith Gowda Subrahmanya</p>
               </div>
 
-                            <div className="card-line2-div">
-                                <p
-                                    className="card-date-p"
-                                    style={{ fontWeight: "700" }}
-                                >
-                                    Customer ID : JB0213
-                                </p>
-                            </div>
+              <div className="card-line2-div">
+                <p className="card-date-p" style={{ fontWeight: "700" }}>
+                  Customer ID : JB0213
+                </p>
+              </div>
 
-                            <div className="card-line3-div">
-                                <div style={{ display: "flex" }}>
-                                    <TfiMobile className="card-mobileIcon" />
-                                    <p className="card-phone-p">9740769579</p>
-                                </div>
-
-                                <p
-                                    className="card-status-p"
-                                    style={{
-                                        backgroundColor: "Active"
-                                            ? "#a0c334"
-                                            : "Temporarily Disconnected"
-                                            ? "#DC1515"
-                                            : "#000000",
-                                    }}
-                                >
-                                    Active
-                                </p>
-                            </div>
-                        </div>
-                    </div>
+              <div className="card-line3-div">
+                <div style={{ display: "flex" }}>
+                  <TfiMobile className="card-mobileIcon" />
+                  <p className="card-phone-p">9740769579</p>
                 </div>
 
-                <div className="hty-btn-hzl">
-                    <button className="his-btn">PAYMENT HISTORY</button>
-                    <button className="his-btn">STB HISTORY</button>
-                </div>
-                <button className="his-btn" style={{ width: "80%" }}>
-                    PRINT TRANSACTION HISTORY
-                </button>
-                <div style={{ height: "100%", overflowY: "scroll" }}></div>
+                <p
+                  className="card-status-p"
+                  style={{
+                    backgroundColor: "Active"
+                      ? "#a0c334"
+                      : "Temporarily Disconnected"
+                      ? "#DC1515"
+                      : "#000000",
+                  }}
+                >
+                  Active
+                </p>
+              </div>
             </div>
+          </div>
         </div>
 
         <div className="hty-btn-hzl">
@@ -119,9 +105,19 @@ export default function PaymentHistory() {
         <button className="his-btn" style={{ width: "80%" }}>
           PRINT TRANSACTION HISTORY
         </button>
-        <div style={{width:"90%",overflowX:"scroll"}}>
-          {data.map((val) => {
-            return(
+        <div style={{ height: "100%", overflowY: "scroll" }}></div>
+      </div>
+
+      <div className="hty-btn-hzl">
+        <button className="his-btn">PAYMENT HISTORY</button>
+        <button className="his-btn">STB HISTORY</button>
+      </div>
+      <button className="his-btn" style={{ width: "80%" }}>
+        PRINT TRANSACTION HISTORY
+      </button>
+      <div style={{ width: "90%", overflowX: "scroll" }}>
+        {data.map((val) => {
+          return (
             <div style={{ width: "100%" }}>
               <div className="customer-card-div-history-below">
                 <div className="history-map-div1">
@@ -137,9 +133,9 @@ export default function PaymentHistory() {
                   <p className="card-date-p">₹275</p>
                 </div>
               </div>
-            </div>);
-          })}
-        </div>
+            </div>
+          );
+        })}
       </div>
     </div>
   );
