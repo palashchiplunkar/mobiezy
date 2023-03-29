@@ -1,11 +1,11 @@
 import React from "react";
 
 import Header from "../components/header";
-import "../css/global.css";
+import "../css/HistoryVisit.css";
 
 export default function HistoryVisit() {
     const headerProps = {
-        text: "History of Visits",
+        text: "History of Visit",
         height: "10vh",
     };
 
@@ -26,11 +26,55 @@ export default function HistoryVisit() {
         },
     ];
 
+    const CompViewList = ({ complaints }) => {
+        const CompViewDataList = complaints.map((data) => (
+            <>
+                <div className="agnt-border">
+                    <tr className="agnt-tr">
+                        <td className="agnt-name-label-td">Visited Agent</td>
+                        <td className="agnt-colon-td"> : </td>
+                        <td className="agnt-name-data-td">
+                            {data.visitedAgnt}
+                        </td>
+                    </tr>
+                    <tr className="agnt-tr">
+                        <td className="agnt-time-label-td">Visited Time</td>
+                        <td className="agnt-colon-td"> : </td>
+                        <td className="agnt-time-data-td">
+                            {data.visitedTime}
+                        </td>
+                    </tr>
+                </div>
+            </>
+        ));
+
+        return <>{CompViewDataList}</>;
+    };
+
     return (
-        <>
-            <div className="container">
-                <p>Hello</p>
+        <div className="history-visit-container">
+            <Header {...headerProps} />
+
+            <div className="cust-details-div">
+                <table className="cust-details-table">
+                    <tr className="cust-name-tr">
+                        <td className="cust-name-label-td">Customer Name</td>
+                        <td className="cust-colon-td"> : </td>
+                        <td className="cust-name-data-td">Sharath S Naik</td>
+                    </tr>
+                    <tr className="cust-id-tr">
+                        <td className="cust-id-label-td">Customer ID</td>
+                        <td className="cust-colon-td"> : </td>
+                        <td className="cust-id-data-td">213</td>
+                    </tr>
+                </table>
             </div>
-        </>
+
+            <div className="agnt-details-div">
+                <table className="agnt-details-table">
+                    <CompViewList complaints={tempData} />
+                </table>
+            </div>
+        </div>
     );
 }
