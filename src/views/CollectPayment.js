@@ -27,7 +27,7 @@ export default function CollectPayment() {
     {
       id: 4,
       name: "Retrack",
-      imgUrl: "retrack.png",
+      imgUrl: "sync_data.png",
     },
     {
       id: 5,
