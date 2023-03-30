@@ -17,13 +17,17 @@ self.addEventListener("install", (event) => {
 //Listen for Requests
 
 self.addEventListener("fetch", (event) => {
-    event.respondWith(
-        caches.match(event.request).then(() => {
-            return fetch(event.request).catch(() =>
-                caches.match("offline.html")
-            );
-        })
-    );
+    console.log('Fetch intercepted for:', event.request.url);
+    var request = event.request;
+    if (request.method === "GET") {
+        event.respondWith(
+            caches.match(event.request).then(() => {
+                return fetch(event.request).catch(() =>
+                    caches.match("offline.html")
+                );
+            })
+        );
+    }
 });
 
 //Activate the SW

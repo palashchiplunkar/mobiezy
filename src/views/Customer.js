@@ -17,6 +17,7 @@ export default function Customer() {
     const user = JSON.parse(
         localStorage.getItem("user") || sessionStorage.getItem("user")
     );
+
     const CustomerData = [
         {
             id: "KS00567",
@@ -57,11 +58,17 @@ export default function Customer() {
             window.history.pushState({}, "");
         });
 
-        API.dropdownAgentDataAPI({ operatorId: user.operatorId }).then(
-            (response) => {
+        try{
+            API.dropdownAgentDataAPI({ operatorId: user.operatorId })
+            .then(
+                (response) => {
                 setDropDownAreaData(response.data.all_areas);
-            }
-        );
+            });
+        }
+
+        catch(error){
+            console.log(error);
+        }
     }, []);
 
     const DropDownArea = () => {
