@@ -32,7 +32,7 @@ export default function CollectPayment() {
     {
       id: 5,
       name: "Resend Request",
-      imgUrl: "resend.png",
+      imgUrl: "resend_request.png",
     },
   ];
 
@@ -40,7 +40,7 @@ export default function CollectPayment() {
     {
       id: 1,
       name: "Edit Customer",
-      imgUrl: "Edit.png",
+      imgUrl: "edit_customer.png",
       toLink: "/editCustomer",
     },
     {
