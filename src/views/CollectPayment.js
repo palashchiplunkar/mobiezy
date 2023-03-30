@@ -17,17 +17,17 @@ export default function CollectPayment() {
     {
       id: 2,
       name: "Renew STB",
-      imgUrl: "renew.png",
+      imgUrl: "renew_stb.png",
     },
     {
       id: 3,
       name: "Add Channel",
-      imgUrl: "add.png",
+      imgUrl: "add_channel.png",
     },
     {
       id: 4,
       name: "Retrack",
-      imgUrl: "retrack.png",
+      imgUrl: "sync_data.png",
     },
     {
       id: 5,
