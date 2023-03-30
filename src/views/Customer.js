@@ -13,17 +13,17 @@ import "../css/global.css";
 export default function Customer() {
     const navigate = useNavigate();
 
-    window.addEventListener("online", handleConnection);
-    window.addEventListener("offline", handleConnection);
+    // window.addEventListener("online", handleConnection);
+    // window.addEventListener("offline", handleConnection);
 
-    function handleConnection() {
-        if (navigator.onLine) {
-            console.log("Online");
-        } else {
-            console.log("Offline");
-            window.location.reload();
-        }
-    }
+    // function handleConnection() {
+    //     if (navigator.onLine) {
+    //         console.log("Online");
+    //     } else {
+    //         console.log("Offline");
+    //         window.location.reload();
+    //     }
+    // }
 
     const [isVisible, setIsVisible] = useState(false);
     const [dropDownAreaData, setDropDownAreaData] = useState([]);

@@ -23,6 +23,18 @@ import EditSetTopBox from "./views/EditSetTopBox";
 import STBHistory from "./views/STBHistory";
 
 function App() {
+    
+    window.addEventListener("online", handleConnection);
+    window.addEventListener("offline", handleConnection);
+
+    function handleConnection() {
+        if (navigator.onLine) {
+            console.log("Online");
+        } else {
+            console.log("Offline");
+            window.location.reload();
+        }
+    }
   return (
     <BrowserRouter>
       <Routes>
