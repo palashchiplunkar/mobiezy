@@ -63,14 +63,14 @@ function MoreOptions() {
             name: "Renewal Report",
             imgUrl: "renewal_report.png",
             toLink: "",
-            toShow : MSO_ID === 0 ? true : true,
+            toShow : MSO_ID === 0 ? false : true,
         },
         {
             id: 8,
             name: "Wallet Recharge",
-            imgUrl: "wallet.png",
+            imgUrl: "wallet_recharge.png",
             toLink: "",
-            toShow : MSO_ID === 0 ? true : true,
+            toShow : MSO_ID === 0 ? false : true,
         },
     ];
 
@@ -105,6 +105,7 @@ function MoreOptions() {
                                     src={require("../assets/" + option.imgUrl)}
                                     alt={option.name}
                                     width={"45%"}
+                                    
                                 />
                                 <p>{option.name}</p>
                             </div>
