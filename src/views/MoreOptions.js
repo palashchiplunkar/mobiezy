@@ -40,14 +40,14 @@ function MoreOptions() {
         {
             id: 4,
             name: "View Complaints",
-            imgUrl: "complain1.png",
+            imgUrl: "complaints.png",
             toLink: "/complaints",
             toShow: true,
         },
         {
             id: 5,
             name: "Customer Summary",
-            imgUrl: "summary.png",
+            imgUrl: "cust_summary.png",
             toLink: "/customerStatistics",
             toShow: true,
         },
