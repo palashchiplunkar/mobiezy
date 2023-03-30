@@ -68,7 +68,7 @@ export default function CollectPayment() {
     {
       id: 6,
       name: "Update Location",
-      imgUrl: "update.png",
+      imgUrl: "update_location.png",
     },
     {
       id: 7,
