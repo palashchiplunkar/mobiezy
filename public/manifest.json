@@ -16,8 +16,5 @@
   "orientation": "portrait-primary",
   "description": "PWA App of MobiCable",
   "dir": "auto",
-  "lang": "en",
-  "display_override": [
-    "fullscreen"
-  ]
+  "lang": "en"
 }
