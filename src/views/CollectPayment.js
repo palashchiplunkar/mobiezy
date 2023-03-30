@@ -17,7 +17,7 @@ export default function collectPayment() {
     {
       id: 2,
       name: "Renew STB",
-      imgUrl: "renew.png",
+      imgUrl: "renew_stb.png",
     },
     {
       id: 3,
