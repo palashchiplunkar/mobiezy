@@ -46,7 +46,7 @@
   display: flex;
   flex-direction: column;
   background: transparent;
-  align-items: center;
+  align-items:flex-start;
   justify-content: center;
 }
 
@@ -58,7 +58,6 @@
   line-height: 133%;
   color: #333333;
   margin-bottom: 0;
-  margin-left: -40%;
 }
 
 .from-date-input {
@@ -93,7 +92,7 @@
   display: flex;
   flex-direction: column;
   background: transparent;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
 }
 
@@ -104,7 +103,6 @@
   font-size: 12px;
   line-height: 133%;
   color: #333333;
-  margin-left: -112%;
   margin-bottom: 0;
 }
 
@@ -150,11 +148,6 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   align-items: center;
   justify-content: center;
   width: 90%;
-  /* border-width: 3px;
-    border-style: solid;
-    border: 3px solid #1e90ff;
-    border-radius: 15px; */
-
   height: 100px;
   margin-top: 4%;
 
@@ -343,4 +336,20 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   justify-content: center;
   flex-direction: column;
   margin-bottom: 12%;
+}
+.inputFocus {
+  border: none;
+  border-bottom: 2px solid #0090da;
+  width: 15vh;
+  margin-top: 2px;
+}
+.inputFocus:focus {
+  border-bottom: 2px solid #0090da;
+}
+.inputFocus::placeholder {
+  font-family: "Noto Sans";
+  font-style: normal;
+  font-weight: 300;
+  font-size: 16px;
+  color: #333333;
 }
