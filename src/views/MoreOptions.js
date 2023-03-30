@@ -54,7 +54,7 @@ function MoreOptions() {
         {
             id: 6,
             name: "Area-wise Due Report ",
-            imgUrl: "due.png",
+            imgUrl: "Area_wise.png",
             toLink: "/areaWiseReport",
             toShow: true,
         },
@@ -63,14 +63,14 @@ function MoreOptions() {
             name: "Renewal Report",
             imgUrl: "renewal.png",
             toLink: "",
-            toShow : MSO_ID === 0 ? false : true,
+            toShow : MSO_ID === 0 ? true : true,
         },
         {
             id: 8,
             name: "Wallet Recharge",
             imgUrl: "wallet.png",
             toLink: "",
-            toShow : MSO_ID === 0 ? false : true,
+            toShow : MSO_ID === 0 ? true : true,
         },
     ];
 
