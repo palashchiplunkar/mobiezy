@@ -3,7 +3,6 @@ import { RiCalendarEventFill } from "react-icons/ri";
 import OwnerData from "../components/ownerdatadiv";
 import Header from "../components/header";
 import API from "../services/API";
-
 import "../css/MonthlyReport.css";
 import "../css/global.css";
 import { Spinner } from "react-bootstrap";
