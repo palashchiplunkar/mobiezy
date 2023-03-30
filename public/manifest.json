@@ -1,18 +1,20 @@
 {
     "short_name": "mobicable",
     "name": "Mobicable",
-    
     "icons": [
-        {
-            "src": "./logo/daily1.png",
-            "type": "image/png",
-            "sizes": "1024x1024"  
-        }
+      {
+        "src": "./logo/daily1.png",
+        "type": "image/png",
+        "sizes": "1024x1024"
+      }
     ],
     "start_url": ".",
     "scope": ".",
-    "display": "standalone",
+    "display": "fullscreen",
     "theme_color": "#000000",
     "background_color": "#ffffff",
-    "orientation": "portrait-primary"
-}
+    "orientation": "portrait-primary",
+    "description": "PWA App of MobiCable",
+    "dir": "auto",
+    "lang": "en"
+  }
