@@ -47,7 +47,7 @@ export default function PaymentHistory() {
   ];
   return (
     <>
-      <div className="HomeHeader" style={{height:"10vh"}}>
+      <div className="HomeHeader" style={{ height: "10vh" }}>
         <FaAngleLeft
           onClick={() => navigate("/home")}
           style={{
@@ -58,7 +58,7 @@ export default function PaymentHistory() {
         />
         <p className="HeaderLabelHistory">Payment History</p>
       </div>
-      <div style={{height:"42vh"}}>
+      <div style={{ height: "42vh" }}>
         <div className="StaticDiv">
           <div className="customer-card-div-history">
             <div
