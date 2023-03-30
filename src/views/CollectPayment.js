@@ -46,7 +46,7 @@ export default function CollectPayment() {
     {
       id: 2,
       name: "Edit STB",
-      imgUrl: "Editstb1.png",
+      imgUrl: "edit_stb.png",
       toLink: "/editSetTopBox",
     },
     {
