@@ -12,19 +12,6 @@ import "../css/global.css";
 
 export default function Customer() {
     const navigate = useNavigate();
-
-    // window.addEventListener("online", handleConnection);
-    // window.addEventListener("offline", handleConnection);
-
-    // function handleConnection() {
-    //     if (navigator.onLine) {
-    //         console.log("Online");
-    //     } else {
-    //         console.log("Offline");
-    //         window.location.reload();
-    //     }
-    // }
-
     const [isVisible, setIsVisible] = useState(false);
     const [dropDownAreaData, setDropDownAreaData] = useState([]);
 
@@ -72,24 +59,14 @@ export default function Customer() {
             window.history.pushState({}, "");
         });
 
-        try {
-            API.dropdownAgentDataAPI({ operatorId: user.operatorId })
-                .then((response) => {
-                    setDropDownAreaData(response.data.all_areas);
-                })
+        API.dropdownAgentDataAPI({ operatorId: user.operatorId })
+            .then((response) => {
+                setDropDownAreaData(response.data.all_areas);
+            })
 
-                .catch((error) => {
-                    // console.log(error);
-                    if (error.code === "ERR_NETWORK") {
-                        console.log(error.code);
-                        // window.location.reload();
-                        // window.history.go(0);
-                        // navigate("/offline")
-                    }
-                });
-        } catch (error) {
-            console.log("Error: " + error);
-        }
+            .catch((error) => {
+                console.log(error);
+            });
     }, []);
 
     const DropDownArea = () => {
