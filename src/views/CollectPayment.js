@@ -83,7 +83,7 @@ export default function CollectPayment() {
     {
       id: 9,
       name: "Record Visit",
-      imgUrl: "recordvis.png",
+      imgUrl: "record_visit.png",
       toLink: "/recordVisit",
     },
   ];
