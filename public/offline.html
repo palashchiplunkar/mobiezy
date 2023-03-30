@@ -15,10 +15,35 @@
     <link rel="manifest" href="./manifest.json" />
     <link rel="stylesheet" href="./offline.css" />
     <title>MobiCable</title>
+    <style>
+      .container{
+height: 100vh;
+flex-direction: column;
+display: flex;
+justify-content: center;
+align-items: center;
+}
+
+.message{
+    color: black ;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.retry{
+    width: 12vh;
+    color: white;
+    background-color: #0090DA;
+    border: none;
+    height: 6vh;
+    font-size: 2vh;
+    font-weight: bold;
+    border-radius: 2vh;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+}
+    </style>
   </head>
   <body>
     <div class="container">
-        <img src="./offline_image.jpg" alt="offline_image" width="100vh"/>
       <h1 class="message">No Internet connection</h1>
       <p class="message">Try checking your connection and Retry</p>
     <button type="submit" onclick="window.location.reload()" class="retry">RETRY</button>
