@@ -62,7 +62,7 @@ export default function CollectPayment() {
     {
       id: 5,
       name: "History",
-      imgUrl: "history.png",
+      imgUrl: "history_payment.png",
       toLink:"/history"
     },
     {
