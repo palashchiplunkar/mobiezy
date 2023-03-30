@@ -4,7 +4,7 @@ const urlsToCache = [
     // "/",
     // "/index.html",
     "/offline.html",
-    "/offline_image.jpg"
+    "./assets/offline_image.jpg"
     // "/static/js/main.chunk.js",
     // "/static/js/0.chunk.js",
     // "/static/js/bundle.js",

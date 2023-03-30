@@ -1,53 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" href="./logo/img2.png" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
-    <meta name="description" content="MobiCable" />
+    <head>
+        <meta charset="utf-8" />
+        <link rel="icon" href="./logo/img2.png" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="theme-color" content="#000000" />
+        <meta name="description" content="MobiCable" />
 
-    <!-- IOS Suppport -->
-    <link rel="apple-touch-icon" href="./logo/daily1.png" />
-    <meta name="apple-mobile-web-app-status-bar" content="#000000" />
-    <!-- IOS Support End -->
+        <!-- IOS Suppport -->
+        <link rel="apple-touch-icon" href="./logo/daily1.png" />
+        <meta name="apple-mobile-web-app-status-bar" content="#000000" />
+        <!-- IOS Support End -->
 
-    <link rel="manifest" href="./manifest.json" />
-    <link rel="stylesheet" href="./offline.css" />
-    <title>MobiCable</title>
-    <style>
-      .container{
-height: 100vh;
-flex-direction: column;
-display: flex;
-justify-content: center;
-align-items: center;
-}
+        <link rel="manifest" href="./manifest.json" />
+        <link rel="stylesheet" href="./offline.css" />
+        <title>MobiCable</title>
+        <style>
+            .container {
+                height: 100vh;
+                flex-direction: column;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
 
-.message{
-    color: black ;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-.retry{
-    width: 12vh;
-    color: white;
-    background-color: #0090DA;
-    border: none;
-    height: 6vh;
-    font-size: 2vh;
-    font-weight: bold;
-    border-radius: 2vh;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-
-}
-    </style>
-  </head>
-  <body>
-    <div class="container">
-      <img src="./offline_image.jpg" alt="offline"/>
-      <h1 class="message">No Internet connection</h1>
-      <p class="message">Try checking your connection and Retry</p>
-    <button type="submit" onclick="window.location.reload()" class="retry">RETRY</button>
-    </div>
-  </body>
+            .message {
+                color: black;
+                font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            }
+            .retry {
+                width: 12vh;
+                color: white;
+                background-color: #0090da;
+                border: none;
+                height: 6vh;
+                font-size: 2vh;
+                font-weight: bold;
+                border-radius: 2vh;
+                font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <img src="offline_image.png" alt="offline" />
+            <h1 class="message">No Internet connection</h1>
+            <p class="message">Try checking your connection and Retry</p>
+            <button
+                type="submit"
+                onclick="window.location.reload()"
+                class="retry"
+            >
+                RETRY
+            </button>
+        </div>
+    </body>
 </html>

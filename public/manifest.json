@@ -1,6 +1,6 @@
 {
-    "short_name": "mobicable",
     "name": "Mobicable",
+    "short_name": "mobicable",
     "icons": [
       {
         "src": "./logo/daily1.png",
