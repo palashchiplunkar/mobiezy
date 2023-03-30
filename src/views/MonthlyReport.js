@@ -23,8 +23,7 @@ export default function MonthlyReport() {
   const [startDateOpen, setstartDateOpen] = useState(false);
   const [endDateOpen, setendDateOpen] = useState(false);
   const [endDate, setendDate] = useState(null);
-  const [stdt, setstdt] = useState(null);
-  const [eddt, seteddt] = useState(null);
+
   const [Error, setError] = useState("");
   const user = JSON.parse(
     localStorage.getItem("user") || sessionStorage.getItem("user")
@@ -40,39 +39,14 @@ export default function MonthlyReport() {
   const handleDropChange = (e) => {
     setSelected(e.target.value);
   };
-  // useEffect(() => {
-  //     let date = new Date();
-  //     let date1 = date.toLocaleDateString().split("/");
-  //     setstdt(date1[2] + "-" + date1[0] + "-" + date1[1]);
-  //     seteddt(date1[2] + "-" + date1[0] + "-" + date1[1]);
-  // }, []);
-  const handlestartdate = (date) => {
-    // if (date) {
-    //     let date1 = date.toLocaleDateString().split("/");
 
-    //     let date2 = date1[0] + "-" + date1[1] + "-" + date1[2];
-    //     let date3 = date1[1] + "-" + date1[0] + "-" + date1[2];
-    //     setstartDate(date2);
-    //     setstdt(date1[2] + "-" + date1[0] + "-" + date1[1]);
-    //     console.log(stdt);
-    // }
-    // console.log(format(date,"yyyy/MM/dd"))
+  const handlestartdate = (date) => {
     setstartDate(format(date, "yyyy-MM-dd"));
     setstartDateOpen(!startDateOpen);
     setendDateOpen(false);
-
   };
 
   const handleenddate = (date) => {
-    // if (date) {
-    //   let date1 = date.toLocaleDateString().split("/");
-
-    //   let date2 = date1[0] + "-" + date1[1] + "-" + date1[2];
-    //   let date3 = date1[1] + "-" + date1[0] + "-" + date1[2];
-    //   setendDate(date2);
-    //   seteddt(date1[2] + "-" + date1[0] + "-" + date1[1]);
-    //   console.log(eddt);
-    // }
     setendDate(format(date, "yyyy-MM-dd"));
     setstartDateOpen(false);
     setendDateOpen(!endDateOpen);
@@ -166,7 +140,6 @@ export default function MonthlyReport() {
   };
 
   const getFilterReport = () => {
-
     console.log("getfilter report", selected);
     if (selected == "Owner Summary") {
       setIsLoading(true);
@@ -215,9 +188,9 @@ export default function MonthlyReport() {
   };
 
   useEffect(() => {
-      setIsLoading(true);
-      fetchDropdownData();
-      fetchOwnerData();
+    setIsLoading(true);
+    fetchDropdownData();
+    fetchOwnerData();
   }, []);
 
   const Owners = () => {
@@ -245,25 +218,15 @@ export default function MonthlyReport() {
       <div className="date-report">
         <div className="from-date">
           <p className="from-date-label">From Date</p>
-
-          {/* <DatePicker
-                        calendarIcon={
-                            <RiCalendarEventFill style={{ color: "#0090DA" }} />
-                        }
-                        onChange={(date) => handlestartdate(date)}
-                        value={startDate}
-                        monthPlaceholder={"MM"}
-                        dayPlaceholder={"DD"}
-                        yearPlaceholder={"YY"}
-                        className={"react-datepicker"}
-                        clearIcon={null}
-                    /> */}
           <div>
             <input
               readOnly
               value={startDate || ""}
               className="inputFocus"
-              onClick={() => setstartDateOpen(!startDateOpen)}
+              onClick={() => {
+                setstartDateOpen(!startDateOpen);
+                setendDateOpen(false);
+              }}
               placeholder={"From Date"}
             />
             <RiCalendarEventFill
@@ -273,7 +236,10 @@ export default function MonthlyReport() {
                 height: "3vh",
                 marginLeft: "10px",
               }}
-              onClick={() => setstartDateOpen(!startDateOpen)}
+              onClick={() => {
+                setstartDateOpen(!startDateOpen);
+                setendDateOpen(false);
+              }}
             />
           </div>
           {startDateOpen && (
@@ -302,7 +268,10 @@ export default function MonthlyReport() {
               readOnly
               value={endDate || ""}
               className="inputFocus"
-              onClick={() => setendDateOpen(!endDateOpen)}
+              onClick={() => {
+                setendDateOpen(!endDateOpen);
+                setstartDateOpen(false);
+              }}
               placeholder={"End Date"}
             />
             <RiCalendarEventFill
@@ -312,11 +281,14 @@ export default function MonthlyReport() {
                 height: "3vh",
                 marginLeft: "10px",
               }}
-              onClick={() => setendDateOpen(endDateOpen)}
+              onClick={() => {
+                setendDateOpen(endDateOpen);
+                setstartDateOpen(false);
+              }}
             />
           </div>
           {endDateOpen && (
-            <div style={{ position: "absolute", top: "4vh",right:"0.5vh"}}>
+            <div style={{ position: "absolute", top: "4vh", right: "0.5vh" }}>
               <Calendar date={new Date()} onChange={handleenddate} />
             </div>
           )}
@@ -336,7 +308,9 @@ export default function MonthlyReport() {
           <OwnerSelection />
           {/* <option value={data.customerName}>{data.customerName}</option> */}
         </select>
-        <button className="get-report-btn" onClick={getFilterReport}>Get Report</button>
+        <button className="get-report-btn" onClick={getFilterReport}>
+          Get Report
+        </button>
       </div>
 
       <div style={{ display: "flex", justifyContent: "center" }}>
