@@ -52,7 +52,7 @@ export default function CollectPayment() {
     {
       id: 3,
       name: "Send Payment Link",
-      imgUrl: "payment.png",
+      imgUrl: "send_payment.png",
     },
     {
       id: 4,
