@@ -1,0 +1,24 @@
+.container{
+height: 100vh;
+flex-direction: column;
+display: flex;
+justify-content: center;
+align-items: center;
+}
+
+.message{
+    color: black ;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.retry{
+    width: 12vh;
+    color: white;
+    background-color: #0090DA;
+    border: none;
+    height: 6vh;
+    font-size: 2vh;
+    font-weight: bold;
+    border-radius: 2vh;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+}
