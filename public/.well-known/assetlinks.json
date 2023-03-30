@@ -1,0 +1,6 @@
+[{
+        "relation": ["delegate_permission/common.handle_all_urls"],
+        "target" : { "namespace": "android_app", "package_name": "com.mobiezy.mobicable",
+                     "sha256_cert_fingerprints": ["DD:64:3E:70:2F:96:AC:EE:E8:D6:D3:C4:86:DF:15:4D:9D:5E:F0:DF:34:38:F7:2C:E0:40:29:8D:49:9E:E8:AE"] }
+      }
+]

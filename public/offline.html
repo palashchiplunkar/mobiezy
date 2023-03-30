@@ -12,22 +12,82 @@
         <meta name="apple-mobile-web-app-status-bar" content="#000000" />
         <!-- IOS Support End -->
 
-        <link rel="manifest" href="./manifest.json" />
+    <link rel="manifest" href="./manifest.json" />
+    <link rel="stylesheet" href="./offline.css" />
+    <title>MobiCable</title>
+    <style>
+      .container {
+        height: 100vh;
+        flex-direction: column;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
 
-        <title>MobiCable</title>
-    </head>
-    <body>
-        <div
-            style="
-                height: 100vh;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-            "
+      .message {
+        color: black;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+      .retry {
+        width: 12vh;
+        color: white;
+        background-color: #0090da;
+        border: none;
+        height: 6vh;
+        font-size: 2vh;
+        font-weight: bold;
+        border-radius: 2vh;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+    </style>
+  </head>
+  <body style="overflow: hidden;">
+    <div class="container" >
+      <!-- <img src="./offline_image.jpg" alt="offline"/> -->
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        version="1.0"
+        width="100.000000pt"
+        height="100.000000pt"
+        viewBox="0 0 600.000000 600.000000"
+        preserveAspectRatio="xMidYMid meet"
+      >
+        <g
+          transform="translate(0.000000,612.000000) scale(0.100000,-0.100000)"
+          fill="#000000"
+          stroke="none"
         >
-            <div style="background-color: cyan; padding: 40px 40px">
-                <p>You are offline please connect to internet.</p>
-            </div>
-        </div>
-    </body>
+          <path
+            d="M840 5185 l-135 -135 1905 -1905 c1048 -1048 1910 -1905 1915 -1905 6 0 69 59 140 130 l130 130 -1910 1910 -1910 1910 -135 -135z"
+          />
+          <path
+            d="M2840 4974 c-269 -25 -521 -66 -720 -119 -126 -34 -323 -95 -332 -104 -4 -4 89 -103 207 -221 l214 -214 114 27 c465 109 959 120 1407 31 514 -103 991 -334 1375 -667 123 -107 152 -122 245 -122 86 0 135 21 196 82 53 53 74 105 74 189 0 125 -36 170 -305 384 -309 245 -768 477 -1177 596 -333 96 -598 134 -978 138 -151 2 -295 2 -320 0z"
+          />
+          <path
+            d="M990 4365 c-184 -117 -372 -255 -429 -315 -87 -92 -84 -257 7 -361 50 -57 114 -84 202 -84 90 1 104 7 255 120 138 103 279 197 384 255 44 25 81 47 81 50 0 3 -89 94 -198 203 l-198 198 -104 -66z"
+          />
+          <path
+            d="M2860 4004 c-107 -12 -276 -37 -284 -41 -4 -3 101 -115 234 -248 l242 -242 146 -6 c485 -22 900 -176 1275 -474 96 -76 135 -93 218 -93 109 0 222 85 253 191 20 66 20 92 0 158 -20 68 -69 121 -209 226 -366 274 -757 436 -1235 510 -100 16 -551 29 -640 19z"
+          />
+          <path
+            d="M1675 3644 c-167 -92 -370 -228 -432 -290 -87 -87 -105 -202 -48 -314 70 -139 255 -188 383 -102 22 15 86 59 143 98 129 88 260 162 381 215 51 23 97 45 103 50 10 10 -381 409 -400 409 -5 0 -64 -30 -130 -66z"
+          />
+          <path
+            d="M3885 2640 c181 -181 331 -330 333 -330 2 0 14 24 27 53 47 100 26 215 -54 297 -53 54 -198 146 -318 201 -80 37 -281 109 -306 109 -6 0 137 -148 318 -330z"
+          />
+          <path
+            d="M2455 2916 c-205 -75 -418 -187 -513 -271 -179 -157 -82 -451 157 -472 73 -7 116 7 211 67 199 126 409 202 638 231 l94 12 -233 233 c-129 129 -241 234 -249 234 -8 -1 -55 -16 -105 -34z"
+          />
+          <path
+            d="M2943 2055 c-130 -35 -244 -129 -302 -247 -150 -308 76 -667 420 -668 256 0 463 208 462 465 -2 218 -139 395 -348 450 -72 18 -163 18 -232 0z"
+          />
+        </g>
+      </svg>
+      <h1 class="message">No Internet connection</h1>
+      <p class="message">Try checking your connection and Retry</p>
+      <button type="submit" onclick="window.location.reload()" class="retry">
+        RETRY
+      </button>
+    </div>
+  </body>
 </html>
