@@ -21,53 +21,39 @@ import RecordVisit from "./views/RecordVisit";
 import EditCustomer from "./views/EditCustomer";
 import EditSetTopBox from "./views/EditSetTopBox";
 import STBHistory from "./views/STBHistory";
-import Offline from "./views/Offline";
 
 function App() {
-    return (
-        <BrowserRouter>
-            <Routes>
-                <Route element={<PrivateRoutes />}>
-                    <Route path="/select" element={<SelectLanguage />} />
-                    <Route path="/home" element={<HomePage />} />
-                    <Route path="/customer" element={<Customer />} />
-                    <Route
-                        path="/customerDrawer"
-                        element={<customerDrawer />}
-                    />
-                    <Route path="/monthlyReport" element={<MonthReport />} />
-                    <Route path="/dailyReport" element={<DailyReport />} />
-                    <Route path="/more" element={<MoreOptions />} />
-                    <Route
-                        path="/areaWiseReport"
-                        element={<AreaWiseReport />}
-                    />
-                    <Route
-                        path="/subExpiryReport"
-                        element={<SubscriptionExpiryReport />}
-                    />
-                    <Route
-                        path="/collectPayment"
-                        element={<CollectPayment />}
-                    />
-                    <Route
-                        path="/customerStatistics"
-                        element={<CustomerStatistics />}
-                    />
-                    <Route path="/complaints" element={<Complaints />} />
-                    <Route path="/history" element={<PaymentHistory />} />
-                    <Route path="/print" element={<Print/>} />
-                    <Route path="/historyVisit" element={<HistoryVisit />} />
-                    <Route path="/recordVisit" element={<RecordVisit/>}/>
-                    <Route path="/editCustomer" element={<EditCustomer/>}/>
-                    <Route path="/editSetTopBox" element={<EditSetTopBox/>}/>
-                    <Route path="/stbHistory" element={<STBHistory/>}/>
-                </Route>
-                <Route path="/" element={<LoginPage />} />
-                <Route path="/offline" element={<Offline/>}/>
-            </Routes>
-        </BrowserRouter>
-    );
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route element={<PrivateRoutes />}>
+          <Route path="/select" element={<SelectLanguage />} />
+          <Route path="/home" element={<HomePage />} />
+          <Route path="/customer" element={<Customer />} />
+          <Route path="/customerDrawer" element={<customerDrawer />} />
+          <Route path="/monthlyReport" element={<MonthReport />} />
+          <Route path="/dailyReport" element={<DailyReport />} />
+          <Route path="/more" element={<MoreOptions />} />
+          <Route path="/areaWiseReport" element={<AreaWiseReport />} />
+          <Route
+            path="/subExpiryReport"
+            element={<SubscriptionExpiryReport />}
+          />
+          <Route path="/collectPayment" element={<CollectPayment />} />
+          <Route path="/customerStatistics" element={<CustomerStatistics />} />
+          <Route path="/complaints" element={<Complaints />} />
+          <Route path="/history" element={<PaymentHistory />} />
+          <Route path="/print" element={<Print />} />
+          <Route path="/historyVisit" element={<HistoryVisit />} />
+          <Route path="/recordVisit" element={<RecordVisit />} />
+          <Route path="/editCustomer" element={<EditCustomer />} />
+          <Route path="/editSetTopBox" element={<EditSetTopBox />} />
+          <Route path="/stbHistory" element={<STBHistory />} />
+        </Route>
+        <Route path="/" element={<LoginPage />} />
+      </Routes>
+    </BrowserRouter>
+  );
 }
 
 export default App;

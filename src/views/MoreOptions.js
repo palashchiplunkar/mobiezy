@@ -40,35 +40,35 @@ function MoreOptions() {
         {
             id: 4,
             name: "View Complaints",
-            imgUrl: "complain1.png",
+            imgUrl: "complaints.png",
             toLink: "/complaints",
             toShow: true,
         },
         {
             id: 5,
             name: "Customer Summary",
-            imgUrl: "summary.png",
+            imgUrl: "cust_summary.png",
             toLink: "/customerStatistics",
             toShow: true,
         },
         {
             id: 6,
             name: "Area-wise Due Report ",
-            imgUrl: "due.png",
+            imgUrl: "Area_wise.png",
             toLink: "/areaWiseReport",
             toShow: true,
         },
         {
             id: 7,
             name: "Renewal Report",
-            imgUrl: "renewal.png",
+            imgUrl: "renewal_report.png",
             toLink: "",
             toShow : MSO_ID === 0 ? false : true,
         },
         {
             id: 8,
             name: "Wallet Recharge",
-            imgUrl: "wallet.png",
+            imgUrl: "wallet_recharge.png",
             toLink: "",
             toShow : MSO_ID === 0 ? false : true,
         },
@@ -105,6 +105,7 @@ function MoreOptions() {
                                     src={require("../assets/" + option.imgUrl)}
                                     alt={option.name}
                                     width={"45%"}
+                                    
                                 />
                                 <p>{option.name}</p>
                             </div>
