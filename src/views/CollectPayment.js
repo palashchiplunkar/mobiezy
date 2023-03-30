@@ -22,7 +22,7 @@ export default function collectPayment() {
     {
       id: 3,
       name: "Add Channel",
-      imgUrl: "add.png",
+      imgUrl: "add_channel.png",
     },
     {
       id: 4,
