@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { RiCalendarEventFill } from "react-icons/ri";
 import OwnerData from "../components/ownerdatadiv";
 import Header from "../components/header";
@@ -7,241 +7,246 @@ import "../css/MonthlyReport.css";
 import "../css/global.css";
 import { Spinner } from "react-bootstrap";
 import DatePicker from "react-date-picker";
+import { Calendar } from "react-date-range";
+import { format } from "date-fns";
+import "react-date-range/dist/styles.css";
+import "react-date-range/dist/theme/default.css";
 
 export default function MonthlyReport() {
-    const [agentData, setAgentData] = useState([]);
-    const [CollectedAmount, setCollectedAmount] = useState(0);
-    const [length, setLength] = useState(0);
-    const [ownerDataforDropdown, setOwnerDataforDropdown] = useState([]);
-    const [isLoading, setIsLoading] = useState(false);
-    const [selected, setSelected] = useState("Owner Summary");
-    const [startDate, setstartDate] = useState(null);
-    const [endDate, setendDate] = useState(null);
-    const [stdt, setstdt] = useState(null);
-    const [eddt, seteddt] = useState(null);
-    const [Error, setError] = useState("");
-    const user = JSON.parse(
-        localStorage.getItem("user") || sessionStorage.getItem("user")
-    );
+  const [agentData, setAgentData] = useState([]);
+  const [CollectedAmount, setCollectedAmount] = useState(0);
+  const [length, setLength] = useState(0);
+  const [ownerDataforDropdown, setOwnerDataforDropdown] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [selected, setSelected] = useState("Owner Summary");
+  const [startDate, setstartDate] = useState(null);
+  const [startDateOpen, setstartDateOpen] = useState(false);
+  const [endDateOpen, setendDateOpen] = useState(false);
+  const [endDate, setendDate] = useState(null);
+  const [stdt, setstdt] = useState(null);
+  const [eddt, seteddt] = useState(null);
+  const [Error, setError] = useState("");
+  const user = JSON.parse(
+    localStorage.getItem("user") || sessionStorage.getItem("user")
+  );
 
-    const OwnerSelection = () => {
-        const OwnerSelectionData = agentData.map((data) => {
-            return <option value={data.Agent_Id}>{data.Name}</option>;
-        });
-        return OwnerSelectionData;
-    };
+  const OwnerSelection = () => {
+    const OwnerSelectionData = agentData.map((data) => {
+      return <option value={data.Agent_Id}>{data.Name}</option>;
+    });
+    return OwnerSelectionData;
+  };
 
-    const handleDropChange = (e) => {
-        setSelected(e.target.value);
-    };
-    useEffect(() => {
-        let date = new Date();
-        let date1 = date.toLocaleDateString().split("/");
-        setstdt(date1[2] + "-" + date1[0] + "-" + date1[1]);
-        seteddt(date1[2] + "-" + date1[0] + "-" + date1[1]);
-    }, []);
-    const handlestartdate = (date) => {
-        if (date) {
-            let date1 = date.toLocaleDateString().split("/");
+  const handleDropChange = (e) => {
+    setSelected(e.target.value);
+  };
+  // useEffect(() => {
+  //     let date = new Date();
+  //     let date1 = date.toLocaleDateString().split("/");
+  //     setstdt(date1[2] + "-" + date1[0] + "-" + date1[1]);
+  //     seteddt(date1[2] + "-" + date1[0] + "-" + date1[1]);
+  // }, []);
+  const handlestartdate = (date) => {
+    // if (date) {
+    //     let date1 = date.toLocaleDateString().split("/");
 
-            let date2 = date1[0] + "-" + date1[1] + "-" + date1[2];
-            let date3 = date1[1] + "-" + date1[0] + "-" + date1[2];
-            setstartDate(date2);
-            setstdt(date1[2] + "-" + date1[0] + "-" + date1[1]);
-            console.log(stdt);
-        }
-    };
+    //     let date2 = date1[0] + "-" + date1[1] + "-" + date1[2];
+    //     let date3 = date1[1] + "-" + date1[0] + "-" + date1[2];
+    //     setstartDate(date2);
+    //     setstdt(date1[2] + "-" + date1[0] + "-" + date1[1]);
+    //     console.log(stdt);
+    // }
+    // console.log(format(date,"yyyy/MM/dd"))
+    setstartDate(format(date, "yyyy-MM-dd"));
+    setstartDateOpen(!startDateOpen);
+    setendDateOpen(false);
 
-    const handleenddate = (date) => {
-        if (date) {
-            let date1 = date.toLocaleDateString().split("/");
+  };
 
-            let date2 = date1[0] + "-" + date1[1] + "-" + date1[2];
-            let date3 = date1[1] + "-" + date1[0] + "-" + date1[2];
-            setendDate(date2);
-            seteddt(date1[2] + "-" + date1[0] + "-" + date1[1]);
-            console.log(eddt);
-        }
-    };
+  const handleenddate = (date) => {
+    // if (date) {
+    //   let date1 = date.toLocaleDateString().split("/");
 
-    const fetchOwnerData = (agentType) => {
-        let ownerDataRequest;
-        if (agentType) {
-            ownerDataRequest = {
-                agentId: user.agentId,
-                considerAgentType: agentType,
-                operatorId: user.operatorId,
-                Startdate: stdt ? stdt : "",
-                Enddate: eddt ? eddt : "",
-                dailyReport: "F",
-                flag: "N",
-            };
-            console.log("filterowner", ownerDataRequest);
-            setOwnerDataforDropdown([]);
+    //   let date2 = date1[0] + "-" + date1[1] + "-" + date1[2];
+    //   let date3 = date1[1] + "-" + date1[0] + "-" + date1[2];
+    //   setendDate(date2);
+    //   seteddt(date1[2] + "-" + date1[0] + "-" + date1[1]);
+    //   console.log(eddt);
+    // }
+    setendDate(format(date, "yyyy-MM-dd"));
+    setstartDateOpen(false);
+    setendDateOpen(!endDateOpen);
+  };
 
-            try {
-                API.OwnerMonthlyReportAPI(ownerDataRequest).then((response) => {
-                    if (response.data.report.length > 0) {
-                        // Set owner data state to the API response
-                        setIsLoading(false);
-                        setOwnerDataforDropdown(response.data.report);
-                        setCollectedAmount(
-                            response.data.report[0].totalCollectedAmount
-                        );
+  const fetchOwnerData = (agentType) => {
+    let ownerDataRequest;
+    if (agentType) {
+      ownerDataRequest = {
+        agentId: user.agentId,
+        considerAgentType: agentType,
+        operatorId: user.operatorId,
+        Startdate: startDate ? startDate : "",
+        Enddate: endDate ? endDate : "",
+        dailyReport: "F",
+        flag: "N",
+      };
+      console.log("filterowner", ownerDataRequest);
+      setOwnerDataforDropdown([]);
 
-                        // get length of the response
-                        const length = response.data.report.length;
-                        setLength(length);
-                        setError("");
-                    } else {
-                        console.log("filterowner", response);
-                        setOwnerDataforDropdown([]);
-                        setCollectedAmount(0);
-                        setLength(0);
-                        setError("No details Found");
-                    }
-                });
-            } catch (error) {
-                setError("No details Found");
-                console.log(error.message);
-            }
-        } else {
-            ownerDataRequest = {
-                agentId: user.agentId,
-                operatorId: user.operatorId,
-                Startdate: "",
-                Enddate: "",
-                flag: "N",
-                dailyReport: "N",
-            };
-
-            console.log("owner", ownerDataRequest);
-            setOwnerDataforDropdown([]);
-
-            try {
-                API.dailyReportAPI(ownerDataRequest).then((response) => {
-                    if (response.data.report.length > 0) {
-                        setIsLoading(false);
-                        console.log(response);
-                        setOwnerDataforDropdown(response.data.report);
-                        setCollectedAmount(
-                            response.data.report[0].totalCollectedAmount
-                        );
-                        const length = response.data.report.length;
-                        setLength(length);
-                        setError("");
-                    } else {
-                        setOwnerDataforDropdown([]);
-                        setCollectedAmount(0);
-                        setLength(0);
-                        setError("No details Found");
-                    }
-                });
-            } catch (error) {
-                setError("No details Found");
-                console.log(error.message);
-            }
-        }
-    };
-
-    const fetchDropdownData = () => {
-        try {
-            API.dropdownAgentDataAPI({ operatorId: user.operatorId }).then(
-                (response) => {
-                    setAgentData(response.data.all_agents);
-                    setIsLoading(false);
-                }
-            );
-        } catch (error) {
-            console.log(error);
+      try {
+        API.dailyReportAPI(ownerDataRequest).then((response) => {
+          if (response.data.report.length > 0) {
             setIsLoading(false);
-        }
-    };
-
-    const getFilterReport = () => {
-        console.log(stdt, eddt);
-
-        console.log("getfilter report", selected);
-        if (selected == "Owner Summary") {
-            setIsLoading(true);
-            fetchOwnerData("Y");
-            setIsLoading(false);
-        } else {
-            setIsLoading(true);
+            setOwnerDataforDropdown(response.data.report);
+            setCollectedAmount(response.data.report[0].totalCollectedAmount);
+            const length = response.data.report.length;
+            setLength(length);
             setError("");
-
-            const body = {
-                agentId: selected,
-                considerAgentType: "N",
-                operatorId: user.operatorId,
-                Startdate: stdt ? stdt : "",
-                Enddate: eddt ? eddt : "",
-                dailyReport: "N",
-            };
-            console.log("Agent Api Called ", body);
+          } else {
+            console.log("filterowner", response);
             setOwnerDataforDropdown([]);
-            API.dailyReportAPI(body)
-                .then((response) => {
-                    if (response.data.report.length > 0) {
-                        setOwnerDataforDropdown(response.data.report);
-
-                        setCollectedAmount(
-                            response.data.report[0].totalCollectedAmount
-                        );
-                        const length = response.data.report.length;
-                        setLength(length);
-                        setError("");
-                    } else {
-                        setOwnerDataforDropdown([]);
-                        setError("No Details Found");
-                        setCollectedAmount(0);
-                        setLength(0);
-                    }
-                    setIsLoading(false);
-                })
-                .catch((err) => {
-                    setIsLoading(false);
-                    setCollectedAmount(0);
-                    setLength(0);
-                    setError("No Details Found");
-
-                    console.log(err.message);
-                });
-        }
-    };
-
-    useEffect(() => {
-        setIsLoading(true);
-        fetchDropdownData();
-        fetchOwnerData();
-    }, []);
-
-    const Owners = () => {
-        const OwnerDataList = ownerDataforDropdown.map((data) => {
-            return (
-                <OwnerData
-                    ownerid={data.customerId}
-                    owneramt={data.collectedAmount}
-                    ownername={data.customerName}
-                />
-            );
+            setCollectedAmount(0);
+            setLength(0);
+            setError("No details Found");
+          }
         });
-        return OwnerDataList;
-    };
+      } catch (error) {
+        setError("No details Found");
+        console.log(error.message);
+      }
+    } else {
+      ownerDataRequest = {
+        agentId: user.agentId,
+        operatorId: user.operatorId,
+        Startdate: "",
+        Enddate: "",
+        flag: "N",
+        dailyReport: "N",
+      };
 
-    const headerprops = {
-        text: "Monthly Report",
-        height: "10vh",
-    };
+      console.log("owner", ownerDataRequest);
+      setOwnerDataforDropdown([]);
 
-    return (
-        <div className="container-report">
-            <Header {...headerprops} />
+      try {
+        API.dailyReportAPI(ownerDataRequest).then((response) => {
+          if (response.data.report.length > 0) {
+            setIsLoading(false);
+            console.log(response);
+            setOwnerDataforDropdown(response.data.report);
+            setCollectedAmount(response.data.report[0].totalCollectedAmount);
+            const length = response.data.report.length;
+            setLength(length);
+            setError("");
+          } else {
+            setOwnerDataforDropdown([]);
+            setCollectedAmount(0);
+            setLength(0);
+            setError("No details Found");
+          }
+        });
+      } catch (error) {
+        setError("No details Found");
+        console.log(error.message);
+      }
+    }
+  };
 
-            <div className="date-report">
-                <div className="from-date">
-                    <p className="from-date-label">From Date</p>
-                    <DatePicker
+  const fetchDropdownData = () => {
+    try {
+      API.dropdownAgentDataAPI({ operatorId: user.operatorId }).then(
+        (response) => {
+          setAgentData(response.data.all_agents);
+          setIsLoading(false);
+        }
+      );
+    } catch (error) {
+      console.log(error);
+      setIsLoading(false);
+    }
+  };
+
+  const getFilterReport = () => {
+
+    console.log("getfilter report", selected);
+    if (selected == "Owner Summary") {
+      setIsLoading(true);
+      fetchOwnerData("Y");
+      setIsLoading(false);
+    } else {
+      setIsLoading(true);
+      setError("");
+
+      const body = {
+        agentId: selected,
+        considerAgentType: "N",
+        operatorId: user.operatorId,
+        Startdate: startDate ? startDate : "",
+        Enddate: endDate ? endDate : "",
+        dailyReport: "N",
+      };
+      console.log("Agent Api Called ", body);
+      setOwnerDataforDropdown([]);
+      API.dailyReportAPI(body)
+        .then((response) => {
+          if (response.data.report.length > 0) {
+            setOwnerDataforDropdown(response.data.report);
+
+            setCollectedAmount(response.data.report[0].totalCollectedAmount);
+            const length = response.data.report.length;
+            setLength(length);
+            setError("");
+          } else {
+            setOwnerDataforDropdown([]);
+            setError("No Details Found");
+            setCollectedAmount(0);
+            setLength(0);
+          }
+          setIsLoading(false);
+        })
+        .catch((err) => {
+          setIsLoading(false);
+          setCollectedAmount(0);
+          setLength(0);
+          setError("No Details Found");
+
+          console.log(err.message);
+        });
+    }
+  };
+
+  useEffect(() => {
+      setIsLoading(true);
+      fetchDropdownData();
+      fetchOwnerData();
+  }, []);
+
+  const Owners = () => {
+    const OwnerDataList = ownerDataforDropdown.map((data) => {
+      return (
+        <OwnerData
+          ownerid={data.customerId}
+          owneramt={data.collectedAmount}
+          ownername={data.customerName}
+        />
+      );
+    });
+    return OwnerDataList;
+  };
+
+  const headerprops = {
+    text: "Monthly Report",
+    height: "10vh",
+  };
+
+  return (
+    <div className="container-report">
+      <Header {...headerprops} />
+
+      <div className="date-report">
+        <div className="from-date">
+          <p className="from-date-label">From Date</p>
+
+          {/* <DatePicker
                         calendarIcon={
                             <RiCalendarEventFill style={{ color: "#0090DA" }} />
                         }
@@ -252,12 +257,35 @@ export default function MonthlyReport() {
                         yearPlaceholder={"YY"}
                         className={"react-datepicker"}
                         clearIcon={null}
-                    />
-                </div>
+                    /> */}
+          <div>
+            <input
+              readOnly
+              value={startDate || ""}
+              className="inputFocus"
+              onClick={() => setstartDateOpen(!startDateOpen)}
+              placeholder={"From Date"}
+            />
+            <RiCalendarEventFill
+              style={{
+                color: "#0090DA",
+                width: "3vh",
+                height: "3vh",
+                marginLeft: "10px",
+              }}
+              onClick={() => setstartDateOpen(!startDateOpen)}
+            />
+          </div>
+          {startDateOpen && (
+            <div style={{ position: "absolute", top: "4vh", left: "0.5vh" }}>
+              <Calendar date={new Date()} onChange={handlestartdate} />
+            </div>
+          )}
+        </div>
 
-                <div className="to-date">
-                    <p className="to-date-label">End Date</p>
-                    <DatePicker
+        <div className="to-date">
+          <p className="to-date-label">End Date</p>
+          {/* <DatePicker
                         calendarIcon={
                             <RiCalendarEventFill style={{ color: "#0090DA" }} />
                         }
@@ -268,65 +296,86 @@ export default function MonthlyReport() {
                         yearPlaceholder={"YY"}
                         className={"react-datepicker-wrapper"}
                         clearIcon={null}
-                    />
-                </div>
+                    /> */}
+          <div>
+            <input
+              readOnly
+              value={endDate || ""}
+              className="inputFocus"
+              onClick={() => setendDateOpen(!endDateOpen)}
+              placeholder={"End Date"}
+            />
+            <RiCalendarEventFill
+              style={{
+                color: "#0090DA",
+                width: "3vh",
+                height: "3vh",
+                marginLeft: "10px",
+              }}
+              onClick={() => setendDateOpen(endDateOpen)}
+            />
+          </div>
+          {endDateOpen && (
+            <div style={{ position: "absolute", top: "4vh",right:"0.5vh"}}>
+              <Calendar date={new Date()} onChange={handleenddate} />
             </div>
-
-            <div className="get-report-div">
-                <select
-                    className="get-report-dropdown"
-                    id="ownerselect"
-                    value={selected}
-                    onChange={handleDropChange}
-                >
-                    <option value={"Owner Summary"}>Owner Summary</option>
-                    <option value="0">Office</option>
-                    <option value="1">Online</option>
-                    <OwnerSelection />
-                    {/* <option value={data.customerName}>{data.customerName}</option> */}
-                </select>
-                <button className="get-report-btn" onClick={getFilterReport}>
-                    Get Report
-                </button>
-            </div>
-
-            <div style={{ display: "flex", justifyContent: "center" }}>
-                {isLoading && (
-                    <Spinner
-                        animation="border"
-                        variant="info"
-                        style={{ marginTop: "100px" }}
-                    />
-                )}
-                {Error && <p style={{ marginTop: "100px" }}>{Error}</p>}
-            </div>
-
-            <div className="report-data">
-                <Owners />
-            </div>
-
-            <div className="float-div">
-                <div className="report-total">
-                    <div className="total-amount-collected">
-                        <p className="total-amount-collected-label">
-                            Total Amount Collected :{" "}
-                        </p>
-                        <p className="total-amount-collected-value">
-                            ₹{""}
-                            {CollectedAmount}
-                        </p>
-                    </div>
-
-                    <div className="total-amount-collected">
-                        <p className="no-of-transactions-label">
-                            Number of Transactions :{" "}
-                        </p>
-                        <p className="no-of-transactions-value">{length}</p>
-                    </div>
-                </div>
-
-                <button className="print-report-btn">PRINT REPORT</button>
-            </div>
+          )}
         </div>
-    );
+      </div>
+
+      <div className="get-report-div">
+        <select
+          className="get-report-dropdown"
+          id="ownerselect"
+          value={selected}
+          onChange={handleDropChange}
+        >
+          <option value={"Owner Summary"}>Owner Summary</option>
+          <option value="0">Office</option>
+          <option value="1">Online</option>
+          <OwnerSelection />
+          {/* <option value={data.customerName}>{data.customerName}</option> */}
+        </select>
+        <button className="get-report-btn" onClick={getFilterReport}>Get Report</button>
+      </div>
+
+      <div style={{ display: "flex", justifyContent: "center" }}>
+        {isLoading && (
+          <Spinner
+            animation="border"
+            variant="info"
+            style={{ marginTop: "100px" }}
+          />
+        )}
+        {Error && <p style={{ marginTop: "100px" }}>{Error}</p>}
+      </div>
+
+      <div className="report-data">
+        <Owners />
+      </div>
+
+      <div className="float-div">
+        <div className="report-total">
+          <div className="total-amount-collected">
+            <p className="total-amount-collected-label">
+              Total Amount Collected :{" "}
+            </p>
+            <p className="total-amount-collected-value">
+              ₹{""}
+              {CollectedAmount}
+            </p>
+          </div>
+
+          <div className="total-amount-collected">
+            <p className="no-of-transactions-label">
+              Number of Transactions :{" "}
+            </p>
+            <p className="no-of-transactions-value">{length}</p>
+          </div>
+        </div>
+
+        <button className="print-report-btn">PRINT REPORT</button>
+      </div>
+    </div>
+  );
 }
