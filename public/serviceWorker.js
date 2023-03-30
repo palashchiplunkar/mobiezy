@@ -4,6 +4,7 @@ const urlsToCache = [
     // "/",
     // "/index.html",
     "/offline.html",
+    "/offline_image.jpg"
     // "/static/js/main.chunk.js",
     // "/static/js/0.chunk.js",
     // "/static/js/bundle.js",
@@ -27,7 +28,7 @@ self.addEventListener("fetch", (event) => {
     // if (request.method === "GET") {
     if (!navigator.onLine) {
         event.respondWith(
-            caches.match(event.request).then((resp) => {
+            caches.match(event.request).then(() => {
                 return fetch(event.request).catch(() =>
                     caches.match("offline.html")
                 );
