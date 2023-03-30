@@ -61,7 +61,7 @@ function MoreOptions() {
         {
             id: 7,
             name: "Renewal Report",
-            imgUrl: "renewal.png",
+            imgUrl: "renewal_report.png",
             toLink: "",
             toShow : MSO_ID === 0 ? true : true,
         },
