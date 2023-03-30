@@ -73,7 +73,7 @@ export default function CollectPayment() {
     {
       id: 7,
       name: "Print Last Bill",
-      imgUrl: "print.png",
+      imgUrl: "print_bill.png",
     },
     {
       id: 8,
