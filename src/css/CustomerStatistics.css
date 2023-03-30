@@ -1,180 +1,177 @@
 .container-customer-statistics {
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    /* justify-content: center; */
-    background-color: #ffffff;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* justify-content: center; */
+  background-color: #ffffff;
 }
 
 .headerblue-customer-statistics {
-    background-color: var(--primay-app-color);
-    height: 10vh;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  background-color: var(--primay-app-color);
+  height: 10vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .customer-statistics-label {
-    font-family: "Noto Sans", sans-serif;
-    font-style: normal;
-    font-weight: 700;
-    font-size: 20px;
-    line-height: 150%;
-    display: flex;
-    align-items: center;
-    text-align: center;
-    letter-spacing: 0.2px;
-    color: #ffffff;
-    margin-top: 8%;
-    margin-bottom: 8%;
+  font-family: "Noto Sans", sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 150%;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  letter-spacing: 0.2px;
+  color: #ffffff;
+  margin-top: 8%;
+  margin-bottom: 8%;
 }
 
 .customer-statistics-data-container {
-    width: 85%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    justify-self: center;
-    flex-direction: column;
-    border: 4px solid transparent;
-    border-radius: 15px;
-    background-image: linear-gradient(white, white),
-        linear-gradient(to bottom right, var(--primay-app-color), #a4ce4e);
-    background-origin: border-box;
-    background-clip: content-box, border-box;
-    /* column */
-    margin-top: 5%;
+  width: 85%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  justify-self: center;
+  flex-direction: column;
+  border: 4px solid transparent;
+  border-radius: 15px;
+  background-image: linear-gradient(white, white),
+    linear-gradient(to bottom right, var(--primay-app-color), #a4ce4e);
+  background-origin: border-box;
+  background-clip: content-box, border-box;
+  /* column */
+  margin-top: 5%;
 }
 
 .customer-statistics-data-div-1,
 .customer-statistics-data-div-2,
 .customer-statistics-data-div-3,
 .customer-statistics-data-div-4 {
-    display: flex;
-    justify-content: space-between;
-    width: 85%;
-    align-items: center;
-    border: 4px solid transparent;
-    border-radius: 15px;
-    background-origin: border-box;
-    background-clip: content-box, border-box;
-    display: subgrid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr 1fr;
-    grid-gap: 10px;
+  display: flex;
+  justify-content: space-between;
+  width: 85%;
+  align-items: center;
+  border: 4px solid transparent;
+  border-radius: 15px;
+  background-origin: border-box;
+  background-clip: content-box, border-box;
+  display: subgrid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
+  grid-gap: 10px;
 }
 
 .line {
-    width: 85%;
-    height: 1px;
-    background-color: #d9d9d6;
+  width: 85%;
+  height: 1px;
+  background-color: #d9d9d6;
 }
 
 .customer-statistics-data-label {
-    font-family: "Noto Sans";
-    font-style: normal;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 114%;
-    display: flex;
-    align-items: center;
-    letter-spacing: 0.2px;
-    color: #000000;
+  font-family: "Noto Sans";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 114%;
+  display: flex;
+  align-items: center;
+  letter-spacing: 0.2px;
+  color: #000000;
 }
 
 .customer-statistics-data-12 {
-    width: 70%;
+  width: 70%;
 }
 
 .customer-statistics-data-label-number {
-    width: 15px;
+  width: 15px;
 }
 
 .PieChartDiv {
-    width: 85%;
-    height: 100%;
-    margin-top: 5%;
-    margin-bottom: 5%;
-    overflow-x: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow-y: hidden;
-    border: 4px solid transparent;
-    border-radius: 15px;
-    background-image: linear-gradient(white, white),
-        linear-gradient(to bottom right, #0090da, #a4ce4e);
-    background-origin: border-box;
-    background-clip: content-box, border-box;
+  width: 85%;
+  height: 100%;
+  margin-top: 5%;
+  margin-bottom: 5%;
+  overflow-x: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow-y: hidden;
+  border: 4px solid transparent;
+  border-radius: 15px;
+  background-image: linear-gradient(white, white),
+    linear-gradient(to bottom right, #0090da, #a4ce4e);
+  background-origin: border-box;
+  background-clip: content-box, border-box;
 }
 
 .recharts-legend-wrapper {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    top: 0;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  top: 0;
 }
 
 .pie-chart-with-legend {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-    width: 400px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  width: 400px;
 }
 
 .pie-chart-legend {
-    flex-basis: 100%;
-    width: 400px;
+  flex-basis: 100%;
+  width: 400px;
 }
 
 .recharts-legend-wrapper {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: -70%;
-    /* width: 500px !important; */
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: -70%;
+  /* width: 500px !important; */
 }
 
 .custom-legend {
-    align-self: center;
-    /* width: 100%; */
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+  align-self: center;
+  /* width: 100%; */
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 
-
-
-    /* width: 200px !important; */
+  /* width: 200px !important; */
 }
 
 .legend-item {
-    display: block;
-    align-items: center;
-    margin-right: 10px;
-    margin-bottom: 5px;
-    /* width: 100%; */
-    /* width: 400px; */
+  display: block;
+  align-items: center;
+  margin-right: 10px;
+  margin-bottom: 5px;
+  /* width: 100%; */
+  /* width: 400px; */
 }
 
 .legend-icon {
-    display: inline-block;
-    width: 10px;
-    height: 10px;
-    margin-right: 5px;
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  margin-right: 5px;
 }
 
 .legend-text {
-    display: inline-flex;
-    font-size: 14px;
+  display: inline-flex;
+  font-size: 14px;
 }
 
-.recharts-default-legend{
-    display:inline-grid;
-    text-align: left !important;
-
+.recharts-default-legend {
+  display: inline-grid;
+  text-align: left !important;
 }

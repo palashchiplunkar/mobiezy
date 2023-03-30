@@ -1,157 +1,159 @@
 .active {
-    position: fixed;
-    top: 0;
-    left: -100%;
-    width: 90%;
-    height: 90%;
-    background-color: #fff;
-    z-index: 100;
-    margin-top: 10px;
-    transition: 950ms;
+  position: fixed;
+  top: 0;
+  left: -100%;
+  width: 90%;
+  height: 90%;
+  background-color: #fff;
+  z-index: 100;
+  margin-top: 10px;
+  transition: 950ms;
 }
-.inactive{
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 90%;
-    height: 90%;
-    background-color: #fff;
-    z-index: 100;
-    margin-top: 10px;
-    transition: 350ms;
+.inactive {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 90%;
+  height: 90%;
+  background-color: #fff;
+  z-index: 100;
+  margin-top: 10px;
+  transition: 350ms;
 }
 .ham-drawer__header {
-    width: 100%;
-    height: 20vh;
-    background-color: var(--primay-app-color);
+  width: 100%;
+  height: 20vh;
+  background-color: var(--primay-app-color);
 }
 .ham-drawer__space {
-    width: 100%;
-    height: 3vh;
-    background-color: var(--primay-app-color);
+  width: 100%;
+  height: 3vh;
+  background-color: var(--primay-app-color);
 }
 .ham-drawer_user_details {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px;
-    box-sizing: border-box;
-    border-radius: 10px;
-    border: 1px solid #fff;
-    height: 15vh;
-    width: 92%;
-    margin-left: auto;
-    margin-right: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  box-sizing: border-box;
+  border-radius: 10px;
+  border: 1px solid #fff;
+  height: 15vh;
+  width: 92%;
+  margin-left: auto;
+  margin-right: auto;
 
-    /* Add gradient border color of #A4CE4E and #0090DA */
-    border: 1px solid linear-gradient(90deg, #a4ce4e 0%, var(--primay-app-color) 100%);
+  /* Add gradient border color of #A4CE4E and #0090DA */
+  border: 1px solid
+    linear-gradient(90deg, #a4ce4e 0%, var(--primay-app-color) 100%);
 }
 .ham-drawer__profile_img {
-    width: 67.3px;
-    height: 65px;
-    border-radius: 50%;
-    background-color: #fff;
+  width: 67.3px;
+  height: 65px;
+  border-radius: 50%;
+  background-color: #fff;
 }
 .ham-drawer__user_name {
-    font-family: "Noto Sans";
-    font-style: normal;
-    font-weight: 700;
-    font-size: 16px;
-    line-height: 150%;
-    /* or 144% */
+  font-family: "Noto Sans";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 150%;
+  /* or 144% */
 
-    text-align: center;
+  text-align: center;
 
-    color: #ffff;
-    display: flex;
-    align-items: center;
-    letter-spacing: 0.2px;
-    position: absolute;
-    top: 5%;
-    left: 35%;
+  color: #ffff;
+  display: flex;
+  align-items: center;
+  letter-spacing: 0.2px;
+  position: absolute;
+  top: 5%;
+  left: 35%;
 }
 .ham-drawer__user_email {
-    /* Add this below username */
+  /* Add this below username */
 
-    font-family: "Noto Sans";
-    font-style: normal;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 150%;
-    /* or 21px */
+  font-family: "Noto Sans";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 150%;
+  /* or 21px */
 
-    text-align: center;
+  text-align: center;
 
-    color: #ffff;
-    display: flex;
-    align-items: center;
-    letter-spacing: 0.2px;
-    position: absolute;
-    top: 10%;
-    left: 35%;
+  color: #ffff;
+  display: flex;
+  align-items: center;
+  letter-spacing: 0.2px;
+  position: absolute;
+  top: 10%;
+  left: 35%;
 }
 .ham-drawer__user_phone {
-    /* Add this below username */
+  /* Add this below username */
 
-    font-family: "Noto Sans";
-    font-style: normal;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 150%;
-    /* or 21px */
+  font-family: "Noto Sans";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 150%;
+  /* or 21px */
 
-    text-align: center;
+  text-align: center;
 
-    color: #ffff;
-    display: flex;
-    align-items: center;
-    letter-spacing: 0.2px;
-    position: absolute;
-    top: 15%;
-    left: 35%;
+  color: #ffff;
+  display: flex;
+  align-items: center;
+  letter-spacing: 0.2px;
+  position: absolute;
+  top: 15%;
+  left: 35%;
 }
 .ham-drawer__body {
-    margin-top: 30px;
+  margin-top: 30px;
 }
 .ham-drawer__body__item {
-    /* margin-top: 10px; */
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px;
-    box-sizing: border-box;
-    border-radius: 10px;
-    border: 1px solid #fff;
-    /* height: 15vh; */
-    width: 92%;
-    margin-left: auto;
-    margin-right: auto;
+  /* margin-top: 10px; */
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  box-sizing: border-box;
+  border-radius: 10px;
+  border: 1px solid #fff;
+  /* height: 15vh; */
+  width: 92%;
+  margin-left: auto;
+  margin-right: auto;
 
-    /* Add gradient border color of #A4CE4E and #0090DA */
-    border: 1px solid linear-gradient(90deg, #a4ce4e 0%, var(--primay-app-color) 100%);
+  /* Add gradient border color of #A4CE4E and #0090DA */
+  border: 1px solid
+    linear-gradient(90deg, #a4ce4e 0%, var(--primay-app-color) 100%);
 }
 
 .ham-drawer__body__item__arrow {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-right: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 10px;
 }
 .ham-drawer__body__item__text {
-    font-family: "Noto Sans";
-    font-style: normal;
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 150%;
-    /* or 24px */
+  font-family: "Noto Sans";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 150%;
+  /* or 24px */
 
-    display: flex;
-    align-items: center;
-    letter-spacing: 0.2px;
+  display: flex;
+  align-items: center;
+  letter-spacing: 0.2px;
 
-    /* Darkest Gray */
+  /* Darkest Gray */
 
-    color: #333333;
+  color: #333333;
 }
