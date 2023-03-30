@@ -12,7 +12,7 @@ export default function collectPayment() {
     {
       id: 1,
       name: "Import Packs",
-      imgUrl: "import.jpg",
+      imgUrl: "import_packs.png",
     },
     {
       id: 2,
