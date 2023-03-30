@@ -78,7 +78,7 @@ export default function CollectPayment() {
     {
       id: 8,
       name: "Locate Address",
-      imgUrl: "locate.png",
+      imgUrl: "location_collect.png",
     },
     {
       id: 9,
