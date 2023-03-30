@@ -138,13 +138,16 @@ select::placeholder {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 90%;
+  width: 100%;
   margin-top: 5%;
 }
 .Collapsible__trigger1 {
-  display: grid;
+  /* display: grid;
   grid-auto-flow: column;
-  grid-column-gap: 125px;
+  grid-column-gap: 15vh; */
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
   white-space: nowrap;
   font-family: "Noto Sans";
   font-style: normal;
@@ -158,9 +161,9 @@ select::placeholder {
 
 .Collapsible__trigger1Open {
   padding: 20px 10px 20px 10px;
-  display: grid;
-  grid-auto-flow: column;
-  grid-column-gap: 125px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
   white-space: nowrap;
   font-family: "Noto Sans";
   font-style: normal;
@@ -171,13 +174,13 @@ select::placeholder {
   border: 2px solid #0090da;
   border-radius: 15px 15px 0 0;
   border-bottom: hidden;
-  transition: 400ms;
+  transition: 200ms;
 }
 .Collapsible__trigger2 {
   margin-top: 20px;
-  display: grid;
-  grid-auto-flow: column;
-  grid-column-gap: 80px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
   white-space: nowrap;
   font-family: "Noto Sans";
   font-style: normal;
@@ -192,9 +195,9 @@ select::placeholder {
 .Collapsible__trigger2Open {
   margin-top: 20px;
   padding: 20px 10px 20px 10px;
-  display: grid;
-  grid-auto-flow: column;
-  grid-column-gap: 80px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
   white-space: nowrap;
   font-family: "Noto Sans";
   font-style: normal;
@@ -206,7 +209,7 @@ select::placeholder {
   border: 2px solid #0090da;
   border-radius: 15px 15px 0 0;
   border-bottom: hidden;
-  transition: 400ms;
+  transition: 200ms;
 }
 
 .Collapsible__trigger2.is-open {
@@ -242,13 +245,12 @@ select::placeholder {
 
 .STBOptionsContainer {
   display: grid;
-  /* margin-top: 20%; */
   grid-template-columns: auto auto auto;
 }
 .STBEachOption {
   width: 75px;
   height: 75px;
-  margin: 20%;
+  margin: 10%;
   overflow: hidden;
   background-color: #d9d9d9;
   border-radius: 10px;
