@@ -50,8 +50,12 @@ export default function HomePage() {
                     );
                 })
 
-                .catch((e) => {
-                    console.log(e);
+                .catch((error) => {
+                    console.log(error.code);
+                    if (error.code === "ERR_NETWORK" || "ERR_INTERNET_DISCONNECTED") {
+                        // alert("No Internet")
+                        // window.location.reload();
+                    }
                 });
         }
     };
@@ -92,7 +96,10 @@ export default function HomePage() {
                     </p>
 
                     <div className="amt-due-today-div">
-                        <label className="amt-due-today-content" onClick={() => navigate("/customer")}>
+                        <label
+                            className="amt-due-today-content"
+                            onClick={() => navigate("/customer")}
+                        >
                             {t("HO_lbl_Unpaid")}
                         </label>
                         <label className="amt-due-today-content">

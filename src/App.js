@@ -21,6 +21,8 @@ import RecordVisit from "./views/RecordVisit";
 import EditCustomer from "./views/EditCustomer";
 import EditSetTopBox from "./views/EditSetTopBox";
 import STBHistory from "./views/STBHistory";
+import Offline from "./views/Offline";
+
 function App() {
     return (
         <BrowserRouter>
@@ -62,6 +64,7 @@ function App() {
                     <Route path="/stbHistory" element={<STBHistory/>}/>
                 </Route>
                 <Route path="/" element={<LoginPage />} />
+                <Route path="/offline" element={<Offline/>}/>
             </Routes>
         </BrowserRouter>
     );

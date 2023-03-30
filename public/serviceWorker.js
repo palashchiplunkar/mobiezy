@@ -1,6 +1,13 @@
 //STORAGE OF BROWSER
 const CACHE_NAME = "version-1";
-const urlsToCache = ["index.html", "offline.html"];
+const urlsToCache = [
+    // "/",
+    // "/index.html",
+    "/offline.html",
+    // "/static/js/main.chunk.js",
+    // "/static/js/0.chunk.js",
+    // "/static/js/bundle.js",
+];
 
 //Install SW
 
@@ -8,7 +15,6 @@ self.addEventListener("install", (event) => {
     event.waitUntil(
         caches.open(CACHE_NAME).then((cache) => {
             console.log("Opened Cache");
-
             return cache.addAll(urlsToCache);
         })
     );
@@ -17,17 +23,18 @@ self.addEventListener("install", (event) => {
 //Listen for Requests
 
 self.addEventListener("fetch", (event) => {
-    console.log('Fetch intercepted for:', event.request.url);
-    var request = event.request;
-    if (request.method === "GET") {
+    // var request = event.request;
+    // if (request.method === "GET") {
+    if (!navigator.onLine) {
         event.respondWith(
-            caches.match(event.request).then(() => {
+            caches.match(event.request).then((resp) => {
                 return fetch(event.request).catch(() =>
                     caches.match("offline.html")
                 );
             })
         );
     }
+    // }
 });
 
 //Activate the SW

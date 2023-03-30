@@ -6,14 +6,28 @@ import Drawer from "react-bottom-drawer";
 import { TfiMobile } from "react-icons/tfi";
 import { useNavigate } from "react-router";
 import API from "../services/API";
+
 import "../css/Customer.css";
 import "../css/global.css";
 
 export default function Customer() {
+    const navigate = useNavigate();
+
+    window.addEventListener("online", handleConnection);
+    window.addEventListener("offline", handleConnection);
+
+    function handleConnection() {
+        if (navigator.onLine) {
+            console.log("Online");
+        } else {
+            console.log("Offline");
+            window.location.reload();
+        }
+    }
+
     const [isVisible, setIsVisible] = useState(false);
     const [dropDownAreaData, setDropDownAreaData] = useState([]);
 
-    const navigate = useNavigate();
     const user = JSON.parse(
         localStorage.getItem("user") || sessionStorage.getItem("user")
     );
@@ -58,16 +72,23 @@ export default function Customer() {
             window.history.pushState({}, "");
         });
 
-        try{
+        try {
             API.dropdownAgentDataAPI({ operatorId: user.operatorId })
-            .then(
-                (response) => {
-                setDropDownAreaData(response.data.all_areas);
-            });
-        }
+                .then((response) => {
+                    setDropDownAreaData(response.data.all_areas);
+                })
 
-        catch(error){
-            console.log(error);
+                .catch((error) => {
+                    // console.log(error);
+                    if (error.code === "ERR_NETWORK") {
+                        console.log(error.code);
+                        // window.location.reload();
+                        // window.history.go(0);
+                        // navigate("/offline")
+                    }
+                });
+        } catch (error) {
+            console.log("Error: " + error);
         }
     }, []);
 
@@ -77,7 +98,7 @@ export default function Customer() {
         });
         return DropDownAreaData;
     };
-    
+
     const Customers = () => {
         const eachCustomer = CustomerData.map((customer) => {
             return (
