@@ -74,7 +74,7 @@ export default function Customer() {
                 className="card-price-p"
                 style={{
                   color:
-                    customer.totalPayableAmount >= 0 ? "#DC1515" : "#a0c334",
+                    customer.totalPayableAmount > 0 ? "#DC1515" : "#a0c334",
                 }}
               >
                 ₹ {customer.totalPayableAmount}
@@ -122,7 +122,7 @@ export default function Customer() {
   const onClose = React.useCallback(() => {
     setIsVisible(false);
   }, []);
-  
+
   const openDrawer = React.useCallback(() => setIsVisible(true), []);
   const ChangeDataBasedOnFilter = () => {
     const data = customerData;
