@@ -59,6 +59,14 @@ export default function HomePage() {
                 });
         }
     };
+    
+    window.addEventListener("load", function () {
+        window.history.pushState({}, "");
+    });
+
+    window.addEventListener("popstate", function () {
+        window.history.pushState({}, "");
+    });
 
     useEffect(() => {
         // window.history.pushState({}, "");
@@ -74,13 +82,6 @@ export default function HomePage() {
         //     }
         // });
 
-        window.addEventListener('load', function() {
-            window.history.pushState({}, '')
-          })
-          
-          window.addEventListener('popstate', function() {
-            window.history.pushState({}, '')
-          })
         getHomeData();
     }, []);
 
