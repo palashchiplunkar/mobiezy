@@ -3,7 +3,7 @@
   "short_name": "mobicable",
   "icons": [
     {
-      "src": "./logo/daily1.png",
+      "src": "./logo/MobiCableLogo.png",
       "type": "image/png",
       "sizes": "1024x1024"
     }
