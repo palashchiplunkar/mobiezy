@@ -94,7 +94,7 @@ export default function PaymentHistory() {
 
           <div className="hty-btn-hzl">
             <button className="his-btn">PAYMENT HISTORY</button>
-            <button className="his-btn" onClick={()=>navigate("/stbHistory")}>STB HISTORY</button>
+            <button className="his-btn" onClick={()=>navigate("stbHistory")}>STB HISTORY</button>
           </div>
           <button className="his-btn" style={{ width: "80%" }}>
             PRINT TRANSACTION HISTORY
