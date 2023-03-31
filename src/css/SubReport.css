@@ -55,7 +55,7 @@
 .expiry-report-head-div {
   display: flex;
   justify-content: space-between;
-  width: 85%;
+  width: 90%;
   height: 70px;
   margin-top: 4%;
   align-items: center;
@@ -80,7 +80,7 @@
 .expiry-report-data-div {
   display: flex;
   justify-content: space-between;
-  width: 85%;
+  width: 90%;
   height: 50px;
   margin-top: 4%;
   align-items: center;
@@ -144,17 +144,19 @@
   outline: none;
   cursor: pointer;
 }
+
 .expiryCountTable {
+  width:80%;
   margin-top: 20px;
   border: 2px solid transparent;
   border-radius: 10px;
-  background-image: linear-gradient(white, white),
-    linear-gradient(to bottom right, #0090da, #a4ce4e);
+  /* background-image: linear-gradient(white, white),
+    linear-gradient(to bottom right, #0090da, #a4ce4e); */
   background-origin: border-box;
   background-clip: content-box, border-box;
 }
 .expiryCountTable tr th {
-  width: 105px;
+  /* width: 105px; */
   padding: 10px;
   font-family: "Noto Sans";
   font-style: normal;
