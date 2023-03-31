@@ -47,7 +47,7 @@ function MoreOptions() {
         {
             id: 5,
             name: "Customer Summary",
-            imgUrl: "cust_summary.png",
+            imgUrl: "cust_summary.svg",
             toLink: "/customerStatistics",
             toShow: true,
         },
