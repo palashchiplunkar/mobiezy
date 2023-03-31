@@ -43,6 +43,7 @@ export default function Complaints() {
     useEffect(() => {
         setLoading(true);
         fetchComplaints();
+       
     }, []);
     const formatDate = (dateString) => {
         const date = new Date(dateString);
@@ -126,17 +127,18 @@ export default function Complaints() {
                 onClose={() => setAlert(false)}
                 aria-labelledby="alert-dialog-title"
                 aria-describedby="alert-dialog-description"
+                style={{borderRadius:"25px"}}
             >
                 <DialogTitle
                     id="alert-dialog-title"
-                    style={{ fontFamily: "Noto Sans", marginLeft: "5%" }}
+                    style={{ fontFamily: "Noto Sans", marginLeft: "5%",fontStyle: "normal", fontWeight:"700", fontSize:"18px",color:"#333333"}}
                 >
                     Complaint Management
                 </DialogTitle>
                 <DialogContent>
                     <DialogContentText style={{ marginLeft: "5%" }}>
                         {/* One Horizontal Line */}
-                        <div className="line"></div>
+                        <div className="alert-line"></div>
                         <div>
                             <p>Complaint Id : {selectedComplaint.COMP_ID} </p>
                             <p>
