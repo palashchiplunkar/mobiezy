@@ -122,57 +122,35 @@ export default function Customer() {
   const onClose = React.useCallback(() => {
     setIsVisible(false);
   }, []);
-
+  
   const openDrawer = React.useCallback(() => setIsVisible(true), []);
   const ChangeDataBasedOnFilter = () => {
     const data = customerData;
-    // setfiltercustomerData(data);
+  
     if (sortOptions === "Paid") {
-      let paidCustomer = data.filter((customer) => {
-        return customer.totalPayableAmount <= 0;
-      });
-      console.log("paidCustomer", paidCustomer);
-      setfiltercustomerData(
-        data.filter((customer) => {
-          return customer.totalPayableAmount <= 0;
-        })
-      );
-      console.log(
-        "filtercustomerData",
-        data.filter((customer) => {
-          return customer.totalPayableAmount <= 0;
-        })
-      );
+      setfiltercustomerData(data.filter(customer => customer.totalPayableAmount <= 0));
     } else if (sortOptions === "Unpaid") {
-      const unpaidCustomer = data.filter((customer) => {
-        return customer.totalPayableAmount > 0;
-      });
-      setfiltercustomerData(unpaidCustomer);
+      setfiltercustomerData(data.filter(customer => customer.totalPayableAmount > 0));
     } else {
       setfiltercustomerData(data);
     }
+  
     if (sortBy === "CustomerId") {
-      const sortedData = filtercustomerData.sort((a, b) => {
-        return a.managedCustomerId - b.managedCustomerId;
-      });
-      console.log("sortedData", sortedData);
-      setfiltercustomerData(sortedData);
+      setfiltercustomerData(prevState => [...prevState].sort((a, b) => a.managedCustomerId - b.managedCustomerId));
     } else if (sortBy === "CustomerName") {
-      const sortedData = filtercustomerData.sort((a, b) => {
-        return a.customerName.localeCompare(b.customerName);
-      });
-      setfiltercustomerData(sortedData);
+      setfiltercustomerData(prevState => [...prevState].sort((a, b) => a.customerName.localeCompare(b.customerName)));
     }
+  
     if (sortType === "ASC") {
-      const sortedData = filtercustomerData.reverse();
-      setfiltercustomerData(sortedData);
-    } else if (sortType === "DESC") {
-      const sortedData = filtercustomerData;
-      console.log(sortedData);
-      setfiltercustomerData(sortedData);
+      setfiltercustomerData(prevState => [...prevState].reverse());
     }
   };
-  const handleFilterSubmit = (e) => {
+  
+  useEffect(() => {
+    console.log(filtercustomerData);
+  }, [filtercustomerData]);
+  
+  const handleFilterSubmit = e => {
     e.preventDefault();
     setIsVisible(false);
     ChangeDataBasedOnFilter();
