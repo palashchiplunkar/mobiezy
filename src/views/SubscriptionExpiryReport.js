@@ -85,6 +85,15 @@ export default function SubscriptionExpiryReport() {
       };
     }, [date]);
 
+    useEffect(() => {
+      window.history.pushState({}, "");
+      window.addEventListener("popstate", function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        console.log("popstate");
+    });
+    },[]);
+
     return (
       <table className="expiryCountTable">
         <tr className="borderExpiryHead">
