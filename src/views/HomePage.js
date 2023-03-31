@@ -61,17 +61,22 @@ export default function HomePage() {
         }
     };
 
-    useEffect(() => {
-        window.history.pushState({}, "");
-        window.addEventListener("popstate", function () {
-            // e.preventDefault();
-            // e.stopPropagation();
-            window.history.pushState({}, "");
-            window.close();
-            console.log("Back Button Clicked");
-        });
+    // useEffect(() => {
+    //     window.history.pushState({}, "");
+    //     window.addEventListener("popstate", function () {
+    //         e.preventDefault();
+    //         e.stopPropagation();
+    //         window.history.pushState({}, "");
+    //     });
 
-        getHomeData();
+    //     getHomeData();
+    // }, []);
+
+    useEffect(() => {
+        if (window.matchMedia('(display-mode: standalone)').matches) {
+            // If yes, navigate back to the original website URL
+            window.location.href = 'https://mobiezy-internship.vercel.app';
+          }
     }, []);
 
     return (
