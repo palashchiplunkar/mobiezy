@@ -9,11 +9,11 @@
   height: 75px;
   margin: 20%;
   overflow: hidden;
-  background-color: #d9d9d9;
+  background-color: white;
   border-radius: 10px;
   border-image: linear-gradient(to right, #0090da, #a4ce4e) 1;
   border: 2px solid transparent;
-  background-image: linear-gradient(#d9d9d9, #d9d9d9),
+  background-image: linear-gradient(white, white),
     linear-gradient(to bottom right, #0090da, #a4ce4e);
   background-origin: border-box;
   background-clip: content-box, border-box;
