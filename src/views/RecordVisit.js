@@ -47,7 +47,7 @@ export default function RecordVisit() {
             </table>
           </div>
           <button className="record-visit-button">SUBMIT</button>
-          <button className="visited-history-button" onClick={()=>navigate("/historyVisit")}>
+          <button className="visited-history-button" onClick={()=>navigate("historyVisit")}>
             VIEW VISITED HISTORY
           </button>
         </div>
