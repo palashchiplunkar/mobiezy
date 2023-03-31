@@ -46,8 +46,9 @@ export default function HistoryVisit() {
   };
 
   return (
+    <>
+    <Header name={"History of Visits"}/>
     <div className="history-visit-container">
-      <Header {...headerProps} />
 
       <div className="cust-details-div">
         <table className="cust-details-table">
@@ -72,5 +73,6 @@ export default function HistoryVisit() {
         </table>
       </div>
     </div>
+    </>
   );
 }

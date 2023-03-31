@@ -212,8 +212,10 @@ export default function MonthlyReport() {
   };
 
   return (
+    <>
+    <Header name={"Monthly Report"} />
+
     <div className="container-report">
-      <Header {...headerprops} />
 
       <div className="date-report">
         <div className="from-date">
@@ -251,18 +253,7 @@ export default function MonthlyReport() {
 
         <div className="to-date">
           <p className="to-date-label">End Date</p>
-          {/* <DatePicker
-                        calendarIcon={
-                            <RiCalendarEventFill style={{ color: "#0090DA" }} />
-                        }
-                        onChange={(date) => handleenddate(date)}
-                        value={endDate}
-                        monthPlaceholder={"MM"}
-                        dayPlaceholder={"DD"}
-                        yearPlaceholder={"YY"}
-                        className={"react-datepicker-wrapper"}
-                        clearIcon={null}
-                    /> */}
+
           <div>
             <input
               readOnly
@@ -318,7 +309,7 @@ export default function MonthlyReport() {
           <Spinner
             animation="border"
             variant="info"
-            style={{ marginTop: "100px" }}
+            style={{position:"absolute" ,marginTop: "50vw" }}
           />
         )}
         {Error && <p style={{ marginTop: "100px" }}>{Error}</p>}
@@ -351,5 +342,6 @@ export default function MonthlyReport() {
         <button className="print-report-btn">PRINT REPORT</button>
       </div>
     </div>
+    </>
   );
 }

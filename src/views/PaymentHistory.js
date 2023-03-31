@@ -3,6 +3,7 @@ import { FaAngleLeft } from "react-icons/fa";
 import { TfiMobile } from "react-icons/tfi";
 
 import { useNavigate } from "react-router-dom";
+import Header from "../components/header";
 import "../css/PaymentHistory.css";
 
 export default function PaymentHistory() {
@@ -47,17 +48,7 @@ export default function PaymentHistory() {
   ];
   return (
     <>
-      <div className="HomeHeader" style={{ height: "10vh" }}>
-        <FaAngleLeft
-          onClick={() => navigate("/home")}
-          style={{
-            color: "white",
-            height: "25px",
-            marginLeft: "20px",
-          }}
-        />
-        <p className="HeaderLabelHistory">Payment History</p>
-      </div>
+    <Header name={"Payment History"}/>
       <div style={{ height: "42vh" }}>
         <div className="StaticDiv">
           <div className="customer-card-div-history">
@@ -103,7 +94,7 @@ export default function PaymentHistory() {
 
           <div className="hty-btn-hzl">
             <button className="his-btn">PAYMENT HISTORY</button>
-            <button className="his-btn">STB HISTORY</button>
+            <button className="his-btn" onClick={()=>navigate("/stbHistory")}>STB HISTORY</button>
           </div>
           <button className="his-btn" style={{ width: "80%" }}>
             PRINT TRANSACTION HISTORY
