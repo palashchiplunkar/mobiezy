@@ -62,7 +62,7 @@ export default function HomePage() {
     };
 
     useEffect(() => {
-        // window.history.pushState({}, "");
+        window.history.pushState({}, "");
         window.addEventListener("popstate", function () {
             // e.preventDefault();
             // e.stopPropagation();
