@@ -137,8 +137,8 @@ export default function Customer() {
   
     if (sortBy === "CustomerId") {
       setfiltercustomerData(prevState => [...prevState].sort((a, b) => a.managedCustomerId - b.managedCustomerId));
-    } else if (sortBy === "CustomerName") {
-      setfiltercustomerData(prevState => [...prevState].sort((a, b) => a.customerName.localeCompare(b.customerName)));
+    } else if (sortBy === "Pending") {
+        setfiltercustomerData(prevState => [...prevState].sort((a, b) => a.totalPayableAmount - b.totalPayableAmount));
     }
   
     if (sortType === "ASC") {
