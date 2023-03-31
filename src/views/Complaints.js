@@ -43,7 +43,6 @@ export default function Complaints() {
     useEffect(() => {
         setLoading(true);
         fetchComplaints();
-       
     }, []);
     const formatDate = (dateString) => {
         const date = new Date(dateString);
@@ -109,107 +108,126 @@ export default function Complaints() {
 
     return (
         <>
-        <Header name={"View Complaints"}/>
-        <div className="container-complaints">
-            <div style={{ display: "flex", justifyContent: "center" }}>
-                {isLoading && (
-                    <Spinner
-                        animation="border"
-                        variant="info"
-                        style={{ marginTop: "100px" }}
-                    />
-                )}
-            </div>
-            <table className="complaints-table">
-                <CompViewList complaints={Complaints} />
-            </table>
-            <Dialog
-                open={alert}
-                onClose={() => setAlert(false)}
-                aria-labelledby="alert-dialog-title"
-                aria-describedby="alert-dialog-description"
-                style={{borderRadius:"25px"}}
-            >
-                <DialogTitle
-                    id="alert-dialog-title"
-                    style={{ fontFamily: "Noto Sans", marginLeft: "5%",fontStyle: "normal", fontWeight:"700", fontSize:"18px",color:"#333333"}}
+            <Header name={"View Complaints"} />
+            <div className="container-complaints">
+                <div style={{ display: "flex", justifyContent: "center" }}>
+                    {isLoading && (
+                        <Spinner
+                            animation="border"
+                            variant="info"
+                            style={{ marginTop: "100px" }}
+                        />
+                    )}
+                </div>
+                <table className="complaints-table">
+                    <CompViewList complaints={Complaints} />
+                </table>
+                <Dialog
+                    open={alert}
+                    onClose={() => setAlert(false)}
+                    aria-labelledby="alert-dialog-title"
+                    aria-describedby="alert-dialog-description"
+                    style={{ borderRadius: "25px" }}
                 >
-                    Complaint Management
-                </DialogTitle>
-                <DialogContent>
-                    <DialogContentText style={{ marginLeft: "5%" }}>
-                        {/* One Horizontal Line */}
-                        <div className="alert-line"></div>
-                        <div>
-                            <p>Complaint Id : {selectedComplaint.COMP_ID} </p>
-                            <p>
-                                Complaint Date :{" "}
-                                {formatDate(selectedComplaint.COMP_DATE)}
-                            </p>
-                            <p>Compaint Type : {selectedComplaint.CMP_TYPE}</p>
-                            <p>
-                                Complaint Desc : {selectedComplaint.CMP_DETAIL}
-                            </p>
-                        </div>
-                    </DialogContentText>
                     <DialogTitle
                         id="alert-dialog-title"
-                        style={{ fontFamily: "Noto Sans", marginLeft: "5%" }}
-                    >
-                        Complaint Status
-                    </DialogTitle>
-                    <DialogContentText style={{ marginLeft: "5%" }}>
-                        {/* One Horizontal Line */}
-                        <div className="alert-line"></div>
-                        <div>
-                            <select
-                                name="status"
-                                id="status"
-                                style={{
-                                    width: "100%",
-                                    height: "40px",
-                                    borderRadius: "10px",
-                                    border: "none",
-                                    fontFamily: "Noto Sans",
-                                }}
-                            >
-                                <option value="Registered">Registered</option>
-                                <option value="In Progress">In Progress</option>
-                                <option value="Completed">Completed</option>
-                            </select>
-                            <input
-                                type="text"
-                                placeholder="Enter Your Comment Here"
-                                style={{
-                                    width: "100%",
-                                    height: "40px",
-                                    borderRadius: "10px",
-                                    border: "none",
-                                    fontFamily: "Noto Sans",
-                                }}
-                            />
-                        </div>
-                    </DialogContentText>
-                    <DialogContentText
-                        id="alert-dialog-description"
                         style={{
-                            display: "flex",
-                            alignItems: "center",
-                            justifyContent: "center",
                             fontFamily: "Noto Sans",
-                            background: "var(--primay-app-color)",
-                            color: "white",
-                            border: "none",
-                            borderRadius: "20px",
-                            margin: "15px",
-                            padding: "10px",
+                            marginLeft: "5%",
+                            fontStyle: "normal",
+                            fontWeight: "700",
+                            fontSize: "18px",
+                            color: "#333333",
                         }}
                     >
-                        SUBMIT
-                    </DialogContentText>
-                </DialogContent>
-            </Dialog>
-        </div>
+                        Complaint Management
+                    </DialogTitle>
+                    <DialogContent>
+                        <DialogContentText style={{ marginLeft: "5%" }}>
+                            {/* One Horizontal Line */}
+                            <div className="alert-line"></div>
+                            <div>
+                                <p>
+                                    Complaint Id : {selectedComplaint.COMP_ID}{" "}
+                                </p>
+                                <p>
+                                    Complaint Date :{" "}
+                                    {formatDate(selectedComplaint.COMP_DATE)}
+                                </p>
+                                <p>
+                                    Compaint Type : {selectedComplaint.CMP_TYPE}
+                                </p>
+                                <p>
+                                    Complaint Desc :{" "}
+                                    {selectedComplaint.CMP_DETAIL}
+                                </p>
+                            </div>
+                        </DialogContentText>
+                        <DialogTitle
+                            id="alert-dialog-title"
+                            style={{
+                                fontFamily: "Noto Sans",
+                                marginLeft: "5%",
+                            }}
+                        >
+                            Complaint Status
+                        </DialogTitle>
+                        <DialogContentText style={{ marginLeft: "5%" }}>
+                            {/* One Horizontal Line */}
+                            <div className="alert-line"></div>
+                            <div>
+                                <select
+                                    name="status"
+                                    id="status"
+                                    style={{
+                                        width: "100%",
+                                        height: "40px",
+                                        borderRadius: "10px",
+                                        border: "none",
+                                        fontFamily: "Noto Sans",
+                                    }}
+                                >
+                                    <option value="Registered">
+                                        Registered
+                                    </option>
+                                    <option value="In Progress">
+                                        In Progress
+                                    </option>
+                                    <option value="Completed">Completed</option>
+                                </select>
+                                <input
+                                    type="text"
+                                    placeholder="Enter Your Comment Here"
+                                    style={{
+                                        width: "100%",
+                                        height: "40px",
+                                        borderRadius: "10px",
+                                        border: "none",
+                                        fontFamily: "Noto Sans",
+                                    }}
+                                />
+                            </div>
+                        </DialogContentText>
+                        <DialogContentText
+                            id="alert-dialog-description"
+                            style={{
+                                display: "flex",
+                                alignItems: "center",
+                                justifyContent: "center",
+                                fontFamily: "Noto Sans",
+                                background: "var(--primay-app-color)",
+                                color: "white",
+                                border: "none",
+                                borderRadius: "20px",
+                                margin: "15px",
+                                padding: "10px",
+                            }}
+                        >
+                            SUBMIT
+                        </DialogContentText>
+                    </DialogContent>
+                </Dialog>
+            </div>
         </>
     );
 }
