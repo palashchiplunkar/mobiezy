@@ -85,6 +85,8 @@ export default function SubscriptionExpiryReport() {
       };
     }, [date]);
 
+    
+
     return (
       <table className="expiryCountTable">
         <tr className="borderExpiryHead">
