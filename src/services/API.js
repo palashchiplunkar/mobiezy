@@ -49,4 +49,7 @@ export default {
     customerSummary(value) {
         return API.post("mobile-agent-op-summary", value);
     },
+    allCustomerData(value){
+        return API.post("down-sync-offline",value)
+    },
 };

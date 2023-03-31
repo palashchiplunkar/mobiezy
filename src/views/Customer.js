@@ -14,6 +14,7 @@ export default function Customer() {
     const navigate = useNavigate();
     const [isVisible, setIsVisible] = useState(false);
     const [dropDownAreaData, setDropDownAreaData] = useState([]);
+    const [customerData,setcustomerData]=useState([]);
 
     const user = JSON.parse(
         localStorage.getItem("user") || sessionStorage.getItem("user")
@@ -51,6 +52,18 @@ export default function Customer() {
         },
     ];
 
+    const fetchCustomerData = () => {
+        API.allCustomerData({ agentId: user.agentId })
+            .then((response) => {
+                console.log(response.data.results);
+                setcustomerData(response.data.results);
+            })  
+            .catch((error) => {
+                console.log(error);
+            });
+    };
+
+
     useEffect(() => {
         window.history.pushState({}, "");
         window.addEventListener("popstate", function (e) {
@@ -58,6 +71,7 @@ export default function Customer() {
             e.stopPropagation();
             window.history.pushState({}, "");
         });
+        fetchCustomerData();
 
         API.dropdownAgentDataAPI({ operatorId: user.operatorId })
             .then((response) => {
@@ -77,7 +91,7 @@ export default function Customer() {
     };
 
     const Customers = () => {
-        const eachCustomer = CustomerData.map((customer) => {
+        const eachCustomer = customerData.map((customer) => {
             return (
                 <div
                     className="card-div"
@@ -85,29 +99,29 @@ export default function Customer() {
                 >
                     <div className="card-group1-div">
                         <div class="card-line1-div">
-                            <p className="card-name-p">{customer.name}</p>
+                            <p className="card-name-p">{customer.customerName}</p>
                             <p
                                 className="card-price-p"
                                 style={{
                                     color:
-                                        customer.price >= 0
+                                        customer.totalPayableAmount >= 0
                                             ? "#DC1515"
                                             : "#a0c334",
                                 }}
                             >
-                                ₹ {customer.price}
+                                ₹ {customer.totalPayableAmount}
                             </p>
                         </div>
 
                         <div className="card-line2-div">
-                            <p className="card-date-p">{customer.date}</p>
-                            <p className="card-reg-p">{customer.id}</p>
+                            <p className="card-date-p">{customer.endDate}</p>
+                            <p className="card-reg-p">{customer.managedCustomerId}</p>
                         </div>
 
                         <div className="card-line3-div">
                             <div style={{ display: "flex" }}>
                                 <TfiMobile className="card-mobileIcon" />
-                                <p className="card-phone-p">{customer.phno}</p>
+                                <p className="card-phone-p">{customer.phone}</p>
                             </div>
 
                             <p
@@ -117,7 +131,7 @@ export default function Customer() {
                                         customer.status === "Active"
                                             ? "#a0c334"
                                             : customer.status ===
-                                              "Temporarily Disconnected"
+                                              "Suspended"
                                             ? "#DC1515"
                                             : "#000000",
                                 }}
