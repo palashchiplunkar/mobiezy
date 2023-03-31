@@ -51,16 +51,19 @@ function App() {
             path="/subExpiryReport"
             element={<SubscriptionExpiryReport />}
           />
-          <Route path="/collectPayment" element={<CollectPayment />} />
           <Route path="/customerStatistics" element={<CustomerStatistics />} />
           <Route path="/complaints" element={<Complaints />} />
-          <Route path="/history" element={<PaymentHistory />} />
           <Route path="/print" element={<Print />} />
-          <Route path="/historyVisit" element={<HistoryVisit />} />
-          <Route path="/recordVisit" element={<RecordVisit />} />
-          <Route path="/editCustomer" element={<EditCustomer />} />
-          <Route path="/editSetTopBox" element={<EditSetTopBox />} />
-          <Route path="/stbHistory" element={<STBHistory />} />
+
+          <Route path="/collectPayment">
+            <Route index element={<CollectPayment />} />
+            <Route path="history" element={<PaymentHistory />} />
+            <Route path="historyVisit" element={<HistoryVisit />} />
+            <Route path="recordVisit" element={<RecordVisit />} />
+            <Route path="editCustomer" element={<EditCustomer />} />
+            <Route path="editSetTopBox" element={<EditSetTopBox />} />
+            <Route path="stbHistory" element={<STBHistory />} />
+          </Route>
         </Route>
         <Route path="/" element={<LoginPage />} />
       </Routes>

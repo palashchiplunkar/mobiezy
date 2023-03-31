@@ -91,8 +91,9 @@ export default function CustomerStatistics() {
     };
 
     return (
+        <>
+        <Header name={"Customer Statistics"}/>
         <div className="container-customer-statistics">
-            <Header {...headerprops} />
             <div className="customer-statistics-data-container">
                 <div className="customer-statistics-data-div-1">
                     <div className="customer-statistics-data-12">
@@ -235,5 +236,6 @@ export default function CustomerStatistics() {
                 </PieChart>
             </div>
         </div>
+        </>
     );
 }
