@@ -167,8 +167,9 @@ export default function SubscriptionExpiryReport() {
   };
 
   return (
+    <>
+    <Header name={"Subscription Expiry Report"}/>
     <div className="container-expiry-report">
-      <Header {...headerprops} />
 
       <div className="expiry-data-container">
         <div className="expiry-report-head-div">
@@ -251,5 +252,6 @@ export default function SubscriptionExpiryReport() {
         </DialogContent>
       </Dialog>
     </div>
+    </>
   );
 }

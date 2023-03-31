@@ -107,8 +107,9 @@ export default function Complaints() {
     };
 
     return (
+        <>
+        <Header name={"View Complaints"}/>
         <div className="container-complaints">
-            <Header {...headerprops} />
             <div style={{ display: "flex", justifyContent: "center" }}>
                 {isLoading && (
                     <Spinner
@@ -207,5 +208,6 @@ export default function Complaints() {
                 </DialogContent>
             </Dialog>
         </div>
+        </>
     );
 }
