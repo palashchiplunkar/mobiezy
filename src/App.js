@@ -57,12 +57,16 @@ function App() {
 
           <Route path="/collectPayment">
             <Route index element={<CollectPayment />} />
-            <Route path="history" element={<PaymentHistory />} />
-            <Route path="historyVisit" element={<HistoryVisit />} />
-            <Route path="recordVisit" element={<RecordVisit />} />
+            <Route path="history">
+              <Route index element={<PaymentHistory />} />
+              <Route path="stbHistory" element={<STBHistory />} />
+            </Route>
+            <Route path="recordVisit">
+              <Route index element={<RecordVisit />} />
+              <Route path="historyVisit" element={<HistoryVisit />} />
+            </Route>
             <Route path="editCustomer" element={<EditCustomer />} />
             <Route path="editSetTopBox" element={<EditSetTopBox />} />
-            <Route path="stbHistory" element={<STBHistory />} />
           </Route>
         </Route>
         <Route path="/" element={<LoginPage />} />
