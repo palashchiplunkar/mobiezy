@@ -227,7 +227,7 @@ export default function CollectPayment() {
               </div>
             </Collapsible>
           </div>
-          <div style={{ width: "90%" }}>
+          <div style={{ width: "90%",marginBottom:"2vh" }}>
             <Collapsible
               trigger={[
                 "Customer Related Operations",
