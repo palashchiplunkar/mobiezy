@@ -65,12 +65,12 @@ export default function Customer() {
 
 
     useEffect(() => {
-        window.history.pushState({}, "");
-        window.addEventListener("popstate", function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-            window.history.pushState({}, "");
-        });
+        // window.history.pushState({}, "");
+        // window.addEventListener("popstate", function (e) {
+        //     e.preventDefault();
+        //     e.stopPropagation();
+        //     window.history.pushState({}, "");
+        // });
         fetchCustomerData();
 
         API.dropdownAgentDataAPI({ operatorId: user.operatorId })
@@ -95,7 +95,7 @@ export default function Customer() {
             return (
                 <div
                     className="card-div"
-                    onClick={() => navigate("/collectPayment")}
+                    onClick={() => navigate("/customer/collectPayment")}
                 >
                     <div className="card-group1-div">
                         <div class="card-line1-div">
