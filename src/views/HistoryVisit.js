@@ -47,7 +47,7 @@ export default function HistoryVisit() {
 
   return (
     <>
-    <Header name={"History of Visits"}/>
+    <Header name={"History of Visits"} link={"/collectPayment/recordVisit"}/>
     <div className="history-visit-container">
 
       <div className="cust-details-div">

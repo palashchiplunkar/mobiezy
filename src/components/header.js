@@ -10,7 +10,9 @@ const Header = (props) => {
     <div className="upper-header">
       <div style={{height:"2vh"}}>
         <FaAngleLeft
-          onClick={() => navigate(props.nav ? props.nav: -1)}
+          onClick={() => {
+            navigate(-1);
+          }}
           style={{
             color: "white",
             height:"3vh",
