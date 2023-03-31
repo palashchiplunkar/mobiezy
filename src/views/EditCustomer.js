@@ -9,8 +9,9 @@ export default function EditCustomer() {
   };
 
   return (
+    <>
+    <Header name={"Edit Customer"}/>
     <div className="edit-customer-container">
-      <Header {...header} />
       <div className="edit-customer-form">
         <div className="edit-customer-form-row">
           <div className="edit-customer-form-label">Customer Name</div>
@@ -50,5 +51,6 @@ export default function EditCustomer() {
         <button className="edit-customer-button">SUBMIT</button>
       </div>
     </div>
+    </>
   );
 }

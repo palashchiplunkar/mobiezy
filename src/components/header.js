@@ -1,12 +1,29 @@
-import React from 'react'
-import "../css/header.css"
+import React from "react";
+import "../css/header.css";
+import { FaAngleLeft } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 
 const Header = (props) => {
-    return (
-        <div className="upper-header" style={{height:props.height}}>        
-            <h2 className='upper-header-label'>{props.text}</h2>
-        </div>
-    )
-}
+  let navigate = useNavigate();
 
-export default Header
+  return (
+    <div className="upper-header">
+      <div style={{height:"2vh"}}>
+        <FaAngleLeft
+          onClick={() => navigate(props.nav ? props.nav: -1)}
+          style={{
+            color: "white",
+            height:"3vh",
+            position:"absolute",
+            left:"5vw"
+          }}
+        />
+      </div>
+      <div style={{height:"2vh",position:"absolute",left:"20vw"}}>
+        <h2 className="upper-header-label">{props.name}</h2>
+      </div>
+    </div>
+  );
+};
+
+export default Header;

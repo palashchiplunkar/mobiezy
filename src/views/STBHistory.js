@@ -61,101 +61,94 @@ export default function STBHistory() {
   };
 
   return (
-    <div className="STBHistory-container">
-      <div className="HomeHeader">
-        <FaAngleLeft
-          onClick={() => navigate("/home")}
-          style={{
-            color: "white",
-            height: "25px",
-            marginLeft: "20px",
-          }}
-        />
-        <Header {...headerProps} />
-      </div>
-
-      <div className="StaticDiv">
-        <div className="customer-card-div">
-          <div
-            className="card-div-history"
-            onClick={() => navigate("/collectPayment")}
-          >
-            <div className="card-group1-div">
-              <div class="card-line1-div">
-                <p className="card-name-p">Name : Nikhith Gowda Subrahmanya</p>
-              </div>
-
-              <div className="card-line2-div">
-                <p className="card-date-p" style={{ fontWeight: "700" }}>
-                  Customer ID : JB0213
-                </p>
-              </div>
-
-              <div className="card-line3-div">
-                <div style={{ display: "flex" }}>
-                  <TfiMobile className="card-mobileIcon" />
-                  <p className="card-phone-p">9740769579</p>
+    <>
+    <Header name={"STB History"}/>
+      <div className="STBHistory-container">
+        <div className="StaticDiv">
+          <div className="customer-card-div">
+            <div
+              className="card-div-history"
+              onClick={() => navigate("/collectPayment")}
+            >
+              <div className="card-group1-div">
+                <div class="card-line1-div">
+                  <p className="card-name-p">
+                    Name : Nikhith Gowda Subrahmanya
+                  </p>
                 </div>
 
-                <p
-                  className="card-status-p"
-                  style={{
-                    backgroundColor: "Active"
-                      ? "#a0c334"
-                      : "Temporarily Disconnected"
-                      ? "#DC1515"
-                      : "#000000",
+                <div className="card-line2-div">
+                  <p className="card-date-p" style={{ fontWeight: "700" }}>
+                    Customer ID : JB0213
+                  </p>
+                </div>
 
-                    width: "70px",
-                  }}
-                >
-                  Active
-                </p>
+                <div className="card-line3-div">
+                  <div style={{ display: "flex" }}>
+                    <TfiMobile className="card-mobileIcon" />
+                    <p className="card-phone-p">9740769579</p>
+                  </div>
+
+                  <p
+                    className="card-status-p"
+                    style={{
+                      backgroundColor: "Active"
+                        ? "#a0c334"
+                        : "Temporarily Disconnected"
+                        ? "#DC1515"
+                        : "#000000",
+
+                      width: "70px",
+                    }}
+                  >
+                    Active
+                  </p>
+                </div>
               </div>
             </div>
           </div>
-        </div>
 
-        <div className="hty-btn-hzl">
-          <button className="his-btn">PAYMENT HISTORY</button>
-          <button className="his-btn">STB HISTORY</button>
-        </div>
+          <div className="hty-btn-hzl">
+            <button className="his-btn">PAYMENT HISTORY</button>
+            <button className="his-btn">STB HISTORY</button>
+          </div>
 
-        <div style={{ width: "90%", overflowX: "scroll" }}>
-          {data.map((val) => {
-            return (
-              <div style={{ width: "100%" }}>
-                <div className="stb-card-div">
-                  <div className="stb-div">
-                    <p className="stb-p">{val.stbNo}</p>
-                  </div>
-                  <div className="stb-div">
-                    <p className="vcNo-p">{val.vcNo}</p>
-                  </div>
-                  <div className="stb-div">
-                    <p className="date-time-p">{val.dateTime}</p>
-                    <p
-                      className="card-status-p"
-                      style={{
-                        backgroundColor:
-                          val.status == "Active"
-                            ? "#a0c334"
-                            : val.status == "Suspended"
-                            ? "#DC1515"
-                            : "#000000",
+          <div style={{ width: "90%", overflowX: "scroll" }}>
+            {data.map((val) => {
+              return (
+                <div style={{ width: "100%" }}>
+                  <div className="stb-card-div">
+                    <div className="stb-div">
+                      <p className="stb-p">{val.stbNo}</p>
+                    </div>
+                    <div className="stb-div">
+                      <p className="vcNo-p">{val.vcNo}</p>
+                    </div>
+                    <div className="stb-div">
+                      <p className="date-time-p">{val.dateTime}</p>
+                      <p
+                        className="card-status-p"
+                        style={{
+                          backgroundColor:
+                            val.status == "Active"
+                              ? "#a0c334"
+                              : val.status == "Suspended"
+                              ? "#DC1515"
+                              : "#000000",
 
-                        width: "70px",
-                      }}
-                    >
-                      {val.status}
-                    </p>
+                          width: "70px",
+                        }}
+                      >
+                        {val.status}
+                      </p>
+                    </div>
                   </div>
                 </div>
-              </div>
-            );
-          })}
+              );
+            })}
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }

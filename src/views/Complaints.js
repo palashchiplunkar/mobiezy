@@ -159,7 +159,7 @@ export default function Complaints() {
                     </DialogTitle>
                     <DialogContentText style={{ marginLeft: "5%" }}>
                         {/* One Horizontal Line */}
-                        <div className="line"></div>
+                        <div className="alert-line"></div>
                         <div>
                             <select
                                 name="status"

@@ -91,7 +91,7 @@ function MoreOptions() {
     return (
         <>
             <div>
-                <Header {...headerprops} />
+                <Header name={"More Options"} />
                 <div className="OptionsContainer">
                     {options.map((option) => {
                         if (!option.toShow) return null;

@@ -50,7 +50,6 @@ export default function DailyReport() {
         } else {
           setIsLoading(false);
           setMessage("No Collection Today");
-
         }
       });
     } catch (error) {
@@ -96,7 +95,6 @@ export default function DailyReport() {
           } else {
             setIsLoading(false);
             setMessage("No Collection Today");
-
           }
         })
         .catch((err) => {
@@ -127,78 +125,72 @@ export default function DailyReport() {
 
   const headerprops = {
     text: "Daily Report",
-    height: "10vh",
   };
 
   return (
-    <div className="container-report">
-      <Header {...headerprops} />
-
-      <div className="get-report-div">
-        <select
-          className="get-report-dropdown"
-          id="ownerselect"
-          value={selected}
-          onChange={handleDropChange}
-        >
-          <option value={"Owner Summary"}>Owner Summary</option>
-          <option value="0">Office</option>
-          <option value="1">Online</option>
-          <OwnerSelection />
-          {/* <option value={data.customerName}>{data.customerName}</option> */}
-        </select>
-        <button className="get-report-btn" onClick={getFilterReport}>
-          Get Report
-        </button>
-      </div>
-
-      {message && (
-        <div
-          className="no-collection-div"
-          style={{
-            display: "block",
-            marginTop: "40%",
-          }}
-        >
-          {message}
+    <>
+      <Header name={"Daily Report"} />
+      <div className="container-report">
+        <div className="get-report-div">
+          <select
+            className="get-report-dropdown"
+            id="ownerselect"
+            value={selected}
+            onChange={handleDropChange}
+          >
+            <option value={"Owner Summary"}>Owner Summary</option>
+            <option value="0">Office</option>
+            <option value="1">Online</option>
+            <OwnerSelection />
+            {/* <option value={data.customerName}>{data.customerName}</option> */}
+          </select>
+          <button className="get-report-btn" onClick={getFilterReport}>
+            Get Report
+          </button>
         </div>
-      )}
-      <div style={{ display: "flex", justifyContent: "center" }}>
-        {isLoading && (
-          <Spinner
-            animation="border"
-            variant="info"
-            style={{ marginTop: "100px" }}
-          />
+
+        {message && (
+          <div style={{ position: "absolute" }}>
+            {message}
+          </div>
         )}
-      </div>
-
-      <div className="report-data">
-        <Owners />
-      </div>
-
-      <div className="float-div">
-        <div className="report-total">
-          <div className="total-amount-collected">
-            <p className="total-amount-collected-label">
-              Total Amount Collected :{" "}
-            </p>
-            <p className="total-amount-collected-value">
-              ₹{""}
-              {CollectedAmount}
-            </p>
-          </div>
-
-          <div className="total-amount-collected">
-            <p className="no-of-transactions-label">
-              Number of Transactions :{" "}
-            </p>
-            <p className="no-of-transactions-value">{length}</p>
-          </div>
+        <div style={{ display: "flex", justifyContent: "center" }}>
+          {isLoading && (
+            <Spinner
+              animation="border"
+              variant="info"
+              style={{ position: "absolute", marginTop: "50vw" }}
+            />
+          )}
         </div>
 
-        <button className="print-report-btn">PRINT REPORT</button>
+        <div className="report-data">
+          <Owners />
+        </div>
+
+        <div className="float-div">
+          <div className="report-total">
+            <div className="total-amount-collected">
+              <p className="total-amount-collected-label">
+                Total Amount Collected :{" "}
+              </p>
+              <p className="total-amount-collected-value">
+                ₹{""}
+                {CollectedAmount}
+              </p>
+            </div>
+
+            <div className="total-amount-collected">
+              <p className="no-of-transactions-label">
+                Number of Transactions :{" "}
+              </p>
+              <p className="no-of-transactions-value">{length}</p>
+            </div>
+          </div>
+
+          <button className="print-report-btn">PRINT REPORT</button>
+        </div>
       </div>
-    </div>
+    </>
   );
 }

@@ -43,13 +43,13 @@ export default function CollectPayment() {
       id: 1,
       name: "Edit Customer",
       imgUrl: "edit_customer.png",
-      toLink: "/editCustomer",
+      toLink: "/collectPayment/editCustomer",
     },
     {
       id: 2,
       name: "Edit STB",
       imgUrl: "edit_stb.png",
-      toLink: "/editSetTopBox",
+      toLink: "/collectPayment/editSetTopBox",
     },
     {
       id: 3,
@@ -65,7 +65,7 @@ export default function CollectPayment() {
       id: 5,
       name: "History",
       imgUrl: "history_payment.png",
-      toLink: "/history",
+      toLink: "/collectPayment/history",
     },
     {
       id: 6,
@@ -86,7 +86,7 @@ export default function CollectPayment() {
       id: 9,
       name: "Record Visit",
       imgUrl: "record_visit.png",
-      toLink: "/recordVisit",
+      toLink: "/collectPayment/recordVisit",
     },
   ];
 
