@@ -62,7 +62,6 @@
   letter-spacing: 0.2px;
 
   color: #252525;
-
 }
 
 .report-data {
@@ -92,7 +91,6 @@
 .area-report-data {
   width: 30%; /* or any other value that fits */
   text-align: center;
- 
 }
 .area-report-data-label {
   font-family: "Noto Sans";
@@ -104,7 +102,6 @@
   align-self: center;
   color: #252525;
 }
-
 
 .report-total {
   width: 80%;
@@ -149,8 +146,6 @@
   color: #34a55a;
   margin-right: 10px;
 }
-
-
 
 .float-div {
   width: 100%;

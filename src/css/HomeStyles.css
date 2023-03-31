@@ -1,233 +1,233 @@
 .home-bg-img {
-    position: fixed;
-    object-fit: cover;
-    height: 100%;
-    width: 100%;
-    left: 0;
-    top: 0;
-    opacity: 0.4;
-    z-index: -1;
+  position: fixed;
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
+  left: 0;
+  top: 0;
+  opacity: 0.4;
+  z-index: -1;
 }
 
 .container {
-    height: 100%;
-    padding: 10px !important;
+  height: 100%;
+  padding: 10px !important;
 }
 
 .headerblue {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    object-fit: contain;
-    height: 17vh;
-    width: 100%;
-    background-color: var(--primay-app-color);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  object-fit: contain;
+  height: 17vh;
+  width: 100%;
+  background-color: var(--primay-app-color);
 }
 
 .profile-img-div {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 
 .profile_img {
-    width: 84px;
-    height: 88px;
-    border-radius: 50px;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    position: absolute;
-    top: 12vh;
+  width: 84px;
+  height: 88px;
+  border-radius: 50px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  position: absolute;
+  top: 12vh;
 }
 
 .user_name {
-    position: relative;
-    height: 60px;
-    left: 4vh;
-    margin-right: 40%;
-    margin-bottom: 0%;
-    top: 60px;
-    font-family: "Noto Sans";
-    font-style: normal;
-    font-weight: 700;
-    font-size: 16px;
-    line-height: 23px;
-    text-align: left;
-    color: #333333;
+  position: relative;
+  height: 60px;
+  left: 4vh;
+  margin-right: 40%;
+  margin-bottom: 0%;
+  top: 60px;
+  font-family: "Noto Sans";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 23px;
+  text-align: left;
+  color: #333333;
 }
 
 .amt-due-today-div {
-    height: 50px;
-    background: #f2f2f2;
-    border: 1px solid #333333;
-    border-radius: 15px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 1px;
-    margin-left: 26px;
-    margin-right: 26px;
-    gap: 10px;
-    margin-top: 15%;
+  height: 50px;
+  background: #f2f2f2;
+  border: 1px solid #333333;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1px;
+  margin-left: 26px;
+  margin-right: 26px;
+  gap: 10px;
+  margin-top: 15%;
 }
 
 .amt-due-today-content {
-    width: 337px;
-    height: 16px;
-    font-family: "Noto Sans";
-    font-style: normal;
-    font-weight: 700;
-    font-size: 16px;
-    line-height: 16px;
-    text-align: center;
-    color: #dd2224;
+  width: 337px;
+  height: 16px;
+  font-family: "Noto Sans";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 16px;
+  text-align: center;
+  color: #dd2224;
 }
 
 .amt-collected-month-div {
-    height: 50px;
-    background: #f2f2f2;
-    border: 1px solid #333333;
-    border-radius: 15px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin-top: 20px;
-    margin-left: 26px;
-    margin-right: 26px;
-    line-height: 21px;
-    gap: 10px;
+  height: 50px;
+  background: #f2f2f2;
+  border: 1px solid #333333;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  margin-left: 26px;
+  margin-right: 26px;
+  line-height: 21px;
+  gap: 10px;
 }
 
 .amt-collected-month-content {
-    width: 337px;
-    height: 16px;
-    font-family: "Noto Sans";
-    font-style: normal;
-    font-weight: 700;
-    font-size: 16px;
-    line-height: 16px;
-    text-align: center;
-    color: #3aa45e;
+  width: 337px;
+  height: 16px;
+  font-family: "Noto Sans";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 16px;
+  text-align: center;
+  color: #3aa45e;
 }
 
 .amt-collected-today-div {
-    height: 50px;
-    background: #f2f2f2;
-    box-sizing: border-box;
-    border: 1px solid #333333;
-    border-radius: 15px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 1px;
-    margin-left: 26px;
-    margin-right: 26px;
-    gap: 10px;
-    margin-top: 20px;
+  height: 50px;
+  background: #f2f2f2;
+  box-sizing: border-box;
+  border: 1px solid #333333;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1px;
+  margin-left: 26px;
+  margin-right: 26px;
+  gap: 10px;
+  margin-top: 20px;
 }
 
 .amt-collected-today-content {
-    width: 337px;
-    height: 16px;
-    font-family: "Noto Sans";
-    font-style: normal;
-    font-weight: 700;
-    font-size: 16px;
-    line-height: 16px;
-    text-align: center;
-    color: #b43cb3;
+  width: 337px;
+  height: 16px;
+  font-family: "Noto Sans";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 16px;
+  text-align: center;
+  color: #b43cb3;
 }
 
 .complaints-div {
-    height: 50px;
-    background: #f2f2f2;
-    border: 1px solid #333333;
-    border-radius: 15px;
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 1px;
-    margin-left: 26px;
-    margin-right: 26px;
-    gap: 10px;
-    margin-top: 20px;
+  height: 50px;
+  background: #f2f2f2;
+  border: 1px solid #333333;
+  border-radius: 15px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1px;
+  margin-left: 26px;
+  margin-right: 26px;
+  gap: 10px;
+  margin-top: 20px;
 }
 
 .complaints-content {
-    width: 337px;
-    height: 16px;
-    font-family: "Noto Sans";
-    font-style: normal;
-    font-weight: 700;
-    font-size: 16px;
-    line-height: 16px;
-    text-align: center;
-    color: #877C0C;
+  width: 337px;
+  height: 16px;
+  font-family: "Noto Sans";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 16px;
+  text-align: center;
+  color: #877c0c;
 }
 
 .collect-btn-div {
-    display: flex;
-    justify-content: center;
-    flex-direction: row;
-    top: calc(50% - 48px/2 + 7px);
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  top: calc(50% - 48px / 2 + 7px);
 }
 
 .collectBtn {
-    margin-top: 10vh;
-    margin-bottom: 15%;
-    align-items: center;
-    color: #ffffff;
-    font-family: "Noto Sans", sans-serif;
-    font-style: normal;
-    font-weight: 700;
-    font-size: 14px;
-    border: none;
-    text-align: center;
-    text-transform: uppercase;
-    background: var(--primay-app-color);
-    border-radius: 20px;
-    width: 224px;
-    height: 48px;
-    gap: 8px;
+  margin-top: 10vh;
+  margin-bottom: 15%;
+  align-items: center;
+  color: #ffffff;
+  font-family: "Noto Sans", sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 14px;
+  border: none;
+  text-align: center;
+  text-transform: uppercase;
+  background: var(--primay-app-color);
+  border-radius: 20px;
+  width: 224px;
+  height: 48px;
+  gap: 8px;
 }
 
 .Company_name {
-    font-family: "Noto Sans";
-    font-style: normal;
-    font-weight: 600;
-    font-size: 14px;
-    line-height: 19px;
-    /* or 127% */
+  font-family: "Noto Sans";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 19px;
+  /* or 127% */
 
-    text-align: center;
-    text-transform: uppercase;
+  text-align: center;
+  text-transform: uppercase;
 
-    color: #ffffff;
+  color: #ffffff;
 }
 
 .hamburger {
-    display: block;
-    position: absolute;
-    top: 0px;
-    left: 13%;
-    transform: translate(-100%, 60%);
-    font-size: 1.8rem;
-    cursor: pointer;
+  display: block;
+  position: absolute;
+  top: 0px;
+  left: 13%;
+  transform: translate(-100%, 60%);
+  font-size: 1.8rem;
+  cursor: pointer;
 }
 
 .hamburger .line {
-    width: 20px;
-    height: 2px;
-    background: #ffff;
-    /* display: block; */
+  width: 20px;
+  height: 2px;
+  background: #ffff;
+  /* display: block; */
 
-    transition: all 0.3s ease-in-out;
-    /* add it to left */
+  transition: all 0.3s ease-in-out;
+  /* add it to left */
 
-    margin: 3px;
+  margin: 3px;
 }

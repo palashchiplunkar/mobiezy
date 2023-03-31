@@ -1,370 +1,370 @@
 .home-bg-img {
-    position: fixed;
-    object-fit: cover;
-    height: 100%;
-    width: 100%;
-    left: 0;
-    top: 0;
-    opacity: 0.4;
+  position: fixed;
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
+  left: 0;
+  top: 0;
+  opacity: 0.4;
 }
 
 .customer-cotainer {
-    position: relative;
-    height: 100%;
+  position: relative;
+  height: 100%;
 }
 
 .header-blue {
-    position: fixed;
-    z-index: 1;
-    top: 0;
-    left: 1%;
-    display: flex;
-    flex-direction: column;
-    object-fit: contain;
-    height: 20vh;
-    background: var(--primay-app-color);
-    width: 98%;
-    background-color: var(--primay-app-color);
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 1%;
+  display: flex;
+  flex-direction: column;
+  object-fit: contain;
+  height: 20vh;
+  background: var(--primay-app-color);
+  width: 98%;
+  background-color: var(--primay-app-color);
 }
 
 .area-div {
-    position: absolute;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    top: 15%;
-    left: 18px;
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  top: 15%;
+  left: 18px;
 }
 
 .area-p {
-    text-align: center;
-    font-family: "Noto Sans";
-    font-style: normal;
-    font-weight: 700;
-    font-size: 14px;
-    color: #ffffff;
-    letter-spacing: 1px;
-    line-height: 16px;
+  text-align: center;
+  font-family: "Noto Sans";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 14px;
+  color: #ffffff;
+  letter-spacing: 1px;
+  line-height: 16px;
 }
 
 .area-dropdown {
-    position: relative;
-    top: 0;
-    left: 10%;
-    width: 120px;
-    height: 50px;
-    font-family: "Noto Sans", sans-serif;
-    font-style: normal;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 24px;
-    letter-spacing: 1px;
-    color: #ffffff;
-    outline: none;
-    border: none;
-    border-bottom: 2px solid white;
-    background-color: var(--primay-app-color);
-    flex: none;
-    order: 0;
-    flex-grow: 0;
-    z-index: 0;
+  position: relative;
+  top: 0;
+  left: 10%;
+  width: 120px;
+  height: 50px;
+  font-family: "Noto Sans", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 24px;
+  letter-spacing: 1px;
+  color: #ffffff;
+  outline: none;
+  border: none;
+  border-bottom: 2px solid white;
+  background-color: var(--primay-app-color);
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+  z-index: 0;
 }
 
 .area-dropdown::placeholder {
-    color: white;
+  color: white;
 }
 
 .filter-div {
-    display: flex;
-    justify-content: flex-end;
-    margin-right: 8%;
-    position: relative;
-    top: 18%;
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 8%;
+  position: relative;
+  top: 18%;
 }
 
 .filter-p {
-    position: relative;
-    font-family: "Noto Sans";
-    font-style: normal;
-    font-weight: 700;
-    font-size: 16px;
-    line-height: 22px;
-    text-align: center;
-    color: #ffffff;
+  position: relative;
+  font-family: "Noto Sans";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 22px;
+  text-align: center;
+  color: #ffffff;
 }
 
 .filter-button {
-    position: absolute;
-    text-align: center;
-    width: 50px;
-    height: 50px;
-    top: 60%;
-    border-radius: 50%;
-    background: var(--primay-app-color);
+  position: absolute;
+  text-align: center;
+  width: 50px;
+  height: 50px;
+  top: 60%;
+  border-radius: 50%;
+  background: var(--primay-app-color);
 }
 
 .filter-icon {
-    color: white;
-    width: 25px;
-    height: 50px;
+  color: white;
+  width: 25px;
+  height: 50px;
 }
 
 /* Card */
 
 .customer-page-card-div {
-    z-index: -1;
-    margin-top: 20vh;
-    margin-bottom: 10vh;
-    overflow-y: scroll;
+  z-index: -1;
+  margin-top: 20vh;
+  margin-bottom: 10vh;
+  overflow-y: scroll;
 }
 
 .card-div {
-    position: relative;
-    background: white;
-    border-width: 1px;
-    border-style: solid;
-    border-image: linear-gradient(to right, var(--primay-app-color), #a4ce4e) 1;
-    box-sizing: border-box;
-    margin-top: 4%;
-    margin-left: 16px;
-    margin-right: 16px;
-    /* padding: 3%; */
+  position: relative;
+  background: white;
+  border-width: 1px;
+  border-style: solid;
+  border-image: linear-gradient(to right, var(--primay-app-color), #a4ce4e) 1;
+  box-sizing: border-box;
+  margin-top: 4%;
+  margin-left: 16px;
+  margin-right: 16px;
+  /* padding: 3%; */
 }
 
 .card-line1-div {
-    display: flex;
-    justify-content: space-between;
-    padding: 3% 3% 0% 3%;
+  display: flex;
+  justify-content: space-between;
+  padding: 3% 3% 0% 3%;
 }
 
 .card-name-p {
-    float: left;
-    color: #252525;
-    font-family: "Noto Sans";
-    font-style: normal;
-    font-weight: 700;
-    font-size: 14px;
-    line-height: 114%;
-    letter-spacing: 0.2px;
+  float: left;
+  color: #252525;
+  font-family: "Noto Sans";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 114%;
+  letter-spacing: 0.2px;
 }
 
 .card-price-p {
-    float: right;
-    font-family: "Noto Sans";
-    font-style: normal;
-    font-weight: 700;
-    font-size: 14px;
-    line-height: 114%;
-    letter-spacing: 0.2px;
+  float: right;
+  font-family: "Noto Sans";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 114%;
+  letter-spacing: 0.2px;
 }
 
 .card-line2-div {
-    display: flex;
-    justify-content: space-between;
-    padding: 3% 3% 0% 3%;
+  display: flex;
+  justify-content: space-between;
+  padding: 3% 3% 0% 3%;
 }
 
 .card-date-p {
-    float: left;
-    font-family: "Noto Sans";
-    font-style: normal;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 114%;
-    letter-spacing: 0.2px;
-    color: #252525;
+  float: left;
+  font-family: "Noto Sans";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 114%;
+  letter-spacing: 0.2px;
+  color: #252525;
 }
 
 .card-reg-p {
-    float: right;
-    font-family: "Noto Sans";
-    font-style: normal;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 114%;
-    text-align: right;
-    letter-spacing: 0.2px;
-    color: #252525;
+  float: right;
+  font-family: "Noto Sans";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 114%;
+  text-align: right;
+  letter-spacing: 0.2px;
+  color: #252525;
 }
 
 .card-line3-div {
-    display: flex;
-    justify-content: space-between;
-    padding: 3% 3% 0% 3%;
+  display: flex;
+  justify-content: space-between;
+  padding: 3% 3% 0% 3%;
 }
 
 .card-mobileIcon {
-    color: var(--primay-app-color);
-    margin-top: 5%;
+  color: var(--primay-app-color);
+  margin-top: 5%;
 }
 
 .card-phone-p {
-    float: left;
-    margin-top: 5.5%;
-    margin-left: 6px;
-    font-family: "Noto Sans";
-    font-style: normal;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 114%;
-    letter-spacing: 0.2px;
-    color: #252525;
-    margin-bottom: 1%;
+  float: left;
+  margin-top: 5.5%;
+  margin-left: 6px;
+  font-family: "Noto Sans";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 114%;
+  letter-spacing: 0.2px;
+  color: #252525;
+  margin-bottom: 1%;
 }
 
 .card-status-p {
-    font-family: "Noto Sans";
-    font-style: normal;
-    font-weight: 700;
-    font-size: 10px;
-    line-height: 160%;
-    text-align: center;
-    background: #a0c334;
-    border: 1px solid #ffffff;
-    border-radius: 20px;
-    letter-spacing: 0.24px;
-    color: #ffffff;
-    padding: 2%;
-    margin-bottom: 1%;
+  font-family: "Noto Sans";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 10px;
+  line-height: 160%;
+  text-align: center;
+  background: #a0c334;
+  border: 1px solid #ffffff;
+  border-radius: 20px;
+  letter-spacing: 0.24px;
+  color: #ffffff;
+  padding: 2%;
+  margin-bottom: 1%;
 }
 
 .card-underline-div {
-    border-bottom: 1px solid #d9d9d6;
+  border-bottom: 1px solid #d9d9d6;
 }
 
 .card-address-p {
-    font-family: "Noto Sans";
-    font-style: normal;
-    font-weight: 400;
-    font-size: 13px;
-    line-height: 123%;
-    display: flex;
-    align-items: center;
-    letter-spacing: 0.2px;
-    color: #252525;
-    padding: 2%;
-    margin-bottom: 0;
+  font-family: "Noto Sans";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 123%;
+  display: flex;
+  align-items: center;
+  letter-spacing: 0.2px;
+  color: #252525;
+  padding: 2%;
+  margin-bottom: 0;
 }
 
 /* Drawer */
 
 .DrawerTitle {
-    position: relative;
-    font-family: "Noto Sans", sans-serif;
-    font-style: normal;
-    font-weight: 700;
-    font-size: 20px;
-    line-height: 140%;
-    color: #000000;
-    margin-bottom: 20px;
+  position: relative;
+  font-family: "Noto Sans", sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 140%;
+  color: #000000;
+  margin-bottom: 20px;
 }
 
 .SortOptionsContent {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  position: relative;
 }
 
 .SortOptionsLabel {
-    position: relative;
-    font-family: "Noto Sans";
-    font-style: normal;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 22px;
-    letter-spacing: -0.16px;
-    color: #333333;
+  position: relative;
+  font-family: "Noto Sans";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 22px;
+  letter-spacing: -0.16px;
+  color: #333333;
 }
 
 .DrawerSortColumn {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: flex-start;
-    /* vertical-align: middle; */
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  /* vertical-align: middle; */
 }
 
 .DrawerRadioButtons {
-    position: relative;
-    width: 20px;
-    height: 20px;
-    color: var(--primay-app-color);
+  position: relative;
+  width: 20px;
+  height: 20px;
+  color: var(--primay-app-color);
 }
 
 .DrawerRadioLabel {
-    position: relative;
-    font-family: "Noto Sans";
-    font-style: normal;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 22px;
-    letter-spacing: 0.2px;
-    color: #333333;
-    margin-left: 12px;
-    margin-right: 15px;
-    vertical-align:top;
+  position: relative;
+  font-family: "Noto Sans";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 22px;
+  letter-spacing: 0.2px;
+  color: #333333;
+  margin-left: 12px;
+  margin-right: 15px;
+  vertical-align: top;
 }
 
 .Switch-unchecked {
-    display: "flex";
-    justify-content: "center";
-    align-items: "center";
-    height: 100%;
-    font-family: "Noto Sans";
-    font-style: "normal";
-    font-weight: 400;
-    font-size: 12px;
-    color: #ffffff;
-    padding-left: 2px;
-    line-height: 27px;
+  display: "flex";
+  justify-content: "center";
+  align-items: "center";
+  height: 100%;
+  font-family: "Noto Sans";
+  font-style: "normal";
+  font-weight: 400;
+  font-size: 12px;
+  color: #ffffff;
+  padding-left: 2px;
+  line-height: 27px;
 }
 
 .Switch-checked {
-    display: "flex";
-    justify-content: "center";
-    align-items: "center";
-    height: 100%;
-    font-family: "Noto Sans";
-    font-style: "normal";
-    font-weight: 400;
-    font-size: 12px;
-    color: #ffffff;
-    padding-left: 4px;
-    line-height: 27px;
+  display: "flex";
+  justify-content: "center";
+  align-items: "center";
+  height: 100%;
+  font-family: "Noto Sans";
+  font-style: "normal";
+  font-weight: 400;
+  font-size: 12px;
+  color: #ffffff;
+  padding-left: 4px;
+  line-height: 27px;
 }
 
 .DrawerSubmitButton {
-    display: flex;
-    position: relative;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    color: #ffffff;
-    background: var(--primay-app-color);
-    font-family: "Noto Sans", sans-serif;
-    font-style: normal;
-    font-weight: 700;
-    font-size: 14px;
-    line-height: 19px;
-    letter-spacing: 1px;
-    padding: 15px 105px;
-    gap: 8px;
-    border: none;
-    width: 224px;
-    height: 48px;
-    left: calc(50% - 224px / 2);
-    top: 60px;
-    bottom: auto;
-    border-radius: 20px;
+  display: flex;
+  position: relative;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  color: #ffffff;
+  background: var(--primay-app-color);
+  font-family: "Noto Sans", sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 19px;
+  letter-spacing: 1px;
+  padding: 15px 105px;
+  gap: 8px;
+  border: none;
+  width: 224px;
+  height: 48px;
+  left: calc(50% - 224px / 2);
+  top: 60px;
+  bottom: auto;
+  border-radius: 20px;
 }
 
 .drawer {
-    height: 80%;
+  height: 80%;
 }
 
 .drawer__content {
-    max-height: 100% !important;
-    overflow-y: visible !important;
-    overflow-x: visible !important;
+  max-height: 100% !important;
+  overflow-y: visible !important;
+  overflow-x: visible !important;
 }

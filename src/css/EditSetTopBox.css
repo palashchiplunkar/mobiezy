@@ -1,88 +1,87 @@
-.edit-settopbox-container{
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    /* justify-content: center; */
-    background-color: #ffffff;
+.edit-settopbox-container {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* justify-content: center; */
+  background-color: #ffffff;
 }
-.edit-settopbox-form{
-    width: 90%;
-    display: flex;
-    
-    justify-self: center;
-    flex-direction: column;
-    border: 1px solid transparent;
-    border-radius: 15px;
-    background-image: linear-gradient(white, white),
-      linear-gradient(to bottom right, var(--primay-app-color), #a4ce4e);
-    background-origin: border-box;
-    background-clip: content-box, border-box;
-    /* column */
-    margin-top: 5%;
+.edit-settopbox-form {
+  width: 90%;
+  display: flex;
+
+  justify-self: center;
+  flex-direction: column;
+  border: 1px solid transparent;
+  border-radius: 15px;
+  background-image: linear-gradient(white, white),
+    linear-gradient(to bottom right, var(--primay-app-color), #a4ce4e);
+  background-origin: border-box;
+  background-clip: content-box, border-box;
+  /* column */
+  margin-top: 5%;
 }
-.edit-settopbox-form-row{
-    display: flex;
-    flex-direction: row;
-    align-items: left;
+.edit-settopbox-form-row {
+  display: flex;
+  flex-direction: row;
+  align-items: left;
 }
-.three-settopbox{
-    width: 70%;
-    margin-left: 8%;
-    align-items: left;
-    margin-top: 5%;
+.three-settopbox {
+  width: 70%;
+  margin-left: 8%;
+  align-items: left;
+  margin-top: 5%;
 }
-.edit-settopbox-form-label{
-    font-family: "Noto Sans";
-    font-style: normal;
-    font-weight: 400;
-    font-size: 12px;
-    line-height: 16px;
-    
-    /* identical to box height, or 133% */
-    
-    color: #333333;
+.edit-settopbox-form-label {
+  font-family: "Noto Sans";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 16px;
+
+  /* identical to box height, or 133% */
+
+  color: #333333;
 }
-.edit-settopbox-form-input{
-    width: 90%;
-    height: 40px;
-    border: none;
-    /* box-sizing: border-box; */
-    /* border-radius: 5px; */
-    /* margin-top: %; */
-    margin-bottom: 5%;
-    /* Give border only at the bottom */
-    border-bottom: 1px solid #d9d9d6;
+.edit-settopbox-form-input {
+  width: 90%;
+  height: 40px;
+  border: none;
+  /* box-sizing: border-box; */
+  /* border-radius: 5px; */
+  /* margin-top: %; */
+  margin-bottom: 5%;
+  /* Give border only at the bottom */
+  border-bottom: 1px solid #d9d9d6;
 }
-.edit-settopbox-form-input-icon{
-   margin-top: 5%;
-   margin-right: 10px;
+.edit-settopbox-form-input-icon {
+  margin-top: 5%;
+  margin-right: 10px;
 }
-input[type="text"]::placeholder{
-    font-family: "Noto Sans";
-    font-style: normal;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 15px;
-    color: #333333;
+input[type="text"]::placeholder {
+  font-family: "Noto Sans";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 15px;
+  color: #333333;
 }
-.edit-settopbox-form-button{
-    width: 90%;
-    height: 40px;
-    border: none;
-    border-radius: 25px;
-    background-color: var(--primay-app-color);
-    color: #ffffff;
-    font-family: "Noto Sans";
-    font-style: normal;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 15px;
-    /* identical to box height, or 143% */
-    text-align: center;
-    margin-top: 5%;
-    margin-bottom: 5%;
-    margin-left: auto;
-    margin-right: auto;
+.edit-settopbox-form-button {
+  width: 90%;
+  height: 40px;
+  border: none;
+  border-radius: 25px;
+  background-color: var(--primay-app-color);
+  color: #ffffff;
+  font-family: "Noto Sans";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 15px;
+  text-align: center;
+  margin-top: 5%;
+  margin-bottom: 5%;
+  margin-left: auto;
+  margin-right: auto;
 }

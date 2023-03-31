@@ -129,13 +129,11 @@ tr {
     display: flex;
     justify-content: space-between;
     width: 100%;
-
     align-items: center;
 }
 td {
     color: #000000;
     padding: 1% 1% 0.5% 2.5%;
-    /* margin:5%; */
     width: 100%;
     margin: auto;
 }
