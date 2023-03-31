@@ -68,7 +68,8 @@ export default function HomePage() {
             // window.history.pushState({}, "");
             if (window.matchMedia("(display-mode: standalone)").matches) {
                 // If yes, navigate back to the original website URL
-                window.location.href = "https://mobiezy-internship.vercel.app";
+                // window.location.href = "https://mobiezy-internship.vercel.app";
+                window.close();
             }
         });
 
