@@ -169,7 +169,7 @@ export default function CollectPayment() {
               <td className="b-col-3 lS">₹ -3.20</td>
             </tr>
             <tr>
-              <td className="b-col-1 lS">Expiry Date</td>
+              <td className="b-col-1 lS">Total Payable Amount</td>
               <td className="b-col-2 lS">:</td>
               <td
                 className="b-col-3 lS"
