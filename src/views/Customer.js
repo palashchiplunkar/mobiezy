@@ -66,7 +66,7 @@ export default function Customer() {
   const Customers = () => {
     const eachCustomer = filtercustomerData.map((customer) => {
       return (
-        <div className="card-div" onClick={() => navigate("/collectPayment")}>
+        <div className="card-div" onClick={() => navigate("/customer/collectPayment")}>
           <div className="card-group1-div">
             <div class="card-line1-div">
               <p className="card-name-p">{customer.customerName}</p>
