@@ -2,11 +2,23 @@ import React, { useState, useEffect } from "react";
 import "../css/RecordVisit.css";
 import Header from "../components/header";
 import { useNavigate } from "react-router-dom";
+import {
+    Dialog,
+    DialogTitle,
+    DialogContent,
+    DialogContentText,
+} from "@mui/material";
 
 import API from "../services/API";
 
 export default function RecordVisit() {
     const navigate = useNavigate();
+
+    const [alert, setalert] = useState(false);
+    const [apiResponseTitle, setAPIResponseTitle] = useState("");
+    const [apiResponseContent, setAPIResponseContent] = useState("");
+    const [CError, setCustError] = useState("");
+    const [RError, setRemarkError] = useState("");
 
     var dateTime = {
         hours: null,
@@ -77,9 +89,31 @@ export default function RecordVisit() {
             remarks: remark,
         };
 
+        if (customerID === "" && remark === "") {
+            setCustError("Please Enter Customer ID");
+            setRemarkError("Please Enter Remarks");
+            return;
+        } else if (customerID === "") {
+            setCustError("Please Enter Customer ID");
+            return;
+        } else if (remark === "") {
+            setRemarkError("Please Enter Remarks");
+            return;
+        }
+
         API.recordVisit(customerData)
             .then((response) => {
                 console.log(response);
+                if(response.data.p_out_mssg === "Success"){
+                    setAPIResponseTitle(response.data.p_out_mssg);
+                    setAPIResponseContent("Remark Submitted Successfully");
+                }
+                else{
+                    setAPIResponseTitle("Error");
+                    setAPIResponseContent(response.data.p_out_mssg);
+                }
+                
+                setalert(true);
             })
 
             .catch((error) => {
@@ -103,9 +137,20 @@ export default function RecordVisit() {
                             value={customerID}
                             onChange={(e) => {
                                 setCustomerID(e.target.value);
-                                console.log(customerID);
+                                setCustError("");
+                            }}
+                            style={{
+                                borderBottomColor: CError ? "red" : "#333333",
                             }}
                         />
+                        <p
+                            style={{
+                                color: "red",
+                                visibility: CError ? "visible" : "hidden",
+                            }}
+                        >
+                            {CError}
+                        </p>
                     </div>
                     <div className="record-visit-form-row">
                         <div className="record-visit-form-label">Remarks</div>
@@ -116,9 +161,20 @@ export default function RecordVisit() {
                             value={remark}
                             onChange={(e) => {
                                 setRemark(e.target.value);
-                                console.log(remark);
+                                setRemarkError("");
+                            }}
+                            style={{
+                                borderBottomColor: RError ? "red" : "#333333",
                             }}
                         />
+                        <p
+                            style={{
+                                color: "red",
+                                visibility: RError ? "visible" : "hidden",
+                            }}
+                        >
+                            {RError}
+                        </p>
                     </div>
                     <div className="agent-visit-record-data">
                         <table className="agent-visit-record-table">
@@ -157,6 +213,36 @@ export default function RecordVisit() {
                     >
                         VIEW VISITED HISTORY
                     </button>
+                    <Dialog
+                        open={alert}
+                        onClose={() => setalert(false)}
+                        aria-labelledby="alert-dialog-title"
+                        aria-describedby="alert-dialog-description"
+                    >
+                        <DialogTitle
+                            id="alert-dialog-title"
+                            style={{ fontFamily: "Noto Sans" }}
+                        >
+                            {apiResponseTitle}
+                        </DialogTitle>
+                        <DialogContent>
+                        <DialogContentText
+                            id="alert-dialog-description"
+                            style={{
+                                display: "flex",
+                                alignItems: "center",
+                                justifyContent: "center",
+                                fontFamily: "Noto Sans",
+                                color: "black",
+                                border: "none",
+                                margin: "10px",
+                                padding: "5px",
+                            }}
+                        >
+                            {apiResponseContent}
+                        </DialogContentText>
+                    </DialogContent>
+                    </Dialog>
                 </div>
             </div>
         </>
