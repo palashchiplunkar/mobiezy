@@ -11,7 +11,7 @@ const Header = (props) => {
       <div style={{height:"2vh"}}>
         <FaAngleLeft
           onClick={() => {
-            navigate(props.link);
+            navigate(-1);
           }}
           style={{
             color: "white",

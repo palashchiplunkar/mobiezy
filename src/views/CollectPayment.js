@@ -90,9 +90,9 @@ export default function CollectPayment() {
         },
     ];
 
-    window.addEventListener("popstate", () => {
-        window.location.href = ("/customer");
-    })
+    // window.addEventListener("popstate", () => {
+    //     window.location.href = ("/customer");
+    // })
 
     return (
         <>
