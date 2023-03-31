@@ -11,7 +11,7 @@
   overflow: hidden;
   background-color: white;
   border-radius: 10px;
-  border-image: linear-gradient(to right, #0090da, #a4ce4e) 1;
+  /* border-image: linear-gradient(to right, #0090da, #a4ce4e); */
   border: 2px solid transparent;
   background-image: linear-gradient(white, white),
     linear-gradient(to bottom right, #0090da, #a4ce4e);
