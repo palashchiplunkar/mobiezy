@@ -51,21 +51,13 @@ export default function Customer() {
         },
     ];
 
-    window.addEventListener("load", function () {
-        window.history.pushState({}, "");
-    });
-
-    window.addEventListener("popstate", function () {
-        window.history.pushState({}, "");
-    });
-
     useEffect(() => {
-        // window.history.pushState({}, "");
-        // window.addEventListener("popstate", function (e) {
-        //     e.preventDefault();
-        //     e.stopPropagation();
-        //     window.history.pushState({}, "");
-        // });
+        window.history.pushState({}, "");
+        window.addEventListener("popstate", function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            window.history.pushState({}, "");
+        });
 
         API.dropdownAgentDataAPI({ operatorId: user.operatorId })
             .then((response) => {

@@ -59,38 +59,17 @@ export default function HomePage() {
                 });
         }
     };
-    
-    window.addEventListener("load", function () {
-        window.history.pushState({}, "");
-    });
-
-    window.addEventListener("popstate", function () {
-        window.history.pushState({}, "");
-    });
 
     useEffect(() => {
-        // window.history.pushState({}, "");
-        // window.addEventListener("popstate", function (e) {
-        //     e.preventDefault();
-        //     e.stopPropagation();
-        //     // window.history.pushState({}, "");
-        //     if (window.matchMedia("(display-mode: standalone)").matches) {
-        //         // If yes, navigate back to the original website URL
-        //         // window.location.href = "https://mobiezy-internship.vercel.app";
-        //         this.window.location.back()
-        //         window.close();
-        //     }
-        // });
+        window.history.pushState({}, "");
+        window.addEventListener("popstate", function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            window.history.pushState({}, "");
+        });
 
         getHomeData();
     }, []);
-
-    // useEffect(() => {
-    //     if (window.matchMedia('(display-mode: standalone)').matches) {
-    //         // If yes, navigate back to the original website URL
-    //         window.location.href = 'https://mobiezy-internship.vercel.app';
-    //       }
-    // }, []);
 
     return (
         <>
