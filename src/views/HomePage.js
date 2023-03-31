@@ -61,12 +61,12 @@ export default function HomePage() {
     };
 
     useEffect(() => {
-        window.history.pushState({}, "");
-        window.addEventListener("popstate", function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-            window.history.pushState({}, "");
-        });
+        // window.history.pushState({}, "");
+        // window.addEventListener("popstate", function (e) {
+        //     e.preventDefault();
+        //     e.stopPropagation();
+        //     window.history.pushState({}, "");
+        // });
 
         getHomeData();
     }, []);
