@@ -210,6 +210,8 @@ export default function CollectPayment() {
               ]}
             //   isOpen={stbOpen}
             //   onOpen={()=>(setcusOpen(false))}
+            open={stbOpen}
+            handleTriggerClick={()=>{setstbOpen(!stbOpen);setcusOpen(false)}}
               transitionCloseTime={"300"}
             >
               <div className="STBOptionsContainer">
@@ -239,9 +241,11 @@ export default function CollectPayment() {
                 "Customer Related Operations",
                 <AiOutlineMinus style={{ width: "30px", height: "30px" }} />,
               ]}
-              transitionCloseTime={"300"}
+              transitionCloseTime={"200"}
             //   isOpen={cusOpen}
             //   onOpen={()=>setstbOpen(false)}
+            open={cusOpen}
+            handleTriggerClick={()=>{setcusOpen(!cusOpen);setstbOpen(false)}}
             >
               <div className="STBOptionsContainer">
                 {CusOptions.map((option) => {
