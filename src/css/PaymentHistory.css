@@ -1,25 +1,15 @@
-.HeaderLabelHistory {
-  position: relative;
-  top: 5%;
-  align-self: center;
-  font-family: "Noto Sans", sans-serif;
-  padding-left: 30px;
-  font-style: normal;
-  font-weight: 700;
-  font-size: 20px;
-  letter-spacing: 0.2px;
-  color: #ffffff;
-}
+
 .StaticDiv {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  /* height: 30vh; */
 }
 .customer-card-div-history {
   z-index: -1;
   overflow-y: scroll;
-  margin-bottom: 2vh;
+  margin-bottom: 1vh;
   width: 90%;
   border: 2px solid transparent;
   border-radius: 15px;
@@ -81,11 +71,11 @@
 }
 .ScrollingContainerParent {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  /* justify-content: center; */
   align-items: center;
   width: 100%;
-  height: 45vh;
+  /* height: 50vh; */
   overflow-x: scroll;
-  /* position: absolute;
-  top: 0; */
+  /* margin-bottom: 5vh; */
 }
