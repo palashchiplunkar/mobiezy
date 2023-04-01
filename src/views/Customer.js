@@ -76,7 +76,9 @@ export default function Customer() {
       return (
         <div
           className="card-div"
-          onClick={() => navigate("/customer/collectPayment")}
+          onClick={() =>
+            navigate("/customer/collectPayment", { state: customer })
+          }
         >
           <div className="card-group1-div">
             <div class="card-line1-div">
