@@ -20,38 +20,22 @@ export default function EditCustomer() {
   const [customerPhone, setCustomerPhone] = useState(customer.phone);
   const [customerAddress, setCustomerAddress] = useState(customer.address);
   const [customerArea, setCustomerArea] = useState("");
+  const [customerAreaId, setCustomerAreaId] = useState(customer.AREA_ID);
   const [customerAreaName, setCustomerAreaName] = useState("");
 
-  console.log(customer);
+  console.log(customerAreaId);
   useEffect(() => {
     // fetchCustomerData();
     API.dropdownAgentDataAPI({ operatorId: user.operatorId })
       .then((response) => {
         setDropDownAreaData(response.data.all_areas);
-        SetInitialArea();
       })
 
       .catch((error) => {
         console.log(error);
       });
   }, []);
-  const SetInitialArea = () => {
-    // Wait until the dropDownAreaData is loaded
-    async function wait() {
-      while (dropDownAreaData.length === 0) {
-        await new Promise((resolve) => setTimeout(resolve, 100));
-      }
-      console.log(dropDownAreaData);
 
-      const area = dropDownAreaData.filter((data) => {
-        return data.area_name === customer.area;
-      });
-      console.log(area);
-      setCustomerArea(area[0].id);
-      // setCustomerAreaName(area[0].area_name);
-    }
-    wait();
-  };
   const DropDownArea = () => {
     const DropDownAreaData = dropDownAreaData.map((data) => {
       return <option value={data.id}>{data.area_name}</option>;
@@ -130,8 +114,8 @@ export default function EditCustomer() {
               className="edit-customer-form-input"
               name="area"
               id="area"
-              value={customerArea}
-              onChange={(e) => setCustomerArea(e.target.value)}
+              value={customerAreaId}
+              onChange={(e) => setCustomerAreaId(e.target.value)}
             >
               <DropDownArea />
             </select>
