@@ -40,22 +40,27 @@ export default function PaymentHistory() {
       status: "Cancelled",
     },
     {
-        stbNo: "1513C5644490054018",
-        vcNo: "001769135078",
-        dateTime: "06:55 PM  14-02-2021",
-        status: "Cancelled",
-      },
+      stbNo: "1513C5644490054018",
+      vcNo: "001769135078",
+      dateTime: "06:55 PM  14-02-2021",
+      status: "Cancelled",
+    },
   ];
 
   useEffect(() => {
     setIsLoading(true);
     setError("");
-    const body = {
+    const bodyPayment = {
       customer_id: "1001592649",
       operator_id: user.operatorId,
     };
+    const bodyStb = {
+        customer_id: "1001592649",
+        operator_id: user.operatorId,
+        flag:"Y"
+      };
 
-    API.lastPaymentHistory(body)
+    API.lastPaymentHistory(bodyPayment)
       .then((response) => {
         if (response.data.customerDetailsList.length > 0) {
           setPaymentHistory(response.data.customerDetailsList);
@@ -68,13 +73,18 @@ export default function PaymentHistory() {
         setIsLoading(false);
         setError("Some Error has occured");
       });
+
+      
   }, []);
 
   return (
     <>
       <Header name={paymentOpen ? "Payment History" : "STB History"} />
       <div>
-        <div className="StaticDiv" style={{height:stbOpen?"30vh":"30vh"}}>
+        <div
+          className="StaticDiv"
+          style={{ height: stbOpen ? "30vh" : "30vh" }}
+        >
           <div className="customer-card-div-history">
             <div
               className="card-div-history"
@@ -140,7 +150,7 @@ export default function PaymentHistory() {
       </div>
 
       {paymentOpen && (
-        <div className="ScrollingContainerParent" >
+        <div className="ScrollingContainerParent">
           <button className="his-btn" style={{ width: "80%" }}>
             PRINT TRANSACTION HISTORY
           </button>
@@ -201,21 +211,21 @@ export default function PaymentHistory() {
       )}
 
       {stbOpen && (
-        <div className="ScrollingContainerParent" style={{height:"55vh"}}>
+        <div className="ScrollingContainerParent" style={{ height: "55vh" }}>
           {data.map((val) => {
             return (
               <div className="ScrollingContainer">
-           
-                <div style={{width:"100%"}} className="customer-card-div-history">
+                <div
+                  style={{ width: "100%" }}
+                  className="customer-card-div-history"
+                >
                   <div
                     className="card-div-history"
                     onClick={() => navigate("/collectPayment")}
                   >
                     <div className="card-group1-div">
                       <div class="card-line1-div">
-                        <p className="card-name-p">
-                          Name : Nikhith Gowda Subrahmanya
-                        </p>
+                        <p className="card-name-p">Nikhith Gowda Subrahmanya</p>
                       </div>
 
                       <div className="card-line2-div">
@@ -223,14 +233,13 @@ export default function PaymentHistory() {
                           className="card-date-p"
                           style={{ fontWeight: "700" }}
                         >
-                          Customer ID : JB0213
+                          001769135078{" "}
                         </p>
                       </div>
 
                       <div className="card-line3-div">
                         <div style={{ display: "flex" }}>
-                          <TfiMobile className="card-mobileIcon" />
-                          <p className="card-phone-p">9740769579</p>
+                          <p className="card-date-p">03:45 PM 21-03-2023</p>
                         </div>
 
                         <p

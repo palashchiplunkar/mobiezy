@@ -60,5 +60,8 @@ export default {
     },
     lastPaymentHistory(value){
         return API.post("getmobilelastbill",value)
+    },
+    STBHistory(value){
+        return API.post("get-customer-stb-details",value)
     }
 };

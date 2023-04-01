@@ -113,40 +113,7 @@ export default function STBHistory() {
             <button className="his-btn">STB HISTORY</button>
           </div>
 
-          <div style={{ width: "90%", overflowX: "scroll" }}>
-            {data.map((val) => {
-              return (
-                <div style={{ width: "100%" }}>
-                  <div className="stb-card-div">
-                    <div className="stb-div">
-                      <p className="stb-p">{val.stbNo}</p>
-                    </div>
-                    <div className="stb-div">
-                      <p className="vcNo-p">{val.vcNo}</p>
-                    </div>
-                    <div className="stb-div">
-                      <p className="date-time-p">{val.dateTime}</p>
-                      <p
-                        className="card-status-p"
-                        style={{
-                          backgroundColor:
-                            val.status == "Active"
-                              ? "#a0c334"
-                              : val.status == "Suspended"
-                              ? "#DC1515"
-                              : "#000000",
-
-                          width: "70px",
-                        }}
-                      >
-                        {val.status}
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
+         
         </div>
       </div>
     </>
