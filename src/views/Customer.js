@@ -31,6 +31,7 @@ export default function Customer() {
         console.log(response.data.results);
         setcustomerData(response.data.results);
         setfiltercustomerData(response.data.results);
+        handleFilterSubmit();
       })
       .catch((error) => {
         console.log(error);
@@ -38,14 +39,7 @@ export default function Customer() {
   };
 
   useEffect(() => {
-    // window.history.pushState({}, "");
-    // window.addEventListener("popstate", function (e) {
-    //   e.preventDefault();
-    //   e.stopPropagation();
-    //   window.history.pushState({}, "");
-    // });
     fetchCustomerData();
-
     API.dropdownAgentDataAPI({ operatorId: user.operatorId })
       .then((response) => {
         setDropDownAreaData(response.data.all_areas);
@@ -162,7 +156,13 @@ export default function Customer() {
 
     if (sortBy === "CustomerId") {
       setfiltercustomerData((prevState) =>
-        [...prevState].sort((a, b) => a.managedCustomerId - b.managedCustomerId)
+        [...prevState].sort((a, b) =>
+          a.managedCustomerId.localeCompare(b.managedCustomerId, "en", {
+            numeric: true,
+            ignorePunctuation: true,
+            sensitivity: "base",
+          })
+        )
       );
     } else if (sortBy === "Pending") {
       setfiltercustomerData((prevState) =>
