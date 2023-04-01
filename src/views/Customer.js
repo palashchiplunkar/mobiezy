@@ -59,16 +59,16 @@ export default function Customer() {
 
   useMemo(() => {
     console.log("Search", search);
-    const results = filtercustomerData.filter(
-      (customer) => (customer) =>
-        customer.customerName.toLowerCase().includes(search.toLowerCase()) ||
-        customer.phone.toLowerCase().includes(search.toLowerCase()) ||
+    const results = customerData.filter(
+      (customer) =>
+        customer.customerName?.toLowerCase().includes(search?.toLowerCase()) ||
+        customer.phone?.toLowerCase().includes(search?.toLowerCase()) ||
         customer.managedCustomerId
-          .toLowerCase()
-          .includes(search.toLowerCase()) ||
-        customer.endDate.toLowerCase().includes(search.toLowerCase()) ||
-        customer.status.toLowerCase().includes(search.toLowerCase()) ||
-        customer.totalPayableAmount.toString().includes(search.toLowerCase())
+          ?.toLowerCase()
+          .includes(search?.toLowerCase()) ||
+        customer.endDate?.toLowerCase().includes(search?.toLowerCase()) ||
+        customer.status?.toLowerCase().includes(search?.toLowerCase()) ||
+        customer.totalPayableAmount?.toString().includes(search?.toLowerCase())
     );
     setfiltercustomerData(results);
   }, [search, customerData]);
@@ -144,11 +144,13 @@ export default function Customer() {
 
     if (sortOptions === "Paid") {
       setfiltercustomerData(
-        data.filter((customer) => customer.totalPayableAmount <= 0)
+        data.filter((customer) => customer.totalPayableAmount <= 0) &&
+          data.filter((customer) => customer.status === "Active")
       );
     } else if (sortOptions === "Unpaid") {
       setfiltercustomerData(
-        data.filter((customer) => customer.totalPayableAmount > 0)
+        data.filter((customer) => customer.totalPayableAmount > 0) &&
+          data.filter((customer) => customer.status === "Active")
       );
     } else {
       setfiltercustomerData(data);
