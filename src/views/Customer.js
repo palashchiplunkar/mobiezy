@@ -57,9 +57,8 @@ export default function Customer() {
     return DropDownAreaData;
   };
 
-  useMemo(() => {
-    console.log("Search", search);
-    const results = customerData.filter(
+  useEffect(() => {
+    const results = filtercustomerData.filter(
       (customer) =>
         customer.customerName?.toLowerCase().includes(search?.toLowerCase()) ||
         customer.phone?.toLowerCase().includes(search?.toLowerCase()) ||
@@ -71,7 +70,7 @@ export default function Customer() {
         customer.totalPayableAmount?.toString().includes(search?.toLowerCase())
     );
     setfiltercustomerData(results);
-  }, [search, customerData]);
+  }, [search, filtercustomerData]);
 
   const Customers = () => {
     const eachCustomer = filtercustomerData.map((customer) => {
@@ -143,10 +142,13 @@ export default function Customer() {
     const data = customerData;
 
     if (sortOptions === "Paid") {
-      setfiltercustomerData(
-        data.filter((customer) => customer.totalPayableAmount <= 0) &&
-          data.filter((customer) => customer.status === "Active")
+      const ActiveCustomers = data.filter(
+        (customer) => customer.status === "Active"
       );
+      const PaidCustomers = ActiveCustomers.filter(
+        (customer) => customer.totalPayableAmount === 0
+      );
+      setfiltercustomerData(PaidCustomers);
     } else if (sortOptions === "Unpaid") {
       setfiltercustomerData(
         data.filter((customer) => customer.totalPayableAmount > 0) &&
