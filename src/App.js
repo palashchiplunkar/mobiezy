@@ -54,7 +54,7 @@ function App() {
           <Route path="/customerStatistics" element={<CustomerStatistics />} />
           <Route path="/complaints" element={<Complaints />} />
           <Route path="/print" element={<Print />} />
-          <Route path="/customer">
+          <Route path="/customer/*">
             <Route index element={<Customer />} />
             <Route path="collectPayment">
               <Route index element={<CollectPayment />} />

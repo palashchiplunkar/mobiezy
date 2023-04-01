@@ -46,10 +46,16 @@ export default {
     viewCompalintAPI(value) {
         return API.post("getmobileassignedcomplaints", value);
     },
+
     customerSummary(value) {
         return API.post("mobile-agent-op-summary", value);
     },
-    allCustomerData(value){
-        return API.post("down-sync-offline",value)
+
+    allCustomerData(value) {
+        return API.post("down-sync-offline", value);
     },
+
+    recordVisit(value) {
+        return API.post("cableguy2-barcode", value);
+    }
 };

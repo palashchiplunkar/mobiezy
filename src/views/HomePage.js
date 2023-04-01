@@ -60,6 +60,18 @@ export default function HomePage() {
         }
     };
 
+    
+
+    window.addEventListener('load', function() {
+        window.history.pushState({ noBackExitsApp: true }, '')
+      })
+      
+      window.addEventListener('popstate', function(event) {
+        if (event.state && event.state.noBackExitsApp) {
+          window.history.pushState({ noBackExitsApp: true }, '')
+        }
+      })
+
     useEffect(() => {
         // window.history.pushState({}, "");
         // window.addEventListener("popstate", function (e) {
