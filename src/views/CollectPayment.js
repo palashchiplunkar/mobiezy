@@ -185,11 +185,11 @@ export default function CollectPayment() {
                 className="b-col-3 lS"
                 style={{ color: "#DC1515", fontWeight: "700" }}
               >
-                {customerDetails.endDate.substring(8, 10) +
+                {/* {customerDetails.endDate.substring(8, 10) +
                   " " +
                   months[customerDetails.endDate.substring(5, 7)] +
                   " " +
-                  customerDetails.endDate.substring(0, 4)}
+                  customerDetails.endDate.substring(0, 4)} */}
               </td>
             </tr>
             <tr>
