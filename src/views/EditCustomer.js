@@ -19,7 +19,8 @@ export default function EditCustomer() {
   const [customerName, setCustomerName] = useState(customer.customerName);
   const [customerPhone, setCustomerPhone] = useState(customer.phone);
   const [customerAddress, setCustomerAddress] = useState(customer.address);
-  const [customerArea, setCustomerArea] = useState(customer.area);
+  const [customerArea, setCustomerArea] = useState("");
+  const [customerAreaName, setCustomerAreaName] = useState("");
 
   console.log(customer);
   useEffect(() => {
@@ -27,17 +28,63 @@ export default function EditCustomer() {
     API.dropdownAgentDataAPI({ operatorId: user.operatorId })
       .then((response) => {
         setDropDownAreaData(response.data.all_areas);
+        SetInitialArea();
       })
 
       .catch((error) => {
         console.log(error);
       });
   }, []);
+  const SetInitialArea = () => {
+    // Wait until the dropDownAreaData is loaded
+    async function wait() {
+      while (dropDownAreaData.length === 0) {
+        await new Promise((resolve) => setTimeout(resolve, 100));
+      }
+      console.log(dropDownAreaData);
+
+      const area = dropDownAreaData.filter((data) => {
+        return data.area_name === customer.area;
+      });
+      console.log(area);
+      setCustomerArea(area[0].id);
+      // setCustomerAreaName(area[0].area_name);
+    }
+    wait();
+  };
   const DropDownArea = () => {
     const DropDownAreaData = dropDownAreaData.map((data) => {
       return <option value={data.id}>{data.area_name}</option>;
     });
     return DropDownAreaData;
+  };
+  const AreaNameForID = (id) => {
+    const area = dropDownAreaData.filter((data) => {
+      return data.id === id;
+    });
+    console.log(area);
+    // setCustomerAreaName(area[0].area_name);
+  };
+  const handleAPI = () => {
+    AreaNameForID(customerArea);
+    // API.editCustomerInfo({
+    //   customer_id: customer.customerId,
+    //   agent_id: user.agentId,
+    //   operator_id: user.operatorId,
+    //   customer_name: customerName,
+    //   customer_phone: customerPhone,
+    //   customer_address: customerAddress,
+    //   Area: customerArea,
+    //   AreaId: "148089",
+    //   flag: "test",
+    // })
+    //   .then((response) => {
+    //     console.log(response);
+    //     alert("Customer Updated Successfully");
+    //   })
+    //   .catch((error) => {
+    //     console.log(error);
+    //   });
   };
 
   return (
@@ -83,13 +130,15 @@ export default function EditCustomer() {
               className="edit-customer-form-input"
               name="area"
               id="area"
-              //   value={customerArea}
+              value={customerArea}
               onChange={(e) => setCustomerArea(e.target.value)}
             >
               <DropDownArea />
             </select>
           </div>
-          <button className="edit-customer-button">SUBMIT</button>
+          <button className="edit-customer-button" onClick={handleAPI}>
+            SUBMIT
+          </button>
         </div>
       </div>
     </>
