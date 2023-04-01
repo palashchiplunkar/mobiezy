@@ -81,7 +81,7 @@ export default function Customer() {
       console.log("Selected Area: ", area);
       // based the seleceted area filter the data
       const results = customerData.filter(
-        (customer) => customer.AREA_ID === area
+        (customer) => customer.AREA_ID === parseInt(area)
       );
       console.log(results);
       setfiltercustomerData(results);
@@ -246,6 +246,7 @@ export default function Customer() {
               name="test"
               className="area-dropdown"
               placeholder="All Areas"
+              value={area}
               onChange={(e) => setArea(e.target.value)}
             >
               <option value="All">All Areas</option>
