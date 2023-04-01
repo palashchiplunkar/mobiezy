@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { RiSortDesc } from "react-icons/ri";
 import Navbar from "../components/navbar";
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import Drawer from "react-bottom-drawer";
 import { TfiMobile } from "react-icons/tfi";
 import { useNavigate } from "react-router";
@@ -62,14 +62,22 @@ export default function Customer() {
     });
     return DropDownAreaData;
   };
-  useEffect(() => {
-    console.log("Serch", search);
-    const results = customerData.filter((customer) =>
-      customer.customerName.toLowerCase().includes(search)
+
+  useMemo(() => {
+    console.log("Search", search);
+    const results = customerData.filter(
+      (customer) =>
+        customer.customerName.toLowerCase().includes(search.toLowerCase()) ||
+        customer.phone.toLowerCase().includes(search.toLowerCase()) ||
+        customer.managedCustomerId
+          .toLowerCase()
+          .includes(search.toLowerCase()) ||
+        customer.endDate.toLowerCase().includes(search.toLowerCase()) ||
+        customer.status.toLowerCase().includes(search.toLowerCase()) ||
+        customer.totalPayableAmount.toString().includes(search.toLowerCase())
     );
-    console.log(results);
     setfiltercustomerData(results);
-  }, [search]);
+  }, [search, customerData]);
 
   const Customers = () => {
     const eachCustomer = filtercustomerData.map((customer) => {
@@ -120,10 +128,10 @@ export default function Customer() {
               </p>
             </div>
           </div>
-          {customer.address ? (
+          {customer.displayField ? (
             <div className="card-group2-div">
               <div className="card-underline-div"></div>
-              <p className="card-address-p">{customer.address}</p>
+              <p className="card-address-p">{customer.displayField}</p>
             </div>
           ) : null}
         </div>
