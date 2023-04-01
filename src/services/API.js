@@ -57,5 +57,8 @@ export default {
 
     recordVisit(value) {
         return API.post("cableguy2-barcode", value);
+    },
+    lastPaymentHistory(value){
+        return API.post("getmobilelastbill",value)
     }
 };

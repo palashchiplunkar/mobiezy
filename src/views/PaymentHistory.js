@@ -1,55 +1,80 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { TfiMobile } from "react-icons/tfi";
+import { Spinner } from "react-bootstrap";
 
 import { useNavigate } from "react-router-dom";
 import Header from "../components/header";
 import "../css/PaymentHistory.css";
+import "../css/STBHistory.css";
+import API from "../services/API";
 
 export default function PaymentHistory() {
+  const user = JSON.parse(
+    localStorage.getItem("user") || sessionStorage.getItem("user")
+  );
   const navigate = useNavigate();
-  let data = [
+  const [isLoading, setIsLoading] = useState(false);
+  const [Error, setError] = useState("");
+  const [PaymentHistory, setPaymentHistory] = useState([]);
+  const [paymentOpen, setpaymentOpen] = useState(true);
+  const [stbOpen, setstbOpen] = useState(false);
+  const data = [
     {
-      id: "SPT100111917520230227172227",
-      mode: "Mobile",
-      payMode: "Cash",
-      time: "03:45 PM",
-      date: "21-03-2023",
-      totalPrice: "300",
-      price: "275",
+      stbNo: "1513C5644490054018",
+      vcNo: "001769135078",
+      dateTime: "03:45 PM  21-03-2023",
+      status: "Active",
+    },
+
+    {
+      stbNo: "1513C5644490054807",
+      vcNo: "001769135087",
+      dateTime: "02:38 PM  22-12-2022",
+      status: "Suspended",
+    },
+
+    {
+      stbNo: "1513C5644490054018",
+      vcNo: "001769135078",
+      dateTime: "06:55 PM  14-02-2021",
+      status: "Cancelled",
     },
     {
-      id: "TNP100068984820230126130449",
-      mode: "Office",
-      payMode: "Cash",
-      time: "11:55 AM",
-      date: "22-01-2023",
-      totalPrice: "25",
-      price: "275",
-    },
-    {
-      id: "TNP100131299720230126103605",
-      mode: "Mobile",
-      payMode: "Online Payment",
-      time: "02:38 PM",
-      date: "22-12-2022",
-      totalPrice: "25",
-      price: "275",
-    },
-    {
-      id: "TNP100131299720230126103605",
-      mode: "Mobile",
-      payMode: "Online Payment",
-      time: "02:38 PM",
-      date: "22-12-2022",
-      totalPrice: "25",
-      price: "275",
-    },
+        stbNo: "1513C5644490054018",
+        vcNo: "001769135078",
+        dateTime: "06:55 PM  14-02-2021",
+        status: "Cancelled",
+      },
   ];
+
+  useEffect(() => {
+    setIsLoading(true);
+    setError("");
+    const body = {
+      customer_id: "1001592649",
+      operator_id: user.operatorId,
+    };
+
+    API.lastPaymentHistory(body)
+      .then((response) => {
+        if (response.data.customerDetailsList.length > 0) {
+          setPaymentHistory(response.data.customerDetailsList);
+          setIsLoading(false);
+          setError("");
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+        setIsLoading(false);
+        setError("Some Error has occured");
+      });
+  }, []);
+
   return (
     <>
-      <Header name={"Payment History"} link={"/collectPayment"} />
-      <div style={{ height: "45vh" }}>
-        <div className="StaticDiv">
+      <Header name={paymentOpen ? "Payment History" : "STB History"} />
+      <div>
+        <div className="StaticDiv" style={{height:stbOpen?"30vh":"30vh"}}>
           <div className="customer-card-div-history">
             <div
               className="card-div-history"
@@ -92,43 +117,143 @@ export default function PaymentHistory() {
           </div>
 
           <div className="hty-btn-hzl">
-            <button className="his-btn">PAYMENT HISTORY</button>
-            <button className="his-btn" onClick={() => navigate("stbHistory")}>
+            <button
+              className="his-btn"
+              onClick={() => {
+                setpaymentOpen(!paymentOpen);
+                setstbOpen(false);
+              }}
+            >
+              PAYMENT HISTORY
+            </button>
+            <button
+              className="his-btn"
+              onClick={() => {
+                setstbOpen(!stbOpen);
+                setpaymentOpen(false);
+              }}
+            >
               STB HISTORY
             </button>
           </div>
-          <button className="his-btn" style={{ width: "80%" }}>
-            PRINT TRANSACTION HISTORY
-          </button>
         </div>
       </div>
 
-      <div className="ScrollingContainerParent">
-        <div className="ScrollingContainer">
+      {paymentOpen && (
+        <div className="ScrollingContainerParent" >
+          <button className="his-btn" style={{ width: "80%" }}>
+            PRINT TRANSACTION HISTORY
+          </button>
+          <div className="ScrollingContainer">
+            <div style={{ display: "flex", justifyContent: "center" }}>
+              {isLoading && (
+                <Spinner
+                  animation="border"
+                  variant="info"
+                  style={{ position: "absolute", marginTop: "50vw" }}
+                />
+              )}
+              {Error && <p style={{ marginTop: "100px" }}>{Error}</p>}
+            </div>
+
+            {PaymentHistory.map((value) => {
+              return (
+                <div style={{ width: "100%" }}>
+                  <div className="customer-card-div-history-below">
+                    <div className="history-map-div1">
+                      <p className="card-date-p" style={{ fontWeight: "700" }}>
+                        {value.TRAN_ID}
+                      </p>
+                      <p
+                        className="card-date-p"
+                        style={{ color: "#DC1515", fontWeight: "bold" }}
+                      >
+                        ₹{value.BALANCE}
+                      </p>
+                    </div>
+                    <div className="history-map-div1">
+                      <p className="card-date-p">{value.TRAN_TYPE}</p>
+                      <p className="card-date-p">
+                        {value.COLLECTION_DATE.slice("11", "16")}{" "}
+                        {value.COLLECTION_DATE.slice("11", "12") >= 12
+                          ? "PM"
+                          : "AM"}{" "}
+                        {value.COLLECTION_DATE.slice("0", "10")}
+                      </p>
+                    </div>
+                    <div className="history-map-div1">
+                      <p className="card-date-p">
+                        {value.MODE_OF_PAYMENT == 1 ? "Online Payment" : "Cash"}
+                      </p>
+                      <p
+                        className="card-date-p"
+                        style={{ color: "#3AA45E", fontWeight: "bold" }}
+                      >
+                        ₹{value.COLLECTED_AMOUNT}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      )}
+
+      {stbOpen && (
+        <div className="ScrollingContainerParent" style={{height:"55vh"}}>
           {data.map((val) => {
             return (
-              <div style={{ width: "100%" }}>
-                <div className="customer-card-div-history-below">
-                  <div className="history-map-div1">
-                    <p className="card-date-p" style={{ fontWeight: "700" }}>
-                      SPT100111917520230227172227
-                    </p>
-                    <p className="card-date-p">₹300</p>
-                  </div>
-                  <div className="history-map-div1">
-                    <p className="card-date-p">Mobile</p>
-                    <p className="card-date-p">03:45 PM 22-01-2023</p>
-                  </div>
-                  <div className="history-map-div1">
-                    <p className="card-date-p">Cash</p>
-                    <p className="card-date-p">₹275</p>
+              <div className="ScrollingContainer">
+           
+                <div style={{width:"100%"}} className="customer-card-div-history">
+                  <div
+                    className="card-div-history"
+                    onClick={() => navigate("/collectPayment")}
+                  >
+                    <div className="card-group1-div">
+                      <div class="card-line1-div">
+                        <p className="card-name-p">
+                          Name : Nikhith Gowda Subrahmanya
+                        </p>
+                      </div>
+
+                      <div className="card-line2-div">
+                        <p
+                          className="card-date-p"
+                          style={{ fontWeight: "700" }}
+                        >
+                          Customer ID : JB0213
+                        </p>
+                      </div>
+
+                      <div className="card-line3-div">
+                        <div style={{ display: "flex" }}>
+                          <TfiMobile className="card-mobileIcon" />
+                          <p className="card-phone-p">9740769579</p>
+                        </div>
+
+                        <p
+                          className="card-status-p"
+                          style={{
+                            backgroundColor: "Active"
+                              ? "#a0c334"
+                              : "Temporarily Disconnected"
+                              ? "#DC1515"
+                              : "#000000",
+                          }}
+                        >
+                          Active
+                        </p>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
             );
           })}
         </div>
-      </div>
+      )}
     </>
   );
 }
