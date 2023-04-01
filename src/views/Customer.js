@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { RiSortDesc } from "react-icons/ri";
 import Navbar from "../components/navbar";
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import Drawer from "react-bottom-drawer";
 import { TfiMobile } from "react-icons/tfi";
 import { useNavigate } from "react-router";
@@ -9,6 +9,7 @@ import API from "../services/API";
 
 import "../css/Customer.css";
 import "../css/global.css";
+import { changeLanguage } from "i18next";
 
 export default function Customer() {
   const navigate = useNavigate();
@@ -16,10 +17,12 @@ export default function Customer() {
   const [dropDownAreaData, setDropDownAreaData] = useState([]);
   const [customerData, setcustomerData] = useState([]);
   const [filtercustomerData, setfiltercustomerData] = useState([]);
+
   const [sortOptions, setSortOptions] = useState("All");
   const [sortBy, setSortBy] = useState("CustomerId");
   const [sortType, setSortType] = useState("ASC");
   const [search, setSearch] = useState("");
+  const [area, setArea] = useState("All");
 
   const user = JSON.parse(
     localStorage.getItem("user") || sessionStorage.getItem("user")
@@ -31,6 +34,7 @@ export default function Customer() {
         console.log(response.data.results);
         setcustomerData(response.data.results);
         setfiltercustomerData(response.data.results);
+        handleFilterSubmit();
       })
       .catch((error) => {
         console.log(error);
@@ -38,14 +42,7 @@ export default function Customer() {
   };
 
   useEffect(() => {
-    // window.history.pushState({}, "");
-    // window.addEventListener("popstate", function (e) {
-    //   e.preventDefault();
-    //   e.stopPropagation();
-    //   window.history.pushState({}, "");
-    // });
     fetchCustomerData();
-
     API.dropdownAgentDataAPI({ operatorId: user.operatorId })
       .then((response) => {
         setDropDownAreaData(response.data.all_areas);
@@ -58,16 +55,51 @@ export default function Customer() {
 
   const DropDownArea = () => {
     const DropDownAreaData = dropDownAreaData.map((data) => {
-      return <option value={data.area_id}>{data.area_name}</option>;
+      return <option value={data.id}>{data.area_name}</option>;
     });
     return DropDownAreaData;
   };
   useEffect(() => {
-    console.log("Serch", search);
-    const results = customerData.filter((customer) =>
-      customer.customerName.toLowerCase().includes(search)
+    if (area === "All") {
+      setfiltercustomerData([...customerData]); // Reset filter data to all customers
+    } else {
+      const results = customerData.filter(
+        (customer) => customer.AREA_ID === area
+      );
+      setfiltercustomerData(results);
+    }
+  }, [area, customerData]);
+
+  const handleAreaChange = (event) => {
+    setArea(event.target.value);
+  };
+
+  useEffect(() => {
+    if (area === "All") {
+      setfiltercustomerData(customerData);
+    } else {
+      console.log("Selected Area: ", area);
+      // based the seleceted area filter the data
+      const results = customerData.filter(
+        (customer) => customer.AREA_ID === area
+      );
+      console.log(results);
+      setfiltercustomerData(results);
+    }
+  }, [area]);
+
+  useEffect(() => {
+    const results = customerData.filter(
+      (customer) =>
+        customer.customerName?.toLowerCase().includes(search?.toLowerCase()) ||
+        customer.phone?.toLowerCase().includes(search?.toLowerCase()) ||
+        customer.managedCustomerId
+          ?.toLowerCase()
+          .includes(search?.toLowerCase()) ||
+        customer.endDate?.toLowerCase().includes(search?.toLowerCase()) ||
+        customer.status?.toLowerCase().includes(search?.toLowerCase()) ||
+        customer.totalPayableAmount?.toString().includes(search?.toLowerCase())
     );
-    console.log(results);
     setfiltercustomerData(results);
   }, [search]);
 
@@ -120,10 +152,10 @@ export default function Customer() {
               </p>
             </div>
           </div>
-          {customer.address ? (
+          {customer.displayField ? (
             <div className="card-group2-div">
               <div className="card-underline-div"></div>
-              <p className="card-address-p">{customer.address}</p>
+              <p className="card-address-p">{customer.displayField}</p>
             </div>
           ) : null}
         </div>
@@ -141,20 +173,34 @@ export default function Customer() {
     const data = customerData;
 
     if (sortOptions === "Paid") {
-      setfiltercustomerData(
-        data.filter((customer) => customer.totalPayableAmount <= 0)
+      const ActiveCustomers = data.filter(
+        (customer) => customer.status === "Active"
       );
+      const PaidCustomers = ActiveCustomers.filter(
+        (customer) => customer.totalPayableAmount <= 0
+      );
+      setfiltercustomerData(PaidCustomers);
     } else if (sortOptions === "Unpaid") {
-      setfiltercustomerData(
-        data.filter((customer) => customer.totalPayableAmount > 0)
+      const ActiveCustomers = data.filter(
+        (customer) => customer.status === "Active"
       );
+      const UnpaidCustomers = ActiveCustomers.filter(
+        (customer) => customer.totalPayableAmount > 0
+      );
+      setfiltercustomerData(UnpaidCustomers);
     } else {
       setfiltercustomerData(data);
     }
 
     if (sortBy === "CustomerId") {
       setfiltercustomerData((prevState) =>
-        [...prevState].sort((a, b) => a.managedCustomerId - b.managedCustomerId)
+        [...prevState].sort((a, b) =>
+          a.managedCustomerId.localeCompare(b.managedCustomerId, "en", {
+            numeric: true,
+            ignorePunctuation: true,
+            sensitivity: "base",
+          })
+        )
       );
     } else if (sortBy === "Pending") {
       setfiltercustomerData((prevState) =>
@@ -200,8 +246,9 @@ export default function Customer() {
               name="test"
               className="area-dropdown"
               placeholder="All Areas"
+              onChange={(e) => setArea(e.target.value)}
             >
-              <option>All Areas</option>
+              <option value="All">All Areas</option>
               <DropDownArea />
             </select>
           </div>
