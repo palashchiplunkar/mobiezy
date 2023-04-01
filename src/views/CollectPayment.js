@@ -12,7 +12,6 @@ import "../css/global.css";
 export default function CollectPayment() {
   const navigate = useNavigate();
   const customer = useLocation();
-  
 
   const [stbOpen, setstbOpen] = useState(false);
   const [cusOpen, setcusOpen] = useState(false);
