@@ -70,10 +70,6 @@ export default function Customer() {
     }
   }, [area, customerData]);
 
-  const handleAreaChange = (event) => {
-    setArea(event.target.value);
-  };
-
   useEffect(() => {
     if (area === "All") {
       setfiltercustomerData(customerData);
