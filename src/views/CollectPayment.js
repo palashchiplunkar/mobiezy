@@ -11,8 +11,9 @@ import "../css/CollectPayment.css";
 import "../css/global.css";
 
 export default function CollectPayment() {
-    const navigate = useNavigate();
-    const customer = useLocation();
+  const navigate = useNavigate();
+  const customer = useLocation();
+
 
     const [stbOpen, setstbOpen] = useState(false);
     const [cusOpen, setcusOpen] = useState(false);
@@ -71,57 +72,58 @@ export default function CollectPayment() {
         },
     ];
 
-    const CusOptions = [
-        {
-            id: 1,
-            name: "Edit Customer",
-            imgUrl: "edit_customer.png",
-            toLink: "/customer/collectPayment/editCustomer",
-        },
-        {
-            id: 2,
-            name: "Edit STB",
-            imgUrl: "edit_stb.png",
-            toLink: "/customer/collectPayment/editSetTopBox",
-        },
-        {
-            id: 3,
-            name: "Send Payment Link",
-            imgUrl: "send_payment.png",
-        },
-        {
-            id: 4,
-            name: "Complaints",
-            imgUrl: "complaints.png",
-        },
-        {
-            id: 5,
-            name: "History",
-            imgUrl: "history_payment.png",
-            toLink: "/customer/collectPayment/history",
-        },
-        {
-            id: 6,
-            name: "Update Location",
-            imgUrl: "update_location.png",
-        },
-        {
-            id: 7,
-            name: "Print Last Bill",
-            imgUrl: "print_bill.png",
-        },
-        {
-            id: 8,
-            name: "Locate Address",
-            imgUrl: "location_collect.png",
-        },
-        {
-            id: 9,
-            name: "Record Visit",
-            imgUrl: "record_visit.png",
-            toLink: "/customer/collectPayment/recordVisit",
-        },
-    ];
+  const CusOptions = [
+    {
+      id: 1,
+      name: "Edit Customer",
+      imgUrl: "edit_customer.png",
+      toLink: "/customer/collectPayment/editCustomer",
+      state: customerDetails,
+    },
+    {
+      id: 2,
+      name: "Edit STB",
+      imgUrl: "edit_stb.png",
+      toLink: "/customer/collectPayment/editSetTopBox",
+    },
+    {
+      id: 3,
+      name: "Send Payment Link",
+      imgUrl: "send_payment.png",
+    },
+    {
+      id: 4,
+      name: "Complaints",
+      imgUrl: "complaints.png",
+    },
+    {
+      id: 5,
+      name: "History",
+      imgUrl: "history_payment.png",
+      toLink: "/customer/collectPayment/history",
+    },
+    {
+      id: 6,
+      name: "Update Location",
+      imgUrl: "update_location.png",
+    },
+    {
+      id: 7,
+      name: "Print Last Bill",
+      imgUrl: "print_bill.png",
+    },
+    {
+      id: 8,
+      name: "Locate Address",
+      imgUrl: "location_collect.png",
+    },
+    {
+      id: 9,
+      name: "Record Visit",
+      imgUrl: "record_visit.png",
+      toLink: "/customer/collectPayment/recordVisit",
+    },
+  ];
 
     // window.addEventListener("popstate", () => {
     //     window.location.href = ("/customer");
@@ -248,107 +250,94 @@ export default function CollectPayment() {
                         <option>CASH</option>
                     </select>
 
-                    <input type={"text"} placeholder="Next Expiry Date" />
-                    <div className="collectBtn-div">
-                        <button className="collectbtnPayment" type="submit">
-                            Collect
-                        </button>
+          <input type={"text"} placeholder="Next Expiry Date" />
+          <div className="collectBtn-div">
+            <button className="collectbtnPayment" type="submit">
+              Collect
+            </button>
+          </div>
+        </div>
+        <div className="CollapseContainer">
+          <div style={{ width: "90%" }}>
+            <Collapsible
+              trigger={[
+                "STB Integrated Options",
+                <TbPlus style={{ width: "30px", height: "30px" }} />,
+              ]}
+              triggerClassName={"Collapsible__trigger1"}
+              triggerOpenedClassName={"Collapsible__trigger1Open"}
+              triggerWhenOpen={[
+                "STB Integrated Options",
+                <AiOutlineMinus style={{ width: "30px", height: "30px" }} />,
+              ]}
+              //   isOpen={stbOpen}
+              //   onOpen={()=>(setcusOpen(false))}
+              open={stbOpen}
+              handleTriggerClick={() => {
+                setstbOpen(!stbOpen);
+                setcusOpen(false);
+              }}
+              transitionCloseTime={"300"}
+            >
+              <div className="STBOptionsContainer">
+                {stbOptions.map((option) => {
+                  return (
+                    <div className="STBEachOption" id={option.id}>
+                      <img
+                        src={require("../assets/" + option.imgUrl)}
+                        width={"45%"}
+                      />
+                      <p>{option.name}</p>
                     </div>
-                </div>
-                <div className="CollapseContainer">
-                    <div style={{ width: "90%" }}>
-                        <Collapsible
-                            trigger={[
-                                "STB Integrated Options",
-                                <TbPlus
-                                    style={{ width: "30px", height: "30px" }}
-                                />,
-                            ]}
-                            triggerClassName={"Collapsible__trigger1"}
-                            triggerOpenedClassName={"Collapsible__trigger1Open"}
-                            triggerWhenOpen={[
-                                "STB Integrated Options",
-                                <AiOutlineMinus
-                                    style={{ width: "30px", height: "30px" }}
-                                />,
-                            ]}
-                            //   isOpen={stbOpen}
-                            //   onOpen={()=>(setcusOpen(false))}
-                            open={stbOpen}
-                            handleTriggerClick={() => {
-                                setstbOpen(!stbOpen);
-                                setcusOpen(false);
-                            }}
-                            transitionCloseTime={"300"}
-                        >
-                            <div className="STBOptionsContainer">
-                                {stbOptions.map((option) => {
-                                    return (
-                                        <div
-                                            className="STBEachOption"
-                                            id={option.id}
-                                        >
-                                            <img
-                                                src={require("../assets/" +
-                                                    option.imgUrl)}
-                                                width={"45%"}
-                                            />
-                                            <p>{option.name}</p>
-                                        </div>
-                                    );
-                                })}
-                            </div>
-                        </Collapsible>
+                  );
+                })}
+              </div>
+            </Collapsible>
+          </div>
+          <div style={{ width: "90%", marginBottom: "2vh" }}>
+            <Collapsible
+              trigger={[
+                "Customer Related Operations",
+                <TbPlus style={{ width: "30px", height: "30px" }} />,
+              ]}
+              triggerClassName={"Collapsible__trigger2"}
+              triggerOpenedClassName={"Collapsible__trigger2Open"}
+              triggerWhenOpen={[
+                "Customer Related Operations",
+                <AiOutlineMinus style={{ width: "30px", height: "30px" }} />,
+              ]}
+              transitionCloseTime={"200"}
+              //   isOpen={cusOpen}
+              //   onOpen={()=>setstbOpen(false)}
+              open={cusOpen}
+              handleTriggerClick={() => {
+                setcusOpen(!cusOpen);
+                setstbOpen(false);
+              }}
+            >
+              <div className="STBOptionsContainer">
+                {CusOptions.map((option) => {
+                  return (
+                    <div
+                      className="STBEachOption"
+                      id={option.id}
+                      onClick={() => {
+                        navigate(option.toLink, { state: option.state });
+                      }}
+                    >
+                      <img
+                        src={require("../assets/" + option.imgUrl)}
+                        width={"45%"}
+                      />
+                      <p>{option.name}</p>
                     </div>
-                    <div style={{ width: "90%", marginBottom: "2vh" }}>
-                        <Collapsible
-                            trigger={[
-                                "Customer Related Operations",
-                                <TbPlus
-                                    style={{ width: "30px", height: "30px" }}
-                                />,
-                            ]}
-                            triggerClassName={"Collapsible__trigger2"}
-                            triggerOpenedClassName={"Collapsible__trigger2Open"}
-                            triggerWhenOpen={[
-                                "Customer Related Operations",
-                                <AiOutlineMinus
-                                    style={{ width: "30px", height: "30px" }}
-                                />,
-                            ]}
-                            transitionCloseTime={"200"}
-                            //   isOpen={cusOpen}
-                            //   onOpen={()=>setstbOpen(false)}
-                            open={cusOpen}
-                            handleTriggerClick={() => {
-                                setcusOpen(!cusOpen);
-                                setstbOpen(false);
-                            }}
-                        >
-                            <div className="STBOptionsContainer">
-                                {CusOptions.map((option) => {
-                                    return (
-                                        <div
-                                            className="STBEachOption"
-                                            id={option.id}
-                                            onClick={() => {
-                                                navigate(option.toLink);
-                                            }}
-                                        >
-                                            <img
-                                                src={require("../assets/" +
-                                                    option.imgUrl)}
-                                                width={"45%"}
-                                            />
-                                            <p>{option.name}</p>
-                                        </div>
-                                    );
-                                })}
-                            </div>
-                        </Collapsible>
-                    </div>
-                </div>
-            </div>
-        </>
-    );
+                  );
+                })}
+              </div>
+            </Collapsible>
+          </div>
+        </div>
+      </div>
+    </>
+  );
 }
