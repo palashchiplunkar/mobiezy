@@ -60,7 +60,6 @@ function App() {
               <Route index element={<CollectPayment />} />
               <Route path="history">
                 <Route index element={<PaymentHistory />} />
-                <Route path="stbHistory" element={<STBHistory />} />
               </Route>
               <Route path="recordVisit">
                 <Route index element={<RecordVisit />} />
