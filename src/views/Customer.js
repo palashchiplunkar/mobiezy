@@ -59,8 +59,8 @@ export default function Customer() {
 
   useMemo(() => {
     console.log("Search", search);
-    const results = customerData.filter(
-      (customer) =>
+    const results = filtercustomerData.filter(
+      (customer) => (customer) =>
         customer.customerName.toLowerCase().includes(search.toLowerCase()) ||
         customer.phone.toLowerCase().includes(search.toLowerCase()) ||
         customer.managedCustomerId
