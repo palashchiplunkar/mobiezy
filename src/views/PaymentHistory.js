@@ -43,6 +43,10 @@ export default function PaymentHistory() {
           setPaymentHistory(response.data.customerDetailsList);
           setIsLoading(false);
           setError("");
+        }else{
+            setIsLoading(false);
+            setError("No Details Found");
+
         }
       })
       .catch((err) => {
