@@ -13,7 +13,6 @@ export default function CollectPayment() {
   const navigate = useNavigate();
   const customer = useLocation();
 
-
   const [stbOpen, setstbOpen] = useState(false);
   const [cusOpen, setcusOpen] = useState(false);
   const [customerDetails, setCustomerDetails] = useState([]);
@@ -92,6 +91,7 @@ export default function CollectPayment() {
       name: "Edit Customer",
       imgUrl: "edit_customer.png",
       toLink: "/customer/collectPayment/editCustomer",
+      state: customerDetails,
     },
     {
       id: 2,
@@ -331,7 +331,7 @@ export default function CollectPayment() {
                       className="STBEachOption"
                       id={option.id}
                       onClick={() => {
-                        navigate(option.toLink);
+                        navigate(option.toLink, { state: option.state });
                       }}
                     >
                       <img
