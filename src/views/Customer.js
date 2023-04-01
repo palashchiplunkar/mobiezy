@@ -12,96 +12,104 @@ import "../css/global.css";
 import { changeLanguage } from "i18next";
 
 export default function Customer() {
-  const navigate = useNavigate();
-  const [isVisible, setIsVisible] = useState(false);
-  const [dropDownAreaData, setDropDownAreaData] = useState([]);
-  const [customerData, setcustomerData] = useState([]);
-  const [filtercustomerData, setfiltercustomerData] = useState([]);
+    const navigate = useNavigate();
+    const [isVisible, setIsVisible] = useState(false);
+    const [dropDownAreaData, setDropDownAreaData] = useState([]);
+    const [customerData, setcustomerData] = useState([]);
+    const [filtercustomerData, setfiltercustomerData] = useState([]);
 
-  const [sortOptions, setSortOptions] = useState("All");
-  const [sortBy, setSortBy] = useState("CustomerId");
-  const [sortType, setSortType] = useState("ASC");
-  const [search, setSearch] = useState("");
-  const [area, setArea] = useState("All");
+    const [sortOptions, setSortOptions] = useState("All");
+    const [sortBy, setSortBy] = useState("CustomerId");
+    const [sortType, setSortType] = useState("ASC");
+    const [search, setSearch] = useState("");
+    const [area, setArea] = useState("All");
 
     const user = JSON.parse(
         localStorage.getItem("user") || sessionStorage.getItem("user")
     );
 
-  const fetchCustomerData = () => {
-    API.allCustomerData({ agentId: user.agentId })
-      .then((response) => {
-        console.log(response.data.results);
-        setcustomerData(response.data.results);
-        setfiltercustomerData(response.data.results);
-        handleFilterSubmit();
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
+    const fetchCustomerData = () => {
+        API.allCustomerData({ agentId: user.agentId })
+            .then((response) => {
+                console.log(response.data.results);
+                setcustomerData(response.data.results);
+                setfiltercustomerData(response.data.results);
+                handleFilterSubmit();
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    };
 
-  useEffect(() => {
-    fetchCustomerData();
-    API.dropdownAgentDataAPI({ operatorId: user.operatorId })
-      .then((response) => {
-        setDropDownAreaData(response.data.all_areas);
-      })
+    useEffect(() => {
+        fetchCustomerData();
+        API.dropdownAgentDataAPI({ operatorId: user.operatorId })
+            .then((response) => {
+                setDropDownAreaData(response.data.all_areas);
+            })
 
             .catch((error) => {
                 console.log(error);
             });
     }, []);
 
-  const DropDownArea = () => {
-    const DropDownAreaData = dropDownAreaData.map((data) => {
-      return <option value={data.id}>{data.area_name}</option>;
-    });
-    return DropDownAreaData;
-  };
-  useEffect(() => {
-    if (area === "All") {
-      setfiltercustomerData([...customerData]); // Reset filter data to all customers
-    } else {
-      const results = customerData.filter(
-        (customer) => customer.AREA_ID === area
-      );
-      setfiltercustomerData(results);
-    }
-  }, [area, customerData]);
+    const DropDownArea = () => {
+        const DropDownAreaData = dropDownAreaData.map((data) => {
+            return <option value={data.id}>{data.area_name}</option>;
+        });
+        return DropDownAreaData;
+    };
+    useEffect(() => {
+        if (area === "All") {
+            setfiltercustomerData([...customerData]); // Reset filter data to all customers
+        } else {
+            const results = customerData.filter(
+                (customer) => customer.AREA_ID === area
+            );
+            setfiltercustomerData(results);
+        }
+    }, [area, customerData]);
 
-  const handleAreaChange = (event) => {
-    setArea(event.target.value);
-  };
+    const handleAreaChange = (event) => {
+        setArea(event.target.value);
+    };
 
-  useEffect(() => {
-    if (area === "All") {
-      setfiltercustomerData(customerData);
-    } else {
-      console.log("Selected Area: ", area);
-      // based the seleceted area filter the data
-      const results = customerData.filter(
-        (customer) => customer.AREA_ID === parseInt(area)
-      );
-      console.log(results);
-      setfiltercustomerData(results);
-    }
-  }, [area]);
+    useEffect(() => {
+        if (area === "All") {
+            setfiltercustomerData(customerData);
+        } else {
+            console.log("Selected Area: ", area);
+            // based the seleceted area filter the data
+            const results = customerData.filter(
+                (customer) => customer.AREA_ID === parseInt(area)
+            );
+            console.log(results);
+            setfiltercustomerData(results);
+        }
+    }, [area]);
 
-  useEffect(() => {
-    const results = customerData.filter(
-      (customer) =>
-        customer.customerName?.toLowerCase().includes(search?.toLowerCase()) ||
-        customer.phone?.toLowerCase().includes(search?.toLowerCase()) ||
-        customer.managedCustomerId
-          ?.toLowerCase()
-          .includes(search?.toLowerCase()) ||
-        customer.endDate?.toLowerCase().includes(search?.toLowerCase()) ||
-        customer.status?.toLowerCase().includes(search?.toLowerCase()) ||
-        customer.totalPayableAmount?.toString().includes(search?.toLowerCase())
-    );
-    setfiltercustomerData(results);
-  }, [search]);
+    useEffect(() => {
+        const results = customerData.filter(
+            (customer) =>
+                customer.customerName
+                    ?.toLowerCase()
+                    .includes(search?.toLowerCase()) ||
+                customer.phone?.toLowerCase().includes(search?.toLowerCase()) ||
+                customer.managedCustomerId
+                    ?.toLowerCase()
+                    .includes(search?.toLowerCase()) ||
+                customer.endDate
+                    ?.toLowerCase()
+                    .includes(search?.toLowerCase()) ||
+                customer.status
+                    ?.toLowerCase()
+                    .includes(search?.toLowerCase()) ||
+                customer.totalPayableAmount
+                    ?.toString()
+                    .includes(search?.toLowerCase())
+        );
+        setfiltercustomerData(results);
+    }, [search]);
 
     const Customers = () => {
         const eachCustomer = filtercustomerData.map((customer) => {
@@ -145,32 +153,34 @@ export default function Customer() {
                                 <p className="card-phone-p">{customer.phone}</p>
                             </div>
 
-              <p
-                className="card-status-p"
-                style={{
-                  backgroundColor:
-                    customer.status === "Active"
-                      ? "#a0c334"
-                      : customer.status === "Suspended"
-                      ? "#DC1515"
-                      : "#000000",
-                }}
-              >
-                {customer.status}
-              </p>
-            </div>
-          </div>
-          {customer.displayField ? (
-            <div className="card-group2-div">
-              <div className="card-underline-div"></div>
-              <p className="card-address-p">{customer.displayField}</p>
-            </div>
-          ) : null}
-        </div>
-      );
-    });
-    return <>{eachCustomer}</>;
-  };
+                            <p
+                                className="card-status-p"
+                                style={{
+                                    backgroundColor:
+                                        customer.status === "Active"
+                                            ? "#a0c334"
+                                            : customer.status === "Suspended"
+                                            ? "#DC1515"
+                                            : "#000000",
+                                }}
+                            >
+                                {customer.status}
+                            </p>
+                        </div>
+                    </div>
+                    {customer.displayField ? (
+                        <div className="card-group2-div">
+                            <div className="card-underline-div"></div>
+                            <p className="card-address-p">
+                                {customer.displayField}
+                            </p>
+                        </div>
+                    ) : null}
+                </div>
+            );
+        });
+        return <>{eachCustomer}</>;
+    };
 
     const onClose = React.useCallback(() => {
         setIsVisible(false);
@@ -180,43 +190,47 @@ export default function Customer() {
     const ChangeDataBasedOnFilter = () => {
         const data = customerData;
 
-    if (sortOptions === "Paid") {
-      const ActiveCustomers = data.filter(
-        (customer) => customer.status === "Active"
-      );
-      const PaidCustomers = ActiveCustomers.filter(
-        (customer) => customer.totalPayableAmount <= 0
-      );
-      setfiltercustomerData(PaidCustomers);
-    } else if (sortOptions === "Unpaid") {
-      const ActiveCustomers = data.filter(
-        (customer) => customer.status === "Active"
-      );
-      const UnpaidCustomers = ActiveCustomers.filter(
-        (customer) => customer.totalPayableAmount > 0
-      );
-      setfiltercustomerData(UnpaidCustomers);
-    } else {
-      setfiltercustomerData(data);
-    }
+        if (sortOptions === "Paid") {
+            const ActiveCustomers = data.filter(
+                (customer) => customer.status === "Active"
+            );
+            const PaidCustomers = ActiveCustomers.filter(
+                (customer) => customer.totalPayableAmount <= 0
+            );
+            setfiltercustomerData(PaidCustomers);
+        } else if (sortOptions === "Unpaid") {
+            const ActiveCustomers = data.filter(
+                (customer) => customer.status === "Active"
+            );
+            const UnpaidCustomers = ActiveCustomers.filter(
+                (customer) => customer.totalPayableAmount > 0
+            );
+            setfiltercustomerData(UnpaidCustomers);
+        } else {
+            setfiltercustomerData(data);
+        }
 
-    if (sortBy === "CustomerId") {
-      setfiltercustomerData((prevState) =>
-        [...prevState].sort((a, b) =>
-          a.managedCustomerId.localeCompare(b.managedCustomerId, "en", {
-            numeric: true,
-            ignorePunctuation: true,
-            sensitivity: "base",
-          })
-        )
-      );
-    } else if (sortBy === "Pending") {
-      setfiltercustomerData((prevState) =>
-        [...prevState].sort(
-          (a, b) => a.totalPayableAmount - b.totalPayableAmount
-        )
-      );
-    }
+        if (sortBy === "CustomerId") {
+            setfiltercustomerData((prevState) =>
+                [...prevState].sort((a, b) =>
+                    a.managedCustomerId.localeCompare(
+                        b.managedCustomerId,
+                        "en",
+                        {
+                            numeric: true,
+                            ignorePunctuation: true,
+                            sensitivity: "base",
+                        }
+                    )
+                )
+            );
+        } else if (sortBy === "Pending") {
+            setfiltercustomerData((prevState) =>
+                [...prevState].sort(
+                    (a, b) => a.totalPayableAmount - b.totalPayableAmount
+                )
+            );
+        }
 
         if (sortType === "ASC") {
             setfiltercustomerData((prevState) => [...prevState].reverse());
@@ -233,34 +247,34 @@ export default function Customer() {
         ChangeDataBasedOnFilter();
     };
 
-  return (
-    <>
-      <div className="customer-container">
-        <div className="header-blue">
-          <div className="area-div">
-            <p className="area-p">Area</p>
-            <input
-              type={"text"}
-              placeholder="Search"
-              onChange={(e) => setSearch(e.target.value)}
-              className="area-dropdown"
-              style={{
-                color: "white",
-                position: "absolute",
-                top: "90%",
-              }}
-            />
-            <select
-              name="test"
-              className="area-dropdown"
-              placeholder="All Areas"
-              value={area}
-              onChange={(e) => setArea(e.target.value)}
-            >
-              <option value="All">All Areas</option>
-              <DropDownArea />
-            </select>
-          </div>
+    return (
+        <>
+            <div className="customer-container">
+                <div className="header-blue">
+                    <div className="area-div">
+                        <p className="area-p">Area</p>
+                        <input
+                            type={"text"}
+                            placeholder="Search"
+                            onChange={(e) => setSearch(e.target.value)}
+                            className="area-dropdown"
+                            style={{
+                                color: "white",
+                                position: "absolute",
+                                top: "90%",
+                            }}
+                        />
+                        <select
+                            name="test"
+                            className="area-dropdown"
+                            placeholder="All Areas"
+                            value={area}
+                            onChange={(e) => setArea(e.target.value)}
+                        >
+                            <option value="All">All Areas</option>
+                            <DropDownArea />
+                        </select>
+                    </div>
 
                     <div className="filter-div">
                         <p className="filter-p">Filter</p>
