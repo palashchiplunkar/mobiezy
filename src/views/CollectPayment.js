@@ -2,14 +2,61 @@ import React, { useState } from "react";
 import Collapsible from "react-collapsible";
 import { TbPlus } from "react-icons/tb";
 import { AiOutlineMinus } from "react-icons/ai";
+import { useLocation, useNavigate } from "react-router-dom";
+import { useEffect } from "react";
+import API from "../services/API";
+
 import "../css/CollectPayment.css";
 import "../css/global.css";
-import { useNavigate } from "react-router-dom";
 
 export default function CollectPayment() {
     const navigate = useNavigate();
+    const customer = useLocation();
+
     const [stbOpen, setstbOpen] = useState(false);
     const [cusOpen, setcusOpen] = useState(false);
+    const [customerDetails, setCustomerDetails] = useState([]);
+
+    const months = {
+        "01": "January",
+        "02": "February",
+        "03": "March",
+        "04": "April",
+        "05": "May",
+        "06": "June",
+        "07": "July",
+        "08": "August",
+        "09": "September",
+        "10": "October",
+        "11": "November",
+        "12": "December",
+    };
+
+    const customerID = customer.state;
+
+    const user = JSON.parse(
+        localStorage.getItem("user") || sessionStorage.getItem("user")
+    );
+
+    useEffect(() => {
+        const data = {
+            customerId: customerID.customerId,
+            operatorId: user.operatorId,
+            agentId: user.agentId,
+        };
+
+        API.getCustomerInfo(data)
+            .then((response) => {
+                setCustomerDetails(response.data.customerDetailsList[0]);
+            })
+
+            .catch((error) => {
+                console.log(error);
+            });
+    }, []);
+
+    console.log(customerDetails);
+
     const stbOptions = [
         {
             id: 1,
@@ -101,22 +148,34 @@ export default function CollectPayment() {
                     <tr className="t-row-1">
                         <td className="t-col-1">Name</td>
                         <td className="t-col-2">:</td>
-                        <td className="t-col-3">Raghavendra Ganiga</td>
+                        <td className="t-col-3">
+                            {customerDetails
+                                ? customerDetails.customerName
+                                : "--"}
+                        </td>
                     </tr>
                     <tr className="t-row-2">
                         <td className="t-col-1">Customer Id</td>
                         <td className="t-col-2">:</td>
-                        <td className="t-col-3">KS00567</td>
+                        <td className="t-col-3">
+                            {customerDetails
+                                ? customerDetails.customerId
+                                : "--"}
+                        </td>
                     </tr>
                     <tr className="t-row-3">
                         <td className="t-col-1">VC No</td>
                         <td className="t-col-2">:</td>
-                        <td className="t-col-3">0000000000123456</td>
+                        <td className="t-col-3">
+                            {customerDetails ? customerDetails.vcNumber : "--"}
+                        </td>
                     </tr>
                     <tr className="t-row-4">
                         <td className="t-col-1">STB No</td>
                         <td className="t-col-2">:</td>
-                        <td className="t-col-3">ST00100000123456765432</td>
+                        <td className="t-col-3">
+                            {customerDetails ? customerDetails.stbNumber : "--"}
+                        </td>
                     </tr>
                 </table>
             </div>
@@ -130,13 +189,21 @@ export default function CollectPayment() {
                                 className="b-col-3 lS"
                                 style={{ color: "#DC1515", fontWeight: "700" }}
                             >
-                                01 March 2023
+                                {customerDetails.endDate.substring(8, 10) +
+                                    " " +
+                                    months[
+                                        customerDetails.endDate.substring(5, 7)
+                                    ] +
+                                    " " +
+                                    customerDetails.endDate.substring(0, 4)}
                             </td>
                         </tr>
                         <tr>
                             <td className="b-col-1 lS">Last Paid Amount</td>
                             <td className="b-col-2 lS">:</td>
-                            <td className="b-col-3 lS">₹ 300.00</td>
+                            <td className="b-col-3 lS">
+                                {"₹ " + customerDetails.lastCollectedAmount}
+                            </td>
                         </tr>
                     </table>
                 </div>
@@ -145,27 +212,32 @@ export default function CollectPayment() {
                         <tr>
                             <td className="b-col-1 lS">Base Amount</td>
                             <td className="b-col-2 lS">:</td>
-                            <td className="b-col-3 lS">₹ 280.00</td>
+                            <td className="b-col-3 lS">
+                                {"₹ " + customerDetails.baseBillAmount}
+                            </td>
                         </tr>
                         <tr>
                             <td className="b-col-1 lS">Tax Amount</td>
                             <td className="b-col-2 lS">:</td>
-                            <td className="b-col-3 lS">₹ 21.60</td>
-                        </tr>
-                        <tr>
-                            <td className="b-col-1 lS">Tax Amount</td>
-                            <td className="b-col-2 lS">:</td>
-                            <td className="b-col-3 lS">₹ 21.60</td>
+                            <td className="b-col-3 lS">
+                                {"₹ " + customerDetails.taxBillAmount}
+                            </td>
                         </tr>
                         <tr>
                             <td className="b-col-1 lS">Total Pack Amount</td>
                             <td className="b-col-2 lS">:</td>
-                            <td className="b-col-3 lS">₹ 301.60</td>
+                            <td className="b-col-3 lS">
+                                {"₹ " +
+                                    (Number(customerDetails.baseBillAmount) +
+                                        Number(customerDetails.taxBillAmount))}
+                            </td>
                         </tr>
                         <tr>
                             <td className="b-col-1 lS">Previous Balance</td>
                             <td className="b-col-2 lS">:</td>
-                            <td className="b-col-3 lS">₹ 1.60</td>
+                            <td className="b-col-3 lS">
+                                {"₹ " + customerID.previousPendingAmount}
+                            </td>
                         </tr>
                         <tr>
                             <td className="b-col-1 lS">Amount Adjusted</td>
