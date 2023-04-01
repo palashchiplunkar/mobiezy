@@ -1,15 +1,4 @@
-.HeaderLabelHistory {
-  position: relative;
-  top: 5%;
-  align-self: center;
-  font-family: "Noto Sans", sans-serif;
-  padding-left: 30px;
-  font-style: normal;
-  font-weight: 700;
-  font-size: 20px;
-  letter-spacing: 0.2px;
-  color: #ffffff;
-}
+
 .StaticDiv {
   display: flex;
   flex-direction: column;
@@ -19,7 +8,7 @@
 .customer-card-div-history {
   z-index: -1;
   overflow-y: scroll;
-  margin-bottom: 2vh;
+  margin-bottom: 1vh;
   width: 90%;
   border: 2px solid transparent;
   border-radius: 15px;
