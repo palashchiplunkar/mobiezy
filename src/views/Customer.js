@@ -62,11 +62,22 @@ export default function Customer() {
     });
     return DropDownAreaData;
   };
+  useEffect(() => {
+    console.log("Serch", search);
+    const results = customerData.filter((customer) =>
+      customer.customerName.toLowerCase().includes(search)
+    );
+    console.log(results);
+    setfiltercustomerData(results);
+  }, [search]);
 
   const Customers = () => {
     const eachCustomer = filtercustomerData.map((customer) => {
       return (
-        <div className="card-div" onClick={() => navigate("/customer/collectPayment")}>
+        <div
+          className="card-div"
+          onClick={() => navigate("/customer/collectPayment")}
+        >
           <div className="card-group1-div">
             <div class="card-line1-div">
               <p className="card-name-p">{customer.customerName}</p>
@@ -126,31 +137,41 @@ export default function Customer() {
   const openDrawer = React.useCallback(() => setIsVisible(true), []);
   const ChangeDataBasedOnFilter = () => {
     const data = customerData;
-  
+
     if (sortOptions === "Paid") {
-      setfiltercustomerData(data.filter(customer => customer.totalPayableAmount <= 0));
+      setfiltercustomerData(
+        data.filter((customer) => customer.totalPayableAmount <= 0)
+      );
     } else if (sortOptions === "Unpaid") {
-      setfiltercustomerData(data.filter(customer => customer.totalPayableAmount > 0));
+      setfiltercustomerData(
+        data.filter((customer) => customer.totalPayableAmount > 0)
+      );
     } else {
       setfiltercustomerData(data);
     }
-  
+
     if (sortBy === "CustomerId") {
-      setfiltercustomerData(prevState => [...prevState].sort((a, b) => a.managedCustomerId - b.managedCustomerId));
+      setfiltercustomerData((prevState) =>
+        [...prevState].sort((a, b) => a.managedCustomerId - b.managedCustomerId)
+      );
     } else if (sortBy === "Pending") {
-        setfiltercustomerData(prevState => [...prevState].sort((a, b) => a.totalPayableAmount - b.totalPayableAmount));
+      setfiltercustomerData((prevState) =>
+        [...prevState].sort(
+          (a, b) => a.totalPayableAmount - b.totalPayableAmount
+        )
+      );
     }
-  
+
     if (sortType === "ASC") {
-      setfiltercustomerData(prevState => [...prevState].reverse());
+      setfiltercustomerData((prevState) => [...prevState].reverse());
     }
   };
-  
+
   useEffect(() => {
     console.log(filtercustomerData);
   }, [filtercustomerData]);
-  
-  const handleFilterSubmit = e => {
+
+  const handleFilterSubmit = (e) => {
     e.preventDefault();
     setIsVisible(false);
     ChangeDataBasedOnFilter();
@@ -165,6 +186,7 @@ export default function Customer() {
             <input
               type={"text"}
               placeholder="Search"
+              onChange={(e) => setSearch(e.target.value)}
               className="area-dropdown"
               style={{
                 color: "white",
