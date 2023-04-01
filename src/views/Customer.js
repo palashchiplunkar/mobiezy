@@ -9,6 +9,7 @@ import API from "../services/API";
 
 import "../css/Customer.css";
 import "../css/global.css";
+import { changeLanguage } from "i18next";
 
 export default function Customer() {
   const navigate = useNavigate();
@@ -16,10 +17,12 @@ export default function Customer() {
   const [dropDownAreaData, setDropDownAreaData] = useState([]);
   const [customerData, setcustomerData] = useState([]);
   const [filtercustomerData, setfiltercustomerData] = useState([]);
+
   const [sortOptions, setSortOptions] = useState("All");
   const [sortBy, setSortBy] = useState("CustomerId");
   const [sortType, setSortType] = useState("ASC");
   const [search, setSearch] = useState("");
+  const [area, setArea] = useState("All");
 
   const user = JSON.parse(
     localStorage.getItem("user") || sessionStorage.getItem("user")
@@ -52,13 +55,22 @@ export default function Customer() {
 
   const DropDownArea = () => {
     const DropDownAreaData = dropDownAreaData.map((data) => {
-      return <option value={data.area_id}>{data.area_name}</option>;
+      return <option value={data.id}>{data.area_name}</option>;
     });
     return DropDownAreaData;
   };
+  useEffect(() => {
+    // based the seleceted area filter the data
+    const results = customerData.filter(
+      (customer) => customer.AREA_ID === area
+    );
+    setfiltercustomerData(results);
+  }, [area]);
 
   useEffect(() => {
-    const results = filtercustomerData.filter(
+    // changeDataBasedOnSearch();
+    // ChangeDataBasedOnFilter();
+    const results = customerData.filter(
       (customer) =>
         customer.customerName?.toLowerCase().includes(search?.toLowerCase()) ||
         customer.phone?.toLowerCase().includes(search?.toLowerCase()) ||
@@ -70,7 +82,7 @@ export default function Customer() {
         customer.totalPayableAmount?.toString().includes(search?.toLowerCase())
     );
     setfiltercustomerData(results);
-  }, [search, filtercustomerData]);
+  }, [search]);
 
   const Customers = () => {
     const eachCustomer = filtercustomerData.map((customer) => {
@@ -146,14 +158,17 @@ export default function Customer() {
         (customer) => customer.status === "Active"
       );
       const PaidCustomers = ActiveCustomers.filter(
-        (customer) => customer.totalPayableAmount === 0
+        (customer) => customer.totalPayableAmount <= 0
       );
       setfiltercustomerData(PaidCustomers);
     } else if (sortOptions === "Unpaid") {
-      setfiltercustomerData(
-        data.filter((customer) => customer.totalPayableAmount > 0) &&
-          data.filter((customer) => customer.status === "Active")
+      const ActiveCustomers = data.filter(
+        (customer) => customer.status === "Active"
       );
+      const UnpaidCustomers = ActiveCustomers.filter(
+        (customer) => customer.totalPayableAmount > 0
+      );
+      setfiltercustomerData(UnpaidCustomers);
     } else {
       setfiltercustomerData(data);
     }
@@ -212,6 +227,7 @@ export default function Customer() {
               name="test"
               className="area-dropdown"
               placeholder="All Areas"
+              onChange={(e) => setArea(e.target.value)}
             >
               <option>All Areas</option>
               <DropDownArea />
