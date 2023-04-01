@@ -2,13 +2,16 @@ import React, { useEffect, useState } from "react";
 import { TfiMobile } from "react-icons/tfi";
 import { Spinner } from "react-bootstrap";
 
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import Header from "../components/header";
 import "../css/PaymentHistory.css";
 import "../css/STBHistory.css";
 import API from "../services/API";
 
 export default function PaymentHistory() {
+    const customer= useLocation();
+
+
   const user = JSON.parse(
     localStorage.getItem("user") || sessionStorage.getItem("user")
   );
@@ -19,44 +22,17 @@ export default function PaymentHistory() {
   const [StbHistory, setStbHistory] = useState([]);
   const [paymentOpen, setpaymentOpen] = useState(true);
   const [stbOpen, setstbOpen] = useState(false);
-  const data = [
-    {
-      stbNo: "1513C5644490054018",
-      vcNo: "001769135078",
-      dateTime: "03:45 PM  21-03-2023",
-      status: "Active",
-    },
-
-    {
-      stbNo: "1513C5644490054807",
-      vcNo: "001769135087",
-      dateTime: "02:38 PM  22-12-2022",
-      status: "Suspended",
-    },
-
-    {
-      stbNo: "1513C5644490054018",
-      vcNo: "001769135078",
-      dateTime: "06:55 PM  14-02-2021",
-      status: "Cancelled",
-    },
-    {
-      stbNo: "1513C5644490054018",
-      vcNo: "001769135078",
-      dateTime: "06:55 PM  14-02-2021",
-      status: "Cancelled",
-    },
-  ];
+    const [customerDetails, setcustomerDetails] = useState(customer.state)
 
   useEffect(() => {
     setIsLoading(true);
     setError("");
     const bodyPayment = {
-      customer_id: "1001592649",
+      customer_id: customerDetails.customerId,
       operator_id: user.operatorId,
     };
     const bodyStb = {
-      cust_num: "1001592649",
+      cust_num: customerDetails.customerId,
       operator_id: JSON.stringify(user.operatorId),
       flag: "Y",
     };
@@ -67,6 +43,10 @@ export default function PaymentHistory() {
           setPaymentHistory(response.data.customerDetailsList);
           setIsLoading(false);
           setError("");
+        }else{
+            setIsLoading(false);
+            setError("No Details Found");
+
         }
       })
       .catch((err) => {
@@ -103,33 +83,35 @@ export default function PaymentHistory() {
               <div className="card-group1-div">
                 <div class="card-line1-div">
                   <p className="card-name-p">
-                    Name : Nikhith Gowda Subrahmanya
+                    {customerDetails ? customerDetails.customerName :"--"}
                   </p>
                 </div>
 
                 <div className="card-line2-div">
                   <p className="card-date-p" style={{ fontWeight: "700" }}>
-                    Customer ID : JB0213
+                  {customerDetails ? customerDetails.customerId :"--"}
                   </p>
                 </div>
 
                 <div className="card-line3-div">
                   <div style={{ display: "flex" }}>
                     <TfiMobile className="card-mobileIcon" />
-                    <p className="card-phone-p">9740769579</p>
+                    <p className="card-phone-p">
+                    {customerDetails ? customerDetails.phone :"--"}
+                    </p>
                   </div>
 
                   <p
                     className="card-status-p"
                     style={{
-                      backgroundColor: "Active"
-                        ? "#a0c334"
+                      backgroundColor: customerDetails.status== "Active"?
+                         "#a0c334"
                         : "Temporarily Disconnected"
                         ? "#DC1515"
                         : "#000000",
                     }}
                   >
-                    Active
+                  {customerDetails ? customerDetails.status :"--"}
                   </p>
                 </div>
               </div>
@@ -252,8 +234,8 @@ export default function PaymentHistory() {
                           <p className="card-date-p">
                             {value.UPD_TIMESTAMP.slice("11", "16")}{" "}
                             {value.UPD_TIMESTAMP.slice("11", "13") >= 12
-                              ? "PM"
-                              : "AM"}
+                              ? "PM "
+                              : "AM "}
                             {value.UPD_TIMESTAMP.slice("0", "10")}
                           </p>
                         </div>

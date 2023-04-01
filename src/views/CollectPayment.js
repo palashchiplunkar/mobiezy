@@ -100,6 +100,7 @@ export default function CollectPayment() {
             name: "History",
             imgUrl: "history_payment.png",
             toLink: "/customer/collectPayment/history",
+            state: customerDetails,
         },
         {
             id: 6,
