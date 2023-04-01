@@ -8,17 +8,21 @@ import {
     DialogContent,
     DialogContentText,
 } from "@mui/material";
+import ReactLoading from "react-loading";
 
 import API from "../services/API";
 
 export default function RecordVisit() {
     const navigate = useNavigate();
 
+    const [customerID, setCustomerID] = useState("");
+    const [remark, setRemark] = useState("");
     const [alert, setalert] = useState(false);
     const [apiResponseTitle, setAPIResponseTitle] = useState("");
     const [apiResponseContent, setAPIResponseContent] = useState("");
     const [CError, setCustError] = useState("");
     const [RError, setRemarkError] = useState("");
+    const [isLoading, setIsLoading] = useState(false);
 
     var dateTime = {
         hours: null,
@@ -72,9 +76,6 @@ export default function RecordVisit() {
         return temp;
     };
 
-    const [customerID, setCustomerID] = useState("");
-    const [remark, setRemark] = useState("");
-
     const user = JSON.parse(
         localStorage.getItem("user") || sessionStorage.getItem("user")
     );
@@ -101,22 +102,27 @@ export default function RecordVisit() {
             return;
         }
 
+        setIsLoading(true);
+
         API.recordVisit(customerData)
             .then((response) => {
                 console.log(response);
-                if(response.data.p_out_mssg === "Success"){
+                setIsLoading(false);
+                if (response.data.p_out_mssg === "Success") {
                     setAPIResponseTitle(response.data.p_out_mssg);
                     setAPIResponseContent("Remark Submitted Successfully");
-                }
-                else{
+                    setalert(true);
+                } else {
                     setAPIResponseTitle("Error");
                     setAPIResponseContent(response.data.p_out_mssg);
+                    setalert(true);
                 }
+
                 
-                setalert(true);
             })
 
             .catch((error) => {
+                setIsLoading(false);
                 console.log(error);
             });
     };
@@ -226,23 +232,33 @@ export default function RecordVisit() {
                             {apiResponseTitle}
                         </DialogTitle>
                         <DialogContent>
-                        <DialogContentText
-                            id="alert-dialog-description"
-                            style={{
-                                display: "flex",
-                                alignItems: "center",
-                                justifyContent: "center",
-                                fontFamily: "Noto Sans",
-                                color: "black",
-                                border: "none",
-                                margin: "10px",
-                                padding: "5px",
-                            }}
-                        >
-                            {apiResponseContent}
-                        </DialogContentText>
-                    </DialogContent>
+                            <DialogContentText
+                                id="alert-dialog-description"
+                                style={{
+                                    display: "flex",
+                                    alignItems: "center",
+                                    justifyContent: "center",
+                                    fontFamily: "Noto Sans",
+                                    color: "black",
+                                    border: "none",
+                                    margin: "10px",
+                                    padding: "5px",
+                                }}
+                            >
+                                {apiResponseContent}
+                            </DialogContentText>
+                        </DialogContent>
                     </Dialog>
+                </div>
+                <div style={{ display: "flex", justifyContent: "center" }}>
+                    {isLoading && (
+                        <ReactLoading
+                            type={"bars"}
+                            color={"#0090da"}
+                            height={75}
+                            width={75}
+                        />
+                    )}
                 </div>
             </div>
         </>
