@@ -38,12 +38,12 @@ export default function Customer() {
   };
 
   useEffect(() => {
-    window.history.pushState({}, "");
-    window.addEventListener("popstate", function (e) {
-      e.preventDefault();
-      e.stopPropagation();
-      window.history.pushState({}, "");
-    });
+    // window.history.pushState({}, "");
+    // window.addEventListener("popstate", function (e) {
+    //   e.preventDefault();
+    //   e.stopPropagation();
+    //   window.history.pushState({}, "");
+    // });
     fetchCustomerData();
 
     API.dropdownAgentDataAPI({ operatorId: user.operatorId })

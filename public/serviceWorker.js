@@ -2,7 +2,7 @@
 const CACHE_NAME = "version-1";
 const urlsToCache = [
     "/",
-    "/collectPayment/",
+    // "/customer/",
     "/index.html",
     "/offline.html",
     "/static/js/main.chunk.js",
