@@ -60,16 +60,35 @@ export default function Customer() {
     return DropDownAreaData;
   };
   useEffect(() => {
-    // based the seleceted area filter the data
-    const results = customerData.filter(
-      (customer) => customer.AREA_ID === area
-    );
-    setfiltercustomerData(results);
+    if (area === "All") {
+      setfiltercustomerData([...customerData]); // Reset filter data to all customers
+    } else {
+      const results = customerData.filter(
+        (customer) => customer.AREA_ID === area
+      );
+      setfiltercustomerData(results);
+    }
+  }, [area, customerData]);
+
+  const handleAreaChange = (event) => {
+    setArea(event.target.value);
+  };
+
+  useEffect(() => {
+    if (area === "All") {
+      setfiltercustomerData(customerData);
+    } else {
+      console.log("Selected Area: ", area);
+      // based the seleceted area filter the data
+      const results = customerData.filter(
+        (customer) => customer.AREA_ID === area
+      );
+      console.log(results);
+      setfiltercustomerData(results);
+    }
   }, [area]);
 
   useEffect(() => {
-    // changeDataBasedOnSearch();
-    // ChangeDataBasedOnFilter();
     const results = customerData.filter(
       (customer) =>
         customer.customerName?.toLowerCase().includes(search?.toLowerCase()) ||
@@ -229,7 +248,7 @@ export default function Customer() {
               placeholder="All Areas"
               onChange={(e) => setArea(e.target.value)}
             >
-              <option>All Areas</option>
+              <option value="All">All Areas</option>
               <DropDownArea />
             </select>
           </div>
