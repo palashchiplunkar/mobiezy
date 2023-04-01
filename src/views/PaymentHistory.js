@@ -16,6 +16,7 @@ export default function PaymentHistory() {
   const [isLoading, setIsLoading] = useState(false);
   const [Error, setError] = useState("");
   const [PaymentHistory, setPaymentHistory] = useState([]);
+  const [StbHistory, setStbHistory] = useState([]);
   const [paymentOpen, setpaymentOpen] = useState(true);
   const [stbOpen, setstbOpen] = useState(false);
   const data = [
@@ -55,10 +56,10 @@ export default function PaymentHistory() {
       operator_id: user.operatorId,
     };
     const bodyStb = {
-        customer_id: "1001592649",
-        operator_id: user.operatorId,
-        flag:"Y"
-      };
+      cust_num: "1001592649",
+      operator_id: JSON.stringify(user.operatorId),
+      flag: "Y",
+    };
 
     API.lastPaymentHistory(bodyPayment)
       .then((response) => {
@@ -73,8 +74,17 @@ export default function PaymentHistory() {
         setIsLoading(false);
         setError("Some Error has occured");
       });
-
-      
+    API.STBHistory(bodyStb)
+      .then((response) => {
+        if (response.data.stb_history.length > 0) {
+          setStbHistory(response.data.stb_history);
+          setError("");
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+        setError("Some Error has Occured");
+      });
   }, []);
 
   return (
@@ -185,7 +195,7 @@ export default function PaymentHistory() {
                       <p className="card-date-p">{value.TRAN_TYPE}</p>
                       <p className="card-date-p">
                         {value.COLLECTION_DATE.slice("11", "16")}{" "}
-                        {value.COLLECTION_DATE.slice("11", "12") >= 12
+                        {value.COLLECTION_DATE.slice("11", "13") >= 12
                           ? "PM"
                           : "AM"}{" "}
                         {value.COLLECTION_DATE.slice("0", "10")}
@@ -212,7 +222,7 @@ export default function PaymentHistory() {
 
       {stbOpen && (
         <div className="ScrollingContainerParent" style={{ height: "55vh" }}>
-          {data.map((val) => {
+          {StbHistory.map((value) => {
             return (
               <div className="ScrollingContainer">
                 <div
@@ -225,7 +235,7 @@ export default function PaymentHistory() {
                   >
                     <div className="card-group1-div">
                       <div class="card-line1-div">
-                        <p className="card-name-p">Nikhith Gowda Subrahmanya</p>
+                        <p className="card-name-p">{value.STB_NUMBER}</p>
                       </div>
 
                       <div className="card-line2-div">
@@ -233,26 +243,32 @@ export default function PaymentHistory() {
                           className="card-date-p"
                           style={{ fontWeight: "700" }}
                         >
-                          001769135078{" "}
+                          {value.VC_NUMBER}{" "}
                         </p>
                       </div>
 
                       <div className="card-line3-div">
                         <div style={{ display: "flex" }}>
-                          <p className="card-date-p">03:45 PM 21-03-2023</p>
+                          <p className="card-date-p">
+                            {value.UPD_TIMESTAMP.slice("11", "16")}{" "}
+                            {value.UPD_TIMESTAMP.slice("11", "13") >= 12
+                              ? "PM"
+                              : "AM"}
+                            {value.UPD_TIMESTAMP.slice("0", "10")}
+                          </p>
                         </div>
 
                         <p
                           className="card-status-p"
                           style={{
-                            backgroundColor: "Active"
+                            backgroundColor: value.STATUS == "Active"
                               ? "#a0c334"
                               : "Temporarily Disconnected"
                               ? "#DC1515"
                               : "#000000",
                           }}
                         >
-                          Active
+                          {value.STATUS}
                         </p>
                       </div>
                     </div>
