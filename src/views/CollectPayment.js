@@ -6,9 +6,11 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import moment from "moment";
 import API from "../services/API";
+import useGeoLocation from "../components/useGeoLocation";
 
 import "../css/CollectPayment.css";
 import "../css/global.css";
+
 
 export default function CollectPayment() {
     const navigate = useNavigate();
@@ -17,6 +19,7 @@ export default function CollectPayment() {
     const [stbOpen, setstbOpen] = useState(false);
     const [cusOpen, setcusOpen] = useState(false);
     const [customerDetails, setCustomerDetails] = useState([]);
+    const location = useGeoLocation();
 
     const customerID = customer.state;
 
@@ -41,7 +44,7 @@ export default function CollectPayment() {
             });
     }, []);
 
-    console.log(customerDetails);
+    // console.log(customerDetails);
 
     const stbOptions = [
         {
@@ -106,6 +109,7 @@ export default function CollectPayment() {
             id: 6,
             name: "Update Location",
             imgUrl: "update_location.png",
+            data: useGeoLocation(),
         },
         {
             id: 7,
@@ -350,11 +354,11 @@ export default function CollectPayment() {
                                         <div
                                             className="STBEachOption"
                                             id={option.id}
-                                            onClick={() => {
+                                            onClick={ option.toLink ? () => {
                                                 navigate(option.toLink, {
                                                     state: option.state,
                                                 });
-                                            }}
+                                            }  : () => {useGeoLocation()}}
                                         >
                                             <img
                                                 src={require("../assets/" +
