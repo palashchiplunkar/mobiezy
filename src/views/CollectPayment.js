@@ -358,7 +358,7 @@ export default function CollectPayment() {
                                                 navigate(option.toLink, {
                                                     state: option.state,
                                                 });
-                                            }  : () => {useGeoLocation()}}
+                                            }  : () => {alert(JSON.stringify(location.coordinates))}}
                                         >
                                             <img
                                                 src={require("../assets/" +
