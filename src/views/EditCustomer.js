@@ -19,7 +19,7 @@ export default function EditCustomer() {
   const [customerName, setCustomerName] = useState(customer.customerName);
   const [customerPhone, setCustomerPhone] = useState(customer.phone);
   const [customerAddress, setCustomerAddress] = useState(customer.address);
-  const [customerArea, setCustomerArea] = useState("");
+  // const [customerArea, setCustomerArea] = useState("");
   const [customerAreaId, setCustomerAreaId] = useState(customer.AREA_ID);
   const [customerAreaName, setCustomerAreaName] = useState("");
 
@@ -30,7 +30,6 @@ export default function EditCustomer() {
       .then((response) => {
         setDropDownAreaData(response.data.all_areas);
       })
-
       .catch((error) => {
         console.log(error);
       });
@@ -44,13 +43,14 @@ export default function EditCustomer() {
   };
   const AreaNameForID = (id) => {
     const area = dropDownAreaData.filter((data) => {
-      return data.id === id;
+      return data.id === parseInt(id);
     });
     console.log(area);
     // setCustomerAreaName(area[0].area_name);
+    setCustomerAreaName(area[0].area_name);
   };
   const handleAPI = () => {
-    AreaNameForID(customerArea);
+    AreaNameForID(customerAreaId);
     // API.editCustomerInfo({
     //   customer_id: customer.customerId,
     //   agent_id: user.agentId,
@@ -69,6 +69,10 @@ export default function EditCustomer() {
     //   .catch((error) => {
     //     console.log(error);
     //   });
+  };
+  const handleDropDownChange = (e) => {
+    console.log(e.target.value);
+    setCustomerAreaId(e.target.value);
   };
 
   return (
@@ -115,7 +119,7 @@ export default function EditCustomer() {
               name="area"
               id="area"
               value={customerAreaId}
-              onChange={(e) => setCustomerAreaId(e.target.value)}
+              onChange={handleDropDownChange}
             >
               <DropDownArea />
             </select>
